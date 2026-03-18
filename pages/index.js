@@ -172,18 +172,23 @@ export default function App({ user, profile, onLogout }){
   const startRecording=async()=>{
     try{
       const stream=await navigator.mediaDevices.getUserMedia({audio:true})
-      const recorder=new MediaRecorder(stream,{mimeType:'audio/webm'})
+      // Detect supported mimeType (Safari doesn't support webm)
+      const mimeType=MediaRecorder.isTypeSupported('audio/webm')?'audio/webm'
+        :MediaRecorder.isTypeSupported('audio/mp4')?'audio/mp4'
+        :MediaRecorder.isTypeSupported('audio/ogg')?'audio/ogg':''
+      const recorder=mimeType?new MediaRecorder(stream,{mimeType}):new MediaRecorder(stream)
+      const actualMime=recorder.mimeType||mimeType||'audio/webm'
       const chunks=[]
       recorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)}
       recorder.onstop=async()=>{
         stream.getTracks().forEach(t=>t.stop())
         setRecLoading(true)
-        const blob=new Blob(chunks,{type:'audio/webm'})
+        const blob=new Blob(chunks,{type:actualMime})
         const reader=new FileReader()
         reader.onload=async()=>{
           const base64=reader.result.split(',')[1]
           try{
-            const r=await fetch('/api/transcribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({audio:base64,mimeType:'audio/webm'})})
+            const r=await fetch('/api/transcribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({audio:base64,mimeType:actualMime})})
             const data=await r.json()
             if(data.error)throw new Error(data.error)
             const transcript=data.text||''
