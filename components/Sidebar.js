@@ -3,10 +3,10 @@ import { useRouter } from 'next/router'
 import styles from './Sidebar.module.css'
 
 const NAV_ITEMS = [
-  { href: '/',             icon: '📖', label: 'Traduction', ar: 'ترجمة' },
-  { href: '/quiz',         icon: '🎯', label: 'Quiz',       ar: 'اختبار' },
-  { href: '/dictionnaire', icon: '📚', label: 'Dictionnaire', ar: 'المعجم' },
-  { href: '/alphabet',     icon: '✏️',  label: 'Alphabet',   ar: 'الحروف' },
+  { href: '/',             icon: 'ت', label: 'Traduction', ar: 'ترجمة' },
+  { href: '/quiz',         icon: 'ق', label: 'Quiz',       ar: 'اختبار' },
+  { href: '/dictionnaire', icon: 'م', label: 'Dictionnaire', ar: 'المعجم' },
+  { href: '/alphabet',     icon: 'أ', label: 'Alphabet',   ar: 'الحروف' },
 ]
 
 export default function Sidebar({ isOpen, onClose, onLogout, stats }) {

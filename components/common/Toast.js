@@ -4,8 +4,8 @@ import styles from './Toast.module.css'
 const ICONS = {
   success: '✓',
   error: '✗',
-  warning: '⚠',
-  info: '💡',
+  warning: '!',
+  info: '·',
 }
 
 export default function Toast({ message, type = 'info', duration = 3000, onClose }) {

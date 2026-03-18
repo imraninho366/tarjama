@@ -114,7 +114,7 @@ export default function Dictionnaire({ user, profile }) {
 
         {/* SEARCH */}
         <div className={s.searchBar}>
-          <span className={s.searchIcon}>🔍</span>
+          <span className={s.searchIcon}>◇</span>
           <input
             value={search}
             onChange={e => setSearch(e.target.value)}

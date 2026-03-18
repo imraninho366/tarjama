@@ -53,7 +53,7 @@ function AudioPlayer({src}){
         color:G.gold,cursor:'pointer',display:'flex',alignItems:'center',
         justifyContent:'center',fontSize:14,flexShrink:0,transition:'all .2s'
       }}>
-        {loading?'⏳':playing?'⏸':'▶'}
+        {loading?'···':playing?'❚❚':'►'}
       </button>
       <div style={{flex:1,minWidth:0}}>
         <div style={{fontSize:9,letterSpacing:2,textTransform:'uppercase',color:G.textMuted,marginBottom:4}}>Mishary Al-Afasy</div>
@@ -359,7 +359,7 @@ export default function App({ user, profile, onLogout }){
       {/* ── SEARCH BOX (above main content on mobile) ──────── */}
       <div className={s.searchBox}>
         <div className={s.searchInput}>
-          <span className={s.searchIcon}>🔍</span>
+          <span className={s.searchIcon}>◇</span>
           <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Rechercher une sourate..." className={s.searchField}/>
           {search&&<span className={s.searchClear} onClick={()=>setSearch('')}>✕</span>}
         </div>
@@ -437,7 +437,7 @@ export default function App({ user, profile, onLogout }){
             ))}
           </div>
           <div className={s.dashboardCta}>
-            <p className={s.dashboardCtaText}>🔍 Recherche une sourate dans la barre ci-dessus !</p>
+            <p className={s.dashboardCtaText}>Recherche une sourate dans la barre ci-dessus</p>
             <Button onClick={()=>openSourate(SUGGESTIONS[0])}>Commencer par Al-Fatiha →</Button>
           </div>
         </>
@@ -448,7 +448,7 @@ export default function App({ user, profile, onLogout }){
         const rl=getReviewList()
         if(rl.length===0)return(
           <div className={s.emptyState}>
-            <div className={s.emptyIcon}>✅</div>
+            <div className={s.emptyIcon}>—</div>
             <div className={s.emptyTitle}>Tout est à jour !</div>
             <div className={s.emptyText}>Tu n'as aucun verset à revoir aujourd'hui.<br/>Continue à traduire de nouvelles sourates.</div>
           </div>
@@ -569,8 +569,8 @@ export default function App({ user, profile, onLogout }){
                   <div className={s.recSection}>
                     <div className={s.recLabel}>Récitation vocale</div>
                     <div className={s.recActions}>
-                      {!recording&&!recLoading&&<Button variant="danger" small onClick={startRecording}>🎤 Enregistrer</Button>}
-                      {recording&&<Button variant="danger" small onClick={stopRecording} className={s.recPulsing}>⏹ Arrêter</Button>}
+                      {!recording&&!recLoading&&<Button variant="danger" small onClick={startRecording}>Enregistrer</Button>}
+                      {recording&&<Button variant="danger" small onClick={stopRecording} className={s.recPulsing}>Arreter</Button>}
                       {recording&&<span style={{fontSize:11,color:G.red}} className={s.recPulsing}>Enregistrement en cours...</span>}
                       {recLoading&&<span style={{fontSize:11,color:G.textMuted}}>Analyse en cours...</span>}
                     </div>
@@ -642,7 +642,7 @@ export default function App({ user, profile, onLogout }){
           {/* Translation input */}
           <div className={s.translationSection}>
             <div className={s.translationLabel}>
-              <span className={s.translationLabelIcon}>✍</span> Votre traduction en français
+              <span className={s.translationLabelIcon}>—</span> Votre traduction en français
             </div>
             <textarea
               value={existing?(existing.userTrans||''):userTrans}
@@ -661,7 +661,7 @@ export default function App({ user, profile, onLogout }){
                   {verifying?'...':'✓ Vérifier'}
                 </Button>
                 <Button variant="secondary" onClick={fetchHint} disabled={hinting} style={{color:G.purple,borderColor:'rgba(155,127,212,.25)'}}>
-                  {hinting?'...':showHint?'💡':'💡 Indice'}
+                  {hinting?'...':showHint?'Masquer':'Indice'}
                 </Button>
                 <Button variant="ghost" onClick={skipVerse}>→ Passer</Button>
               </>}
@@ -709,7 +709,7 @@ export default function App({ user, profile, onLogout }){
         const wrong=done-correct-partial
         const pct=Math.round((correct+partial*.5)/sourate.verses.length*100)
         return<div className={s.doneCard}>
-          <div className={s.doneEmoji}>🌟</div>
+          <div className={s.doneEmoji}>&#x2726;</div>
           <div className={s.doneTitle}>Sourate terminée !</div>
           <div className={s.doneSourate}>{sourate.name_ar} — {sourate.name_fr}</div>
           <div className={s.doneStats}>

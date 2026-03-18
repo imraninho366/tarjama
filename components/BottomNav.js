@@ -3,10 +3,10 @@ import { useRouter } from 'next/router'
 import styles from './BottomNav.module.css'
 
 const TABS = [
-  { href: '/',             icon: '📖', label: 'Traduire' },
-  { href: '/quiz',         icon: '🎯', label: 'Quiz' },
-  { href: '/dictionnaire', icon: '📚', label: 'Dico' },
-  { href: '/alphabet',     icon: '✏️',  label: 'Alphabet' },
+  { href: '/',             icon: 'ت', label: 'Traduire' },
+  { href: '/quiz',         icon: 'ق', label: 'Quiz' },
+  { href: '/dictionnaire', icon: 'م', label: 'Dico' },
+  { href: '/alphabet',     icon: 'أ', label: 'Alphabet' },
 ]
 
 export default function BottomNav() {
