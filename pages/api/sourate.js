@@ -13,11 +13,18 @@ export default async function handler(req, res) {
     if (data.code !== 200) throw new Error('Sourate non trouvée')
     
     const sourate = data.data
+    // Filtrer la Basmala (verset 1) pour toutes les sourates sauf Al-Fatiha (1)
+    // At-Tawba (9) n'a pas de Basmala donc pas besoin de cas spécial
+    const ayahs = sourate.number === 1
+      ? sourate.ayahs
+      : sourate.ayahs.filter(a => !(a.numberInSurah === 1 && a.text.includes('بسم الله')))
+    // Renuméroter les versets après filtrage
+    const verses = ayahs.map((a, i) => ({ n: i + 1, ar: a.text }))
     return res.status(200).json({
       num: sourate.number,
       name_ar: sourate.name,
-      name_fr: sourate.englishName, // on va surcharger avec nos noms FR
-      verses: sourate.ayahs.map(a => ({ n: a.numberInSurah, ar: a.text }))
+      name_fr: sourate.englishName,
+      verses
     })
   } catch (err) {
     console.error('Sourate fetch error:', err.message)
