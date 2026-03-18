@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="12" viewBox="0 0 400 12" fill="none">
+  <g opacity="0.15" stroke="#C9A84C" stroke-width="0.6">
+    <!-- Repeating arabesque pattern -->
+    <path d="M0,6 Q10,1 20,6 Q30,11 40,6 Q50,1 60,6 Q70,11 80,6 Q90,1 100,6 Q110,11 120,6 Q130,1 140,6 Q150,11 160,6 Q170,1 180,6 Q190,11 200,6 Q210,1 220,6 Q230,11 240,6 Q250,1 260,6 Q270,11 280,6 Q290,1 300,6 Q310,11 320,6 Q330,1 340,6 Q350,11 360,6 Q370,1 380,6 Q390,11 400,6"/>
+    <!-- Center diamonds -->
+    <path d="M50,6 L53,3 L56,6 L53,9 Z" fill="#C9A84C" fill-opacity="0.2"/>
+    <path d="M150,6 L153,3 L156,6 L153,9 Z" fill="#C9A84C" fill-opacity="0.2"/>
+    <path d="M250,6 L253,3 L256,6 L253,9 Z" fill="#C9A84C" fill-opacity="0.2"/>
+    <path d="M350,6 L353,3 L356,6 L353,9 Z" fill="#C9A84C" fill-opacity="0.2"/>
+  </g>
+</svg>

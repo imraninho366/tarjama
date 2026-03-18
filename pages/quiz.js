@@ -1,15 +1,10 @@
 import { useState, useEffect, useCallback } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
+import { G } from '../lib/theme'
+import Button from '../components/common/Button'
+import s from '../styles/Quiz.module.css'
 
-const G = {
-  dark:'#09090E', dark2:'#0F0F18', dark3:'#161622', dark4:'#1D1D2C',
-  gold:'#C9A84C', goldLight:'#E8C97A', goldDim:'#8B6914',
-  green:'#4CAF7D', blue:'#5B9BD5', red:'#C96B6B', orange:'#D4874C', purple:'#9B7FD4',
-  text:'#EDE8D8', textDim:'#9A9280', textMuted:'#5A5448'
-}
-
-const FONT = "'EB Garamond','Georgia','Times New Roman',serif"
+const FONT = 'var(--font-serif)'
 
 function shuffle(arr) {
   const a = [...arr]
@@ -116,18 +111,15 @@ export default function Quiz() {
   const pct = score.total > 0 ? Math.round(score.ok / score.total * 100) : 0
   const pctColor = pct >= 80 ? G.green : pct >= 50 ? G.orange : G.red
 
-  // Styles communs
-  const card = {
-    background: G.dark3,
-    border: `1px solid rgba(201,168,76,.12)`,
-    borderRadius: 6,
-    padding: '20px 24px',
+  const typeColor = {
+    nom: G.blue, verbe: G.purple, adjectif: G.orange,
+    particule: G.green, préposition: G.gold, expression: G.goldLight
   }
 
   // ── LOADING ──────────────────────────────────────────────────────────────
   if (loading) return (
-    <div style={{minHeight:'100vh',background:G.dark,display:'flex',alignItems:'center',justifyContent:'center'}}>
-      <div style={{fontFamily:'Cinzel,serif',color:G.gold,fontSize:14,letterSpacing:3}}>CHARGEMENT...</div>
+    <div className={s.loading}>
+      <div className={s.loadingText}>CHARGEMENT...</div>
     </div>
   )
 
@@ -136,51 +128,27 @@ export default function Quiz() {
     <>
       <Head>
         <title>Quiz — Tarjama</title>
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
-        <style>{`*{box-sizing:border-box;margin:0;padding:0}body{background:${G.dark}}`}</style>
       </Head>
-      <div style={{maxWidth:540,margin:'0 auto',padding:'40px 20px',minHeight:'100vh',color:G.text,fontFamily:'Lato,sans-serif'}}>
-        {/* Header */}
-        <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:32}}>
-          <Link href="/" style={{color:G.textMuted,textDecoration:'none',fontSize:11,letterSpacing:2,textTransform:'uppercase'}}>
-            Retour
-          </Link>
-          <span style={{color:G.textMuted,fontSize:10}}>|</span>
-          <div style={{fontFamily:'Cinzel,serif',fontSize:20,color:G.gold}}>QUIZ</div>
-        </div>
+      <div className={s.container}>
+        <div className={s.pageTitle}>QUIZ</div>
 
-        <div style={{fontFamily:FONT,fontSize:16,color:G.textDim,lineHeight:1.9,marginBottom:32}}>
+        <div className={s.intro}>
           Entraîne-toi sur le vocabulaire coranique. Un mot arabe s'affiche — tu choisis sa traduction française parmi quatre propositions.
         </div>
 
-        <div style={{display:'grid',gap:10}}>
+        <div className={s.modeGrid}>
           {MODES.map(m => (
-            <button key={m.id} onClick={() => startQuiz(m.id)}
-              style={{
-                ...card,
-                cursor:'pointer',
-                border: `1px solid rgba(201,168,76,.15)`,
-                textAlign:'left',
-                display:'flex',
-                alignItems:'center',
-                justifyContent:'space-between',
-                transition:'all .2s',
-                outline:'none',
-              }}
-              onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(201,168,76,.5)'}
-              onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(201,168,76,.15)'}
-            >
+            <button key={m.id} onClick={() => startQuiz(m.id)} className={s.modeCard}>
               <div>
-                <div style={{fontFamily:'Cinzel,serif',fontSize:13,color:G.goldLight,letterSpacing:1,marginBottom:3}}>{m.label}</div>
-                <div style={{fontSize:11,color:G.textMuted,letterSpacing:1}}>{m.desc}</div>
+                <div className={s.modeLabel}>{m.label}</div>
+                <div className={s.modeDesc}>{m.desc}</div>
               </div>
-              <div style={{fontSize:18,color:G.gold,opacity:.5}}>›</div>
+              <div className={s.modeArrow}>›</div>
             </button>
           ))}
         </div>
 
-        {/* Stats rapides */}
-        <div style={{marginTop:32,padding:'14px 18px',background:'rgba(201,168,76,.04)',border:'1px solid rgba(201,168,76,.08)',borderRadius:6,fontSize:11,color:G.textMuted,letterSpacing:1,textAlign:'center'}}>
+        <div className={s.statsFooter}>
           {vocab.length.toLocaleString('fr')} MOTS DANS LE DICTIONNAIRE
         </div>
       </div>
@@ -190,43 +158,29 @@ export default function Quiz() {
   // ── QUIZ ───────────────────────────────────────────────────────────────────
   if (!question) return null
 
-  const typeColor = {
-    nom: G.blue, verbe: G.purple, adjectif: G.orange,
-    particule: G.green, préposition: G.gold, expression: G.goldLight
-  }
-
   return (
     <>
       <Head>
         <title>Quiz — Tarjama</title>
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
-        <style>{`
-          *{box-sizing:border-box;margin:0;padding:0}
-          body{background:${G.dark}}
-          @keyframes pop{0%{transform:scale(.95);opacity:0}100%{transform:scale(1);opacity:1}}
-          @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-          @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-        `}</style>
       </Head>
 
-      <div style={{maxWidth:540,margin:'0 auto',padding:'24px 20px',minHeight:'100vh',color:G.text,fontFamily:'Lato,sans-serif'}}>
+      <div className={s.containerQuiz}>
 
         {/* Barre top */}
-        <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:24}}>
-          <button onClick={() => setMode(null)}
-            style={{background:'none',border:'none',color:G.textMuted,cursor:'pointer',fontSize:11,letterSpacing:2,textTransform:'uppercase',fontFamily:'Lato,sans-serif'}}>
+        <div className={s.topBar}>
+          <button onClick={() => setMode(null)} className={s.quitBtn}>
             Quitter
           </button>
-          <div style={{display:'flex',gap:16,alignItems:'center'}}>
+          <div className={s.scoreArea}>
             {score.streak >= 3 && (
-              <div style={{fontSize:11,color:G.orange,letterSpacing:1}}>
+              <div className={s.streak}>
                 {score.streak} serie
               </div>
             )}
-            <div style={{fontFamily:'Cinzel,serif',fontSize:22,color:pctColor,minWidth:50,textAlign:'right'}}>
+            <div className={s.pctDisplay} style={{ color: pctColor }}>
               {score.total > 0 ? `${pct}%` : '—'}
             </div>
-            <div style={{fontSize:11,color:G.textMuted,letterSpacing:1}}>
+            <div className={s.scoreCount}>
               {score.ok}/{score.total}
             </div>
           </div>
@@ -234,160 +188,90 @@ export default function Quiz() {
 
         {/* Barre de progression */}
         {score.total > 0 && (
-          <div style={{height:2,background:'rgba(255,255,255,.05)',borderRadius:1,marginBottom:24,overflow:'hidden'}}>
-            <div style={{height:'100%',width:`${pct}%`,background:pctColor,borderRadius:1,transition:'width .4s ease'}}/>
+          <div className={s.progressBar}>
+            <div className={s.progressFill} style={{ width: `${pct}%`, background: pctColor }} />
           </div>
         )}
 
         {/* Carte mot arabe */}
-        <div style={{
-          ...card,
-          textAlign:'center',
-          marginBottom:20,
-          padding:'32px 24px',
-          animation:'pop .25s ease',
-          background:'rgba(22,22,34,.8)',
-          border:`1px solid rgba(201,168,76,.2)`,
-        }}>
+        <div className={s.questionCard}>
           {/* Type */}
-          <div style={{
-            display:'inline-block',
-            fontSize:9,
-            letterSpacing:2,
-            textTransform:'uppercase',
-            color: typeColor[question.type] || G.textMuted,
-            background: `${typeColor[question.type] || G.textMuted}15`,
-            padding:'3px 8px',
-            borderRadius:2,
-            marginBottom:20
-          }}>
+          <div
+            className={s.typeBadge}
+            style={{
+              color: typeColor[question.type] || G.textMuted,
+              background: `${typeColor[question.type] || G.textMuted}15`,
+            }}
+          >
             {question.type}
           </div>
 
           {/* Mot arabe */}
-          <div style={{
-            fontFamily:'Amiri,serif',
-            fontSize:52,
-            color:G.goldLight,
-            direction:'rtl',
-            lineHeight:1.3,
-            marginBottom:14,
-          }}>
+          <div className={s.arabicWord}>
             {question.ar}
           </div>
 
           {/* Translittération */}
-          <div style={{
-            fontFamily:FONT,
-            fontSize:15,
-            color:G.textMuted,
-            fontStyle:'italic',
-            letterSpacing:'.03em'
-          }}>
+          <div className={s.translit}>
             {question.translit}
           </div>
 
           {/* Racine */}
           {question.racine && (
-            <div style={{
-              marginTop:10,
-              fontSize:10,
-              color:G.textMuted,
-              letterSpacing:2,
-              textTransform:'uppercase',
-              opacity:.6
-            }}>
+            <div className={s.rootInfo}>
               racine : {question.racine}
             </div>
           )}
         </div>
 
         {/* Choix */}
-        <div style={{display:'grid',gap:8,marginBottom:20}}>
+        <div className={s.choicesGrid}>
           {choices.map((w, i) => {
             const isSelected = selected === i
             const isCorrectChoice = i === correct
-            let bg = 'rgba(255,255,255,.03)'
-            let border = 'rgba(255,255,255,.08)'
-            let textColor = G.text
+
+            let btnClass = s.choiceBtn
+            let letterClass = s.letterDefault
+            let textClass = s.choiceTextDefault
 
             if (done) {
+              btnClass += ` ${s.choiceDone}`
               if (isCorrectChoice) {
-                bg = 'rgba(76,175,125,.12)'
-                border = G.green
-                textColor = G.green
+                btnClass += ` ${s.choiceCorrect}`
+                letterClass = s.letterCorrect
+                textClass = s.choiceTextCorrect
               } else if (isSelected && !isCorrectChoice) {
-                bg = 'rgba(201,107,107,.12)'
-                border = G.red
-                textColor = G.red
-              }
-            } else {
-              if (isSelected) {
-                bg = 'rgba(201,168,76,.08)'
-                border = G.gold
+                btnClass += ` ${s.choiceWrong}`
+                letterClass = s.letterWrong
+                textClass = s.choiceTextWrong
+              } else {
+                letterClass = s.letterInactive
               }
             }
 
             return (
-              <button key={i} onClick={() => handleChoice(i)}
-                style={{
-                  background: bg,
-                  border: `1px solid ${border}`,
-                  borderRadius: 4,
-                  padding: '14px 18px',
-                  cursor: done ? 'default' : 'pointer',
-                  textAlign: 'left',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 12,
-                  transition: 'all .15s',
-                  animation: done && isSelected && !isCorrectChoice ? 'shake .3s ease' : 'none',
-                  outline: 'none',
-                }}
-              >
+              <button key={i} onClick={() => handleChoice(i)} className={btnClass}>
                 {/* Lettre */}
-                <div style={{
-                  width: 26,
-                  height: 26,
-                  borderRadius: '50%',
-                  background: done
-                    ? isCorrectChoice ? G.green : isSelected ? G.red : 'rgba(255,255,255,.06)'
-                    : 'rgba(201,168,76,.1)',
-                  color: done
-                    ? isCorrectChoice || isSelected ? G.dark : G.textMuted
-                    : G.gold,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: 11,
-                  fontWeight: 700,
-                  flexShrink: 0,
-                  fontFamily: 'Lato,sans-serif',
-                }}>
+                <div className={`${s.letterCircle} ${letterClass}`}>
                   {['A','B','C','D'][i]}
                 </div>
 
                 {/* Texte */}
                 <div>
-                  <div style={{
-                    fontFamily: FONT,
-                    fontSize: 15,
-                    color: textColor,
-                    lineHeight: 1.5,
-                  }}>
+                  <div className={`${s.choiceText} ${textClass}`}>
                     {w.sens?.[0] || '—'}
                   </div>
                   {w.sens?.length > 1 && (
-                    <div style={{fontSize:12,color:G.textMuted,fontFamily:FONT,fontStyle:'italic',marginTop:2}}>
+                    <div className={s.choiceSubtext}>
                       {w.sens.slice(1,3).join(', ')}
                     </div>
                   )}
                 </div>
 
                 {/* Icone résultat */}
-                {done && (
-                  <div style={{marginLeft:'auto',fontSize:14,color:isCorrectChoice ? G.green : isSelected ? G.red : 'transparent'}}>
-                    {isCorrectChoice ? '✓' : isSelected ? '✗' : ''}
+                {done && (isCorrectChoice || isSelected) && (
+                  <div className={`${s.resultIcon} ${isCorrectChoice ? s.resultIconCorrect : s.resultIconWrong}`}>
+                    {isCorrectChoice ? '✓' : '✗'}
                   </div>
                 )}
               </button>
@@ -397,69 +281,38 @@ export default function Quiz() {
 
         {/* Feedback après réponse */}
         {done && (
-          <div style={{animation:'fadeUp .25s ease'}}>
+          <div className={s.feedback}>
             {/* Note contextuelle */}
             {question.note && (
-              <div style={{
-                padding:'12px 16px',
-                background:'rgba(155,127,212,.05)',
-                border:'1px solid rgba(155,127,212,.15)',
-                borderRadius:4,
-                marginBottom:12,
-                fontFamily:FONT,
-                fontSize:14,
-                color:G.textDim,
-                lineHeight:1.9,
-                borderLeft:`2px solid ${G.purple}`,
-              }}>
+              <div className={s.noteBox}>
                 {question.note}
               </div>
             )}
 
             {/* Bouton suivant */}
-            <button
+            <Button
+              variant={selected === correct ? 'success' : 'primary'}
+              full
               onClick={() => nextQuestion(mode)}
-              style={{
-                width:'100%',
-                padding:'14px',
-                background: selected === correct
-                  ? 'linear-gradient(135deg,#2d6b4a,#4CAF7D)'
-                  : 'linear-gradient(135deg,#8B6914,#C9A84C)',
-                border:'none',
-                borderRadius:4,
-                color: G.dark,
-                fontFamily:'Lato,sans-serif',
-                fontSize:11,
-                fontWeight:700,
-                letterSpacing:3,
-                textTransform:'uppercase',
-                cursor:'pointer',
-              }}
             >
-              {selected === correct ? 'Suivant' : 'Suivant'}
-            </button>
+              Suivant
+            </Button>
           </div>
         )}
 
         {/* Historique compact */}
         {history.length > 0 && (
-          <div style={{marginTop:28}}>
-            <div style={{fontSize:9,letterSpacing:3,textTransform:'uppercase',color:G.textMuted,marginBottom:10}}>
+          <div className={s.historySection}>
+            <div className={s.historyLabel}>
               Historique
             </div>
-            <div style={{display:'flex',flexWrap:'wrap',gap:5}}>
-              {history.map((h,i) => (
-                <div key={i} style={{
-                  padding:'3px 8px',
-                  borderRadius:2,
-                  background: h.ok ? 'rgba(76,175,125,.1)' : 'rgba(201,107,107,.1)',
-                  border: `1px solid ${h.ok ? 'rgba(76,175,125,.25)' : 'rgba(201,107,107,.25)'}`,
-                  fontSize:11,
-                  color: h.ok ? G.green : G.red,
-                  fontFamily:'Amiri,serif',
-                  direction:'rtl',
-                  title: h.sens,
-                }}>
+            <div className={s.historyBadges}>
+              {history.map((h, i) => (
+                <div
+                  key={i}
+                  className={`${s.historyBadge} ${h.ok ? s.historyOk : s.historyWrong}`}
+                  title={h.sens}
+                >
                   {h.ar}
                 </div>
               ))}
@@ -469,7 +322,7 @@ export default function Quiz() {
 
         {/* Meilleure série */}
         {score.best >= 5 && (
-          <div style={{marginTop:16,textAlign:'center',fontSize:11,color:G.orange,letterSpacing:2}}>
+          <div className={s.bestStreak}>
             Meilleure serie : {score.best}
           </div>
         )}

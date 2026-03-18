@@ -1,0 +1,171 @@
+/* ══════════════════════════════════════════════════════════════
+   AUTH SCREEN — Écran de connexion premium
+   ══════════════════════════════════════════════════════════════ */
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+
+  /* Motif islamique en fond */
+  background:
+    url('/patterns/geometric-star.svg'),
+    var(--bg-abyss);
+  background-repeat: repeat;
+  background-size: 120px 120px;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  padding: 36px 28px;
+  border-radius: var(--radius-lg);
+
+  /* Glassmorphism */
+  background: rgba(22, 22, 34, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(201, 168, 76, 0.04);
+
+  animation: pop 0.35s var(--ease-out) both;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.headerIcon {
+  font-family: var(--font-arabic);
+  font-size: 32px;
+  color: var(--gold);
+  text-align: center;
+  opacity: 0.7;
+  margin-bottom: 6px;
+  text-shadow: 0 0 24px var(--gold-glow);
+}
+
+.headerTitle {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--gold);
+  text-align: center;
+  letter-spacing: 5px;
+  margin-bottom: 4px;
+  text-shadow: 0 0 30px var(--gold-glow);
+}
+
+.headerSub {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+/* ── Tab switcher ──────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.tab {
+  flex: 1;
+  padding: 9px 0;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all var(--duration-normal) ease;
+}
+
+.tabActive {
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--gold);
+}
+
+/* ── Form ──────────────────────────────────────────────────── */
+.field {
+  margin-bottom: 14px;
+}
+
+.label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  color: var(--text);
+  padding: 10px 13px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  transition: border-color var(--duration-normal) ease, box-shadow var(--duration-normal) ease;
+}
+
+.input:focus {
+  border-color: rgba(201, 168, 76, 0.4);
+  box-shadow: 0 0 0 3px var(--gold-glow);
+}
+
+/* ── Color picker ──────────────────────────────────────────── */
+.colorPicker {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.colorDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--duration-fast) ease;
+}
+
+.colorDot:hover {
+  transform: scale(1.1);
+}
+
+.colorDotActive {
+  border-color: #fff;
+  box-shadow: 0 0 0 3px var(--gold-glow);
+  transform: scale(1.1);
+}
+
+/* ── Error ─────────────────────────────────────────────────── */
+.error {
+  color: var(--red);
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+  animation: fadeInUp 0.2s ease;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .card {
+    padding: 28px 20px;
+  }
+
+  .headerTitle {
+    font-size: 22px;
+    letter-spacing: 4px;
+  }
+}

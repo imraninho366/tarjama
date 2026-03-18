@@ -1,0 +1,107 @@
+/* ══════════════════════════════════════════════════════════════
+   TOAST — Notification premium
+   ══════════════════════════════════════════════════════════════ */
+
+.container {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-toast);
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .container {
+    bottom: calc(var(--bottomnav-height) + env(safe-area-inset-bottom, 0px) + 12px);
+    left: var(--space-md);
+    right: var(--space-md);
+    transform: none;
+  }
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 12px var(--space-lg);
+  min-width: 280px;
+  max-width: 420px;
+
+  background: rgba(22, 22, 34, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+
+  animation: slideUpBounce 0.4s var(--ease-spring) both;
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Icon ──────────────────────────────────────────────────── */
+.icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ── Message ───────────────────────────────────────────────── */
+.message {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.4;
+  flex: 1;
+}
+
+/* ── Progress bar (auto-dismiss) ───────────────────────────── */
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  animation: shrink linear forwards;
+}
+
+@keyframes shrink {
+  from { width: 100%; }
+  to   { width: 0%; }
+}
+
+/* ── Variants ──────────────────────────────────────────────── */
+.success {
+  border-color: rgba(76, 175, 125, 0.2);
+}
+.success .progress {
+  background: var(--green);
+}
+
+.error {
+  border-color: rgba(201, 107, 107, 0.2);
+}
+.error .progress {
+  background: var(--red);
+}
+
+.warning {
+  border-color: rgba(212, 135, 76, 0.2);
+}
+.warning .progress {
+  background: var(--orange);
+}
+
+/* ── Exit animation ────────────────────────────────────────── */
+.exit {
+  animation: fadeOutDown 0.25s ease-in forwards;
+}
+
+@keyframes fadeOutDown {
+  to {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}

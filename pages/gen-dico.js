@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
 
-const G = { dark:'#09090E', dark3:'#161622', dark4:'#1D1D2C', gold:'#C9A84C', text:'#EDE8D8', textDim:'#9A9280', textMuted:'#5A5448', green:'#4CAF7D', red:'#C96B6B', orange:'#D4874C' }
+import { G } from '../lib/theme'
 const PW = 'tarjama-gen-2026'
 
 export default function GenDico() {

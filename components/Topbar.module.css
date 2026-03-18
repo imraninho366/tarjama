@@ -1,0 +1,168 @@
+/* ══════════════════════════════════════════════════════════════
+   TOPBAR — Glass-morphism navigation bar
+   ══════════════════════════════════════════════════════════════ */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  height: var(--topbar-height);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-lg);
+  gap: var(--space-md);
+
+  /* Glassmorphism */
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  /* Séparateur gradient en bas */
+  border-bottom: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.topbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 168, 76, 0.2) 30%,
+    rgba(201, 168, 76, 0.3) 50%,
+    rgba(201, 168, 76, 0.2) 70%,
+    transparent 100%
+  );
+}
+
+/* ── Logo ──────────────────────────────────────────────────── */
+.logo {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-decoration: none;
+  text-shadow: 0 0 24px var(--gold-glow);
+  transition: text-shadow var(--duration-normal) ease;
+  flex-shrink: 0;
+}
+
+.logo:hover {
+  text-shadow: 0 0 32px var(--gold-glow-strong);
+}
+
+/* ── Breadcrumb ────────────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.breadcrumbSep {
+  font-size: 10px;
+  opacity: 0.4;
+}
+
+.breadcrumbPage {
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+.breadcrumbAr {
+  font-family: var(--font-arabic);
+  color: var(--text-muted);
+  font-size: 13px;
+  direction: rtl;
+}
+
+/* ── Hamburger ─────────────────────────────────────────────── */
+.hamburger {
+  display: none;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--gold);
+  font-size: 18px;
+  transition: background var(--duration-fast) ease;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.hamburger:hover {
+  background: rgba(201, 168, 76, 0.08);
+}
+
+/* ── User ──────────────────────────────────────────────────── */
+.userSection {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--bg-deep);
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Anneau doré animé autour de l'avatar */
+.avatar::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201, 168, 76, 0.3);
+  transition: border-color var(--duration-normal) ease;
+}
+
+.avatar:hover::before {
+  border-color: rgba(201, 168, 76, 0.6);
+}
+
+.username {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .hamburger {
+    display: flex;
+  }
+  .breadcrumb {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    padding: 0 var(--space-md);
+    height: 48px;
+  }
+  .logo {
+    font-size: 14px;
+    letter-spacing: 3px;
+  }
+  .username {
+    display: none;
+  }
+}

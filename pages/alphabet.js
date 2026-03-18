@@ -1,18 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
-
-const G = {
-  dark:'#09090E', dark2:'#0F0F18', dark3:'#161622', dark4:'#1D1D2C',
-  gold:'#C9A84C', goldLight:'#E8C97A', goldDim:'#8B6914',
-  green:'#4CAF7D', blue:'#5B9BD5', red:'#C96B6B', orange:'#D4874C', purple:'#9B7FD4',
-  text:'#EDE8D8', textDim:'#9A9280', textMuted:'#5A5448'
-}
-const SERIF = "'EB Garamond','Georgia',serif"
+import { G } from '../lib/theme'
+import s from '../styles/Alphabet.module.css'
+import Button from '../components/common/Button'
 
 // ══════════════════════════════════════════════════════════════════
-// AUDIO — Forvo / CDN public (sons phonétiques)
-// On utilise une synthèse vocale Web Speech API en arabe
+// AUDIO — Web Speech API en arabe
 // ══════════════════════════════════════════════════════════════════
 function speakArabic(text) {
   if (typeof window === 'undefined' || !window.speechSynthesis) return
@@ -29,7 +22,7 @@ function speakArabic(text) {
 }
 
 // ══════════════════════════════════════════════════════════════════
-// DONNÉES COMPLÈTES — 28 lettres
+// DONNEES COMPLETES — 28 lettres
 // ══════════════════════════════════════════════════════════════════
 const LETTERS = [
   {
@@ -477,230 +470,164 @@ export default function Alphabet() {
     if (ok) speak(quizQ.audio)
   }
 
+  const TABS = [
+    {id:'lecon',label:'Lecon'},
+    {id:'grille',label:'Grille'},
+    {id:'harakat',label:'Harakat'},
+    {id:'quiz',label:'Quiz'},
+  ]
+
   return (
     <>
       <Head>
         <title>Alphabet Arabe — Tarjama</title>
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
-        <style>{`
-          *{box-sizing:border-box;margin:0;padding:0}
-          body{background:${G.dark};color:${G.text};font-family:Lato,sans-serif}
-          @keyframes pop{0%{transform:scale(.93);opacity:0}100%{transform:scale(1);opacity:1}}
-          @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-          @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
-          @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-        `}</style>
       </Head>
 
-      <div style={{maxWidth:580,margin:'0 auto',padding:'20px',minHeight:'100vh'}}>
+      <div className={s.page}>
 
         {/* ── Header ─────────────────────────────────────────────── */}
-        <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:22}}>
-          <div style={{display:'flex',alignItems:'center',gap:10}}>
-            <Link href="/" style={{color:G.textMuted,textDecoration:'none',fontSize:10,letterSpacing:2,textTransform:'uppercase'}}>← Retour</Link>
-            <span style={{color:G.textMuted,fontSize:9}}>|</span>
-            <span style={{fontFamily:'Cinzel,serif',fontSize:16,color:G.gold}}>ALPHABET ARABE</span>
-          </div>
+        <div className={s.header}>
+          <span className={s.headerTitle}>ALPHABET ARABE</span>
           {tab==='quiz' && score.total>0 && (
-            <div style={{display:'flex',alignItems:'center',gap:10}}>
-              {streak>=3 && <span style={{fontSize:10,color:G.orange,letterSpacing:1}}>{streak} serie</span>}
-              <span style={{fontFamily:'Cinzel,serif',fontSize:18,color:pct>=70?G.green:G.orange}}>{pct}%</span>
+            <div className={s.headerScore}>
+              {streak>=3 && <span className={s.streakBadge}>{streak} serie</span>}
+              <span className={`${s.scorePct} ${pct>=70 ? s.scoreGood : s.scoreWarn}`}>
+                {pct}%
+              </span>
             </div>
           )}
         </div>
 
-        {/* ── Onglets ─────────────────────────────────────────────── */}
-        <div style={{display:'flex',gap:3,marginBottom:22,background:G.dark3,borderRadius:4,padding:3}}>
-          {[
-            {id:'lecon',label:'Leçon'},
-            {id:'grille',label:'Grille'},
-            {id:'harakat',label:'Harakat'},
-            {id:'quiz',label:'Quiz'},
-          ].map(t => (
-            <button key={t.id} onClick={()=>{setTab(t.id);setGridSel(null)}}
-              style={{
-                flex:1,padding:'8px 2px',
-                background: tab===t.id ? G.dark4 : 'transparent',
-                border: `1px solid ${tab===t.id ? 'rgba(201,168,76,.25)' : 'transparent'}`,
-                borderRadius:3,
-                color: tab===t.id ? G.goldLight : G.textMuted,
-                fontFamily:'Lato,sans-serif',fontSize:10,fontWeight:700,
-                letterSpacing:1,textTransform:'uppercase',cursor:'pointer',transition:'all .18s'
-              }}>
+        {/* ── Tabs ─────────────────────────────────────────────── */}
+        <div className={s.tabs}>
+          {TABS.map(t => (
+            <button
+              key={t.id}
+              onClick={()=>{setTab(t.id);setGridSel(null)}}
+              className={`${s.tab} ${tab===t.id ? s.tabActive : ''}`}
+            >
               {t.label}
             </button>
           ))}
         </div>
 
         {/* ══════════════════════════════════════════════════════════
-            ONGLET LEÇON
+            ONGLET LECON
         ══════════════════════════════════════════════════════════ */}
         {tab==='lecon' && (
-          <div style={{animation:'fadeUp .3s ease'}}>
+          <div className={s.viewContent}>
 
             {/* Barre de progression des 28 lettres */}
-            <div style={{display:'flex',flexWrap:'wrap',gap:4,marginBottom:18}}>
+            <div className={s.letterBar}>
               {LETTERS.map((l,i) => (
-                <button key={i} onClick={()=>{setCur(i);setShowFormes(false)}}
+                <button
+                  key={i}
+                  onClick={()=>{setCur(i);setShowFormes(false)}}
+                  className={`${s.letterBarBtn} ${cur===i ? s.letterBarActive : ''}`}
                   style={{
-                    width:32,height:32,borderRadius:3,cursor:'pointer',
-                    background: cur===i ? `${l.couleur}22` : G.dark3,
-                    border:`1px solid ${cur===i ? l.couleur : 'rgba(255,255,255,.06)'}`,
-                    color: cur===i ? l.couleur : G.textDim,
-                    fontFamily:'Amiri,serif',fontSize:17,direction:'rtl',
-                    transition:'all .12s',
-                  }}>
+                    background: cur===i ? `${l.couleur}22` : undefined,
+                    borderColor: cur===i ? l.couleur : undefined,
+                    color: cur===i ? l.couleur : undefined,
+                  }}
+                >
                   {l.ar}
                 </button>
               ))}
             </div>
 
             {/* Carte lettre */}
-            <div key={cur} style={{animation:'pop .22s ease'}}>
+            <div key={cur} className={s.lessonCard}>
 
               {/* Zone principale — lettre en grand */}
-              <div style={{
-                background:G.dark3,
-                border:`1px solid ${letter.couleur}35`,
-                borderTop:`3px solid ${letter.couleur}`,
-                borderRadius:'6px 6px 0 0',
-                padding:'28px 20px 20px',
-                textAlign:'center',
-              }}>
+              <div className={s.heroZone} style={{ borderTop: `3px solid ${letter.couleur}` }}>
                 {/* Numéro */}
-                <div style={{fontSize:9,letterSpacing:3,textTransform:'uppercase',color:G.textMuted,marginBottom:10}}>
+                <div className={s.heroMeta}>
                   {letter.num} / 28 — {letter.solaire ? 'Lettre solaire' : 'Lettre lunaire'}
                 </div>
 
                 {/* Grande lettre cliquable (audio) */}
                 <button
                   onClick={()=>speak(letter.audio)}
-                  title="Écouter la prononciation"
-                  style={{
-                    background:'none',border:'none',cursor:'pointer',
-                    fontFamily:'Amiri,serif',fontSize:108,color:letter.couleur,
-                    direction:'rtl',lineHeight:1,display:'block',margin:'0 auto 10px',
-                    transition:'transform .1s',
-                  }}
-                  onMouseDown={e=>e.currentTarget.style.transform='scale(.95)'}
-                  onMouseUp={e=>e.currentTarget.style.transform='scale(1)'}
+                  title="Ecouter la prononciation"
+                  className={s.heroLetter}
+                  style={{ color: letter.couleur }}
                 >
                   {letter.ar}
                 </button>
 
                 {/* Bouton audio explicite */}
-                <button onClick={()=>speak(letter.audio)}
-                  style={{
-                    display:'inline-flex',alignItems:'center',gap:6,
-                    background:'rgba(201,168,76,.08)',border:`1px solid rgba(201,168,76,.2)`,
-                    borderRadius:20,padding:'5px 14px',cursor:'pointer',
-                    color:G.gold,fontFamily:'Lato,sans-serif',fontSize:10,letterSpacing:1,
-                    textTransform:'uppercase',marginBottom:14,
-                  }}>
-                  ▶ Écouter
+                <button onClick={()=>speak(letter.audio)} className={s.speakBtn}>
+                  &#9654; Ecouter
                 </button>
 
                 {/* Nom + translit */}
-                <div style={{fontFamily:'Cinzel,serif',fontSize:18,color:G.goldLight,letterSpacing:2}}>{letter.name}</div>
-                <div style={{fontFamily:'Georgia,serif',fontSize:14,color:G.textMuted,fontStyle:'italic',marginTop:3}}>{letter.translit}</div>
+                <div className={s.heroName}>{letter.name}</div>
+                <div className={s.heroTranslit}>{letter.translit}</div>
               </div>
 
               {/* 4 formes */}
-              <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',background:G.dark4,border:`1px solid ${letter.couleur}18`,borderBottom:'none'}}>
+              <div className={s.formesGrid}>
                 {letter.formes.map((f,i) => (
-                  <button key={i} onClick={()=>speak(f + 'ا')}
-                    style={{
-                      textAlign:'center',padding:'12px 6px',cursor:'pointer',
-                      borderRight: i<3 ? '1px solid rgba(255,255,255,.05)' : 'none',
-                      background:'none',border:'none',borderRight: i<3 ? '1px solid rgba(255,255,255,.05)' : 'none',
-                      transition:'background .15s',
-                    }}
-                    onMouseEnter={e=>e.currentTarget.style.background='rgba(255,255,255,.03)'}
-                    onMouseLeave={e=>e.currentTarget.style.background='none'}
-                  >
-                    <div style={{fontFamily:'Amiri,serif',fontSize:26,color:G.text,direction:'rtl',marginBottom:4}}>{f}</div>
-                    <div style={{fontSize:8,letterSpacing:1,textTransform:'uppercase',color:G.textMuted}}>{letter.labels[i]}</div>
+                  <button key={i} onClick={()=>speak(f + 'ا')} className={s.formeCard}>
+                    <div className={s.formeLetter}>{f}</div>
+                    <div className={s.formeLabel}>{letter.labels[i]}</div>
                   </button>
                 ))}
               </div>
 
               {/* Harakat de cette lettre */}
-              <div style={{
-                background:'rgba(0,0,0,.2)',
-                border:`1px solid rgba(255,255,255,.05)`,
-                borderBottom:'none',
-                padding:'10px 16px',
-                display:'flex',alignItems:'center',gap:6,flexWrap:'wrap',
-              }}>
-                <span style={{fontSize:9,letterSpacing:2,textTransform:'uppercase',color:G.textMuted,marginRight:4}}>Vocalisation :</span>
+              <div className={s.vocRow}>
+                <span className={s.vocLabel}>Vocalisation :</span>
                 {letter.harakat.map((h,i) => (
-                  <button key={i} onClick={()=>speak(h)}
-                    style={{
-                      fontFamily:'Amiri,serif',fontSize:22,color:G.goldLight,
-                      direction:'rtl',background:'rgba(201,168,76,.07)',
-                      border:'1px solid rgba(201,168,76,.15)',borderRadius:3,
-                      padding:'2px 10px',cursor:'pointer',
-                    }}>
+                  <button key={i} onClick={()=>speak(h)} className={s.vocBtn}>
                     {h}
                   </button>
                 ))}
-                {['ā','i','u'].map((v,i) => (
-                  <span key={i} style={{fontFamily:'Georgia,serif',fontSize:11,color:G.textMuted,fontStyle:'italic'}}>{v}</span>
+                {['a','i','u'].map((v,i) => (
+                  <span key={i} className={s.vocHint}>{v}</span>
                 ))}
               </div>
 
               {/* Prononciation */}
-              <div style={{
-                background:G.dark3,border:`1px solid rgba(201,168,76,.08)`,
-                borderBottom:'none',padding:'14px 18px',
-                borderLeft:`3px solid ${letter.couleur}`,
-              }}>
-                <div style={{fontSize:9,letterSpacing:2,textTransform:'uppercase',color:letter.couleur,marginBottom:7}}>Prononciation</div>
-                <div style={{fontFamily:'Georgia,serif',fontSize:15,color:G.textDim,lineHeight:1.9}}>{letter.son}</div>
-                <div style={{fontFamily:'Georgia,serif',fontSize:13,color:G.textMuted,fontStyle:'italic',marginTop:6,lineHeight:1.7}}>{letter.prononciation}</div>
+              <div className={s.infoSectionAccent} style={{ color: letter.couleur, borderLeftColor: letter.couleur }}>
+                <div className={s.infoLabel} style={{ color: letter.couleur }}>Prononciation</div>
+                <div className={s.infoText}>{letter.son}</div>
+                <div className={s.infoTextSmall}>{letter.prononciation}</div>
               </div>
 
               {/* Mnémo */}
-              <div style={{
-                background:'rgba(201,168,76,.03)',border:`1px solid rgba(201,168,76,.07)`,
-                borderBottom:'none',padding:'12px 18px',
-              }}>
-                <div style={{fontSize:9,letterSpacing:2,textTransform:'uppercase',color:G.gold,marginBottom:5}}>Mémorisation</div>
-                <div style={{fontFamily:'Georgia,serif',fontSize:14,color:G.textMuted,lineHeight:1.8,fontStyle:'italic'}}>{letter.mnemo}</div>
+              <div className={s.infoSectionMnemo}>
+                <div className={s.infoLabel} style={{ color: G.gold }}>Memorisation</div>
+                <div className={s.infoTextSmall}>{letter.mnemo}</div>
               </div>
 
               {/* Exemple coranique */}
-              <div style={{
-                background:G.dark3,border:`1px solid rgba(201,168,76,.1)`,
-                borderRadius:'0 0 6px 6px',padding:'14px 18px',
-                display:'flex',alignItems:'center',gap:14,
-              }}>
-                <button onClick={()=>speak(letter.exemple.ar)}
-                  style={{
-                    background:'none',border:'none',cursor:'pointer',
-                    fontFamily:'Amiri,serif',fontSize:28,color:G.goldLight,
-                    direction:'rtl',flexShrink:0,
-                  }}>
+              <div className={s.exampleSection}>
+                <button onClick={()=>speak(letter.exemple.ar)} className={s.exampleArabic}>
                   {letter.exemple.ar}
                 </button>
                 <div>
-                  <div style={{fontSize:9,letterSpacing:2,textTransform:'uppercase',color:G.textMuted,marginBottom:4}}>Exemple coranique</div>
-                  <div style={{fontFamily:'Georgia,serif',fontSize:13,color:G.textDim,fontStyle:'italic'}}>{letter.exemple.translit}</div>
-                  <div style={{fontFamily:'Georgia,serif',fontSize:13,color:G.text,marginTop:2}}>{letter.exemple.fr}</div>
-                  <div style={{fontSize:10,color:G.textMuted,marginTop:2}}>{letter.exemple.verset}</div>
+                  <div className={s.exampleLabel}>Exemple coranique</div>
+                  <div className={s.exampleTranslit}>{letter.exemple.translit}</div>
+                  <div className={s.exampleFr}>{letter.exemple.fr}</div>
+                  <div className={s.exampleRef}>{letter.exemple.verset}</div>
                 </div>
               </div>
             </div>
 
             {/* Prev / Next */}
-            <div style={{display:'flex',gap:10,marginTop:14}}>
-              <button onClick={()=>{setCur(c=>(c-1+28)%28);setShowFormes(false)}}
-                style={{flex:1,padding:'12px',background:G.dark3,border:`1px solid rgba(201,168,76,.12)`,color:G.textDim,borderRadius:4,cursor:'pointer',fontFamily:'Lato,sans-serif',fontSize:10,letterSpacing:2,textTransform:'uppercase'}}>
-                ← Précédent
+            <div className={s.navRow}>
+              <button
+                onClick={()=>{setCur(c=>(c-1+28)%28);setShowFormes(false)}}
+                className={s.navPrev}
+              >
+                &#8592; Precedent
               </button>
-              <button onClick={()=>{setCur(c=>(c+1)%28);setShowFormes(false)}}
-                style={{flex:1,padding:'12px',background:'linear-gradient(135deg,#8B6914,#C9A84C)',border:'none',color:G.dark,borderRadius:4,cursor:'pointer',fontFamily:'Lato,sans-serif',fontSize:10,fontWeight:700,letterSpacing:2,textTransform:'uppercase'}}>
-                Suivant →
+              <button
+                onClick={()=>{setCur(c=>(c+1)%28);setShowFormes(false)}}
+                className={s.navNext}
+              >
+                Suivant &#8594;
               </button>
             </div>
           </div>
@@ -710,76 +637,81 @@ export default function Alphabet() {
             ONGLET GRILLE
         ══════════════════════════════════════════════════════════ */}
         {tab==='grille' && (
-          <div style={{animation:'fadeUp .3s ease'}}>
-            <div style={{fontFamily:'Georgia,serif',fontSize:14,color:G.textDim,lineHeight:1.8,marginBottom:16}}>
-              Clique sur une lettre pour sa fiche — clique à nouveau pour entendre sa prononciation.
+          <div className={s.viewContent}>
+            <div className={s.gridIntro}>
+              Clique sur une lettre pour sa fiche — clique a nouveau pour entendre sa prononciation.
             </div>
 
-            {/* Grille 7×4 */}
-            <div style={{display:'grid',gridTemplateColumns:'repeat(7,1fr)',gap:6,marginBottom:16}}>
+            {/* Grille 7x4 */}
+            <div className={s.grid}>
               {LETTERS.map((l,i) => (
-                <button key={i} onClick={()=>{setGridSel(gridSel===i?null:i); speak(l.audio)}}
+                <button
+                  key={i}
+                  onClick={()=>{setGridSel(gridSel===i?null:i); speak(l.audio)}}
+                  className={`${s.gridCell} ${gridSel===i ? s.gridCellActive : ''}`}
                   style={{
-                    padding:'10px 4px',textAlign:'center',cursor:'pointer',
-                    background: gridSel===i ? `${l.couleur}18` : G.dark3,
-                    border:`1px solid ${gridSel===i ? l.couleur : 'rgba(255,255,255,.06)'}`,
-                    borderRadius:4,transition:'all .12s',
-                  }}>
-                  <div style={{fontFamily:'Amiri,serif',fontSize:24,color:gridSel===i?l.couleur:G.text,direction:'rtl',marginBottom:2}}>{l.ar}</div>
-                  <div style={{fontSize:7,color:G.textMuted,letterSpacing:.5}}>{l.name}</div>
+                    background: gridSel===i ? `${l.couleur}18` : undefined,
+                    borderColor: gridSel===i ? l.couleur : undefined,
+                  }}
+                >
+                  <div className={s.gridAr} style={{ color: gridSel===i ? l.couleur : undefined }}>{l.ar}</div>
+                  <div className={s.gridName}>{l.name}</div>
                 </button>
               ))}
             </div>
 
-            {/* Fiche lettre sélectionnée */}
+            {/* Fiche lettre selectionnee */}
             {gridSel !== null && (() => {
               const l = LETTERS[gridSel]
               return (
-                <div key={gridSel} style={{animation:'pop .2s ease',background:G.dark3,border:`1px solid ${l.couleur}40`,borderRadius:6,padding:'18px',borderTop:`3px solid ${l.couleur}`}}>
-                  <div style={{display:'flex',alignItems:'center',gap:18,marginBottom:14}}>
-                    <button onClick={()=>speak(l.audio)}
-                      style={{background:'none',border:'none',cursor:'pointer',fontFamily:'Amiri,serif',fontSize:72,color:l.couleur,direction:'rtl',lineHeight:1}}>
+                <div key={gridSel} className={s.gridDetail} style={{ borderTopColor: l.couleur }}>
+                  <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:l.couleur }} />
+                  <div className={s.gridDetailHeader}>
+                    <button onClick={()=>speak(l.audio)} className={s.gridDetailLetter} style={{ color: l.couleur }}>
                       {l.ar}
                     </button>
                     <div>
-                      <div style={{fontFamily:'Cinzel,serif',fontSize:16,color:G.goldLight,letterSpacing:2}}>{l.name}</div>
-                      <div style={{fontFamily:'Georgia,serif',fontSize:13,color:G.textMuted,fontStyle:'italic',marginTop:3}}>{l.translit}</div>
+                      <div className={s.gridDetailName}>{l.name}</div>
+                      <div className={s.gridDetailTranslit}>{l.translit}</div>
                       {/* 4 formes inline */}
-                      <div style={{display:'flex',gap:10,marginTop:10}}>
+                      <div className={s.gridDetailFormes}>
                         {l.formes.map((f,i)=>(
-                          <div key={i} style={{textAlign:'center'}}>
-                            <button onClick={()=>speak(f)} style={{background:'none',border:'none',cursor:'pointer',fontFamily:'Amiri,serif',fontSize:20,color:G.text,direction:'rtl',display:'block'}}>{f}</button>
-                            <div style={{fontSize:7,color:G.textMuted,marginTop:1}}>{l.labels[i]}</div>
+                          <div key={i} className={s.gridDetailForme}>
+                            <button onClick={()=>speak(f)} className={s.gridDetailFormeLetter}>{f}</button>
+                            <div className={s.gridDetailFormeLabel}>{l.labels[i]}</div>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
-                  <div style={{fontFamily:'Georgia,serif',fontSize:14,color:G.textDim,lineHeight:1.9,borderLeft:`2px solid ${l.couleur}50`,paddingLeft:12,marginBottom:10}}>
+                  <div className={s.gridDetailSon} style={{ borderLeftColor: `${l.couleur}80`, color: undefined }}>
                     {l.son}
                   </div>
-                  <div style={{display:'flex',alignItems:'center',gap:10}}>
-                    <button onClick={()=>speak(l.exemple.ar)} style={{background:'none',border:'none',cursor:'pointer',fontFamily:'Amiri,serif',fontSize:22,color:G.goldLight,direction:'rtl'}}>{l.exemple.ar}</button>
-                    <span style={{fontFamily:'Georgia,serif',fontSize:13,color:G.textMuted,fontStyle:'italic'}}>{l.exemple.fr}</span>
+                  <div className={s.gridDetailExample}>
+                    <button onClick={()=>speak(l.exemple.ar)} className={s.gridDetailExAr}>{l.exemple.ar}</button>
+                    <span className={s.gridDetailExFr}>{l.exemple.fr}</span>
                   </div>
-                  <button onClick={()=>{setTab('lecon');setCur(gridSel)}}
-                    style={{marginTop:10,padding:'6px 14px',background:'transparent',border:`1px solid rgba(201,168,76,.2)`,color:G.gold,borderRadius:3,cursor:'pointer',fontFamily:'Lato,sans-serif',fontSize:9,letterSpacing:2,textTransform:'uppercase'}}>
-                    Leçon complète
+                  <button
+                    onClick={()=>{setTab('lecon');setCur(gridSel)}}
+                    className={s.gridDetailLeconBtn}
+                  >
+                    Lecon complete
                   </button>
                 </div>
               )
             })()}
 
             {/* Lettres solaires / lunaires */}
-            <div style={{marginTop:20,display:'grid',gridTemplateColumns:'1fr 1fr',gap:10}}>
+            <div className={s.solarLunar}>
               {[
                 {label:'Lettres lunaires',sub:'ال se prononce "al-"',color:G.gold,letters:LETTERS.filter(l=>!l.solaire)},
-                {label:'Lettres solaires',sub:'ال s\'assimile à la lettre',color:G.red,letters:LETTERS.filter(l=>l.solaire)},
+                {label:'Lettres solaires',sub:'ال s\'assimile a la lettre',color:G.red,letters:LETTERS.filter(l=>l.solaire)},
               ].map(g => (
-                <div key={g.label} style={{background:G.dark3,border:`1px solid ${g.color}22`,borderRadius:4,padding:'12px',borderTop:`2px solid ${g.color}`}}>
-                  <div style={{fontSize:10,letterSpacing:1,textTransform:'uppercase',color:g.color,marginBottom:4}}>{g.label}</div>
-                  <div style={{fontSize:10,color:G.textMuted,marginBottom:8,fontFamily:'Georgia,serif',fontStyle:'italic'}}>{g.sub}</div>
-                  <div style={{fontFamily:'Amiri,serif',fontSize:20,color:G.text,direction:'rtl',lineHeight:1.9}}>
+                <div key={g.label} className={s.solarLunarCard}>
+                  <div style={{ position:'absolute', top:0, left:0, right:0, height:2, background:g.color }} />
+                  <div className={s.solarLunarTitle} style={{ color: g.color }}>{g.label}</div>
+                  <div className={s.solarLunarSub}>{g.sub}</div>
+                  <div className={s.solarLunarLetters}>
                     {g.letters.map(l=>l.ar).join(' ')}
                   </div>
                 </div>
@@ -792,36 +724,27 @@ export default function Alphabet() {
             ONGLET HARAKAT
         ══════════════════════════════════════════════════════════ */}
         {tab==='harakat' && (
-          <div style={{animation:'fadeUp .3s ease'}}>
-            <div style={{fontFamily:'Georgia,serif',fontSize:15,color:G.textDim,lineHeight:1.9,marginBottom:18}}>
-              Les <strong style={{color:G.goldLight}}>حَرَكَات</strong> (harakat) sont les signes de vocalisation. Le Coran en est entièrement voalisé pour garantir une prononciation parfaite depuis 14 siècles.
+          <div className={s.viewContent}>
+            <div className={s.harakatIntro}>
+              Les <strong className={s.harakatHighlight}>&#1581;&#1614;&#1585;&#1614;&#1603;&#1614;&#1575;&#1578;</strong> (harakat) sont les signes de vocalisation. Le Coran en est entierement voalise pour garantir une prononciation parfaite depuis 14 siecles.
             </div>
 
-            <div style={{display:'grid',gap:8,marginBottom:20}}>
+            <div className={s.harakatList}>
               {HARAKAT.map((h,i) => (
-                <button key={i} onClick={()=>speak(h.exemple)}
-                  style={{
-                    background:G.dark3,border:`1px solid rgba(255,255,255,.06)`,
-                    borderLeft:`3px solid ${h.couleur}`,borderRadius:4,
-                    padding:'14px 16px',display:'flex',alignItems:'center',gap:14,
-                    cursor:'pointer',textAlign:'left',transition:'background .15s',
-                  }}
-                  onMouseEnter={e=>e.currentTarget.style.background=G.dark4}
-                  onMouseLeave={e=>e.currentTarget.style.background=G.dark3}
-                >
-                  <div style={{fontFamily:'Amiri,serif',fontSize:38,color:h.couleur,direction:'rtl',minWidth:56,textAlign:'center'}}>
+                <button key={i} onClick={()=>speak(h.exemple)} className={s.harakatRow} style={{ color: h.couleur, borderLeftColor: h.couleur }}>
+                  <div className={s.harakatSym} style={{ color: h.couleur }}>
                     {'بـ' + h.sym}
                   </div>
-                  <div style={{flex:1}}>
-                    <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:3}}>
-                      <span style={{fontFamily:'Cinzel,serif',fontSize:12,color:G.goldLight,letterSpacing:1}}>{h.nom}</span>
-                      <span style={{fontFamily:'Georgia,serif',fontSize:11,color:G.textMuted,fontStyle:'italic'}}>/ {h.translit} /</span>
+                  <div className={s.harakatInfo}>
+                    <div className={s.harakatNameRow}>
+                      <span className={s.harakatName}>{h.nom}</span>
+                      <span className={s.harakatTranslit}>/ {h.translit} /</span>
                     </div>
-                    <div style={{fontFamily:'Georgia,serif',fontSize:14,color:G.textDim,lineHeight:1.6}}>{h.son}</div>
-                    <div style={{display:'flex',alignItems:'center',gap:8,marginTop:6}}>
-                      <span style={{fontFamily:'Amiri,serif',fontSize:18,color:G.goldLight,direction:'rtl'}}>{h.exemple}</span>
-                      <span style={{fontFamily:'Georgia,serif',fontSize:12,color:G.textMuted,fontStyle:'italic'}}>{h.ex_fr}</span>
-                      <span style={{fontSize:10,color:G.gold,opacity:.6}}>▶</span>
+                    <div className={s.harakatSon}>{h.son}</div>
+                    <div className={s.harakatExample}>
+                      <span className={s.harakatExAr}>{h.exemple}</span>
+                      <span className={s.harakatExFr}>{h.ex_fr}</span>
+                      <span className={s.harakatPlay}>&#9654;</span>
                     </div>
                   </div>
                 </button>
@@ -829,21 +752,20 @@ export default function Alphabet() {
             </div>
 
             {/* Voyelles longues */}
-            <div style={{background:G.dark3,border:'1px solid rgba(201,168,76,.1)',borderRadius:6,padding:'16px 18px'}}>
-              <div style={{fontFamily:'Cinzel,serif',fontSize:12,color:G.gold,letterSpacing:2,marginBottom:12}}>VOYELLES LONGUES</div>
-              <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:10}}>
+            <div className={s.longVowels}>
+              <div className={s.longVowelsTitle}>VOYELLES LONGUES</div>
+              <div className={s.longVowelsGrid}>
                 {[
-                  {ar:'ا',name:'Alif',son:'ā — A long',exemple:'كِتَابٌ',ex_fr:'kitāb',couleur:G.gold},
-                  {ar:'و',name:'Wāw',son:'ū — U long',exemple:'رَسُولٌ',ex_fr:'rasūl',couleur:G.green},
-                  {ar:'ي',name:'Yā',son:'ī — I long',exemple:'بِسْمِ',ex_fr:'bismi',couleur:G.blue},
+                  {ar:'ا',name:'Alif',son:'a — A long',exemple:'كِتَابٌ',ex_fr:'kitab',couleur:G.gold},
+                  {ar:'و',name:'Waw',son:'u — U long',exemple:'رَسُولٌ',ex_fr:'rasul',couleur:G.green},
+                  {ar:'ي',name:'Ya',son:'i — I long',exemple:'بِسْمِ',ex_fr:'bismi',couleur:G.blue},
                 ].map((v,i) => (
-                  <button key={i} onClick={()=>speak(v.exemple)}
-                    style={{background:G.dark4,border:`1px solid ${v.couleur}25`,borderRadius:4,padding:'12px 8px',textAlign:'center',cursor:'pointer'}}>
-                    <div style={{fontFamily:'Amiri,serif',fontSize:32,color:v.couleur,direction:'rtl',marginBottom:6}}>{v.ar}</div>
-                    <div style={{fontFamily:'Cinzel,serif',fontSize:11,color:G.goldLight,letterSpacing:1,marginBottom:3}}>{v.name}</div>
-                    <div style={{fontFamily:'Georgia,serif',fontSize:12,color:G.textDim,fontStyle:'italic'}}>{v.son}</div>
-                    <div style={{fontFamily:'Amiri,serif',fontSize:16,color:G.goldLight,direction:'rtl',marginTop:6}}>{v.exemple}</div>
-                    <div style={{fontFamily:'Georgia,serif',fontSize:11,color:G.textMuted,fontStyle:'italic',marginTop:2}}>{v.ex_fr}</div>
+                  <button key={i} onClick={()=>speak(v.exemple)} className={s.vowelCard} style={{ borderColor: `${v.couleur}40` }}>
+                    <div className={s.vowelAr} style={{ color: v.couleur }}>{v.ar}</div>
+                    <div className={s.vowelName}>{v.name}</div>
+                    <div className={s.vowelSon}>{v.son}</div>
+                    <div className={s.vowelExAr}>{v.exemple}</div>
+                    <div className={s.vowelExFr}>{v.ex_fr}</div>
                   </button>
                 ))}
               </div>
@@ -855,94 +777,101 @@ export default function Alphabet() {
             ONGLET QUIZ
         ══════════════════════════════════════════════════════════ */}
         {tab==='quiz' && (
-          <div style={{animation:'fadeUp .3s ease'}}>
+          <div className={s.viewContent}>
             {/* Score */}
             {score.total > 0 && (
-              <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:16,padding:'10px 16px',background:G.dark3,borderRadius:4,border:`1px solid rgba(201,168,76,.1)`}}>
-                <div style={{fontSize:9,letterSpacing:2,textTransform:'uppercase',color:G.textMuted}}>Score session</div>
-                <div style={{display:'flex',alignItems:'center',gap:12}}>
-                  {streak>=3 && <span style={{fontSize:10,color:G.orange,letterSpacing:1,animation:'pulse 1.5s infinite'}}>{streak} en série</span>}
-                  <span style={{fontFamily:'Cinzel,serif',fontSize:18,color:pct>=70?G.green:G.orange}}>{pct}% — {score.ok}/{score.total}</span>
+              <div className={s.quizScoreBar}>
+                <div className={s.quizScoreLabel}>Score session</div>
+                <div className={s.quizScoreRight}>
+                  {streak>=3 && <span className={s.streakBadge}>{streak} en serie</span>}
+                  <span className={`${s.quizScoreValue} ${pct>=70 ? s.scoreGood : s.scoreWarn}`}>
+                    {pct}% — {score.ok}/{score.total}
+                  </span>
                 </div>
               </div>
             )}
 
             {/* Mode switch */}
-            <div style={{display:'flex',gap:6,marginBottom:16}}>
+            <div className={s.quizModes}>
               {[{id:'name',label:'Voir la lettre → Trouver le nom'},
                 {id:'letter',label:'Voir le nom → Trouver la lettre'}].map(m => (
-                <button key={m.id} onClick={()=>{setQuizMode(m.id);nextQuiz(m.id)}}
-                  style={{
-                    flex:1,padding:'8px 6px',background: quizMode===m.id ? 'rgba(155,127,212,.15)' : G.dark3,
-                    border:`1px solid ${quizMode===m.id ? G.purple : 'rgba(255,255,255,.06)'}`,
-                    borderRadius:3,cursor:'pointer',color: quizMode===m.id ? G.purple : G.textMuted,
-                    fontFamily:'Lato,sans-serif',fontSize:9,letterSpacing:.5,textAlign:'center',lineHeight:1.4,
-                  }}>
+                <button
+                  key={m.id}
+                  onClick={()=>{setQuizMode(m.id);nextQuiz(m.id)}}
+                  className={`${s.quizModeBtn} ${quizMode===m.id ? s.quizModeActive : ''}`}
+                >
                   {m.label}
                 </button>
               ))}
             </div>
 
             {quizQ && (
-              <div key={quizQ.ar + quizMode} style={{animation:'pop .22s ease'}}>
+              <div key={quizQ.ar + quizMode} className={s.quizCard}>
 
                 {/* Question */}
-                <div style={{
-                  background:G.dark3,border:`1px solid rgba(201,168,76,.15)`,
-                  borderRadius:6,padding:'28px 20px',textAlign:'center',marginBottom:14,
-                }}>
+                <div className={s.quizQuestion}>
                   {quizMode==='name' ? (
                     <>
-                      <div style={{fontSize:9,letterSpacing:3,textTransform:'uppercase',color:G.textMuted,marginBottom:12}}>
+                      <div className={s.quizPrompt}>
                         Quel est le nom de cette lettre ?
                       </div>
-                      <button onClick={()=>speak(quizQ.audio)}
-                        style={{background:'none',border:'none',cursor:'pointer',fontFamily:'Amiri,serif',fontSize:100,color:G.goldLight,direction:'rtl',lineHeight:1,display:'block',margin:'0 auto 10px'}}>
+                      <button onClick={()=>speak(quizQ.audio)} className={s.quizBigLetter}>
                         {quizQ.ar}
                       </button>
-                      <div style={{fontSize:9,color:G.textMuted,letterSpacing:1,marginTop:4}}>Clique pour entendre</div>
+                      <div className={s.quizHint}>Clique pour entendre</div>
                     </>
                   ) : (
                     <>
-                      <div style={{fontSize:9,letterSpacing:3,textTransform:'uppercase',color:G.textMuted,marginBottom:12}}>
-                        Quelle lettre correspond à ce nom ?
+                      <div className={s.quizPrompt}>
+                        Quelle lettre correspond a ce nom ?
                       </div>
-                      <div style={{fontFamily:'Cinzel,serif',fontSize:36,color:G.goldLight,letterSpacing:3,marginBottom:6}}>{quizQ.name}</div>
-                      <div style={{fontFamily:'Georgia,serif',fontSize:15,color:G.textMuted,fontStyle:'italic'}}>{quizQ.translit}</div>
-                      <div style={{fontFamily:'Georgia,serif',fontSize:13,color:G.textDim,marginTop:8,lineHeight:1.6}}>{quizQ.son.slice(0,60)}...</div>
+                      <div className={s.quizBigName}>{quizQ.name}</div>
+                      <div className={s.quizNameTranslit}>{quizQ.translit}</div>
+                      <div className={s.quizNameHint}>{quizQ.son.slice(0,60)}...</div>
                     </>
                   )}
                 </div>
 
                 {/* Choix */}
-                <div style={{display:'grid',gridTemplateColumns:quizMode==='letter'?'repeat(2,1fr)':'1fr',gap:8,marginBottom:14}}>
+                <div className={`${s.quizChoices} ${quizMode==='letter' ? s.quizChoices2col : ''}`}>
                   {quizChoices.map((l,i) => {
                     const isSel = quizAnswer === i
                     const isOk = i === quizCorrect
-                    let bg = 'rgba(255,255,255,.03)', border = 'rgba(255,255,255,.07)', color = G.text
-                    if (quizAnswer !== null) {
-                      if (isOk) { bg='rgba(76,175,125,.1)'; border=G.green; color=G.green }
-                      else if (isSel) { bg='rgba(201,107,107,.1)'; border=G.red; color=G.red }
+                    const answered = quizAnswer !== null
+
+                    let choiceClass = s.quizChoice
+                    if (answered) choiceClass += ' ' + s.quizChoiceDisabled
+                    if (answered && isOk) choiceClass += ' ' + s.quizChoiceCorrect
+                    if (answered && isSel && !isOk) choiceClass += ' ' + s.quizChoiceWrong
+
+                    const textColor = answered
+                      ? (isOk ? G.green : (isSel ? G.red : G.text))
+                      : G.text
+
+                    // Badge classes
+                    let badgeClass = s.quizChoiceBadge
+                    if (answered) {
+                      if (isOk) badgeClass += ' ' + s.quizChoiceBadgeCorrect
+                      else if (isSel) badgeClass += ' ' + s.quizChoiceBadgeWrong
+                      else badgeClass += ' ' + s.quizChoiceBadgeNeutral
                     }
+
                     return (
-                      <button key={i} onClick={()=>handleQuizAnswer(i)}
-                        style={{
-                          background:bg,border:`1px solid ${border}`,borderRadius:4,
-                          padding: quizMode==='letter' ? '18px 8px' : '14px 18px',
-                          cursor:quizAnswer!==null?'default':'pointer',
-                          textAlign:'center',transition:'all .12s',outline:'none',
-                          animation: quizAnswer!==null && isSel && !isOk ? 'shake .3s ease' : 'none',
-                        }}>
+                      <button
+                        key={i}
+                        onClick={()=>handleQuizAnswer(i)}
+                        className={`${choiceClass} ${quizMode==='letter' ? s.quizChoicePadLetter : s.quizChoicePadName}`}
+                      >
                         {quizMode==='letter' ? (
-                          <div style={{fontFamily:'Amiri,serif',fontSize:44,color,direction:'rtl'}}>{l.ar}</div>
+                          <div className={s.quizChoiceLetter} style={{ color: textColor }}>{l.ar}</div>
                         ) : (
-                          <div style={{display:'flex',alignItems:'center',gap:12}}>
-                            <div style={{width:28,height:28,borderRadius:'50%',background:quizAnswer!==null?(isOk?G.green:isSel?G.red:'rgba(255,255,255,.06)'):'rgba(201,168,76,.1)',color:quizAnswer!==null?(isOk||isSel?G.dark:G.textMuted):G.gold,display:'flex',alignItems:'center',justifyContent:'center',fontSize:10,fontWeight:700,flexShrink:0}}>
+                          <div className={s.quizChoiceRow}>
+                            <div className={badgeClass}>
                               {['A','B','C','D'][i]}
                             </div>
-                            <div style={{textAlign:'left'}}>
-                              <div style={{fontFamily:'Cinzel,serif',fontSize:14,color,letterSpacing:1}}>{l.name}</div>
-                              <div style={{fontFamily:'Georgia,serif',fontSize:11,color:G.textMuted,fontStyle:'italic',marginTop:2}}>{l.translit}</div>
+                            <div className={s.quizChoiceInfo}>
+                              <div className={s.quizChoiceName} style={{ color: textColor }}>{l.name}</div>
+                              <div className={s.quizChoiceTranslit}>{l.translit}</div>
                             </div>
                           </div>
                         )}
@@ -951,22 +880,26 @@ export default function Alphabet() {
                   })}
                 </div>
 
-                {/* Résultat */}
+                {/* Resultat */}
                 {quizAnswer !== null && (
-                  <div style={{animation:'fadeUp .2s ease'}}>
+                  <div className={s.quizResult}>
                     {quizAnswer !== quizCorrect && (
-                      <div style={{padding:'12px 16px',background:'rgba(201,107,107,.06)',border:'1px solid rgba(201,107,107,.15)',borderRadius:4,marginBottom:10,fontFamily:'Georgia,serif',fontSize:14,color:G.textDim,lineHeight:1.8}}>
-                        C'était <strong style={{color:G.goldLight}}>{quizQ.name}</strong> ({quizQ.translit}) — {quizQ.son.slice(0,60)}
+                      <div className={s.quizWrongExplain}>
+                        C&apos;etait <strong className={s.quizWrongHighlight}>{quizQ.name}</strong> ({quizQ.translit}) — {quizQ.son.slice(0,60)}
                       </div>
                     )}
-                    <div style={{display:'flex',gap:8}}>
-                      <button onClick={()=>nextQuiz(quizMode)}
-                        style={{flex:1,padding:'13px',background:quizAnswer===quizCorrect?'linear-gradient(135deg,#2d6b4a,#4CAF7D)':'linear-gradient(135deg,#8B6914,#C9A84C)',border:'none',borderRadius:4,color:G.dark,fontFamily:'Lato,sans-serif',fontSize:10,fontWeight:700,letterSpacing:2,textTransform:'uppercase',cursor:'pointer'}}>
-                        {quizAnswer===quizCorrect ? 'Suivant →' : 'Réessayer'}
+                    <div className={s.quizActions}>
+                      <button
+                        onClick={()=>nextQuiz(quizMode)}
+                        className={`${s.quizNextBtn} ${quizAnswer===quizCorrect ? s.quizNextCorrect : s.quizNextRetry}`}
+                      >
+                        {quizAnswer===quizCorrect ? 'Suivant →' : 'Reessayer'}
                       </button>
-                      <button onClick={()=>{setTab('lecon');setCur(LETTERS.indexOf(quizQ))}}
-                        style={{padding:'13px 14px',background:G.dark3,border:`1px solid rgba(201,168,76,.15)`,borderRadius:4,color:G.textMuted,cursor:'pointer',fontFamily:'Lato,sans-serif',fontSize:9,letterSpacing:1,textTransform:'uppercase'}}>
-                        Voir la leçon
+                      <button
+                        onClick={()=>{setTab('lecon');setCur(LETTERS.indexOf(quizQ))}}
+                        className={s.quizLeconBtn}
+                      >
+                        Voir la lecon
                       </button>
                     </div>
                   </div>

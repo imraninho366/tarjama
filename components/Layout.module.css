@@ -1,0 +1,64 @@
+/* ══════════════════════════════════════════════════════════════
+   LAYOUT — Shell responsive principal
+   ══════════════════════════════════════════════════════════════ */
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Main content ──────────────────────────────────────────── */
+.main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding: var(--space-lg);
+  min-height: calc(100vh - var(--topbar-height));
+  position: relative;
+}
+
+/* ── Page transition wrapper ───────────────────────────────── */
+.pageContent {
+  animation: pageEnter var(--duration-normal) var(--ease-out) both;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+
+/* Tablette : pas de sidebar fixe */
+@media (max-width: 1023px) {
+  .main {
+    margin-left: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .main {
+    padding: var(--space-md) var(--space-md);
+    /* Espace pour la bottom nav */
+    padding-bottom: calc(var(--bottomnav-height) + env(safe-area-inset-bottom, 0px) + var(--space-md));
+  }
+}
+
+/* ── Particles canvas ──────────────────────────────────────── */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .particles {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particles {
+    display: none;
+  }
+}
