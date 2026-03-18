@@ -4,8 +4,6 @@ import { G } from '../lib/theme'
 import Button from '../components/common/Button'
 import s from '../styles/Quiz.module.css'
 
-const FONT = 'var(--font-serif)'
-
 function shuffle(arr) {
   const a = [...arr]
   for (let i = a.length - 1; i > 0; i--) {

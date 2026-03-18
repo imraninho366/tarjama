@@ -45,7 +45,7 @@ function AudioPlayer({src}){
         onTimeUpdate={e=>setCurrent(e.target.currentTime)}
         onLoadedMetadata={e=>setDuration(e.target.duration)}
         onEnded={()=>{setPlaying(false);setCurrent(0)}}
-        onError={e=>{const fallback=src;if(e.target.src!==fallback){e.target.src=fallback;if(playing)e.target.play()}}}
+        onError={()=>{setPlaying(false);setLoading(false)}}
       />
       <button onClick={toggle} aria-label={playing?'Pause':'Écouter'} style={{
         width:36,height:36,borderRadius:'50%',border:'1px solid rgba(201,168,76,.3)',

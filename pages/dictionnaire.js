@@ -42,7 +42,7 @@ export default function Dictionnaire({ user, profile }) {
       return
     }
     loadData()
-  }, [user])
+  }, [user, router])
 
   const loadData = async () => {
     // Load static Quran dictionary

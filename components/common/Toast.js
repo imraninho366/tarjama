@@ -11,6 +11,11 @@ const ICONS = {
 export default function Toast({ message, type = 'info', duration = 3000, onClose }) {
   const [exiting, setExiting] = useState(false)
 
+  // Reset exiting state when a new message arrives
+  useEffect(() => {
+    if (message) setExiting(false)
+  }, [message])
+
   useEffect(() => {
     if (!message) return
     const timer = setTimeout(() => {

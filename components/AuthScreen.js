@@ -69,8 +69,8 @@ export default function AuthScreen() {
           ))}
         </div>
 
-        {/* Form */}
-        <form onSubmit={authMode === 'login' ? doLogin : doRegister}>
+        {/* Form — key forces reset on mode switch */}
+        <form key={authMode} onSubmit={authMode === 'login' ? doLogin : doRegister}>
           {FIELDS[authMode].map(([name, label, ph, type]) => (
             <div key={name} className={styles.field}>
               <label className={styles.label}>{label}</label>

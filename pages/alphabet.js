@@ -459,7 +459,7 @@ export default function Alphabet() {
 
   useEffect(() => {
     if (tab==='quiz') nextQuiz(quizMode)
-  }, [tab])
+  }, [tab, quizMode, nextQuiz])
 
   const handleQuizAnswer = (i) => {
     if (quizAnswer !== null) return
