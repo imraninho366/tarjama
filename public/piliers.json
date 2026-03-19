@@ -198,7 +198,144 @@
             "traduction": "Que la paix et la miséricorde d'Allah soient sur vous.",
             "detail": "La prière est terminée. Il est recommandé de faire des invocations et du dhikr après la prière."
           }
-        ]
+        ],
+        "guide_ablutions": [
+          {
+            "etape": 1,
+            "titre": "L'intention (An-Niyyah)",
+            "titreAr": "النية",
+            "description": "Formuler l'intention dans le coeur de faire les ablutions pour la prière. L'intention se fait dans le coeur, pas à voix haute."
+          },
+          {
+            "etape": 2,
+            "titre": "La Basmala",
+            "titreAr": "البسملة",
+            "description": "Dire au début des ablutions :",
+            "arabe": "بِسْمِ اللهِ",
+            "phonetique": "Bismillâh",
+            "traduction": "Au nom d'Allah"
+          },
+          {
+            "etape": 3,
+            "titre": "Laver les mains (3 fois)",
+            "titreAr": "غسل اليدين",
+            "description": "Se laver les deux mains jusqu'aux poignets trois fois, en commençant par la main droite. S'assurer que l'eau passe entre les doigts."
+          },
+          {
+            "etape": 4,
+            "titre": "Se rincer la bouche (3 fois)",
+            "titreAr": "المضمضة",
+            "description": "Prendre de l'eau dans la main droite, la mettre dans la bouche, bien la faire circuler puis la recracher. Répéter trois fois.",
+            "detail": "En arabe : Al-Madmada. Il est recommandé d'utiliser le siwak (bâtonnet de bois d'arak) ou de se brosser les dents avant les ablutions."
+          },
+          {
+            "etape": 5,
+            "titre": "Aspirer l'eau par le nez (3 fois)",
+            "titreAr": "الاستنشاق والاستنثار",
+            "description": "Aspirer de l'eau dans les narines avec la main droite, puis l'expulser avec la main gauche. Répéter trois fois.",
+            "detail": "En arabe : Al-Istinshâq (aspirer) et Al-Istinthâr (expulser)."
+          },
+          {
+            "etape": 6,
+            "titre": "Laver le visage (3 fois)",
+            "titreAr": "غسل الوجه",
+            "description": "Laver l'ensemble du visage trois fois, du haut du front (naissance des cheveux) jusqu'au bas du menton, et d'une oreille à l'autre.",
+            "detail": "Le visage comprend toute la zone entre la naissance des cheveux et le menton, et d'une oreille à l'autre. Pour l'homme qui a une barbe fournie, il doit passer ses doigts mouillés à travers."
+          },
+          {
+            "etape": 7,
+            "titre": "Laver les avant-bras (3 fois)",
+            "titreAr": "غسل اليدين إلى المرفقين",
+            "description": "Laver le bras droit du bout des doigts jusqu'au coude inclus, trois fois. Puis faire de même avec le bras gauche.",
+            "detail": "Commencer toujours par le côté droit. S'assurer que l'eau couvre bien tout l'avant-bras y compris le coude."
+          },
+          {
+            "etape": 8,
+            "titre": "Essuyer la tête (1 fois)",
+            "titreAr": "مسح الرأس",
+            "description": "Passer les mains mouillées sur toute la tête, de l'avant vers l'arrière puis de l'arrière vers l'avant, une seule fois.",
+            "detail": "On commence du front vers la nuque, puis on revient de la nuque vers le front. Une seule fois suffit (pas trois)."
+          },
+          {
+            "etape": 9,
+            "titre": "Essuyer les oreilles (1 fois)",
+            "titreAr": "مسح الأذنين",
+            "description": "Avec les mains encore humides, introduire les index dans les oreilles et passer les pouces derrière les oreilles, une seule fois.",
+            "detail": "L'intérieur des oreilles est essuyé avec les index, l'extérieur avec les pouces."
+          },
+          {
+            "etape": 10,
+            "titre": "Laver les pieds (3 fois)",
+            "titreAr": "غسل القدمين",
+            "description": "Laver le pied droit du bout des orteils jusqu'à la cheville incluse, trois fois, en passant les doigts entre les orteils. Puis faire de même avec le pied gauche.",
+            "detail": "Bien passer l'eau entre les orteils avec le petit doigt de la main gauche."
+          },
+          {
+            "etape": 11,
+            "titre": "L'invocation après les ablutions",
+            "titreAr": "الدعاء بعد الوضوء",
+            "description": "Après avoir terminé les ablutions, lever le regard vers le ciel et dire :",
+            "arabe": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ. اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+            "phonetique": "Ash-hadou an lâ ilâha illa Allâhou wahdahou lâ sharîka lah, wa ash-hadou anna Muhammadan 'abdouhou wa rasûlouh. Allâhoumma ij'alnî mina at-tawwâbîn wa ij'alnî mina al-moutatahirîn.",
+            "traduction": "J'atteste qu'il n'y a de divinité digne d'adoration qu'Allah, Seul sans associé, et j'atteste que Muhammad est Son serviteur et Son messager. O Allah, fais de moi l'un de ceux qui se repentent et fais de moi l'un de ceux qui se purifient.",
+            "detail": "Selon le hadith, les huit portes du Paradis s'ouvrent pour celui qui prononce cette invocation après les ablutions."
+          }
+        ],
+        "guide_joumua": {
+          "titre": "La prière du vendredi (Salat al-Joumou'a)",
+          "titreAr": "صلاة الجمعة",
+          "intro": "La prière du vendredi est une obligation pour tout homme musulman, libre, pubère et résident. Elle remplace la prière du Dhuhr le vendredi.",
+          "ref": "Sourate Al-Joumou'a, verset 9",
+          "conditions": [
+            "Obligatoire pour les hommes — recommandée pour les femmes",
+            "Se fait en groupe (jamâ'a) à la mosquée",
+            "Remplace la prière du Dhuhr le vendredi",
+            "Minimum de 3 personnes selon certains savants"
+          ],
+          "merites": [
+            "Le vendredi est le meilleur jour de la semaine",
+            "Il y a une heure durant laquelle les invocations sont exaucées",
+            "Celui qui fait le ghousl (bain) le vendredi et se rend tôt à la mosquée a une grande récompense",
+            "Lire la sourate Al-Kahf le vendredi est une sunna qui procure une lumière entre deux vendredis"
+          ],
+          "sunna_avant": [
+            "Faire le ghousl (bain rituel complet)",
+            "Se parfumer",
+            "Porter ses plus beaux vêtements",
+            "Se rendre tôt à la mosquée",
+            "Lire la sourate Al-Kahf",
+            "Multiplier les prières sur le Prophète"
+          ],
+          "deroulement": [
+            {
+              "etape": 1,
+              "titre": "L'Adhan",
+              "description": "Le premier appel à la prière retentit quand l'imam monte sur le minbar (chaire)."
+            },
+            {
+              "etape": 2,
+              "titre": "Le Khoutba (sermon)",
+              "description": "L'imam prononce deux sermons (khoutba) séparés par une courte assise. Il est obligatoire d'écouter en silence. Toute parole pendant le sermon est interdite, même dire « chut » à son voisin.",
+              "detail": "L'imam commence par la louange d'Allah, la prière sur le Prophète, la Shahada, puis le rappel et les conseils. Le deuxième sermon est généralement plus court."
+            },
+            {
+              "etape": 3,
+              "titre": "Le second Adhan",
+              "description": "Après les deux sermons, un second appel (Iqama) est prononcé pour le début de la prière."
+            },
+            {
+              "etape": 4,
+              "titre": "La prière (2 rak'at)",
+              "description": "L'imam dirige la prière de 2 rak'at (au lieu de 4 pour le Dhuhr). La récitation se fait à voix haute.",
+              "detail": "Dans la première rak'a, l'imam récite généralement la sourate Al-A'la ou Al-Joumou'a après la Fatiha. Dans la deuxième, la sourate Al-Ghâshiya ou Al-Mounafiqoun."
+            },
+            {
+              "etape": 5,
+              "titre": "Après la prière",
+              "description": "Il est recommandé de prier 4 rak'at de sunna après la prière du vendredi (2+2 ou 4 d'un coup), selon les hadiths du Prophète."
+            }
+          ]
+        }
       },
       {
         "id": 3,
