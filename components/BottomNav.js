@@ -9,6 +9,7 @@ const TABS = [
   { href: '/hadith',       icon: 'ح', label: 'Hadith' },
   { href: '/duas',         icon: 'د', label: 'Du\'as' },
   { href: '/piliers',      icon: 'ر', label: 'Piliers' },
+  { href: '/prophetes',    icon: 'ن', label: 'Prophetes' },
   { href: '/alphabet',     icon: 'أ', label: 'Alphabet' },
 ]
 

@@ -1,0 +1,404 @@
+{
+  "title": "Les Prophetes et Messagers",
+  "titleAr": "الأنبياء والرسل",
+  "intro": "Allah a envoye des prophetes a chaque peuple pour les guider vers Son adoration. 25 prophetes sont mentionnes dans le Coran. Voici leurs histoires.",
+  "prophetes": [
+    {
+      "id": 1, "nom": "Adam", "nomAr": "آدم", "titre": "Le premier homme et prophete",
+      "epoque": "Le commencement", "lieu": "Le Paradis puis la Terre",
+      "mentionsCoran": "25 fois", "sourates": "Al-Baqara, Al-A'raf, Taha, Al-Hijr",
+      "resume": "Premier homme cree par Allah a partir d'argile. Il vecut au Paradis avec son epouse Hawwa (Eve) mais fut tente par Iblis (Satan) de manger le fruit de l'arbre interdit.",
+      "histoire": [
+        "Allah crea Adam a partir d'argile et lui insuffla de Son esprit. Il ordonna aux anges de se prosterner devant lui — tous obeirent sauf Iblis (Satan) qui refusa par orgueil.",
+        "Allah enseigna a Adam le nom de toutes choses, un savoir que meme les anges ne possedaient pas.",
+        "Adam et Hawwa furent installes au Paradis avec l'interdiction de s'approcher d'un arbre. Iblis les tenta et ils mangerent de son fruit.",
+        "Allah les fit descendre sur Terre. Adam se repentit sincerement et Allah accepta son repentir. Il devint le premier prophete sur Terre.",
+        "Adam enseigna a ses enfants l'unicite d'Allah et les bases de l'adoration."
+      ],
+      "lecons": ["Le repentir sincere est toujours accepte par Allah", "L'orgueil est la cause de la chute d'Iblis", "L'homme est honore par Allah au-dessus de toutes les creatures"],
+      "versetCle": "Et lorsque Nous avons dit aux anges : Prosternez-vous devant Adam, ils se prosternerent, sauf Iblis qui refusa.",
+      "versetRef": "Sourate Al-Baqara, 2:34"
+    },
+    {
+      "id": 2, "nom": "Idris", "nomAr": "إدريس", "titre": "Le savant eleve",
+      "epoque": "Avant Nouh", "lieu": "Mesopotamie",
+      "mentionsCoran": "2 fois", "sourates": "Maryam, Al-Anbiya",
+      "resume": "Prophete connu pour sa grande science et sa piete. Allah l'eleva a un rang eleve.",
+      "histoire": [
+        "Idris est considere comme l'un des premiers prophetes apres Adam. Il etait connu pour sa sagesse et sa connaissance.",
+        "Il fut le premier a ecrire avec un calame (plume) et a coudre des vetements.",
+        "Allah dit a son sujet qu'Il l'eleva a un rang eleve, ce qui est interprete comme une elevation au ciel."
+      ],
+      "lecons": ["La quete du savoir est une vertu", "Allah eleve ceux qui sont patients et veridiques"],
+      "versetCle": "Et mentionne Idris dans le Livre. C'etait un veridique et un prophete. Et Nous l'elevames a un haut rang.",
+      "versetRef": "Sourate Maryam, 19:56-57"
+    },
+    {
+      "id": 3, "nom": "Nouh (Noe)", "nomAr": "نوح", "titre": "Le premier messager",
+      "epoque": "Environ 10 generations apres Adam", "lieu": "Mesopotamie",
+      "mentionsCoran": "43 fois", "sourates": "Nouh, Hud, Al-A'raf, Al-Muminun",
+      "resume": "Premier messager envoye par Allah. Il preча a son peuple pendant 950 ans mais la majorite refusa. Allah ordonna la construction de l'Arche et envoya le Deluge.",
+      "histoire": [
+        "Nouh fut envoye a son peuple qui adorait des idoles (Wadd, Suwa, Yaghuth, Ya'uq, Nasr). Il les appela a l'unicite d'Allah pendant 950 ans.",
+        "Seule une minorite crut en lui. Les chefs de son peuple le rejetaient et se moquaient de lui.",
+        "Allah lui ordonna de construire une Arche. Les gens se moquerent de lui car il n'y avait pas d'eau aux alentours.",
+        "Quand l'ordre d'Allah vint, l'eau jaillit du sol et la pluie tomba sans cesse. Nouh embarqua les croyants et un couple de chaque espece animale.",
+        "Son propre fils refusa de monter et perit dans le Deluge. Nouh invoqua Allah pour son fils mais Allah lui rappela que son fils n'etait pas de sa famille (spirituelle).",
+        "L'Arche se posa sur le mont Joudi. Nouh et les croyants repeuplerent la Terre."
+      ],
+      "lecons": ["La patience dans la da'wa (predication) meme face au rejet", "Le lien de foi est plus fort que le lien de sang", "Allah sauve toujours les croyants"],
+      "versetCle": "Et Nous avons certes envoye Nouh vers son peuple. Il demeura parmi eux mille ans moins cinquante annees.",
+      "versetRef": "Sourate Al-Ankabut, 29:14"
+    },
+    {
+      "id": 4, "nom": "Houd", "nomAr": "هود", "titre": "Envoye au peuple de 'Ad",
+      "epoque": "Apres Nouh", "lieu": "Sud de l'Arabie (Al-Ahqaf)",
+      "mentionsCoran": "7 fois", "sourates": "Hud, Al-A'raf, Ash-Shu'ara",
+      "resume": "Envoye au peuple de 'Ad, connu pour sa force physique et ses constructions imposantes. Ils refuserent son message et furent detruits par un vent violent.",
+      "histoire": [
+        "Le peuple de 'Ad etait puissant et construisait des monuments impressionnants. Ils etaient arrogants et adoraient des idoles.",
+        "Houd les appela a adorer Allah seul mais ils le rejetterent en disant : Qui est plus fort que nous ?",
+        "Allah envoya contre eux un vent violent et glacial pendant sept nuits et huit jours qui les aneantit completement.",
+        "Seul Houd et les croyants furent sauves."
+      ],
+      "lecons": ["La force physique ne protege pas de la punition d'Allah", "L'arrogance mene a la destruction"],
+      "versetCle": "Et au peuple de 'Ad, leur frere Houd qui dit : O mon peuple, adorez Allah. Vous n'avez pas d'autre divinite que Lui.",
+      "versetRef": "Sourate Al-A'raf, 7:65"
+    },
+    {
+      "id": 5, "nom": "Salih", "nomAr": "صالح", "titre": "Envoye au peuple de Thamoud",
+      "epoque": "Apres Houd", "lieu": "Nord-ouest de l'Arabie (Al-Hijr/Mada'in Salih)",
+      "mentionsCoran": "9 fois", "sourates": "Hud, Al-A'raf, Ash-Shu'ara, An-Naml",
+      "resume": "Envoye au peuple de Thamoud qui taillait des maisons dans les montagnes. Allah leur envoya une chamelle miraculeuse comme signe, mais ils la tuerent.",
+      "histoire": [
+        "Le peuple de Thamoud etait habile et taillait des demeures dans les rochers des montagnes.",
+        "Salih les invita a adorer Allah seul. Ils lui demanderent un miracle.",
+        "Allah fit sortir une chamelle d'un rocher comme signe. Salih leur ordonna de la laisser boire et paitre librement.",
+        "Ils desobeirent et tuerent la chamelle. Trois jours apres, un cri terrible les aneantit."
+      ],
+      "lecons": ["Les signes d'Allah doivent etre respectes", "Le delai de 3 jours montre la misericorde d'Allah avant le chatiment"],
+      "versetCle": "Voici la chamelle d'Allah comme signe pour vous. Laissez-la manger sur la terre d'Allah et ne lui faites aucun mal.",
+      "versetRef": "Sourate Al-A'raf, 7:73"
+    },
+    {
+      "id": 6, "nom": "Ibrahim (Abraham)", "nomAr": "إبراهيم", "titre": "L'ami intime d'Allah (Khalilullah)",
+      "epoque": "Environ 2000 av. J.-C.", "lieu": "Irak, Palestine, Arabie (La Mecque)",
+      "mentionsCoran": "69 fois", "sourates": "Al-Baqara, Al-An'am, Ibrahim, Al-Anbiya, As-Saffat",
+      "resume": "L'un des plus grands prophetes, pere d'Ismail et Ishaq. Il brisa les idoles, fut jete dans le feu qui devint fraicheur, construisit la Kaaba avec son fils Ismail.",
+      "histoire": [
+        "Jeune, Ibrahim observa les etoiles, la lune et le soleil et comprit qu'aucun d'eux n'etait digne d'adoration. Il reconnut Allah comme seul Createur.",
+        "Il brisa les idoles de son peuple et fut condamne a etre jete dans un immense brasier. Allah ordonna au feu d'etre fraicheur et salut pour Ibrahim.",
+        "Il emigra avec sa femme Sara et son neveu Lout vers la Palestine, puis alla en Egypte.",
+        "A un age avance, Allah lui accorda Ismail (de Hajar) puis Ishaq (de Sara).",
+        "Allah lui ordonna d'emmener Hajar et le bebe Ismail dans la vallee deserte de La Mecque. Hajar courut entre Safa et Marwa a la recherche d'eau, et la source de Zamzam jaillit sous les pieds d'Ismail.",
+        "L'epreuve supreme : Allah lui ordonna en reve de sacrifier son fils Ismail. Les deux accepterent avec soumission, et Allah remplaça Ismail par un belier.",
+        "Ibrahim et Ismail construisirent ensemble la Kaaba, la premiere maison d'adoration d'Allah sur Terre."
+      ],
+      "lecons": ["La soumission totale a Allah (Islam)", "La confiance en Allah dans les epreuves les plus dures", "Ibrahim est le modele du monotheisme pur"],
+      "versetCle": "Et quand Ibrahim dit : Mon Seigneur, fais de cette cite un lieu sur et nourris ses habitants de fruits.",
+      "versetRef": "Sourate Al-Baqara, 2:126"
+    },
+    {
+      "id": 7, "nom": "Lout (Lot)", "nomAr": "لوط", "titre": "Envoye au peuple de Sodome",
+      "epoque": "Contemporain d'Ibrahim", "lieu": "Sodome (region de la Mer Morte)",
+      "mentionsCoran": "27 fois", "sourates": "Hud, Al-A'raf, Al-Hijr, Al-Ankabut",
+      "resume": "Neveu d'Ibrahim, envoye au peuple de Sodome qui pratiquait des turpitudes jamais commises avant eux. Leur cite fut renversee.",
+      "histoire": [
+        "Lout emigra avec son oncle Ibrahim et s'installa dans la region de Sodome.",
+        "Son peuple commettait des turpitudes inedites. Lout les appela a la reforme mais ils refuserent.",
+        "Des anges sous forme humaine vinrent chez Lout. Le peuple se rua vers sa maison.",
+        "Les anges revelerent leur identite et ordonnent a Lout de partir avec sa famille la nuit.",
+        "La cite fut retournee et une pluie de pierres s'abattit sur eux. La femme de Lout, qui s'etait retournee, perit avec les mecreants."
+      ],
+      "lecons": ["Les turpitudes menent a la destruction des societes", "Meme dans la famille du prophete, chacun est responsable de sa foi"],
+      "versetCle": "Et Lout, quand il dit a son peuple : Commettez-vous la turpitude qu'aucun peuple avant vous n'a commise ?",
+      "versetRef": "Sourate Al-A'raf, 7:80"
+    },
+    {
+      "id": 8, "nom": "Ismail", "nomAr": "إسماعيل", "titre": "Le sacrifice et le pere des Arabes",
+      "epoque": "Fils d'Ibrahim", "lieu": "La Mecque",
+      "mentionsCoran": "12 fois", "sourates": "Al-Baqara, As-Saffat, Maryam",
+      "resume": "Fils aine d'Ibrahim et Hajar. Il accepta avec soumission d'etre sacrifie. Il aida son pere a construire la Kaaba. Ancetre du Prophete Muhammad.",
+      "histoire": [
+        "Ismail fut emmene bebe avec sa mere Hajar dans la vallee deserte de La Mecque par Ibrahim sur l'ordre d'Allah.",
+        "La source de Zamzam jaillit pour le sauver de la soif. La tribu de Jourhoum s'installa pres d'eux.",
+        "Quand il grandit, Ibrahim lui annonca le reve du sacrifice. Ismail repondit : O mon pere, fais ce qui t'est ordonne. Tu me trouveras patient.",
+        "Allah le racheta par un belier. Cette epreuve est commemoree chaque annee lors de l'Aid al-Adha.",
+        "Ibrahim et Ismail eleverent ensemble les fondations de la Kaaba."
+      ],
+      "lecons": ["La soumission a la volonte d'Allah", "Le sacrifice est au coeur de la foi", "La recompense vient apres l'epreuve"],
+      "versetCle": "O mon pere, fais ce qui t'est ordonne. Tu me trouveras, si Allah le veut, parmi les patients.",
+      "versetRef": "Sourate As-Saffat, 37:102"
+    },
+    {
+      "id": 9, "nom": "Ishaq (Isaac)", "nomAr": "إسحاق", "titre": "Le fils de la promesse",
+      "epoque": "Fils d'Ibrahim", "lieu": "Palestine",
+      "mentionsCoran": "17 fois", "sourates": "Al-Baqara, Hud, As-Saffat",
+      "resume": "Second fils d'Ibrahim, ne de Sara a un age tres avance. Pere de Ya'qoub (Jacob). Ancetre des prophetes d'Israel.",
+      "histoire": [
+        "Allah annonca la naissance d'Ishaq a Ibrahim et Sara alors qu'ils etaient tres ages. Sara rit d'etonnement.",
+        "Ishaq grandit en Palestine et devint prophete. Il eut pour fils Ya'qoub (Israel).",
+        "De sa lignee descendirent la plupart des prophetes d'Israel."
+      ],
+      "lecons": ["Rien n'est impossible pour Allah", "La promesse d'Allah se realise toujours"],
+      "versetCle": "Et Nous lui avons annonce la bonne nouvelle d'Ishaq comme prophete parmi les vertueux.",
+      "versetRef": "Sourate As-Saffat, 37:112"
+    },
+    {
+      "id": 10, "nom": "Ya'qoub (Jacob)", "nomAr": "يعقوب", "titre": "Israel — pere des douze tribus",
+      "epoque": "Fils d'Ishaq", "lieu": "Palestine, Egypte",
+      "mentionsCoran": "16 fois", "sourates": "Al-Baqara, Yusuf, Maryam",
+      "resume": "Aussi appele Israel. Pere de douze fils dont Youssouf. Connu pour sa patience apres la perte de son fils bien-aime.",
+      "histoire": [
+        "Ya'qoub etait prophete et fils d'Ishaq. Il eut douze fils qui formerent les douze tribus d'Israel.",
+        "Il aimait particulierement Youssouf, ce qui provoqua la jalousie de ses freres.",
+        "Quand Youssouf disparut, Ya'qoub pleura jusqu'a en perdre la vue, mais il ne perdit jamais espoir en Allah.",
+        "Allah lui rendit la vue et le reunit avec Youssouf en Egypte."
+      ],
+      "lecons": ["La patience face aux epreuves", "Ne jamais perdre espoir en la misericorde d'Allah"],
+      "versetCle": "Il dit : Je ne me plains qu'a Allah de ma detresse et de mon chagrin.",
+      "versetRef": "Sourate Yusuf, 12:86"
+    },
+    {
+      "id": 11, "nom": "Youssouf (Joseph)", "nomAr": "يوسف", "titre": "Le plus beau recit",
+      "epoque": "Fils de Ya'qoub", "lieu": "Palestine, Egypte",
+      "mentionsCoran": "27 fois", "sourates": "Yusuf (sourate entiere dediee)",
+      "resume": "Son histoire est qualifiee par Allah de 'plus beau recit'. Trahi par ses freres, vendu comme esclave, emprisonne injustement, il devint le ministre le plus puissant d'Egypte.",
+      "histoire": [
+        "Enfant, Youssouf vit en reve onze etoiles, le soleil et la lune se prosterner devant lui. Son pere lui conseilla de ne pas raconter ce reve a ses freres.",
+        "Ses freres, jaloux, le jeterent dans un puits et dirent a leur pere qu'un loup l'avait devore.",
+        "Il fut recueilli par une caravane et vendu comme esclave en Egypte au ministre Al-Aziz.",
+        "La femme d'Al-Aziz tenta de le seduire mais il refusa par piete. Il fut injustement emprisonne.",
+        "En prison, il interpreta les reves de deux compagnons, puis celui du roi d'Egypte (les sept vaches grasses et les sept maigres).",
+        "Libere, il devint responsable des reserves d'Egypte. Pendant la famine, ses freres vinrent chercher des provisions sans le reconnaitre.",
+        "Il se fit reconnaitre, pardonna a ses freres et fit venir toute sa famille en Egypte. Le reve de son enfance se realisa."
+      ],
+      "lecons": ["La patience et la confiance en Allah menent au succes", "Le pardon est une vertu des grands", "Allah planifie et Il est le meilleur des planificateurs"],
+      "versetCle": "En verite, dans l'histoire de Youssouf et de ses freres, il y a des lecons pour ceux qui interrogent.",
+      "versetRef": "Sourate Yusuf, 12:7"
+    },
+    {
+      "id": 12, "nom": "Shou'ayb", "nomAr": "شعيب", "titre": "Le predicateur eloquent",
+      "epoque": "Avant Moussa", "lieu": "Madyan (nord-ouest de l'Arabie)",
+      "mentionsCoran": "11 fois", "sourates": "Hud, Al-A'raf, Ash-Shu'ara",
+      "resume": "Envoye au peuple de Madyan qui trichait dans les poids et mesures. Il les appela a l'honnetete commerciale.",
+      "histoire": [
+        "Le peuple de Madyan etait prospere mais malhonnete : ils trichaient dans les poids et mesures et coupaient les routes.",
+        "Shou'ayb les appela a adorer Allah et a etre justes dans leurs transactions.",
+        "Ils refuserent et le menacerent. Un cri terrible et un tremblement de terre les aneantit."
+      ],
+      "lecons": ["L'honnetete dans le commerce est un devoir religieux", "La corruption financiere peut mener a la destruction d'une societe"],
+      "versetCle": "O mon peuple, donnez la pleine mesure et le plein poids, en toute justice.",
+      "versetRef": "Sourate Hud, 11:85"
+    },
+    {
+      "id": 13, "nom": "Ayyoub (Job)", "nomAr": "أيوب", "titre": "Le modele de patience",
+      "epoque": "Descendant d'Ibrahim", "lieu": "Region du Levant",
+      "mentionsCoran": "4 fois", "sourates": "Al-Anbiya, Sad",
+      "resume": "Prophete riche et en bonne sante qui perdit tout : sa fortune, ses enfants, sa sante. Il resta patient pendant des annees et Allah le recompensa.",
+      "histoire": [
+        "Ayyoub etait un homme riche, en bonne sante, avec une grande famille. Allah l'eprouva en lui retirant tout.",
+        "Il perdit ses biens, ses enfants, et fut frappe par une maladie grave. Ses proches l'abandonnerent sauf sa femme.",
+        "Malgre toutes ces epreuves, il ne se plaignit jamais et continua a adorer Allah.",
+        "Apres des annees de patience, il invoqua Allah : Le mal m'a touche et Tu es le plus Misericordieux.",
+        "Allah le guerit, lui rendit ses biens au double et lui donna une nouvelle descendance."
+      ],
+      "lecons": ["La patience dans l'epreuve est recompensee", "Ne jamais desesperer de la misericorde d'Allah", "L'epreuve n'est pas un signe de desamour d'Allah"],
+      "versetCle": "Et Ayyoub, quand il invoqua son Seigneur : Le mal m'a touche, et Tu es le plus Misericordieux des misericordieux.",
+      "versetRef": "Sourate Al-Anbiya, 21:83"
+    },
+    {
+      "id": 14, "nom": "Dhoul-Kifl", "nomAr": "ذو الكفل", "titre": "L'homme de la garantie",
+      "epoque": "Apres Ayyoub", "lieu": "Region du Levant",
+      "mentionsCoran": "2 fois", "sourates": "Al-Anbiya, Sad",
+      "resume": "Mentionne parmi les patients et les vertueux. Son identite exacte fait l'objet de divergences parmi les savants.",
+      "histoire": [
+        "Dhoul-Kifl est mentionne dans le Coran parmi les prophetes patients et vertueux.",
+        "Certains savants l'identifient a Ezechiel, d'autres pensent qu'il s'agit d'un homme pieux qui garantit la justice pour son peuple.",
+        "Allah le mentionne aux cotes d'Ismail et Idris comme faisant partie des patients."
+      ],
+      "lecons": ["La patience est une qualite des elus d'Allah"],
+      "versetCle": "Et Ismail, Idris et Dhoul-Kifl, tous etaient des patients.",
+      "versetRef": "Sourate Al-Anbiya, 21:85"
+    },
+    {
+      "id": 15, "nom": "Moussa (Moise)", "nomAr": "موسى", "titre": "Kalimullah — Celui a qui Allah a parle",
+      "epoque": "Environ 1400 av. J.-C.", "lieu": "Egypte, Sinai, Palestine",
+      "mentionsCoran": "136 fois (le plus mentionne)", "sourates": "Al-Baqara, Al-A'raf, Taha, Al-Qasas, An-Naml",
+      "resume": "Le prophete le plus mentionne dans le Coran. Sauve des eaux etant bebe, eleve par Pharaon, il recut la Torah au mont Sinai et libera les enfants d'Israel de l'esclavage.",
+      "histoire": [
+        "Pharaon ordonna le massacre de tous les nouveau-nes males israelites. La mere de Moussa le mit dans un coffre sur le Nil. Il fut recueilli par la famille de Pharaon.",
+        "Moussa grandit au palais de Pharaon. Un jour, il tua accidentellement un Egyptien qui frappait un Israelite, et s'enfuit vers Madyan.",
+        "A Madyan, il aida les filles de Shou'ayb a abreuver leur troupeau et epousa l'une d'elles. Il y resta dix ans.",
+        "En revenant vers l'Egypte, Allah lui parla au mont Sinai depuis un buisson ardent et lui confia la mission d'aller vers Pharaon.",
+        "Allah lui donna deux signes : son baton qui se transforme en serpent et sa main qui devient blanche et lumineuse.",
+        "Pharaon refusa de liberer les enfants d'Israel. Allah envoya neuf plaies sur l'Egypte.",
+        "Moussa conduisit son peuple hors d'Egypte. Allah fendit la mer pour les sauver et noya Pharaon et son armee.",
+        "Au mont Sinai, Allah donna a Moussa les Tables de la Loi (Torah). Pendant son absence, le peuple adora le veau d'or.",
+        "Moussa guida les enfants d'Israel pendant 40 ans dans le desert."
+      ],
+      "lecons": ["Allah protege Ses elus meme dans le palais de l'ennemi", "La justice d'Allah finit toujours par triompher", "Le pouvoir de Pharaon n'est rien face a la puissance d'Allah"],
+      "versetCle": "Et Nous revelames a la mere de Moussa : Allaite-le. Et quand tu craindras pour lui, jette-le dans le flot.",
+      "versetRef": "Sourate Al-Qasas, 28:7"
+    },
+    {
+      "id": 16, "nom": "Haroun (Aaron)", "nomAr": "هارون", "titre": "Le frere et assistant de Moussa",
+      "epoque": "Contemporain de Moussa", "lieu": "Egypte, Sinai",
+      "mentionsCoran": "20 fois", "sourates": "Al-A'raf, Taha, Al-Qasas",
+      "resume": "Frere aine de Moussa, designe par Allah pour l'assister dans sa mission aupres de Pharaon. Il etait eloquent et prophetique.",
+      "histoire": [
+        "Moussa demanda a Allah de lui donner son frere Haroun comme assistant car Haroun etait plus eloquent.",
+        "Allah exauca sa demande et fit de Haroun un prophete et un soutien pour Moussa.",
+        "Haroun accompagna Moussa devant Pharaon et tout au long de l'Exode.",
+        "Quand Moussa s'absenta au mont Sinai, Haroun tenta d'empecher le peuple d'adorer le veau d'or mais ils ne l'ecouterent pas."
+      ],
+      "lecons": ["L'entraide dans la da'wa est une sunna", "Meme un prophete ne peut forcer les gens a croire"],
+      "versetCle": "Et donne-moi un assistant de ma famille : Haroun, mon frere.",
+      "versetRef": "Sourate Taha, 20:29-30"
+    },
+    {
+      "id": 17, "nom": "Dawoud (David)", "nomAr": "داود", "titre": "Le roi prophete",
+      "epoque": "Environ 1000 av. J.-C.", "lieu": "Palestine",
+      "mentionsCoran": "16 fois", "sourates": "Al-Baqara, Sad, Al-Anbiya, Saba",
+      "resume": "Roi et prophete, il recut les Psaumes (Zabour). Il tua le geant Jalout (Goliath) etant jeune. Allah lui soumit les montagnes et les oiseaux pour glorifier Allah avec lui.",
+      "histoire": [
+        "Jeune berger, Dawoud tua le geant Jalout (Goliath) avec sa fronde lors d'une bataille.",
+        "Il devint roi d'Israel. Allah lui donna la prophetie, la sagesse et le Zabour (Psaumes).",
+        "Il avait une voix magnifique. Les montagnes et les oiseaux glorifiaient Allah avec lui.",
+        "Allah lui enseigna l'art de fabriquer des cottes de mailles.",
+        "Il jeunait un jour sur deux (le meilleur jeune selon le Prophete Muhammad)."
+      ],
+      "lecons": ["La force vient d'Allah, pas de la taille physique", "Le dhikr (rappel d'Allah) peut transformer meme la nature"],
+      "versetCle": "Et Nous avons certes donne a Dawoud une grace de Notre part. O montagnes, glorifiez Allah avec lui, ainsi que les oiseaux.",
+      "versetRef": "Sourate Saba, 34:10"
+    },
+    {
+      "id": 18, "nom": "Soulayman (Salomon)", "nomAr": "سليمان", "titre": "Le roi au pouvoir incomparable",
+      "epoque": "Fils de Dawoud", "lieu": "Palestine",
+      "mentionsCoran": "17 fois", "sourates": "An-Naml, Saba, Al-Anbiya, Sad",
+      "resume": "Fils de Dawoud, il recut un royaume sans pareil. Il comprenait le langage des animaux, commandait les djinns et le vent, et possedait une sagesse immense.",
+      "histoire": [
+        "Soulayman herita du royaume de son pere Dawoud et recut des pouvoirs uniques.",
+        "Allah lui soumit les djinns, le vent, et lui enseigna le langage des oiseaux et des fourmis.",
+        "L'histoire de la huppe et de la reine de Saba (Bilqis) : la huppe lui rapporta qu'un peuple adorait le soleil.",
+        "Soulayman invita la reine de Saba a l'Islam. Impressionnee par sa sagesse et son palais, elle se soumit a Allah.",
+        "A sa mort, les djinns qui travaillaient pour lui ne s'en rendirent compte que lorsqu'un ver rongea le baton sur lequel il s'appuyait."
+      ],
+      "lecons": ["Le pouvoir est un don d'Allah et une responsabilite", "La gratitude envers Allah pour Ses bienfaits", "La grandeur appartient a Allah seul"],
+      "versetCle": "Et Soulayman herita de Dawoud et dit : O gens, on nous a appris le langage des oiseaux.",
+      "versetRef": "Sourate An-Naml, 27:16"
+    },
+    {
+      "id": 19, "nom": "Ilyas (Elie)", "nomAr": "إلياس", "titre": "L'appel contre l'idolatrie de Ba'l",
+      "epoque": "Apres Soulayman", "lieu": "Region du Levant",
+      "mentionsCoran": "2 fois", "sourates": "As-Saffat, Al-An'am",
+      "resume": "Envoye pour combattre l'adoration de l'idole Ba'l. Il appela son peuple a revenir a Allah.",
+      "histoire": [
+        "Ilyas fut envoye a un peuple qui adorait une idole nommee Ba'l.",
+        "Il les appela a adorer Allah seul mais la majorite refusa.",
+        "Allah le sauva et perpetua son souvenir dans les generations suivantes."
+      ],
+      "lecons": ["Le courage de denoncer l'idolatrie meme face a la majorite"],
+      "versetCle": "Et Ilyas etait certes parmi les envoyes. Quand il dit a son peuple : Ne craignez-vous pas Allah ?",
+      "versetRef": "Sourate As-Saffat, 37:123-124"
+    },
+    {
+      "id": 20, "nom": "Al-Yasa' (Elisee)", "nomAr": "اليسع", "titre": "Le successeur d'Ilyas",
+      "epoque": "Apres Ilyas", "lieu": "Region du Levant",
+      "mentionsCoran": "2 fois", "sourates": "Al-An'am, Sad",
+      "resume": "Mentionne comme un elu et un vertueux. Il succeda a Ilyas dans la predication.",
+      "histoire": [
+        "Al-Yasa' est mentionne dans le Coran comme faisant partie des meilleurs.",
+        "Il continua la mission d'Ilyas aupres des enfants d'Israel."
+      ],
+      "lecons": ["La continuite de la da'wa est essentielle"],
+      "versetCle": "Et Ismail, Al-Yasa', Younous et Lout. Chacun d'eux, Nous l'avons favorise par-dessus les mondes.",
+      "versetRef": "Sourate Al-An'am, 6:86"
+    },
+    {
+      "id": 21, "nom": "Younous (Jonas)", "nomAr": "يونس", "titre": "Dhoun-Noun — L'homme au poisson",
+      "epoque": "Vers 800 av. J.-C.", "lieu": "Ninive (Irak actuel)",
+      "mentionsCoran": "4 fois", "sourates": "Younous, As-Saffat, Al-Anbiya, Al-Qalam",
+      "resume": "Envoye aux habitants de Ninive. Il quitta son peuple avec colere avant la permission d'Allah et fut avale par un gros poisson. Il invoqua Allah dans les tenebres.",
+      "histoire": [
+        "Younous fut envoye aux habitants de Ninive (plus de 100 000 personnes) qui rejetaient son message.",
+        "Frustre par leur refus, il quitta sa ville sans la permission d'Allah.",
+        "Il embarqua sur un navire. Une tempete se leva et le sort designa Younous pour etre jete a la mer.",
+        "Un gros poisson l'avala. Dans les tenebres du ventre du poisson, il invoqua Allah.",
+        "Allah le sauva et le rejeta sur le rivage. Son peuple, entre-temps, se repentit et fut epargne du chatiment — le seul peuple entier a s'etre repenti dans le Coran."
+      ],
+      "lecons": ["Ne jamais abandonner sa mission", "L'invocation dans la detresse est toujours entendue", "Le repentir sincere d'un peuple entier est possible"],
+      "versetCle": "Il invoqua dans les tenebres : Point de divinite a part Toi. Gloire a Toi ! J'ai ete du nombre des injustes.",
+      "versetRef": "Sourate Al-Anbiya, 21:87"
+    },
+    {
+      "id": 22, "nom": "Zakariyya (Zacharie)", "nomAr": "زكريا", "titre": "Le pere de Yahya",
+      "epoque": "Peu avant Issa", "lieu": "Palestine",
+      "mentionsCoran": "7 fois", "sourates": "Maryam, Al-Imran, Al-Anbiya",
+      "resume": "Prophete age qui prit en charge Maryam (Marie). Il invoqua Allah pour avoir un enfant malgre sa vieillesse et celle de sa femme. Allah lui accorda Yahya.",
+      "histoire": [
+        "Zakariyya etait charge de Maryam dans le temple. Chaque fois qu'il entrait la voir, il trouvait de la nourriture miraculeuse aupres d'elle.",
+        "Inspire par ce miracle, il invoqua Allah : Seigneur, accorde-moi de Ta part une descendance bonne.",
+        "Malgre son age avance et la sterilite de sa femme, Allah lui annonca la naissance de Yahya.",
+        "Comme signe, il ne put parler aux gens pendant trois jours."
+      ],
+      "lecons": ["Il n'est jamais trop tard pour invoquer Allah", "Les miracles renforcent la foi"],
+      "versetCle": "Zakariyya invoqua son Seigneur : Seigneur, ne me laisse pas seul, et Tu es le meilleur des heritiers.",
+      "versetRef": "Sourate Al-Anbiya, 21:89"
+    },
+    {
+      "id": 23, "nom": "Yahya (Jean-Baptiste)", "nomAr": "يحيى", "titre": "Le pieux et le chaste",
+      "epoque": "Contemporain d'Issa", "lieu": "Palestine",
+      "mentionsCoran": "5 fois", "sourates": "Maryam, Al-Imran, Al-Anbiya, Al-An'am",
+      "resume": "Fils de Zakariyya, ne miraculeusement. Le premier a porter ce nom. Il confirma la parole d'Allah (Issa) et fut un modele de piete.",
+      "histoire": [
+        "Yahya est le fils miraculeusement accorde a Zakariyya et sa femme agee.",
+        "Allah lui donna la sagesse des son enfance. Il etait pieux, devoue, obéissant envers ses parents.",
+        "Il confirma Issa (Jesus) comme etant une parole d'Allah.",
+        "Il fut le premier a porter le nom Yahya — Allah dit : Nous ne lui avons pas donne d'homonyme auparavant."
+      ],
+      "lecons": ["La piete peut se manifester des l'enfance", "Le respect des parents est une qualite prophetique"],
+      "versetCle": "O Yahya, tiens fermement au Livre. Et Nous lui donnames la sagesse alors qu'il etait enfant.",
+      "versetRef": "Sourate Maryam, 19:12"
+    },
+    {
+      "id": 24, "nom": "Issa (Jesus)", "nomAr": "عيسى", "titre": "Rouhullah — L'Esprit d'Allah",
+      "epoque": "Environ an 1", "lieu": "Palestine",
+      "mentionsCoran": "25 fois", "sourates": "Al-Imran, Maryam, Al-Ma'ida, An-Nisa",
+      "resume": "Ne miraculeusement de Maryam (Marie) sans pere. Il est la parole d'Allah et un esprit venant de Lui. Il parla au berceau, guerit les malades, et ressuscita les morts par la permission d'Allah.",
+      "histoire": [
+        "Maryam (Marie) etait une femme pieuse choisie par Allah. L'ange Jibril lui annonca qu'elle aurait un fils sans pere.",
+        "Issa naquit miraculeusement. A sa naissance, il parla au berceau pour defendre l'honneur de sa mere.",
+        "Il dit : Je suis le serviteur d'Allah. Il m'a donne le Livre et m'a designe prophete.",
+        "Allah lui accorda des miracles : guerir les aveugles et les lepreux, ressusciter les morts, creer des oiseaux d'argile — tout cela par la permission d'Allah.",
+        "Il recut l'Injil (Evangile) et appela les enfants d'Israel a adorer Allah seul.",
+        "Quand ses ennemis voulurent le crucifier, Allah l'eleva au ciel. Selon l'Islam, il n'a pas ete crucifie.",
+        "Issa reviendra avant la fin des temps pour combattre le Dajjal (l'Antechrist) et retablir la justice."
+      ],
+      "lecons": ["Issa est un prophete et serviteur d'Allah, pas son fils", "Les miracles viennent d'Allah, pas du prophete lui-meme", "Maryam est un modele de piete pour l'humanite"],
+      "versetCle": "Le Messie, Issa fils de Maryam, n'est qu'un messager d'Allah, Sa parole qu'Il envoya a Maryam, et un esprit venant de Lui.",
+      "versetRef": "Sourate An-Nisa, 4:171"
+    },
+    {
+      "id": 25, "nom": "Muhammad", "nomAr": "محمد ﷺ", "titre": "Le Sceau des Prophetes (Khatam an-Nabiyyin)",
+      "epoque": "570-632 ap. J.-C.", "lieu": "La Mecque, Medine",
+      "mentionsCoran": "4 fois (+ Ahmad 1 fois)", "sourates": "Al-Imran, Al-Ahzab, Muhammad, Al-Fath, As-Saff",
+      "resume": "Le dernier prophete et messager. Ne orphelin a La Mecque, il recut la revelation du Coran a 40 ans. Il etablit la communaute musulmane et transmit le message final d'Allah a l'humanite entiere.",
+      "histoire": [
+        "Muhammad naquit orphelin a La Mecque en 570. Son pere Abdullah mourut avant sa naissance et sa mere Amina quand il avait 6 ans.",
+        "Il fut eleve par son grand-pere Abdul-Muttalib puis son oncle Abu Talib. Il etait connu comme Al-Amin (le digne de confiance) et As-Sadiq (le veridique).",
+        "A 40 ans, dans la grotte de Hira, l'ange Jibril lui apporta la premiere revelation : Lis, au nom de ton Seigneur qui a cree.",
+        "Il precha l'Islam a La Mecque pendant 13 ans, subissant persecutions et boycott avec les premiers musulmans.",
+        "L'Isra et le Mi'raj : voyage nocturne de La Mecque a Jerusalem puis l'ascension aux cieux, ou la priere fut prescrite.",
+        "La Hijra (emigration) vers Medine en 622 marque le debut du calendrier islamique. Il y etablit le premier Etat musulman.",
+        "Il mena plusieurs batailles pour defendre la communaute : Badr, Uhud, Al-Khandaq (la Tranchee).",
+        "La conquete pacifique de La Mecque en l'an 8 de l'Hegire. Il pardonna a ses anciens persecuteurs.",
+        "Son sermon d'adieu au mont Arafat rappela les droits fondamentaux et l'egalite entre les hommes.",
+        "Il mourut en 632 a Medine, apres avoir accompli sa mission. Le Coran fut complete et preserve."
+      ],
+      "lecons": ["La misericorde et le pardon meme envers les ennemis", "L'egalite de tous les etres humains", "Le Coran est le miracle eternel et le message final"],
+      "versetCle": "Muhammad n'est le pere d'aucun homme parmi vous, mais il est le Messager d'Allah et le Sceau des prophetes.",
+      "versetRef": "Sourate Al-Ahzab, 33:40"
+    }
+  ]
+}
