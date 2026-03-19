@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { href: '/dictionnaire', icon: 'م', label: 'Dictionnaire', ar: 'المعجم' },
   { href: '/hadith',       icon: 'ح', label: 'Hadith',     ar: 'الحديث' },
   { href: '/duas',         icon: 'د', label: 'Invocations', ar: 'الدعاء' },
+  { href: '/piliers',      icon: 'ر', label: 'Piliers',    ar: 'الأركان' },
   { href: '/alphabet',     icon: 'أ', label: 'Alphabet',   ar: 'الحروف' },
 ]
 

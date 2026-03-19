@@ -1,0 +1,109 @@
+/* ══════════════════════════════════════════════════════════════
+   PILIERS — Piliers de l'Islam & de la Foi
+   ══════════════════════════════════════════════════════════════ */
+
+.loading { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+.loadingText { font-family: var(--font-arabic); font-size: 24px; color: var(--gold); opacity: 0.7; animation: pulse 1.8s ease infinite; }
+.container { max-width: 900px; margin: 0 auto; padding: var(--space-lg) 20px; animation: fadeInUp var(--duration-slow) var(--ease-out) both; }
+
+/* Header */
+.header { margin-bottom: var(--space-lg); }
+.headerArabic { font-family: var(--font-arabic); font-size: 22px; color: var(--gold-light); direction: rtl; margin-bottom: 4px; }
+.headerSub { font-size: 13px; color: var(--text-dim); }
+
+/* Tabs */
+.tabs { display: flex; gap: 0; margin-bottom: var(--space-lg); border-bottom: 1px solid rgba(201,168,76,0.15); }
+.tab { flex: 1; padding: 12px 16px; background: none; border: none; border-bottom: 2px solid transparent; color: var(--text-muted); font-size: 13px; font-weight: 600; cursor: pointer; transition: all var(--duration-normal) ease; text-align: center; }
+.tabActive { color: var(--gold); border-bottom-color: var(--gold); }
+.tab:hover:not(.tabActive) { color: var(--text-dim); }
+
+/* Intro */
+.intro { font-size: 14px; line-height: 1.8; color: var(--text-dim); margin-bottom: var(--space-lg); padding: 16px; background: rgba(201,168,76,0.03); border-radius: var(--radius-md); border-left: 3px solid rgba(201,168,76,0.2); }
+
+/* Back */
+.backBtn { background: none; border: none; color: var(--gold); font-size: 13px; cursor: pointer; margin-bottom: var(--space-md); padding: 6px 0; display: flex; align-items: center; gap: 6px; transition: color var(--duration-fast) ease; }
+.backBtn:hover { color: var(--gold-light); }
+
+/* Pilier grid */
+.pilierGrid { display: flex; flex-direction: column; gap: 12px; }
+.pilierCard { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 20px; cursor: pointer; transition: all var(--duration-normal) var(--ease-out); display: flex; align-items: flex-start; gap: 16px; }
+.pilierCard:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(201,168,76,0.06); }
+.pilierIcon { font-size: 28px; min-width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.15); flex-shrink: 0; }
+.pilierInfo { flex: 1; }
+.pilierName { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.pilierNameAr { font-family: var(--font-arabic); font-size: 15px; color: var(--gold); direction: rtl; margin-bottom: 6px; }
+.pilierSousTitre { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* Detail view */
+.detailHeader { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+.detailIcon { font-size: 36px; min-width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); }
+.detailName { font-size: 20px; font-weight: 700; color: var(--text); }
+.detailNameAr { font-family: var(--font-arabic); font-size: 18px; color: var(--gold); direction: rtl; }
+.detailSousTitre { font-size: 14px; color: var(--text-dim); margin-bottom: var(--space-md); font-style: italic; }
+
+/* Text block (shahada, etc.) */
+.textBlock { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 24px; margin-bottom: var(--space-lg); }
+.textAr { font-family: var(--font-arabic); font-size: 24px; line-height: 2; color: var(--gold-light); direction: rtl; text-align: center; margin-bottom: 14px; text-shadow: 0 0 30px rgba(201,168,76,0.08); }
+.textPhonetic { font-size: 13px; color: var(--text-dim); font-style: italic; text-align: center; margin-bottom: 12px; padding: 8px 14px; background: rgba(201,168,76,0.03); border-radius: var(--radius-sm); }
+.textFr { font-size: 14px; line-height: 1.8; color: var(--text); text-align: center; }
+
+/* Details list */
+.detailsList { display: flex; flex-direction: column; gap: 10px; margin-bottom: var(--space-lg); }
+.detailItem { display: flex; gap: 12px; padding: 12px 14px; background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); font-size: 14px; line-height: 1.7; color: var(--text-dim); align-items: flex-start; }
+.detailBullet { min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(201,168,76,0.08); color: var(--gold); font-size: 11px; font-weight: 700; flex-shrink: 0; }
+
+.ref { font-size: 11px; color: var(--text-muted); font-style: italic; margin-bottom: var(--space-lg); }
+
+/* Sub title */
+.subTitle { font-size: 16px; font-weight: 600; color: var(--gold-light); margin-bottom: var(--space-md); margin-top: var(--space-md); }
+
+/* Prayer table */
+.priereTable { display: flex; flex-direction: column; gap: 8px; margin-bottom: var(--space-lg); }
+.priereRow { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 16px; display: flex; gap: 16px; align-items: center; }
+.priereMain { min-width: 140px; }
+.priereNom { font-size: 14px; font-weight: 600; color: var(--text); }
+.priereNomAr { font-family: var(--font-arabic); font-size: 14px; color: var(--gold); direction: rtl; }
+.priereDetails { flex: 1; }
+.priereHoraire { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+.priereRakaat { display: flex; gap: 6px; flex-wrap: wrap; }
+.rakaatBadge { font-size: 11px; font-weight: 700; color: var(--gold); background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.15); padding: 2px 8px; border-radius: var(--radius-sm); }
+.sunnaBadge { font-size: 10px; color: var(--text-muted); background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.08); padding: 2px 6px; border-radius: var(--radius-sm); }
+
+/* Guide button */
+.guideBtn { width: 100%; padding: 14px; border-radius: var(--radius-md); border: 1px solid rgba(201,168,76,0.3); background: rgba(201,168,76,0.06); color: var(--gold); font-size: 14px; font-weight: 600; cursor: pointer; transition: all var(--duration-normal) ease; }
+.guideBtn:hover { background: rgba(201,168,76,0.12); border-color: rgba(201,168,76,0.5); }
+
+/* Prayer guide */
+.guideHeader { font-size: 20px; font-weight: 700; color: var(--gold-light); margin-bottom: 4px; }
+.guideSub { font-size: 12px; color: var(--text-muted); margin-bottom: var(--space-lg); }
+.guideList { display: flex; flex-direction: column; gap: 16px; }
+
+/* Step card */
+.stepCard { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 24px; }
+.stepHeader { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.stepNum { min-width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); color: var(--gold); font-size: 16px; font-weight: 700; flex-shrink: 0; }
+.stepTitle { font-size: 15px; font-weight: 600; color: var(--text); }
+.stepTitleAr { font-family: var(--font-arabic); font-size: 14px; color: var(--gold); direction: rtl; }
+.stepDesc { font-size: 14px; line-height: 1.7; color: var(--text-dim); margin-bottom: 14px; }
+
+.stepTextBlock { background: rgba(201,168,76,0.03); border: 1px solid rgba(201,168,76,0.1); border-radius: var(--radius-sm); padding: 18px; margin-bottom: 10px; }
+.stepAr { font-family: var(--font-arabic); font-size: 20px; line-height: 2; color: var(--gold-light); direction: rtl; text-align: right; margin-bottom: 10px; }
+.stepPhonetic { font-size: 12px; color: var(--text-dim); font-style: italic; margin-bottom: 8px; line-height: 1.6; }
+.stepDivider { height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.15), transparent); margin: 8px 0; }
+.stepFr { font-size: 13px; line-height: 1.7; color: var(--text); }
+.stepNote { font-size: 12px; color: var(--text-muted); font-style: italic; padding: 8px 12px; background: rgba(201,168,76,0.03); border-radius: var(--radius-sm); border-left: 2px solid rgba(201,168,76,0.15); }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .container { padding: var(--space-md) 14px; }
+  .pilierCard { padding: 16px; }
+  .pilierIcon { font-size: 22px; min-width: 40px; height: 40px; }
+  .textAr { font-size: 20px; }
+  .stepAr { font-size: 18px; }
+  .priereRow { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .priereMain { min-width: auto; }
+  .tabs { flex-direction: column; gap: 0; }
+  .tab { text-align: left; padding: 10px 16px; }
+}
+
+@keyframes pulse { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.3; } }

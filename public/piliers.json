@@ -1,0 +1,295 @@
+{
+  "islam": {
+    "title": "Les 5 Piliers de l'Islam",
+    "titleAr": "أركان الإسلام",
+    "intro": "Les cinq piliers de l'Islam sont les fondements de la vie musulmane. Ils constituent les obligations essentielles que tout musulman doit accomplir.",
+    "piliers": [
+      {
+        "id": 1,
+        "nom": "La Shahada",
+        "nomAr": "الشهادة",
+        "sousTitre": "L'attestation de foi",
+        "icon": "☪",
+        "resume": "Témoigner qu'il n'y a de divinité digne d'adoration qu'Allah et que Muhammad est Son messager.",
+        "arabe": "أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا ٱللهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ ٱللهِ",
+        "phonetique": "Ash-hadou an lâ ilâha illa Allâh, wa ash-hadou anna Muhammadan rasûlou Allâh",
+        "traduction": "J'atteste qu'il n'y a de divinité digne d'adoration qu'Allah et j'atteste que Muhammad est le messager d'Allah.",
+        "details": [
+          "C'est le premier pilier et le plus important. Prononcer la Shahada avec sincérité et conviction suffit pour entrer dans l'Islam.",
+          "La première partie (Lâ ilâha illa Allâh) signifie qu'on reconnaît qu'Allah est le seul Dieu digne d'être adoré.",
+          "La seconde partie (Muhammadan rasûlou Allâh) signifie qu'on accepte Muhammad comme le dernier prophète et messager d'Allah.",
+          "Elle doit être prononcée avec conviction dans le coeur, pas seulement avec la langue."
+        ],
+        "ref": "Hadith rapporté par Bukhari et Muslim"
+      },
+      {
+        "id": 2,
+        "nom": "La Salat",
+        "nomAr": "الصلاة",
+        "sousTitre": "La prière rituelle",
+        "icon": "۩",
+        "resume": "Accomplir les cinq prières quotidiennes obligatoires aux horaires prescrits.",
+        "details": [
+          "La prière est le deuxième pilier de l'Islam et le premier acte sur lequel le serviteur sera interrogé le Jour du Jugement.",
+          "Elle est obligatoire pour tout musulman pubère et sain d'esprit.",
+          "Les cinq prières sont : Fajr (aube), Dhuhr (midi), Asr (après-midi), Maghrib (coucher du soleil), Isha (nuit)."
+        ],
+        "ref": "Sourate Al-Baqara, verset 43",
+        "prieres": [
+          {"nom": "Fajr (Al-Soubh)", "nomAr": "الفجر", "horaire": "Entre l'aube et le lever du soleil", "rakaat": 2, "sunna_avant": 2, "sunna_apres": 0},
+          {"nom": "Dhuhr (Az-Zouhr)", "nomAr": "الظهر", "horaire": "Quand le soleil quitte son zénith", "rakaat": 4, "sunna_avant": 4, "sunna_apres": 2},
+          {"nom": "Asr (Al-Asr)", "nomAr": "العصر", "horaire": "Mi-après-midi jusqu'au coucher du soleil", "rakaat": 4, "sunna_avant": 0, "sunna_apres": 0},
+          {"nom": "Maghrib (Al-Maghrib)", "nomAr": "المغرب", "horaire": "Juste après le coucher du soleil", "rakaat": 3, "sunna_avant": 0, "sunna_apres": 2},
+          {"nom": "Isha (Al-Isha)", "nomAr": "العشاء", "horaire": "Quand le crépuscule disparaît", "rakaat": 4, "sunna_avant": 0, "sunna_apres": 2}
+        ],
+        "guide_priere": [
+          {
+            "etape": 1,
+            "titre": "L'intention (An-Niyyah)",
+            "titreAr": "النية",
+            "description": "Formuler l'intention dans le coeur de prier telle prière. L'intention se fait dans le coeur, pas à voix haute.",
+            "detail": "Par exemple, avoir l'intention de prier la prière du Dhuhr, 4 raka'at, en direction de la Qibla."
+          },
+          {
+            "etape": 2,
+            "titre": "Le Takbir d'entrée (Takbirat al-Ihram)",
+            "titreAr": "تكبيرة الإحرام",
+            "description": "Se tenir debout face à la Qibla (direction de La Mecque), lever les mains à hauteur des épaules ou des oreilles et dire :",
+            "arabe": "اللهُ أَكْبَرُ",
+            "phonetique": "Allâhou Akbar",
+            "traduction": "Allah est le plus Grand"
+          },
+          {
+            "etape": 3,
+            "titre": "L'invocation d'ouverture (Du'a al-Istiftah)",
+            "titreAr": "دعاء الاستفتاح",
+            "description": "Placer la main droite sur la main gauche sur la poitrine et réciter à voix basse :",
+            "arabe": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ",
+            "phonetique": "Soubhânaka Allâhoumma wa bihamdik, wa tabâraka ismouk, wa ta'âlâ jaddouk, wa lâ ilâha ghayrouk",
+            "traduction": "Gloire et louange à Toi, ô Allah. Béni soit Ton nom, exaltée soit Ta grandeur, et il n'y a de divinité digne d'adoration que Toi."
+          },
+          {
+            "etape": 4,
+            "titre": "La demande de protection (Al-Isti'adha)",
+            "titreAr": "الاستعاذة",
+            "description": "Dire à voix basse :",
+            "arabe": "أَعُوذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",
+            "phonetique": "A'oudhou billâhi mina ash-shaytâni ar-rajîm",
+            "traduction": "Je cherche refuge auprès d'Allah contre Satan le maudit"
+          },
+          {
+            "etape": 5,
+            "titre": "La Basmala et la Fatiha",
+            "titreAr": "البسملة والفاتحة",
+            "description": "Réciter la sourate Al-Fatiha (obligatoire dans chaque rak'a). Commencer par la Basmala :",
+            "arabe": "بِسْمِ ٱللهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ ۝ ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَالَمِينَ ۝ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ ۝ مَالِكِ يَوْمِ ٱلدِّينِ ۝ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ۝ ٱهْدِنَا ٱلصِّرَاطَ ٱلْمُسْتَقِيمَ ۝ صِرَاطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّالِّينَ",
+            "phonetique": "Bismillâhi ar-Rahmâni ar-Rahîm. Al-hamdou lillâhi Rabbi al-'âlamîn. Ar-Rahmâni ar-Rahîm. Mâliki yawmi ad-dîn. Iyyâka na'boudou wa iyyâka nasta'în. Ihdina as-sirâta al-moustaqîm. Sirâta alladhîna an'amta 'alayhim, ghayri al-maghdoubi 'alayhim wa la ad-dâllîn.",
+            "traduction": "Au nom d'Allah, le Tout Clément, le Tout Miséricordieux. Louange à Allah, Seigneur des mondes. Le Tout Clément, le Tout Miséricordieux. Maître du Jour du Jugement. C'est Toi que nous adorons, et c'est Toi dont nous implorons le secours. Guide-nous vers le chemin droit. Le chemin de ceux que Tu as comblés de bienfaits, non pas de ceux qui ont encouru Ta colère, ni des égarés.",
+            "detail": "Après la Fatiha, dire « Âmîn » (O Allah exauce). Puis réciter une autre sourate ou des versets du Coran (seulement dans les 2 premières rak'at)."
+          },
+          {
+            "etape": 6,
+            "titre": "L'inclinaison (Ar-Roukou')",
+            "titreAr": "الركوع",
+            "description": "Dire « Allâhou Akbar » en s'inclinant, le dos droit et parallèle au sol, les mains sur les genoux. Puis dire 3 fois :",
+            "arabe": "سُبْحَانَ رَبِّيَ ٱلْعَظِيمِ",
+            "phonetique": "Soubhâna Rabbiya al-'Azîm",
+            "traduction": "Gloire à mon Seigneur le Très Grand"
+          },
+          {
+            "etape": 7,
+            "titre": "Le redressement (Al-I'tidal)",
+            "titreAr": "الاعتدال",
+            "description": "Se redresser en disant :",
+            "arabe": "سَمِعَ ٱللهُ لِمَنْ حَمِدَهُ، رَبَّنَا وَلَكَ ٱلْحَمْدُ",
+            "phonetique": "Sami'a Allâhou liman hamidah. Rabbanâ wa laka al-hamd",
+            "traduction": "Allah entend celui qui Le loue. Notre Seigneur, à Toi la louange."
+          },
+          {
+            "etape": 8,
+            "titre": "La prosternation (As-Soujoud)",
+            "titreAr": "السجود",
+            "description": "Dire « Allâhou Akbar » et se prosterner. Sept parties du corps touchent le sol : le front avec le nez, les deux mains, les deux genoux et les orteils des deux pieds. Dire 3 fois :",
+            "arabe": "سُبْحَانَ رَبِّيَ ٱلْأَعْلَى",
+            "phonetique": "Soubhâna Rabbiya al-A'lâ",
+            "traduction": "Gloire à mon Seigneur le Très Haut"
+          },
+          {
+            "etape": 9,
+            "titre": "L'assise entre les deux prosternations",
+            "titreAr": "الجلوس بين السجدتين",
+            "description": "Se relever en disant « Allâhou Akbar », s'asseoir et dire :",
+            "arabe": "رَبِّ ٱغْفِرْ لِي، رَبِّ ٱغْفِرْ لِي",
+            "phonetique": "Rabbi ighfir lî, Rabbi ighfir lî",
+            "traduction": "Seigneur, pardonne-moi. Seigneur, pardonne-moi.",
+            "detail": "Puis effectuer une seconde prosternation identique à la première."
+          },
+          {
+            "etape": 10,
+            "titre": "Le Tashahhoud (At-Tahiyyat)",
+            "titreAr": "التشهد",
+            "description": "Après chaque 2 rak'at, s'asseoir et réciter le Tashahhoud :",
+            "arabe": "ٱلتَّحِيَّاتُ لِلَّهِ وَٱلصَّلَوَاتُ وَٱلطَّيِّبَاتُ، ٱلسَّلَامُ عَلَيْكَ أَيُّهَا ٱلنَّبِيُّ وَرَحْمَةُ ٱللهِ وَبَرَكَاتُهُ، ٱلسَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ ٱللهِ ٱلصَّالِحِينَ. أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+            "phonetique": "At-tahiyyâtou lillâhi wa as-salawâtou wa at-tayyibât. As-salâmou 'alayka ayyouha an-Nabiyyou wa rahmatou Allâhi wa barakâtouh. As-salâmou 'alaynâ wa 'alâ 'ibâdi Allâhi as-sâlihîn. Ash-hadou an lâ ilâha illa Allâh, wa ash-hadou anna Muhammadan 'abdouhou wa rasûlouh.",
+            "traduction": "Les salutations sont pour Allah, ainsi que les prières et les bonnes oeuvres. Que la paix soit sur toi, ô Prophète, ainsi que la miséricorde d'Allah et Ses bénédictions. Que la paix soit sur nous et sur les pieux serviteurs d'Allah. J'atteste qu'il n'y a de divinité digne d'adoration qu'Allah et j'atteste que Muhammad est Son serviteur et Son messager.",
+            "detail": "Lever l'index de la main droite durant le Tashahhoud."
+          },
+          {
+            "etape": 11,
+            "titre": "La prière sur le Prophète (As-Salat al-Ibrahimiyya)",
+            "titreAr": "الصلاة الإبراهيمية",
+            "description": "Dans le dernier Tashahhoud (avant le salam), ajouter :",
+            "arabe": "ٱللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ. ٱللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
+            "phonetique": "Allâhoumma salli 'alâ Muhammad wa 'alâ âli Muhammad, kamâ sallayta 'alâ Ibrâhîm wa 'alâ âli Ibrâhîm, innaka Hamîdoun Majîd. Allâhoumma bârik 'alâ Muhammad wa 'alâ âli Muhammad, kamâ bârakta 'alâ Ibrâhîm wa 'alâ âli Ibrâhîm, innaka Hamîdoun Majîd.",
+            "traduction": "O Allah, prie sur Muhammad et sur la famille de Muhammad, comme Tu as prié sur Ibrahim et la famille d'Ibrahim. Tu es certes Digne de louange et de gloire. O Allah, bénis Muhammad et la famille de Muhammad, comme Tu as béni Ibrahim et la famille d'Ibrahim. Tu es certes Digne de louange et de gloire."
+          },
+          {
+            "etape": 12,
+            "titre": "Les salutations finales (At-Taslim)",
+            "titreAr": "التسليم",
+            "description": "Tourner la tête à droite puis à gauche en disant à chaque fois :",
+            "arabe": "ٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللهِ",
+            "phonetique": "As-salâmou 'alaykoum wa rahmatou Allâh",
+            "traduction": "Que la paix et la miséricorde d'Allah soient sur vous.",
+            "detail": "La prière est terminée. Il est recommandé de faire des invocations et du dhikr après la prière."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "nom": "La Zakat",
+        "nomAr": "الزكاة",
+        "sousTitre": "L'aumône obligatoire",
+        "icon": "♦",
+        "resume": "Verser 2,5% de son épargne annuelle aux nécessiteux lorsqu'on atteint le seuil minimum (nissab).",
+        "details": [
+          "La Zakat est un acte d'adoration financier obligatoire pour tout musulman possédant un minimum de richesse (le nissab) pendant une année lunaire complète.",
+          "Le taux est de 2,5% sur l'épargne (or, argent, argent liquide, investissements).",
+          "Le nissab est l'équivalent de 85 grammes d'or ou 595 grammes d'argent.",
+          "Les bénéficiaires sont mentionnés dans le Coran (sourate At-Tawba, verset 60) : les pauvres, les nécessiteux, ceux qui collectent la zakat, les nouveaux musulmans, l'affranchissement des esclaves, les endettés, dans le sentier d'Allah, et le voyageur en difficulté."
+        ],
+        "ref": "Sourate At-Tawba, verset 60"
+      },
+      {
+        "id": 4,
+        "nom": "Le Sawm",
+        "nomAr": "الصوم",
+        "sousTitre": "Le jeûne du mois de Ramadan",
+        "icon": "☾",
+        "resume": "Jeûner du lever au coucher du soleil pendant le mois de Ramadan.",
+        "details": [
+          "Le jeûne du Ramadan est obligatoire pour tout musulman pubère, sain d'esprit et en bonne santé.",
+          "Il consiste à s'abstenir de manger, boire et avoir des rapports intimes du lever du soleil (Fajr) au coucher du soleil (Maghrib).",
+          "Le Suhoor (repas avant l'aube) est recommandé, et il faut rompre le jeûne dès le coucher du soleil avec l'Iftar.",
+          "Les personnes malades, en voyage, les femmes enceintes ou allaitantes, et les personnes âgées fragiles sont exemptées mais doivent compenser.",
+          "Le Ramadan est aussi un mois de lecture du Coran, de prières nocturnes (Tarawih) et de générosité accrue."
+        ],
+        "ref": "Sourate Al-Baqara, verset 183"
+      },
+      {
+        "id": 5,
+        "nom": "Le Hajj",
+        "nomAr": "الحج",
+        "sousTitre": "Le pèlerinage à La Mecque",
+        "icon": "◈",
+        "resume": "Accomplir le pèlerinage à La Mecque au moins une fois dans sa vie pour celui qui en a les moyens.",
+        "details": [
+          "Le Hajj est obligatoire une fois dans la vie pour tout musulman qui en a les moyens physiques et financiers.",
+          "Il se déroule du 8 au 13 Dhoul Hijja (12e mois du calendrier islamique).",
+          "Les rites principaux incluent : le Tawaf (circumambulation autour de la Kaaba), le Sa'i (parcours entre Safa et Marwa), la station à Arafat, et la lapidation des stèles à Mina.",
+          "Le pèlerin entre en état de sacralisation (Ihram) et porte deux pièces de tissu blanc non cousu (pour les hommes).",
+          "Le Hajj efface tous les péchés antérieurs selon le hadith du Prophète (paix et salut sur lui)."
+        ],
+        "ref": "Sourate Al-Imran, verset 97"
+      }
+    ]
+  },
+  "iman": {
+    "title": "Les 6 Piliers de la Foi",
+    "titleAr": "أركان الإيمان",
+    "intro": "Les six piliers de la foi (Al-Iman) sont les croyances fondamentales que tout musulman doit avoir dans son coeur. Ils sont mentionnés dans le célèbre hadith de Jibril.",
+    "piliers": [
+      {
+        "id": 1,
+        "nom": "La foi en Allah",
+        "nomAr": "الإيمان بالله",
+        "icon": "◉",
+        "resume": "Croire en l'existence d'Allah, en Son unicité dans Sa seigneurie, Son adoration et Ses noms et attributs.",
+        "details": [
+          "Croire qu'Allah est le seul Créateur, Pourvoyeur et Maître de l'univers (Tawhid ar-Rububiyya).",
+          "Croire qu'Allah seul mérite d'être adoré, sans Lui associer quoi que ce soit (Tawhid al-Uluhiyya).",
+          "Croire en Ses noms et attributs tels qu'Il se les est attribués dans le Coran et la Sunna, sans les altérer ni les nier (Tawhid al-Asma wa as-Sifat).",
+          "Allah possède 99 noms (Asma al-Husna) qui décrivent Ses attributs de perfection."
+        ]
+      },
+      {
+        "id": 2,
+        "nom": "La foi aux Anges",
+        "nomAr": "الإيمان بالملائكة",
+        "icon": "❋",
+        "resume": "Croire en l'existence des anges, créatures de lumière, qui obéissent à Allah et accomplissent Ses ordres.",
+        "details": [
+          "Les anges sont des créatures de lumière créées par Allah. Ils ne désobéissent jamais à Allah.",
+          "Parmi les anges connus : Jibril (Gabriel) — chargé de la révélation, Mikail (Michaël) — chargé de la subsistance, Israfil — chargé de souffler dans la trompe, Azrael (Malak al-Mawt) — l'ange de la mort.",
+          "Chaque personne a des anges gardiens (Al-Hafaza) et des anges scribes (Kiraman Katibin) qui enregistrent ses actes.",
+          "Les anges Mounkar et Nakir interrogent les morts dans la tombe."
+        ]
+      },
+      {
+        "id": 3,
+        "nom": "La foi aux Livres révélés",
+        "nomAr": "الإيمان بالكتب",
+        "icon": "📖",
+        "resume": "Croire en tous les livres qu'Allah a révélés à Ses prophètes, dont le Coran est le dernier et le seul préservé.",
+        "details": [
+          "Les principaux livres révélés sont : les Suhuf (feuillets) d'Ibrahim, la Torah (Tawrat) de Moussa, les Psaumes (Zabour) de Dawoud, l'Évangile (Injil) de Issa, et le Coran de Muhammad.",
+          "Le Coran est le dernier livre révélé et le seul qui n'a pas été altéré.",
+          "Le Coran abroge les livres précédents et constitue la référence finale en matière de guidance divine.",
+          "Allah a promis de préserver le Coran de toute altération (Sourate Al-Hijr, verset 9)."
+        ]
+      },
+      {
+        "id": 4,
+        "nom": "La foi aux Prophètes",
+        "nomAr": "الإيمان بالرسل",
+        "icon": "✦",
+        "resume": "Croire en tous les prophètes et messagers envoyés par Allah, du premier (Adam) au dernier (Muhammad).",
+        "details": [
+          "Allah a envoyé des prophètes à chaque peuple pour les guider vers Son adoration.",
+          "25 prophètes sont mentionnés dans le Coran, parmi lesquels : Adam, Nouh (Noé), Ibrahim (Abraham), Moussa (Moïse), Issa (Jésus) et Muhammad.",
+          "Les 5 prophètes doués de fermeté (Oulou al-'Azm) sont : Nouh, Ibrahim, Moussa, Issa et Muhammad.",
+          "Muhammad est le sceau des prophètes (Khatam an-Nabiyyin) — il n'y aura plus de prophète après lui."
+        ]
+      },
+      {
+        "id": 5,
+        "nom": "La foi au Jour Dernier",
+        "nomAr": "الإيمان باليوم الآخر",
+        "icon": "⏳",
+        "resume": "Croire au Jour du Jugement, à la résurrection, au compte des actes, au Paradis et à l'Enfer.",
+        "details": [
+          "Croire que cette vie terrestre prendra fin et que chaque être sera ressuscité pour être jugé.",
+          "Les actes de chacun seront pesés sur la Balance (Al-Mizan) et un livre des actes sera remis.",
+          "Le Sirat (pont) sera traversé au-dessus de l'Enfer — les croyants le traverseront selon leurs actes.",
+          "Le Paradis (Al-Janna) est la récompense éternelle des croyants vertueux.",
+          "L'Enfer (An-Nar) est le châtiment pour ceux qui ont rejeté la vérité et persisté dans le mal.",
+          "L'intercession du Prophète Muhammad sera accordée le Jour du Jugement."
+        ]
+      },
+      {
+        "id": 6,
+        "nom": "La foi au Destin",
+        "nomAr": "الإيمان بالقدر",
+        "icon": "∞",
+        "resume": "Croire au destin divin (Al-Qadar), que le bien et le mal sont décrétés par Allah selon Sa sagesse.",
+        "details": [
+          "Croire qu'Allah sait tout ce qui s'est passé, ce qui se passe et ce qui se passera (Al-'Ilm — la science divine).",
+          "Croire qu'Allah a tout inscrit dans la Table Préservée (Al-Lawh al-Mahfuz) avant la création.",
+          "Croire que rien ne se produit sans la volonté d'Allah (Al-Mashi'a — la volonté divine).",
+          "Croire qu'Allah est le Créateur de toute chose, y compris les actes des hommes (Al-Khalq — la création).",
+          "Cela n'annule pas le libre arbitre : l'homme fait ses choix et en est responsable, mais Allah connaît d'avance ces choix."
+        ]
+      }
+    ]
+  }
+}
