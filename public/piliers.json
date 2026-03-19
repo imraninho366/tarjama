@@ -36,11 +36,46 @@
         ],
         "ref": "Sourate Al-Baqara, verset 43",
         "prieres": [
-          {"nom": "Fajr (Al-Soubh)", "nomAr": "الفجر", "horaire": "Entre l'aube et le lever du soleil", "rakaat": 2, "sunna_avant": 2, "sunna_apres": 0},
-          {"nom": "Dhuhr (Az-Zouhr)", "nomAr": "الظهر", "horaire": "Quand le soleil quitte son zénith", "rakaat": 4, "sunna_avant": 4, "sunna_apres": 2},
-          {"nom": "Asr (Al-Asr)", "nomAr": "العصر", "horaire": "Mi-après-midi jusqu'au coucher du soleil", "rakaat": 4, "sunna_avant": 0, "sunna_apres": 0},
-          {"nom": "Maghrib (Al-Maghrib)", "nomAr": "المغرب", "horaire": "Juste après le coucher du soleil", "rakaat": 3, "sunna_avant": 0, "sunna_apres": 2},
-          {"nom": "Isha (Al-Isha)", "nomAr": "العشاء", "horaire": "Quand le crépuscule disparaît", "rakaat": 4, "sunna_avant": 0, "sunna_apres": 2}
+          {
+            "nom": "Fajr (Al-Soubh)",
+            "nomAr": "الفجر",
+            "horaire": "Entre l'aube et le lever du soleil",
+            "rakaat": 2,
+            "sunna_avant": 2,
+            "sunna_apres": 0
+          },
+          {
+            "nom": "Dhuhr (Az-Zouhr)",
+            "nomAr": "الظهر",
+            "horaire": "Quand le soleil quitte son zénith",
+            "rakaat": 4,
+            "sunna_avant": 4,
+            "sunna_apres": 2
+          },
+          {
+            "nom": "Asr (Al-Asr)",
+            "nomAr": "العصر",
+            "horaire": "Mi-après-midi jusqu'au coucher du soleil",
+            "rakaat": 4,
+            "sunna_avant": 0,
+            "sunna_apres": 0
+          },
+          {
+            "nom": "Maghrib (Al-Maghrib)",
+            "nomAr": "المغرب",
+            "horaire": "Juste après le coucher du soleil",
+            "rakaat": 3,
+            "sunna_avant": 0,
+            "sunna_apres": 2
+          },
+          {
+            "nom": "Isha (Al-Isha)",
+            "nomAr": "العشاء",
+            "horaire": "Quand le crépuscule disparaît",
+            "rakaat": 4,
+            "sunna_avant": 0,
+            "sunna_apres": 2
+          }
         ],
         "guide_priere": [
           {
@@ -52,6 +87,16 @@
           },
           {
             "etape": 2,
+            "titre": "L'Iqama (le second appel)",
+            "titreAr": "الإقامة",
+            "description": "Juste avant de commencer la prière, on prononce l'Iqama (le second appel à la prière). Elle est obligatoire pour les hommes et recommandée pour les femmes. On la dit à voix modérée :",
+            "arabe": "اللهُ أَكْبَرُ اللهُ أَكْبَرُ، أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللهُ، أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللهِ، حَيَّ عَلَى الصَّلَاةِ، حَيَّ عَلَى الْفَلَاحِ، قَدْ قَامَتِ الصَّلَاةُ، قَدْ قَامَتِ الصَّلَاةُ، اللهُ أَكْبَرُ اللهُ أَكْبَرُ، لَا إِلٰهَ إِلَّا اللهُ",
+            "phonetique": "Allâhou Akbar, Allâhou Akbar. Ash-hadou an lâ ilâha illa Allâh. Ash-hadou anna Muhammadan rasûlou Allâh. Hayya 'ala as-salâh. Hayya 'ala al-falâh. Qad qâmati as-salâh, qad qâmati as-salâh. Allâhou Akbar, Allâhou Akbar. Lâ ilâha illa Allâh.",
+            "traduction": "Allah est le plus Grand, Allah est le plus Grand. J'atteste qu'il n'y a de divinité digne d'adoration qu'Allah. J'atteste que Muhammad est le messager d'Allah. Venez à la prière. Venez au succès. La prière va commencer, la prière va commencer. Allah est le plus Grand, Allah est le plus Grand. Il n'y a de divinité digne d'adoration qu'Allah.",
+            "detail": "L'Iqama se distingue de l'Adhan (premier appel) par l'ajout de « Qad qâmati as-salâh » (la prière va commencer) et par le fait qu'elle est dite plus rapidement et à voix plus basse."
+          },
+          {
+            "etape": 3,
             "titre": "Le Takbir d'entrée (Takbirat al-Ihram)",
             "titreAr": "تكبيرة الإحرام",
             "description": "Se tenir debout face à la Qibla (direction de La Mecque), lever les mains à hauteur des épaules ou des oreilles et dire :",
@@ -60,7 +105,7 @@
             "traduction": "Allah est le plus Grand"
           },
           {
-            "etape": 3,
+            "etape": 4,
             "titre": "L'invocation d'ouverture (Du'a al-Istiftah)",
             "titreAr": "دعاء الاستفتاح",
             "description": "Placer la main droite sur la main gauche sur la poitrine et réciter à voix basse :",
@@ -69,7 +114,7 @@
             "traduction": "Gloire et louange à Toi, ô Allah. Béni soit Ton nom, exaltée soit Ta grandeur, et il n'y a de divinité digne d'adoration que Toi."
           },
           {
-            "etape": 4,
+            "etape": 5,
             "titre": "La demande de protection (Al-Isti'adha)",
             "titreAr": "الاستعاذة",
             "description": "Dire à voix basse :",
@@ -78,7 +123,7 @@
             "traduction": "Je cherche refuge auprès d'Allah contre Satan le maudit"
           },
           {
-            "etape": 5,
+            "etape": 6,
             "titre": "La Basmala et la Fatiha",
             "titreAr": "البسملة والفاتحة",
             "description": "Réciter la sourate Al-Fatiha (obligatoire dans chaque rak'a). Commencer par la Basmala :",
@@ -88,7 +133,7 @@
             "detail": "Après la Fatiha, dire « Âmîn » (O Allah exauce). Puis réciter une autre sourate ou des versets du Coran (seulement dans les 2 premières rak'at)."
           },
           {
-            "etape": 6,
+            "etape": 7,
             "titre": "L'inclinaison (Ar-Roukou')",
             "titreAr": "الركوع",
             "description": "Dire « Allâhou Akbar » en s'inclinant, le dos droit et parallèle au sol, les mains sur les genoux. Puis dire 3 fois :",
@@ -97,7 +142,7 @@
             "traduction": "Gloire à mon Seigneur le Très Grand"
           },
           {
-            "etape": 7,
+            "etape": 8,
             "titre": "Le redressement (Al-I'tidal)",
             "titreAr": "الاعتدال",
             "description": "Se redresser en disant :",
@@ -106,7 +151,7 @@
             "traduction": "Allah entend celui qui Le loue. Notre Seigneur, à Toi la louange."
           },
           {
-            "etape": 8,
+            "etape": 9,
             "titre": "La prosternation (As-Soujoud)",
             "titreAr": "السجود",
             "description": "Dire « Allâhou Akbar » et se prosterner. Sept parties du corps touchent le sol : le front avec le nez, les deux mains, les deux genoux et les orteils des deux pieds. Dire 3 fois :",
@@ -115,7 +160,7 @@
             "traduction": "Gloire à mon Seigneur le Très Haut"
           },
           {
-            "etape": 9,
+            "etape": 10,
             "titre": "L'assise entre les deux prosternations",
             "titreAr": "الجلوس بين السجدتين",
             "description": "Se relever en disant « Allâhou Akbar », s'asseoir et dire :",
@@ -125,7 +170,7 @@
             "detail": "Puis effectuer une seconde prosternation identique à la première."
           },
           {
-            "etape": 10,
+            "etape": 11,
             "titre": "Le Tashahhoud (At-Tahiyyat)",
             "titreAr": "التشهد",
             "description": "Après chaque 2 rak'at, s'asseoir et réciter le Tashahhoud :",
@@ -135,7 +180,7 @@
             "detail": "Lever l'index de la main droite durant le Tashahhoud."
           },
           {
-            "etape": 11,
+            "etape": 12,
             "titre": "La prière sur le Prophète (As-Salat al-Ibrahimiyya)",
             "titreAr": "الصلاة الإبراهيمية",
             "description": "Dans le dernier Tashahhoud (avant le salam), ajouter :",
@@ -144,7 +189,7 @@
             "traduction": "O Allah, prie sur Muhammad et sur la famille de Muhammad, comme Tu as prié sur Ibrahim et la famille d'Ibrahim. Tu es certes Digne de louange et de gloire. O Allah, bénis Muhammad et la famille de Muhammad, comme Tu as béni Ibrahim et la famille d'Ibrahim. Tu es certes Digne de louange et de gloire."
           },
           {
-            "etape": 12,
+            "etape": 13,
             "titre": "Les salutations finales (At-Taslim)",
             "titreAr": "التسليم",
             "description": "Tourner la tête à droite puis à gauche en disant à chaque fois :",
