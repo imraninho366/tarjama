@@ -34,7 +34,7 @@ export default function DuasPage({ user }) {
       .catch(() => setLoading(false))
   }, [user])
 
-  const totalDuas = useMemo(() => data.reduce((sum, cat) => sum + (cat.dua?.length || 0), 0), [data])
+  const totalDuas = useMemo(() => data.reduce((sum, cat) => sum + (Array.isArray(cat.dua) ? cat.dua.length : 0), 0), [data])
 
   // Filter categories
   const filteredCats = useMemo(() => {
@@ -45,10 +45,11 @@ export default function DuasPage({ user }) {
     }
     if (search.trim()) {
       const q = search.toLowerCase()
-      cats = cats.filter(c =>
-        c.tt_fr?.toLowerCase().includes(q) ||
-        c.dua?.some(d => d.fr?.toLowerCase().includes(q) || d.ar?.includes(q) || d.tic?.toLowerCase().includes(q))
-      )
+      cats = cats.filter(c => {
+        if (c.tt_fr?.toLowerCase().includes(q)) return true
+        const duas = Array.isArray(c.dua) ? c.dua : []
+        return duas.some(d => (d.fr || '').toLowerCase().includes(q) || (d.ar || '').includes(q) || (d.tic || '').toLowerCase().includes(q))
+      })
     }
     return cats
   }, [data, activeTheme, search])
@@ -143,7 +144,7 @@ export default function DuasPage({ user }) {
                   <div className={s.catNum}>{cat.cat_id}</div>
                   <div className={s.catInfo}>
                     <div className={s.catName}>{cat.tt_fr}</div>
-                    <div className={s.catCount}>{cat.dua?.length || 0} invocation{(cat.dua?.length || 0) > 1 ? 's' : ''}</div>
+                    <div className={s.catCount}>{(Array.isArray(cat.dua) ? cat.dua.length : 0)} invocation{((Array.isArray(cat.dua) ? cat.dua.length : 0)) > 1 ? 's' : ''}</div>
                   </div>
                 </div>
               ))}
@@ -166,7 +167,7 @@ export default function DuasPage({ user }) {
             </div>
 
             <div className={s.duaList}>
-              {(selectedCategory.dua || []).map((dua, idx) => (
+              {(Array.isArray(selectedCategory.dua) ? selectedCategory.dua : []).map((dua, idx) => (
                 <div key={dua.id || idx} className={s.duaCard}>
                   {/* Dua number */}
                   <div className={s.duaHeader}>
