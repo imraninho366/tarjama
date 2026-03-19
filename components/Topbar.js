@@ -7,6 +7,7 @@ const PAGE_NAMES = {
   '/quiz':         { fr: 'Quiz', ar: 'اختبار' },
   '/dictionnaire': { fr: 'Dictionnaire', ar: 'المعجم' },
   '/hadith':       { fr: 'Hadith', ar: 'الحديث' },
+  '/duas':         { fr: 'Invocations', ar: 'الدعاء' },
   '/alphabet':     { fr: 'Alphabet', ar: 'الحروف' },
 }
 
