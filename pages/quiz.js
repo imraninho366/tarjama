@@ -18,7 +18,7 @@ function pickRandom(arr, n) {
 }
 
 const MODES = [
-  { id: 'all',        label: 'Tout le vocabulaire', desc: '3 836 mots' },
+  { id: 'all',        label: 'Tout le vocabulaire', desc: 'Tous les mots' },
   { id: 'frequent',   label: 'Mots fréquents',      desc: 'Fréquent & très fréquent' },
   { id: 'nom',        label: 'Noms uniquement',      desc: '2 168 noms' },
   { id: 'verbe',      label: 'Verbes uniquement',    desc: '1 168 verbes' },
