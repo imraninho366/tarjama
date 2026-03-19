@@ -6,6 +6,7 @@ const NAV_ITEMS = [
   { href: '/',             icon: 'ت', label: 'Traduction', ar: 'ترجمة' },
   { href: '/quiz',         icon: 'ق', label: 'Quiz',       ar: 'اختبار' },
   { href: '/dictionnaire', icon: 'م', label: 'Dictionnaire', ar: 'المعجم' },
+  { href: '/hadith',       icon: 'ح', label: 'Hadith',     ar: 'الحديث' },
   { href: '/alphabet',     icon: 'أ', label: 'Alphabet',   ar: 'الحروف' },
 ]
 
