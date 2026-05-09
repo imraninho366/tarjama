@@ -12,6 +12,8 @@ export default function TarjamaApp({ Component, pageProps, router }) {
   const [profile, setProfile] = useState(null)
   const [transitioning, setTransitioning] = useState(false)
   const [displayedRoute, setDisplayedRoute] = useState(router.pathname)
+  const [installPrompt, setInstallPrompt] = useState(null)
+  const [showInstall, setShowInstall] = useState(false)
   const timeoutRef = useRef(null)
 
   useEffect(() => {
@@ -35,6 +37,15 @@ export default function TarjamaApp({ Component, pageProps, router }) {
     )
 
     return () => subscription.unsubscribe()
+  }, [])
+
+  useEffect(() => {
+    const handler = (e) => { e.preventDefault(); setInstallPrompt(e); setShowInstall(true) }
+    window.addEventListener('beforeinstallprompt', handler)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {})
+    }
+    return () => window.removeEventListener('beforeinstallprompt', handler)
   }, [])
 
   // Page transition effect
@@ -61,13 +72,17 @@ export default function TarjamaApp({ Component, pageProps, router }) {
     }
   }, [router])
 
-  const loadProfile = async (userId) => {
+  const loadProfile = async (userId, retries = 2) => {
     const { data } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', userId)
       .single()
-    if (data) setProfile(data)
+    if (data) {
+      setProfile(data)
+    } else if (retries > 0) {
+      setTimeout(() => loadProfile(userId, retries - 1), 500)
+    }
   }
 
   const handleLogout = async () => {
@@ -88,6 +103,14 @@ export default function TarjamaApp({ Component, pageProps, router }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
         <meta name="apple-mobile-web-app-title" content="Tarjama"/>
         <meta name="description" content="Apprends le Coran en traduisant verset par verset avec correction IA"/>
+        <meta property="og:title" content="Tarjama — Traduction coranique"/>
+        <meta property="og:description" content="Apprends le vocabulaire du Coran en traduisant verset par verset. Quiz, dictionnaire, hadiths et plus."/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="/icon.svg"/>
+        <meta property="og:locale" content="fr_FR"/>
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:title" content="Tarjama — Traduction coranique"/>
+        <meta name="twitter:description" content="Apprends le vocabulaire du Coran en traduisant verset par verset avec correction IA."/>
         <link rel="manifest" href="/manifest.json"/>
         <link rel="apple-touch-icon" href="/icon.svg"/>
       </Head>
@@ -109,6 +132,27 @@ export default function TarjamaApp({ Component, pageProps, router }) {
           />
         </div>
       </Layout>
+      {showInstall && installPrompt && (
+        <div style={{
+          position:'fixed',bottom:72,left:12,right:12,zIndex:50,
+          background:'#1a1a2e',border:'1px solid rgba(201,168,76,.25)',borderRadius:12,
+          padding:'14px 16px',display:'flex',alignItems:'center',gap:12,
+          boxShadow:'0 -4px 24px rgba(0,0,0,.5)'
+        }}>
+          <div style={{fontSize:28}}>ب</div>
+          <div style={{flex:1,minWidth:0}}>
+            <div style={{fontSize:13,color:'#EDE8D8',fontWeight:600}}>Installer Tarjama</div>
+            <div style={{fontSize:11,color:'#9A9280'}}>Accès rapide depuis ton écran d'accueil</div>
+          </div>
+          <button onClick={async()=>{installPrompt.prompt();const r=await installPrompt.userChoice;if(r.outcome==='accepted')setShowInstall(false);setInstallPrompt(null)}} style={{
+            padding:'8px 14px',borderRadius:8,border:'none',cursor:'pointer',
+            background:'#C9A84C',color:'#050508',fontSize:12,fontWeight:700
+          }}>Installer</button>
+          <button onClick={()=>setShowInstall(false)} style={{
+            background:'none',border:'none',color:'#5A5448',fontSize:18,cursor:'pointer',padding:4
+          }}>✕</button>
+        </div>
+      )}
     </>
   )
 }

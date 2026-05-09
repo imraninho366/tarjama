@@ -13,15 +13,15 @@ const COLLECTIONS = [
 const THEMES = [
   { id: 'all',       label: 'Tous',          icon: '☰' },
   { id: 'foi',       label: 'Foi & croyance', icon: '♡', keywords: ['foi','croyance','croire','iman','belief','faith'] },
-  { id: 'priere',    label: 'Priere',         icon: '۩', keywords: ['priere','salat','prayer','prostern','mosquee','adhan','appel'] },
-  { id: 'jeune',     label: 'Jeune',          icon: '☾', keywords: ['jeune','ramadan','fasting','iftar'] },
+  { id: 'priere',    label: 'Prière',         icon: '۩', keywords: ['priere','prière','salat','prayer','prostern','mosquee','adhan','appel'] },
+  { id: 'jeune',     label: 'Jeûne',          icon: '☾', keywords: ['jeune','jeûne','ramadan','fasting','iftar'] },
   { id: 'zakat',     label: 'Zakat & dons',   icon: '♦', keywords: ['zakat','aumone','charite','dons','don','sadaqa','charity'] },
-  { id: 'hajj',      label: 'Pelerinage',     icon: '◈', keywords: ['pelerinage','hajj','omra','mecque','makkah','pilgrimage','kaaba'] },
+  { id: 'hajj',      label: 'Pèlerinage',     icon: '◈', keywords: ['pelerinage','pèlerinage','hajj','omra','mecque','makkah','pilgrimage','kaaba'] },
   { id: 'mariage',   label: 'Mariage',        icon: '⚭', keywords: ['mariage','divorce','epouse','femme','nikah','marriage','wedding'] },
   { id: 'science',   label: 'Science',        icon: '✦', keywords: ['science','savoir','connaissance','knowledge','apprendre'] },
   { id: 'prophete',  label: 'Le Prophete',    icon: '﷽', keywords: ['prophete','messager','muhammad','mohammed','prophet','messenger','merites'] },
   { id: 'jugement',  label: 'Jour dernier',   icon: '⏳', keywords: ['jugement','resurrection','paradis','enfer','fin des temps','hereafter','paradise','hell'] },
-  { id: 'manieres',  label: 'Bonnes manieres', icon: '❋', keywords: ['maniere','adab','etiquette','politesse','salutation','permission'] },
+  { id: 'manieres',  label: 'Bonnes manières', icon: '❋', keywords: ['maniere','manières','adab','etiquette','politesse','salutation','permission'] },
   { id: 'invocations', label: 'Invocations',  icon: '☼', keywords: ['invocation','doua','dua','rappel','repentir','pardon'] },
 ]
 

@@ -35,6 +35,7 @@ export default function Dictionnaire({ user, profile }) {
   const [selected, setSelected] = useState(null)
   const [loading, setLoading] = useState(true)
   const [sortBy, setSortBy] = useState('freq') // freq | recent | alpha
+  const [visibleCount, setVisibleCount] = useState(50)
 
   useEffect(() => {
     if (!user) {
@@ -117,7 +118,7 @@ export default function Dictionnaire({ user, profile }) {
           <span className={s.searchIcon}>◇</span>
           <input
             value={search}
-            onChange={e => setSearch(e.target.value)}
+            onChange={e => { setSearch(e.target.value); setVisibleCount(50) }}
             placeholder="Recherche en arabe، translittération ou français..."
             className={s.searchField}
           />
@@ -132,7 +133,7 @@ export default function Dictionnaire({ user, profile }) {
             {types.map(t => (
               <button
                 key={t}
-                onClick={() => setFilter(t)}
+                onClick={() => { setFilter(t); setVisibleCount(50) }}
                 className={`${s.filterPill} ${filter === t ? s.filterPillActive : ''}`}
               >
                 {t}
@@ -178,9 +179,9 @@ export default function Dictionnaire({ user, profile }) {
         )}
 
         {/* WORD GRID */}
-        {filtered.length > 0 && (
+        {filtered.length > 0 && (<>
           <div className={s.wordGrid}>
-            {filtered.map((w, i) => {
+            {filtered.slice(0, visibleCount).map((w, i) => {
               const tc = TYPE_COLORS[w.type] || TYPE_COLORS.particule
               const fc = FREQ_COLORS[w.freq_label] || G.textMuted
               const sens = Array.isArray(w.sens) ? w.sens : (typeof w.sens === 'string' ? [w.sens] : [])
@@ -217,7 +218,14 @@ export default function Dictionnaire({ user, profile }) {
               )
             })}
           </div>
-        )}
+          {visibleCount < filtered.length && (
+            <div style={{textAlign:'center',padding:'20px 0'}}>
+              <Button variant="secondary" onClick={() => setVisibleCount(prev => prev + 50)}>
+                Voir plus ({filtered.length - visibleCount} restants)
+              </Button>
+            </div>
+          )}
+        </>)}
 
         {/* WORD DETAIL */}
         {selected && (

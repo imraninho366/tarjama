@@ -1,0 +1,198 @@
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
+import { supabase } from '../lib/supabase'
+import { SOURATES_LIST } from '../lib/sourates'
+import { G, AVATAR_COLORS } from '../lib/theme'
+import Button from '../components/common/Button'
+
+export default function ProfilPage({ user, profile, onLogout }) {
+  const router = useRouter()
+  const [progress, setProgress] = useState({})
+  const [loading, setLoading] = useState(true)
+  const [leaderboard, setLeaderboard] = useState([])
+  const [tab, setTab] = useState('stats')
+
+  useEffect(() => {
+    if (!user) { router.push('/'); return }
+    loadData()
+  }, [user])
+
+  const loadData = async () => {
+    const [progRes, lbRes] = await Promise.all([
+      supabase.from('progress').select('*').eq('user_id', user.id),
+      fetch('/api/leaderboard').then(r => r.json()).catch(() => ({ leaderboard: [] }))
+    ])
+    const map = {}
+    progRes.data?.forEach(r => {
+      map[`${r.sourate_num}:${r.verse_num}`] = { niveau: r.niveau, ts: r.updated_at }
+    })
+    setProgress(map)
+    setLeaderboard(lbRes.leaderboard || [])
+    setLoading(false)
+  }
+
+  if (!user || !profile) return null
+
+  const entries = Object.values(progress)
+  const total = entries.length
+  const excellent = entries.filter(p => p.niveau === 'excellent' || p.niveau === 'good').length
+  const partial = entries.filter(p => p.niveau === 'partial').length
+  const wrong = entries.filter(p => p.niveau === 'wrong').length
+
+  const sourates = SOURATES_LIST.map(s => {
+    const done = Object.keys(progress).filter(k => k.startsWith(`${s.n}:`)).length
+    const ok = Object.keys(progress).filter(k => {
+      if (!k.startsWith(`${s.n}:`)) return false
+      const p = progress[k]
+      return p.niveau === 'excellent' || p.niveau === 'good'
+    }).length
+    return { ...s, done, ok, pct: s.v > 0 ? Math.round(done / s.v * 100) : 0 }
+  }).filter(s => s.done > 0).sort((a, b) => b.pct - a.pct)
+
+  const rank = leaderboard.findIndex(u => u.username === profile.username) + 1
+
+  const days = new Set()
+  entries.forEach(p => {
+    if (p.ts) { const d = new Date(p.ts); days.add(`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`) }
+  })
+
+  const tabStyle = (t) => ({
+    padding: '8px 16px', fontSize: 12, letterSpacing: 1, textTransform: 'uppercase',
+    background: tab === t ? 'rgba(201,168,76,.12)' : 'transparent',
+    color: tab === t ? G.gold : G.textMuted,
+    border: 'none', borderBottom: tab === t ? `2px solid ${G.gold}` : '2px solid transparent',
+    cursor: 'pointer', fontWeight: 600
+  })
+
+  return (
+    <>
+      <Head><title>Profil — Tarjama</title></Head>
+      <div style={{ maxWidth: 600, margin: '0 auto', padding: '0 16px' }}>
+
+        {/* Header profil */}
+        <div style={{ textAlign: 'center', padding: '24px 0 16px' }}>
+          <div style={{
+            width: 64, height: 64, borderRadius: '50%', margin: '0 auto 12px',
+            background: profile.color || G.gold, display: 'flex', alignItems: 'center',
+            justifyContent: 'center', fontSize: 28, color: '#fff', fontWeight: 700,
+            border: `3px solid ${G.gold}40`
+          }}>
+            {profile.username?.[0]?.toUpperCase() || '?'}
+          </div>
+          <div style={{ fontSize: 20, fontFamily: 'var(--font-display)', color: G.text, fontWeight: 600 }}>
+            {profile.username}
+          </div>
+          {rank > 0 && (
+            <div style={{ fontSize: 12, color: G.gold, marginTop: 4 }}>
+              #{rank} au classement
+            </div>
+          )}
+        </div>
+
+        {/* Stats principales */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, marginBottom: 20 }}>
+          {[
+            [total, 'Versets', G.gold],
+            [excellent, 'Excellents', G.green],
+            [days.size, 'Jours actifs', G.blue],
+            [sourates.length, 'Sourates', G.purple]
+          ].map(([num, lbl, clr]) => (
+            <div key={lbl} style={{
+              textAlign: 'center', padding: '12px 4px',
+              background: 'rgba(201,168,76,.04)', borderRadius: 8,
+              border: '1px solid rgba(201,168,76,.08)'
+            }}>
+              <div style={{ fontSize: 22, fontFamily: 'var(--font-display)', color: clr, fontWeight: 700 }}>{num}</div>
+              <div style={{ fontSize: 10, color: G.textMuted, textTransform: 'uppercase', letterSpacing: 1 }}>{lbl}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Tabs */}
+        <div style={{ display: 'flex', borderBottom: '1px solid rgba(201,168,76,.1)', marginBottom: 16 }}>
+          <button onClick={() => setTab('stats')} style={tabStyle('stats')}>Progression</button>
+          <button onClick={() => setTab('classement')} style={tabStyle('classement')}>Classement</button>
+        </div>
+
+        {/* Progression par sourate */}
+        {tab === 'stats' && (
+          <div>
+            {sourates.length === 0 && (
+              <div style={{ textAlign: 'center', padding: 32, color: G.textMuted }}>
+                Aucune sourate commencée. Traduis ton premier verset !
+              </div>
+            )}
+            {sourates.map(s => (
+              <div key={s.n} style={{
+                display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0',
+                borderBottom: '1px solid rgba(201,168,76,.05)'
+              }}>
+                <span style={{ fontSize: 11, color: G.textMuted, width: 24, textAlign: 'right' }}>{s.n}</span>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                    <span style={{ fontSize: 13, color: G.text }}>{s.ar} — {s.fr}</span>
+                    <span style={{ fontSize: 11, color: G.textMuted }}>{s.done}/{s.v}</span>
+                  </div>
+                  <div style={{ height: 4, background: 'rgba(201,168,76,.08)', borderRadius: 2, overflow: 'hidden' }}>
+                    <div style={{
+                      height: '100%', borderRadius: 2,
+                      width: `${s.pct}%`,
+                      background: s.pct >= 80 ? G.green : s.pct >= 40 ? G.gold : G.orange,
+                      transition: 'width .5s ease'
+                    }} />
+                  </div>
+                </div>
+                <span style={{
+                  fontSize: 12, fontWeight: 700, minWidth: 36, textAlign: 'right',
+                  color: s.pct >= 80 ? G.green : s.pct >= 40 ? G.gold : G.orange
+                }}>{s.pct}%</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Classement complet */}
+        {tab === 'classement' && (
+          <div>
+            {leaderboard.map((u, i) => (
+              <div key={i} style={{
+                display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0',
+                borderBottom: '1px solid rgba(201,168,76,.05)',
+                background: u.username === profile.username ? 'rgba(201,168,76,.05)' : 'transparent',
+                borderRadius: u.username === profile.username ? 6 : 0,
+                padding: u.username === profile.username ? '10px 8px' : '10px 0'
+              }}>
+                <span style={{
+                  fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 700, width: 28, textAlign: 'center',
+                  color: i === 0 ? '#FFD700' : i === 1 ? '#C0C0C0' : i === 2 ? '#CD7F32' : G.textMuted
+                }}>{i + 1}</span>
+                <div style={{
+                  width: 32, height: 32, borderRadius: '50%', background: u.color || G.gold,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 14, color: '#fff', fontWeight: 700
+                }}>{u.username?.[0]?.toUpperCase() || '?'}</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, color: G.text, fontWeight: u.username === profile.username ? 700 : 400 }}>
+                    {u.username}{u.username === profile.username ? ' (toi)' : ''}
+                  </div>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: 14, color: G.green, fontWeight: 700 }}>{u.excellent}</div>
+                  <div style={{ fontSize: 10, color: G.textMuted }}>{u.total} versets</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Actions */}
+        <div style={{ marginTop: 24, paddingBottom: 32 }}>
+          <Button variant="ghost" full onClick={onLogout} style={{ color: G.red, borderColor: 'rgba(201,107,107,.2)' }}>
+            Déconnexion
+          </Button>
+        </div>
+      </div>
+    </>
+  )
+}

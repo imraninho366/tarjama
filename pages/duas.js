@@ -8,7 +8,7 @@ import s from '../styles/Duas.module.css'
 const THEMES = [
   { id: 'all', label: 'Toutes', icon: '☰' },
   { id: 'quotidien', label: 'Quotidien', icon: '☀', catIds: [2,3,4,5,6,7,8,9,10,11,12,70,71,72,73,74,75,76,77,78,79,80] },
-  { id: 'priere', label: 'Priere', icon: '۩', catIds: [13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32] },
+  { id: 'priere', label: 'Prière', icon: '۩', catIds: [13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32] },
   { id: 'matin-soir', label: 'Matin & Soir', icon: '◑', catIds: [33,34] },
   { id: 'sommeil', label: 'Sommeil', icon: '☾', catIds: [35,36,37,38] },
   { id: 'repas', label: 'Repas', icon: '◈', catIds: [63,64,65,66,67,68,69] },

@@ -9,8 +9,9 @@ const NAV_ITEMS = [
   { href: '/hadith',       icon: 'ح', label: 'Hadith',     ar: 'الحديث' },
   { href: '/duas',         icon: 'د', label: 'Invocations', ar: 'الدعاء' },
   { href: '/piliers',      icon: 'ر', label: 'Piliers',    ar: 'الأركان' },
-  { href: '/prophetes',    icon: 'ن', label: 'Prophetes',  ar: 'الأنبياء' },
+  { href: '/prophetes',    icon: 'ن', label: 'Prophètes',  ar: 'الأنبياء' },
   { href: '/alphabet',     icon: 'أ', label: 'Alphabet',   ar: 'الحروف' },
+  { href: '/profil',       icon: '◉', label: 'Profil',     ar: 'الملف' },
 ]
 
 export default function Sidebar({ isOpen, onClose, onLogout, stats }) {

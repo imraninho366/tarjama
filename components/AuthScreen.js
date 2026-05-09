@@ -31,9 +31,40 @@ export default function AuthScreen() {
     if (password.length < 6) return setAuthError('Mot de passe trop court (min 6 caractères)')
     setAuthLoading(true)
     const email = `${username.toLowerCase().replace(/\s+/g, '_')}@tarjama.app`
-    const { data, error } = await supabase.auth.signUp({ email, password })
-    if (error) { setAuthError(error.message); setAuthLoading(false); return }
-    await supabase.from('profiles').insert({ id: data.user.id, username, color: regColor })
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { data: { username, color: regColor } }
+      })
+      if (error) { setAuthError(error.message); setAuthLoading(false); return }
+
+      let userId = data.session?.user?.id || data.user?.id
+
+      if (!data.session) {
+        const { data: signInData, error: loginErr } = await supabase.auth.signInWithPassword({ email, password })
+        if (loginErr) {
+          setAuthError('Compte créé mais connexion échouée. Essaie de te connecter.')
+          setAuthLoading(false)
+          return
+        }
+        if (signInData?.user?.id) userId = signInData.user.id
+      }
+
+      if (userId) {
+        const { error: profileErr } = await supabase.from('profiles').upsert(
+          { id: userId, username, color: regColor },
+          { onConflict: 'id' }
+        )
+        if (profileErr) {
+          setAuthError(profileErr.message || 'Erreur création profil')
+          setAuthLoading(false)
+          return
+        }
+      }
+    } catch (err) {
+      setAuthError(err.message || 'Erreur inattendue')
+    }
     setAuthLoading(false)
   }
 

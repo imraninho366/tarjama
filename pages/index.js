@@ -99,8 +99,14 @@ export default function App({ user, profile, onLogout }){
   const [recTranscript,setRecTranscript]=useState('')
   const [recScore,setRecScore]=useState(null)
   const [recLoading,setRecLoading]=useState(false)
+  const [leaderboard,setLeaderboard]=useState([])
 
   const showToast=(m,t='info')=>setToast({message:m,type:t})
+
+  useEffect(()=>{
+    if(!user) return
+    fetch('/api/leaderboard').then(r=>r.json()).then(d=>setLeaderboard(d.leaderboard||[])).catch(()=>{})
+  },[user])
 
   // Search sourates
   useEffect(()=>{
@@ -264,6 +270,28 @@ export default function App({ user, profile, onLogout }){
     let done=0
     Object.values(progress).forEach(p=>{if(p.niveau==='excellent'||p.niveau==='good')done++})
     return{total,done,pct:total?Math.round(done/total*100):0}
+  }
+
+  const getStreak=()=>{
+    const days=new Set()
+    Object.values(progress).forEach(p=>{
+      if(p.ts){const d=new Date(p.ts);days.add(`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`)}
+    })
+    if(days.size===0) return 0
+    const sorted=[...days].sort().reverse()
+    const today=new Date();today.setHours(0,0,0,0)
+    const toKey=(d)=>`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`
+    const yesterday=new Date(today);yesterday.setDate(yesterday.getDate()-1)
+    if(sorted[0]!==toKey(today)&&sorted[0]!==toKey(yesterday)) return 0
+    let streak=1
+    for(let i=0;i<sorted.length-1;i++){
+      const [y1,m1,d1]=sorted[i].split('-').map(Number)
+      const [y2,m2,d2]=sorted[i+1].split('-').map(Number)
+      const a=new Date(y1,m1,d1),b=new Date(y2,m2,d2)
+      if((a-b)/(1000*60*60*24)===1) streak++
+      else break
+    }
+    return streak
   }
 
   const verify=async()=>{
@@ -434,7 +462,7 @@ export default function App({ user, profile, onLogout }){
             </div>
           </div>
           <div className={s.statsGrid}>
-            {[['Traduits',G.gold,total],['Excellents',G.green,correct],['Partiels',G.orange,partial],['À revoir',G.red,wrong]].map(([lbl,clr,num])=>(
+            {[['Traduits',G.gold,total],['Excellents',G.green,correct],['Partiels',G.orange,partial],['À revoir',G.red,wrong],['Streak',G.purple,`${getStreak()}j`]].map(([lbl,clr,num])=>(
               <div key={lbl} className={s.statCard}>
                 <span className={s.statNum} style={{color:clr}}>{num}</span>
                 <span className={s.statLabel}>{lbl}</span>
@@ -445,6 +473,22 @@ export default function App({ user, profile, onLogout }){
             <p className={s.dashboardCtaText}>Recherche une sourate dans la barre ci-dessus</p>
             <Button onClick={()=>openSourate(SUGGESTIONS[0])}>Commencer par Al-Fatiha →</Button>
           </div>
+          {leaderboard.length>0&&(
+            <div style={{marginTop:20}}>
+              <div className={s.sectionLabel} style={{marginBottom:8}}>Classement</div>
+              {leaderboard.slice(0,5).map((u,i)=>(
+                <div key={i} style={{display:'flex',alignItems:'center',gap:10,padding:'8px 12px',borderBottom:`1px solid rgba(201,168,76,.06)`}}>
+                  <span style={{fontFamily:'var(--font-display)',fontSize:16,color:i===0?G.gold:i===1?G.textDim:G.textMuted,width:24,textAlign:'center',fontWeight:700}}>{i+1}</span>
+                  <div style={{width:28,height:28,borderRadius:'50%',background:u.color||G.gold,display:'flex',alignItems:'center',justifyContent:'center',fontSize:12,color:'#fff',fontWeight:700}}>{u.username?.[0]?.toUpperCase()||'?'}</div>
+                  <div style={{flex:1,minWidth:0}}>
+                    <div style={{fontSize:13,color:G.text,fontWeight:u.username===profile.username?700:400}}>{u.username}{u.username===profile.username?' (toi)':''}</div>
+                  </div>
+                  <span style={{fontSize:13,color:G.green,fontWeight:600}}>{u.excellent}</span>
+                  <span style={{fontSize:10,color:G.textMuted}}>/{u.total}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </>
       })()}
 
@@ -575,7 +619,7 @@ export default function App({ user, profile, onLogout }){
                     <div className={s.recLabel}>Récitation vocale</div>
                     <div className={s.recActions}>
                       {!recording&&!recLoading&&<Button variant="danger" small onClick={startRecording}>Enregistrer</Button>}
-                      {recording&&<Button variant="danger" small onClick={stopRecording} className={s.recPulsing}>Arreter</Button>}
+                      {recording&&<Button variant="danger" small onClick={stopRecording} className={s.recPulsing}>Arrêter</Button>}
                       {recording&&<span style={{fontSize:11,color:G.red}} className={s.recPulsing}>Enregistrement en cours...</span>}
                       {recLoading&&<span style={{fontSize:11,color:G.textMuted}}>Analyse en cours...</span>}
                     </div>
@@ -727,6 +771,11 @@ export default function App({ user, profile, onLogout }){
           </div>
           <div className={s.doneActions}>
             <Button onClick={()=>openSourate({n:sourate.num,ar:sourate.name_ar,fr:sourate.name_fr,v:sourate.verses.length})}>Refaire</Button>
+            <Button variant="secondary" onClick={()=>{
+              const text=`Tarjama — ${sourate.name_ar} (${sourate.name_fr})\nScore : ${pct}% | ${correct} excellents, ${partial} partiels\nStreak : ${getStreak()} jours\ntarjama.app`
+              if(navigator.share){navigator.share({title:'Tarjama',text}).catch(()=>{})}
+              else{navigator.clipboard.writeText(text);showToast('Résultat copié !','success')}
+            }}>Partager</Button>
             <Button variant="ghost" onClick={()=>{setView('dashboard');setSourate(null)}}>Tableau de bord</Button>
           </div>
         </div>

@@ -17,6 +17,23 @@ function pickRandom(arr, n) {
   return shuffle(arr).slice(0, n)
 }
 
+function playFeedback(correct) {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)()
+    const osc = ctx.createOscillator()
+    const gain = ctx.createGain()
+    osc.connect(gain)
+    gain.connect(ctx.destination)
+    osc.frequency.value = correct ? 880 : 220
+    osc.type = correct ? 'sine' : 'triangle'
+    gain.gain.value = 0.15
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3)
+    osc.start()
+    osc.stop(ctx.currentTime + 0.3)
+  } catch {}
+  if (navigator.vibrate) navigator.vibrate(correct ? 50 : [50, 30, 50])
+}
+
 const MODES = [
   { id: 'all',        label: 'Tout le vocabulaire', desc: 'Tous les mots' },
   { id: 'frequent',   label: 'Mots fréquents',      desc: 'Fréquent & très fréquent' },
@@ -50,7 +67,7 @@ export default function Quiz() {
   const getPool = useCallback((m) => {
     if (!vocab.length) return []
     switch(m) {
-      case 'frequent':  return vocab.filter(w => w.freq_label === 'fréquent' || w.freq_label === 'tres frequent' || w.freq_label === 'très fréquent')
+      case 'frequent':  return vocab.filter(w => w.freq_label === 'fréquent' || w.freq_label === 'très fréquent')
       case 'nom':       return vocab.filter(w => w.type === 'nom')
       case 'verbe':     return vocab.filter(w => w.type === 'verbe')
       case 'adjectif':  return vocab.filter(w => w.type === 'adjectif')
@@ -89,6 +106,7 @@ export default function Quiz() {
     setDone(true)
 
     const isOk = idx === correct
+    playFeedback(isOk)
     setScore(prev => {
       const newStreak = isOk ? prev.streak + 1 : 0
       return {
@@ -172,7 +190,7 @@ export default function Quiz() {
           <div className={s.scoreArea}>
             {score.streak >= 3 && (
               <div className={s.streak}>
-                {score.streak} serie
+                {score.streak} série
               </div>
             )}
             <div className={s.pctDisplay} style={{ color: pctColor }}>
@@ -321,7 +339,7 @@ export default function Quiz() {
         {/* Meilleure série */}
         {score.best >= 5 && (
           <div className={s.bestStreak}>
-            Meilleure serie : {score.best}
+            Meilleure série : {score.best}
           </div>
         )}
       </div>

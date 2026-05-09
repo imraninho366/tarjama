@@ -35,12 +35,12 @@ export default function ProphetesPage({ user }) {
 
   return (
     <>
-      <Head><title>Prophetes — Tarjama</title></Head>
+      <Head><title>Prophètes — Tarjama</title></Head>
       <div className={s.container}>
         {/* Header */}
         <div className={s.header}>
           <div className={s.headerArabic}>الأنبياء والرسل</div>
-          <div className={s.headerSub}>Les histoires des 25 Prophetes mentionnes dans le Coran</div>
+          <div className={s.headerSub}>Les histoires des 25 Prophètes mentionnés dans le Coran</div>
         </div>
 
         {!selected && (

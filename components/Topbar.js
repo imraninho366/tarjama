@@ -9,8 +9,9 @@ const PAGE_NAMES = {
   '/hadith':       { fr: 'Hadith', ar: 'الحديث' },
   '/duas':         { fr: 'Invocations', ar: 'الدعاء' },
   '/piliers':      { fr: 'Piliers', ar: 'الأركان' },
-  '/prophetes':    { fr: 'Prophetes', ar: 'الأنبياء' },
+  '/prophetes':    { fr: 'Prophètes', ar: 'الأنبياء' },
   '/alphabet':     { fr: 'Alphabet', ar: 'الحروف' },
+  '/profil':       { fr: 'Profil', ar: 'الملف' },
 }
 
 export default function Topbar({ profile, onToggleSidebar }) {

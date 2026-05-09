@@ -490,7 +490,7 @@ export default function Alphabet() {
           <span className={s.headerTitle}>ALPHABET ARABE</span>
           {tab==='quiz' && score.total>0 && (
             <div className={s.headerScore}>
-              {streak>=3 && <span className={s.streakBadge}>{streak} serie</span>}
+              {streak>=3 && <span className={s.streakBadge}>{streak} série</span>}
               <span className={`${s.scorePct} ${pct>=70 ? s.scoreGood : s.scoreWarn}`}>
                 {pct}%
               </span>
@@ -783,7 +783,7 @@ export default function Alphabet() {
               <div className={s.quizScoreBar}>
                 <div className={s.quizScoreLabel}>Score session</div>
                 <div className={s.quizScoreRight}>
-                  {streak>=3 && <span className={s.streakBadge}>{streak} en serie</span>}
+                  {streak>=3 && <span className={s.streakBadge}>{streak} en série</span>}
                   <span className={`${s.quizScoreValue} ${pct>=70 ? s.scoreGood : s.scoreWarn}`}>
                     {pct}% — {score.ok}/{score.total}
                   </span>
