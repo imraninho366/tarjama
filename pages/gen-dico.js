@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
 
 import { G } from '../lib/theme'
-const PW = 'tarjama-gen-2026'
+const PW = process.env.NEXT_PUBLIC_ADMIN_PW || 'change-me'
 
 export default function GenDico() {
   const [authed, setAuthed]   = useState(false)

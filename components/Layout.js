@@ -16,6 +16,8 @@ function GoldParticles() {
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     const dpr = window.devicePixelRatio || 1
+    const isMobile = window.innerWidth < 768
+    const count = isMobile ? 8 : 18
 
     const resize = () => {
       canvas.width = window.innerWidth * dpr
@@ -27,9 +29,8 @@ function GoldParticles() {
     resize()
     window.addEventListener('resize', resize)
 
-    // Init particles
     if (particlesRef.current.length === 0) {
-      for (let i = 0; i < 18; i++) {
+      for (let i = 0; i < count; i++) {
         particlesRef.current.push({
           x: Math.random() * window.innerWidth,
           y: Math.random() * window.innerHeight,
@@ -42,7 +43,15 @@ function GoldParticles() {
       }
     }
 
+    let visible = true
+    const onVisibility = () => {
+      visible = !document.hidden
+      if (visible && !rafRef.current) animate()
+    }
+    document.addEventListener('visibilitychange', onVisibility)
+
     const animate = () => {
+      if (!visible) { rafRef.current = null; return }
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
       const t = Date.now() * 0.001
 
@@ -50,7 +59,6 @@ function GoldParticles() {
         p.x += p.vx + Math.sin(t + p.phase) * 0.05
         p.y += p.vy + Math.cos(t * 0.7 + p.phase) * 0.04
 
-        // Wrap around
         if (p.x < -10) p.x = window.innerWidth + 10
         if (p.x > window.innerWidth + 10) p.x = -10
         if (p.y < -10) p.y = window.innerHeight + 10
@@ -69,6 +77,7 @@ function GoldParticles() {
 
     return () => {
       window.removeEventListener('resize', resize)
+      document.removeEventListener('visibilitychange', onVisibility)
       cancelAnimationFrame(rafRef.current)
     }
   }, [])

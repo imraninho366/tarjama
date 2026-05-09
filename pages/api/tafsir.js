@@ -1,8 +1,17 @@
+import { rateLimit } from '../../lib/rateLimit'
+import { cacheGet, cacheSet } from '../../lib/cache'
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
+  const { ok } = rateLimit(req, { limit: 10, windowMs: 60000 })
+  if (!ok) return res.status(429).json({ error: 'Trop de requêtes. Réessaie dans une minute.' })
 
   const { arabic, sourate_num, verse_num, sourate_ar, sourate_fr } = req.body
   if (!arabic) return res.status(400).json({ error: 'Verset manquant' })
+
+  const cacheKey = `tafsir:${sourate_num}:${verse_num}`
+  const cached = cacheGet(cacheKey)
+  if (cached) return res.status(200).json({ tafsir: cached })
 
   const apiKey = process.env.GROQ_API_KEY
   if (!apiKey) return res.status(500).json({ error: 'Clé Groq non configurée' })
@@ -44,6 +53,7 @@ Sois précis, pédagogique et accessible pour un apprenant débutant en arabe.`
     if (!response.ok) return res.status(500).json({ error: data?.error?.message || 'Erreur' })
 
     const tafsir = data.choices?.[0]?.message?.content || 'Non disponible.'
+    cacheSet(cacheKey, tafsir)
     return res.status(200).json({ tafsir })
 
   } catch (err) {
