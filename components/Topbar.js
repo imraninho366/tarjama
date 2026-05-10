@@ -14,7 +14,7 @@ const PAGE_NAMES = {
   '/profil':       { fr: 'Profil', ar: 'الملف' },
 }
 
-export default function Topbar({ profile, onToggleSidebar }) {
+export default function Topbar({ profile, onToggleSidebar, theme, onToggleTheme }) {
   const router = useRouter()
   const page = PAGE_NAMES[router.pathname] || { fr: '', ar: '' }
 
@@ -41,6 +41,17 @@ export default function Topbar({ profile, onToggleSidebar }) {
           <span className={styles.breadcrumbPage}>{page.fr}</span>
           <span className={styles.breadcrumbAr}>{page.ar}</span>
         </div>
+      )}
+
+      {/* Theme toggle */}
+      {onToggleTheme && (
+        <button
+          onClick={onToggleTheme}
+          className={styles.themeToggle}
+          aria-label={theme === 'dark' ? 'Mode clair' : 'Mode sombre'}
+        >
+          {theme === 'dark' ? '☀' : '☾'}
+        </button>
       )}
 
       {/* User */}

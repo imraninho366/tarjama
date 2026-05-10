@@ -85,7 +85,7 @@ function GoldParticles() {
   return <canvas ref={canvasRef} className={styles.particles} />
 }
 
-export default function Layout({ children, user, profile, onLogout, hideNav }) {
+export default function Layout({ children, user, profile, onLogout, hideNav, theme, onToggleTheme }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const router = useRouter()
 
@@ -113,6 +113,8 @@ export default function Layout({ children, user, profile, onLogout, hideNav }) {
       <Topbar
         profile={profile}
         onToggleSidebar={() => setSidebarOpen(prev => !prev)}
+        theme={theme}
+        onToggleTheme={onToggleTheme}
       />
 
       <Sidebar

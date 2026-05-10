@@ -88,6 +88,51 @@
   --bottomnav-height: 64px;
 }
 
+/* ── Light theme override ─────────────────────────────────── */
+[data-theme="light"] {
+  --bg-abyss:    #F8F6F1;
+  --bg-deep:     #F2EFE8;
+  --bg-surface:  #EAE6DD;
+  --bg-card:     #FFFFFF;
+  --bg-elevated: #F5F3ED;
+
+  --gold-dim:    #B8972E;
+  --gold-dark:   #9A7D1F;
+  --gold:        #8B6914;
+  --gold-light:  #6B5210;
+  --gold-bright: #4A3A0D;
+  --gold-glow:   rgba(139, 105, 20, 0.1);
+  --gold-glow-strong: rgba(139, 105, 20, 0.18);
+
+  --text:        #1A1810;
+  --text-dim:    #5A5648;
+  --text-muted:  #9A9588;
+
+  --green:       #2D8E5E;
+  --green-glow:  rgba(45, 142, 94, 0.1);
+  --blue:        #3A7BBF;
+  --blue-glow:   rgba(58, 123, 191, 0.1);
+  --red:         #B84A4A;
+  --red-glow:    rgba(184, 74, 74, 0.1);
+  --orange:      #C07030;
+  --orange-glow: rgba(192, 112, 48, 0.1);
+  --purple:      #7B5FB8;
+  --purple-glow: rgba(123, 95, 184, 0.1);
+
+  --glass-bg:       rgba(242, 239, 232, 0.9);
+  --glass-bg-light: rgba(248, 246, 241, 0.85);
+  --glass-border:   rgba(139, 105, 20, 0.12);
+}
+
+[data-theme="light"] ::selection {
+  background: rgba(139, 105, 20, 0.2);
+  color: #1A1810;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(139, 105, 20, 0.15);
+}
+
 /* ── Reset ──────────────────────────────────────────────────── */
 *, *::before, *::after {
   margin: 0;

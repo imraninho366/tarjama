@@ -60,8 +60,8 @@ export default function ProfilPage({ user, profile, onLogout }) {
   const tabStyle = (t) => ({
     padding: '8px 16px', fontSize: 12, letterSpacing: 1, textTransform: 'uppercase',
     background: tab === t ? 'rgba(201,168,76,.12)' : 'transparent',
-    color: tab === t ? G.gold : G.textMuted,
-    border: 'none', borderBottom: tab === t ? `2px solid ${G.gold}` : '2px solid transparent',
+    color: tab === t ? 'var(--gold)' : 'var(--text-muted)',
+    border: 'none', borderBottom: tab === t ? `2px solid ${'var(--gold)'}` : '2px solid transparent',
     cursor: 'pointer', fontWeight: 600
   })
 
@@ -74,17 +74,17 @@ export default function ProfilPage({ user, profile, onLogout }) {
         <div style={{ textAlign: 'center', padding: '24px 0 16px' }}>
           <div style={{
             width: 64, height: 64, borderRadius: '50%', margin: '0 auto 12px',
-            background: profile.color || G.gold, display: 'flex', alignItems: 'center',
-            justifyContent: 'center', fontSize: 28, color: '#fff', fontWeight: 700,
-            border: `3px solid ${G.gold}40`
+            background: profile.color || 'var(--gold)', display: 'flex', alignItems: 'center',
+            justifyContent: 'center', fontSize: 28, color: 'var(--bg-card)', fontWeight: 700,
+            border: `3px solid ${'var(--gold)'}40`
           }}>
             {profile.username?.[0]?.toUpperCase() || '?'}
           </div>
-          <div style={{ fontSize: 20, fontFamily: 'var(--font-display)', color: G.text, fontWeight: 600 }}>
+          <div style={{ fontSize: 20, fontFamily: 'var(--font-display)', color: 'var(--text)', fontWeight: 600 }}>
             {profile.username}
           </div>
           {rank > 0 && (
-            <div style={{ fontSize: 12, color: G.gold, marginTop: 4 }}>
+            <div style={{ fontSize: 12, color: 'var(--gold)', marginTop: 4 }}>
               #{rank} au classement
             </div>
           )}
@@ -93,10 +93,10 @@ export default function ProfilPage({ user, profile, onLogout }) {
         {/* Stats principales */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8, marginBottom: 20 }}>
           {[
-            [total, 'Versets', G.gold],
-            [excellent, 'Excellents', G.green],
-            [days.size, 'Jours actifs', G.blue],
-            [sourates.length, 'Sourates', G.purple]
+            [total, 'Versets', 'var(--gold)'],
+            [excellent, 'Excellents', 'var(--green)'],
+            [days.size, 'Jours actifs', 'var(--blue)'],
+            [sourates.length, 'Sourates', 'var(--purple)']
           ].map(([num, lbl, clr]) => (
             <div key={lbl} style={{
               textAlign: 'center', padding: '12px 4px',
@@ -104,7 +104,7 @@ export default function ProfilPage({ user, profile, onLogout }) {
               border: '1px solid rgba(201,168,76,.08)'
             }}>
               <div style={{ fontSize: 22, fontFamily: 'var(--font-display)', color: clr, fontWeight: 700 }}>{num}</div>
-              <div style={{ fontSize: 10, color: G.textMuted, textTransform: 'uppercase', letterSpacing: 1 }}>{lbl}</div>
+              <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 1 }}>{lbl}</div>
             </div>
           ))}
         </div>
@@ -119,7 +119,7 @@ export default function ProfilPage({ user, profile, onLogout }) {
         {tab === 'stats' && (
           <div>
             {sourates.length === 0 && (
-              <div style={{ textAlign: 'center', padding: 32, color: G.textMuted }}>
+              <div style={{ textAlign: 'center', padding: 32, color: 'var(--text-muted)' }}>
                 Aucune sourate commencée. Traduis ton premier verset !
               </div>
             )}
@@ -128,24 +128,24 @@ export default function ProfilPage({ user, profile, onLogout }) {
                 display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0',
                 borderBottom: '1px solid rgba(201,168,76,.05)'
               }}>
-                <span style={{ fontSize: 11, color: G.textMuted, width: 24, textAlign: 'right' }}>{s.n}</span>
+                <span style={{ fontSize: 11, color: 'var(--text-muted)', width: 24, textAlign: 'right' }}>{s.n}</span>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                    <span style={{ fontSize: 13, color: G.text }}>{s.ar} — {s.fr}</span>
-                    <span style={{ fontSize: 11, color: G.textMuted }}>{s.done}/{s.v}</span>
+                    <span style={{ fontSize: 13, color: 'var(--text)' }}>{s.ar} — {s.fr}</span>
+                    <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>{s.done}/{s.v}</span>
                   </div>
                   <div style={{ height: 4, background: 'rgba(201,168,76,.08)', borderRadius: 2, overflow: 'hidden' }}>
                     <div style={{
                       height: '100%', borderRadius: 2,
                       width: `${s.pct}%`,
-                      background: s.pct >= 80 ? G.green : s.pct >= 40 ? G.gold : G.orange,
+                      background: s.pct >= 80 ? 'var(--green)' : s.pct >= 40 ? 'var(--gold)' : 'var(--orange)',
                       transition: 'width .5s ease'
                     }} />
                   </div>
                 </div>
                 <span style={{
                   fontSize: 12, fontWeight: 700, minWidth: 36, textAlign: 'right',
-                  color: s.pct >= 80 ? G.green : s.pct >= 40 ? G.gold : G.orange
+                  color: s.pct >= 80 ? 'var(--green)' : s.pct >= 40 ? 'var(--gold)' : 'var(--orange)'
                 }}>{s.pct}%</span>
               </div>
             ))}
@@ -165,21 +165,21 @@ export default function ProfilPage({ user, profile, onLogout }) {
               }}>
                 <span style={{
                   fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 700, width: 28, textAlign: 'center',
-                  color: i === 0 ? '#FFD700' : i === 1 ? '#C0C0C0' : i === 2 ? '#CD7F32' : G.textMuted
+                  color: i === 0 ? '#FFD700' : i === 1 ? '#C0C0C0' : i === 2 ? '#CD7F32' : 'var(--text-muted)'
                 }}>{i + 1}</span>
                 <div style={{
-                  width: 32, height: 32, borderRadius: '50%', background: u.color || G.gold,
+                  width: 32, height: 32, borderRadius: '50%', background: u.color || 'var(--gold)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 14, color: '#fff', fontWeight: 700
+                  fontSize: 14, color: 'var(--bg-card)', fontWeight: 700
                 }}>{u.username?.[0]?.toUpperCase() || '?'}</div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, color: G.text, fontWeight: u.username === profile.username ? 700 : 400 }}>
+                  <div style={{ fontSize: 13, color: 'var(--text)', fontWeight: u.username === profile.username ? 700 : 400 }}>
                     {u.username}{u.username === profile.username ? ' (toi)' : ''}
                   </div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: 14, color: G.green, fontWeight: 700 }}>{u.excellent}</div>
-                  <div style={{ fontSize: 10, color: G.textMuted }}>{u.total} versets</div>
+                  <div style={{ fontSize: 14, color: 'var(--green)', fontWeight: 700 }}>{u.excellent}</div>
+                  <div style={{ fontSize: 10, color: 'var(--text-muted)' }}>{u.total} versets</div>
                 </div>
               </div>
             ))}
@@ -188,7 +188,7 @@ export default function ProfilPage({ user, profile, onLogout }) {
 
         {/* Actions */}
         <div style={{ marginTop: 24, paddingBottom: 32 }}>
-          <Button variant="ghost" full onClick={onLogout} style={{ color: G.red, borderColor: 'rgba(201,107,107,.2)' }}>
+          <Button variant="ghost" full onClick={onLogout} style={{ color: 'var(--red)', borderColor: 'rgba(201,107,107,.2)' }}>
             Déconnexion
           </Button>
         </div>

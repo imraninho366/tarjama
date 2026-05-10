@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { G } from '../lib/theme'
 import AuthScreen from './AuthScreen'
 
 const FEATURES = [
@@ -27,14 +26,14 @@ export default function LandingPage() {
 
       {/* Hero */}
       <div style={{ textAlign: 'center', padding: '32px 0 24px' }}>
-        <div style={{ fontSize: 40, fontFamily: 'var(--font-arabic)', color: G.gold, marginBottom: 8 }}>ب</div>
-        <h1 style={{ fontSize: 'clamp(24px, 7vw, 32px)', fontFamily: 'var(--font-display)', color: G.text, margin: '0 0 8px', fontWeight: 700, letterSpacing: 3 }}>
+        <div style={{ fontSize: 40, fontFamily: 'var(--font-arabic)', color: 'var(--gold)', marginBottom: 8 }}>ب</div>
+        <h1 style={{ fontSize: 'clamp(24px, 7vw, 32px)', fontFamily: 'var(--font-display)', color: 'var(--text)', margin: '0 0 8px', fontWeight: 700, letterSpacing: 3 }}>
           TARJAMA
         </h1>
-        <p style={{ fontSize: 14, color: G.goldLight, letterSpacing: 2, textTransform: 'uppercase', margin: '0 0 20px' }}>
+        <p style={{ fontSize: 14, color: 'var(--gold-light)', letterSpacing: 2, textTransform: 'uppercase', margin: '0 0 20px' }}>
           ترجمة — Traduction coranique
         </p>
-        <p style={{ fontSize: 16, color: G.textDim, lineHeight: 1.7, maxWidth: 440, margin: '0 auto 28px' }}>
+        <p style={{ fontSize: 16, color: 'var(--text-dim)', lineHeight: 1.7, maxWidth: 440, margin: '0 auto 28px' }}>
           Apprends le vocabulaire du Coran en traduisant verset par verset.
           Correction IA, quiz, dictionnaire et plus — tout en français.
         </p>
@@ -42,15 +41,15 @@ export default function LandingPage() {
           onClick={() => setShowAuth(true)}
           style={{
             padding: '14px 36px', borderRadius: 10, border: 'none', cursor: 'pointer',
-            background: `linear-gradient(135deg, ${G.goldDark}, ${G.gold})`,
-            color: '#050508', fontSize: 15, fontWeight: 700, letterSpacing: 1,
+            background: `linear-gradient(135deg, ${'var(--gold-dark)'}, ${'var(--gold)'})`,
+            color: 'var(--bg-abyss)', fontSize: 15, fontWeight: 700, letterSpacing: 1,
             boxShadow: '0 4px 20px rgba(201,168,76,.3)',
             transition: 'transform .2s'
           }}
         >
           Commencer gratuitement →
         </button>
-        <p style={{ fontSize: 11, color: G.textMuted, marginTop: 10 }}>
+        <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 10 }}>
           Gratuit · Pas de carte bancaire · Créé en 30 secondes
         </p>
       </div>
@@ -63,15 +62,15 @@ export default function LandingPage() {
       }}>
         {STATS.map(([num, label]) => (
           <div key={label} style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: 20, fontFamily: 'var(--font-display)', color: G.gold, fontWeight: 700 }}>{num}</div>
-            <div style={{ fontSize: 9, color: G.textMuted, textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>{label}</div>
+            <div style={{ fontSize: 20, fontFamily: 'var(--font-display)', color: 'var(--gold)', fontWeight: 700 }}>{num}</div>
+            <div style={{ fontSize: 9, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 1, marginTop: 2 }}>{label}</div>
           </div>
         ))}
       </div>
 
       {/* Features */}
       <div style={{ marginBottom: 32 }}>
-        <div style={{ fontSize: 10, color: G.textMuted, textTransform: 'uppercase', letterSpacing: 2, marginBottom: 16, textAlign: 'center' }}>
+        <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 16, textAlign: 'center' }}>
           Fonctionnalités
         </div>
         {FEATURES.map((f, i) => (
@@ -83,11 +82,11 @@ export default function LandingPage() {
               width: 40, height: 40, borderRadius: 10, flexShrink: 0,
               background: 'rgba(201,168,76,.08)', border: '1px solid rgba(201,168,76,.15)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'var(--font-arabic)', fontSize: 18, color: G.gold
+              fontFamily: 'var(--font-arabic)', fontSize: 18, color: 'var(--gold)'
             }}>{f.icon}</div>
             <div>
-              <div style={{ fontSize: 14, color: G.text, fontWeight: 600, marginBottom: 3 }}>{f.title}</div>
-              <div style={{ fontSize: 12, color: G.textDim, lineHeight: 1.5 }}>{f.desc}</div>
+              <div style={{ fontSize: 14, color: 'var(--text)', fontWeight: 600, marginBottom: 3 }}>{f.title}</div>
+              <div style={{ fontSize: 12, color: 'var(--text-dim)', lineHeight: 1.5 }}>{f.desc}</div>
             </div>
           </div>
         ))}
@@ -99,13 +98,13 @@ export default function LandingPage() {
         background: 'rgba(201,168,76,.04)', borderRadius: 12,
         border: '1px solid rgba(201,168,76,.08)'
       }}>
-        <div style={{ fontSize: 20, fontFamily: 'var(--font-arabic)', color: G.goldLight, marginBottom: 8, direction: 'rtl' }}>
+        <div style={{ fontSize: 20, fontFamily: 'var(--font-arabic)', color: 'var(--gold-light)', marginBottom: 8, direction: 'rtl' }}>
           إِنَّا أَنزَلْنَاهُ قُرْآنًا عَرَبِيًّا لَّعَلَّكُمْ تَعْقِلُونَ
         </div>
-        <div style={{ fontSize: 12, color: G.textDim, fontStyle: 'italic' }}>
+        <div style={{ fontSize: 12, color: 'var(--text-dim)', fontStyle: 'italic' }}>
           « Nous l'avons fait descendre, un Coran en arabe, afin que vous raisonniez. »
         </div>
-        <div style={{ fontSize: 11, color: G.textMuted, marginTop: 4 }}>Sourate Yusuf (12:2)</div>
+        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>Sourate Yusuf (12:2)</div>
       </div>
 
       {/* CTA final */}
@@ -115,8 +114,8 @@ export default function LandingPage() {
             onClick={() => setShowAuth(true)}
             style={{
               padding: '14px 36px', borderRadius: 10, border: 'none', cursor: 'pointer',
-              background: `linear-gradient(135deg, ${G.goldDark}, ${G.gold})`,
-              color: '#050508', fontSize: 15, fontWeight: 700, letterSpacing: 1,
+              background: `linear-gradient(135deg, ${'var(--gold-dark)'}, ${'var(--gold)'})`,
+              color: 'var(--bg-abyss)', fontSize: 15, fontWeight: 700, letterSpacing: 1,
               boxShadow: '0 4px 20px rgba(201,168,76,.3)'
             }}
           >
@@ -134,10 +133,10 @@ export default function LandingPage() {
 
       {/* Footer */}
       <div style={{ textAlign: 'center', padding: '16px 0 32px', borderTop: '1px solid rgba(201,168,76,.06)' }}>
-        <div style={{ fontSize: 11, color: G.textMuted, marginBottom: 6 }}>
+        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 6 }}>
           Tarjama — Apprendre le Coran en français
         </div>
-        <Link href="/mentions-legales" style={{ fontSize: 10, color: G.textMuted, textDecoration: 'underline' }}>
+        <Link href="/mentions-legales" style={{ fontSize: 10, color: 'var(--text-muted)', textDecoration: 'underline' }}>
           Mentions légales & Confidentialité
         </Link>
       </div>

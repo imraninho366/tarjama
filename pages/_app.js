@@ -15,6 +15,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
   const [displayedRoute, setDisplayedRoute] = useState(router.pathname)
   const [installPrompt, setInstallPrompt] = useState(null)
   const [showInstall, setShowInstall] = useState(false)
+  const [theme, setTheme] = useState('dark')
   const timeoutRef = useRef(null)
 
   useEffect(() => {
@@ -39,6 +40,19 @@ export default function TarjamaApp({ Component, pageProps, router }) {
 
     return () => subscription.unsubscribe()
   }, [])
+
+  useEffect(() => {
+    const saved = localStorage.getItem('tarjama_theme') || 'dark'
+    setTheme(saved)
+    document.documentElement.setAttribute('data-theme', saved)
+  }, [])
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    setTheme(next)
+    document.documentElement.setAttribute('data-theme', next)
+    localStorage.setItem('tarjama_theme', next)
+  }
 
   useEffect(() => {
     const handler = (e) => { e.preventDefault(); setInstallPrompt(e); setShowInstall(true) }
@@ -99,7 +113,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <meta name="theme-color" content="#C9A84C"/>
+        <meta name="theme-color" content={theme === 'light' ? '#F2EFE8' : '#C9A84C'}/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
         <meta name="apple-mobile-web-app-title" content="Tarjama"/>
@@ -120,6 +134,8 @@ export default function TarjamaApp({ Component, pageProps, router }) {
         profile={profile}
         onLogout={handleLogout}
         hideNav={hideNav}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       >
         <div
           key={displayedRoute}
@@ -136,7 +152,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
       {showInstall && installPrompt && (
         <div style={{
           position:'fixed',bottom:'calc(var(--bottomnav-height) + env(safe-area-inset-bottom, 0px) + 8px)',left:12,right:12,zIndex:50,
-          background:'#1a1a2e',border:'1px solid rgba(201,168,76,.25)',borderRadius:12,
+          background:'var(--bg-card)',border:'1px solid var(--glass-border)',borderRadius:12,
           padding:'14px 16px',display:'flex',alignItems:'center',gap:12,
           boxShadow:'0 -4px 24px rgba(0,0,0,.5)'
         }}>

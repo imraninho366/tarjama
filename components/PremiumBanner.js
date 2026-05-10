@@ -17,24 +17,24 @@ export default function PremiumBanner({ action, limit, onClose }) {
       WebkitOverflowScrolling: 'touch'
     }}>
       <div style={{
-        maxWidth: 380, width: '100%', background: '#1a1a2e',
-        border: `1px solid ${G.gold}40`, borderRadius: 16,
+        maxWidth: 380, width: '100%', background: 'var(--bg-card)',
+        border: '1px solid var(--glass-border)', borderRadius: 16,
         padding: '32px 24px', textAlign: 'center'
       }}>
         <div style={{ fontSize: 40, marginBottom: 12 }}>✦</div>
         <div style={{
           fontSize: 20, fontFamily: 'var(--font-display)',
-          color: G.gold, fontWeight: 700, marginBottom: 8
+          color: 'var(--gold)', fontWeight: 700, marginBottom: 8
         }}>
           Passe à Tarjama Premium
         </div>
-        <div style={{ fontSize: 13, color: G.textDim, lineHeight: 1.7, marginBottom: 20 }}>
+        <div style={{ fontSize: 13, color: 'var(--text-dim)', lineHeight: 1.7, marginBottom: 20 }}>
           {messages[action] || 'Limite gratuite atteinte.'}
           <br />Débloque un accès illimité à toutes les fonctionnalités.
         </div>
         <div style={{
           display: 'flex', flexDirection: 'column', gap: 8,
-          fontSize: 12, color: G.textDim, textAlign: 'left',
+          fontSize: 12, color: 'var(--text-dim)', textAlign: 'left',
           padding: '12px 16px', background: 'rgba(201,168,76,.05)',
           borderRadius: 8, marginBottom: 20
         }}>
@@ -55,8 +55,8 @@ export default function PremiumBanner({ action, limit, onClose }) {
           style={{
             width: '100%', padding: '14px 0', borderRadius: 10,
             border: 'none', cursor: 'pointer',
-            background: `linear-gradient(135deg, ${G.goldDark}, ${G.gold})`,
-            color: '#050508', fontSize: 15, fontWeight: 700,
+            background: `linear-gradient(135deg, ${'var(--gold-dark)'}, ${'var(--gold)'})`,
+            color: 'var(--bg-abyss)', fontSize: 15, fontWeight: 700,
             marginBottom: 10
           }}
         >
@@ -65,7 +65,7 @@ export default function PremiumBanner({ action, limit, onClose }) {
         <button
           onClick={onClose}
           style={{
-            background: 'none', border: 'none', color: G.textMuted,
+            background: 'none', border: 'none', color: 'var(--text-muted)',
             fontSize: 12, cursor: 'pointer', padding: 8
           }}
         >
