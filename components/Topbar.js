@@ -18,6 +18,8 @@ const PAGE_NAMES = {
   '/revelation':   { fr: 'Révélation', ar: 'النزول' },
   '/racines':      { fr: 'Racines', ar: 'الجذور' },
   '/parcours':     { fr: 'Parcours', ar: 'المسار' },
+  '/calligraphie': { fr: 'Calligraphie', ar: 'الخط' },
+  '/tajweed':      { fr: 'Tajweed', ar: 'التجويد' },
   '/profil':       { fr: 'Profil', ar: 'الملف' },
 }
 

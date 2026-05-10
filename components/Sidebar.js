@@ -18,6 +18,8 @@ const NAV_ITEMS = [
   { href: '/revelation',   icon: '↓', label: 'Révélation', ar: 'النزول' },
   { href: '/racines',      icon: 'ج', label: 'Racines',    ar: 'الجذور' },
   { href: '/parcours',     icon: '▸', label: 'Parcours',   ar: 'المسار' },
+  { href: '/calligraphie', icon: '✎', label: 'Calligraphie', ar: 'الخط' },
+  { href: '/tajweed',      icon: '♪', label: 'Tajweed',    ar: 'التجويد' },
   { href: '/profil',       icon: '◉', label: 'Profil',     ar: 'الملف' },
 ]
 

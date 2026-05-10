@@ -492,6 +492,24 @@ export default function App({ user, profile, onLogout }){
             {total>0&&<p className={s.dashboardCtaText}>Recherche une sourate dans la barre ci-dessus</p>}
             <Button onClick={()=>openSourate(SUGGESTIONS[0])}>{total===0?'Commencer Al-Fatiha →':'Continuer Al-Fatiha →'}</Button>
           </div>
+          {total>0&&!smartVerse&&(
+            <div style={{textAlign:'center',marginTop:12}}>
+              <Button variant="secondary" onClick={async()=>{
+                const weak=Object.entries(progress).filter(([,p])=>p.niveau==='wrong'||p.niveau==='partial').slice(0,5).map(([k])=>k.split(':')[0])
+                if(weak.length===0) return
+                try{const r=await fetch('/api/smart-verse',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({weakWords:weak})});const d=await r.json();if(d.arabe)setSmartVerse(d)}catch{}
+              }}>Verset intelligent pour toi</Button>
+            </div>
+          )}
+          {smartVerse&&(
+            <div style={{marginTop:12,padding:16,borderRadius:10,background:'rgba(155,127,212,.06)',border:'1px solid rgba(155,127,212,.15)',animation:'fadeInUp .3s ease'}}>
+              <div style={{fontSize:10,color:'var(--purple)',textTransform:'uppercase',letterSpacing:2,marginBottom:8}}>Verset recommandé pour toi</div>
+              <div style={{fontFamily:'var(--font-arabic)',fontSize:20,color:'var(--gold-light)',direction:'rtl',textAlign:'right',lineHeight:2,marginBottom:8}}>{smartVerse.arabe}</div>
+              <div style={{fontSize:13,color:'var(--text)',fontStyle:'italic',marginBottom:6}}>« {smartVerse.traduction} »</div>
+              <div style={{fontSize:11,color:'var(--text-dim)'}}>{smartVerse.conseil}</div>
+              <div style={{fontSize:10,color:'var(--text-muted)',marginTop:6}}>S.{smartVerse.sourate_num}:{smartVerse.verset_num} — {smartVerse.sourate_ar}</div>
+            </div>
+          )}
           {leaderboard.length>0&&(
             <div style={{marginTop:20}}>
               <div className={s.sectionLabel} style={{marginBottom:8}}>Classement</div>
