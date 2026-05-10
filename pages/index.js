@@ -5,6 +5,7 @@ import { QURAN } from '../lib/quran'
 import { G, nvlColor, nvlBg, nvlBorder } from '../lib/theme'
 import Head from 'next/head'
 import AuthScreen from '../components/AuthScreen'
+import LandingPage from '../components/LandingPage'
 import Button from '../components/common/Button'
 import Toast from '../components/common/Toast'
 import s from '../styles/Home.module.css'
@@ -315,7 +316,7 @@ export default function App({ user, profile, onLogout }){
       }catch(e){console.log('Vocab save error:',e.message)}
       const msgs={excellent:'مَاشَاءَ اللَّه — Excellent !',good:'جَيِّد — Bien !',partial:'تَقْرِيبًا — Presque !',wrong:'حَاوِلْ مَرَّةً — Réessaie !'}
       showToast(msgs[result.niveau]||'',result.niveau==='excellent'||result.niveau==='good'?'success':'warning')
-    }catch(err){showToast(`Erreur: ${err.message}`,'error')}
+    }catch(err){showToast(err.message==='Failed to fetch'?'Connexion perdue. Vérifie ton internet.':`Erreur: ${err.message}`,'error')}
     setVerifying(false)
   }
 
@@ -372,11 +373,10 @@ export default function App({ user, profile, onLogout }){
   const existing=verse?getVP(sourate.num,verse.n):null
   const isLast=sourate?vIdx===sourate.verses.length-1:false
 
-  // ── AUTH SCREEN ─────────────────────────────────────────────
   if(!user||!profile) return(
     <>
-      <Head><title>Tarjama — Connexion</title></Head>
-      <AuthScreen />
+      <Head><title>Tarjama — Apprends le Coran en traduisant</title></Head>
+      <LandingPage />
     </>
   )
 

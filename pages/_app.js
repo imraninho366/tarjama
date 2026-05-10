@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { supabase } from '../lib/supabase'
 import Layout from '../components/Layout'
 import Head from 'next/head'
+import { Analytics } from '@vercel/analytics/react'
 import '../styles/globals.css'
 
 // Pages qui ne montrent pas la nav (auth screen)
@@ -106,7 +107,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
         <meta property="og:title" content="Tarjama — Traduction coranique"/>
         <meta property="og:description" content="Apprends le vocabulaire du Coran en traduisant verset par verset. Quiz, dictionnaire, hadiths et plus."/>
         <meta property="og:type" content="website"/>
-        <meta property="og:image" content="/icon.svg"/>
+        <meta property="og:image" content="/api/og"/>
         <meta property="og:locale" content="fr_FR"/>
         <meta name="twitter:card" content="summary"/>
         <meta name="twitter:title" content="Tarjama — Traduction coranique"/>
@@ -153,6 +154,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
           }}>✕</button>
         </div>
       )}
+      <Analytics />
     </>
   )
 }

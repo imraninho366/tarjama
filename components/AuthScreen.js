@@ -63,7 +63,10 @@ export default function AuthScreen() {
         }
       }
     } catch (err) {
-      setAuthError(err.message || 'Erreur inattendue')
+      const msg = err.message === 'Failed to fetch'
+        ? 'Connexion au serveur impossible. Vérifie ta connexion internet.'
+        : (err.message || 'Erreur inattendue')
+      setAuthError(msg)
     }
     setAuthLoading(false)
   }
