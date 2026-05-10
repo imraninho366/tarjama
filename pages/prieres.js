@@ -48,27 +48,56 @@ export default function PrieresPage({ user }) {
   const [now, setNow] = useState(new Date())
   const [heading, setHeading] = useState(null)
   const [showQibla, setShowQibla] = useState(false)
+  const [cityInput, setCityInput] = useState('')
+  const [cityName, setCityName] = useState('')
+  const [geoFailed, setGeoFailed] = useState(false)
 
   useEffect(() => {
     if (!user) { router.push('/'); return }
-    getLocation()
+    const saved = localStorage.getItem('tarjama_location')
+    if (saved) {
+      try {
+        const { lat, lng, city } = JSON.parse(saved)
+        setCoords({ lat, lng })
+        setCityName(city || '')
+        loadTimes(lat, lng)
+      } catch { getLocation() }
+    } else { getLocation() }
     const timer = setInterval(() => setNow(new Date()), 30000)
     return () => clearInterval(timer)
   }, [user])
 
+  const saveLocation = (lat, lng, city) => {
+    localStorage.setItem('tarjama_location', JSON.stringify({ lat, lng, city }))
+  }
+
   const getLocation = () => {
-    if (!navigator.geolocation) { setError('Géolocalisation non disponible'); setLoading(false); return }
+    if (!navigator.geolocation) { setGeoFailed(true); setLoading(false); return }
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords
         setCoords({ lat: latitude, lng: longitude })
+        saveLocation(latitude, longitude, '')
         loadTimes(latitude, longitude)
       },
-      () => {
-        setError('Active la géolocalisation pour voir les horaires')
-        setLoading(false)
-      }
+      () => { setGeoFailed(true); setLoading(false) }
     )
+  }
+
+  const searchCity = async () => {
+    if (!cityInput.trim()) return
+    setLoading(true); setError(''); setGeoFailed(false)
+    try {
+      const r = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(cityInput.trim())}&format=json&limit=1`)
+      const data = await r.json()
+      if (!data.length) { setError(`Ville "${cityInput}" introuvable`); setLoading(false); return }
+      const { lat, lon, display_name } = data[0]
+      const latF = parseFloat(lat), lngF = parseFloat(lon)
+      setCoords({ lat: latF, lng: lngF })
+      setCityName(display_name.split(',')[0])
+      saveLocation(latF, lngF, display_name.split(',')[0])
+      loadTimes(latF, lngF)
+    } catch { setError('Erreur de recherche'); setLoading(false) }
   }
 
   const loadTimes = async (lat, lng) => {
@@ -135,11 +164,44 @@ export default function PrieresPage({ user }) {
           )}
         </div>
 
-        {loading && <div style={{ textAlign: 'center', padding: 40, color: 'var(--text-muted)' }}>Localisation en cours...</div>}
-        {error && (
-          <div style={{ textAlign: 'center', padding: 24 }}>
-            <div style={{ color: 'var(--red)', fontSize: 13, marginBottom: 12 }}>{error}</div>
-            <Button onClick={getLocation}>Réessayer</Button>
+        {/* Ville actuelle + changer */}
+        {cityName && times && (
+          <div style={{ textAlign: 'center', marginBottom: 8 }}>
+            <span style={{ fontSize: 12, color: 'var(--text-dim)' }}>{cityName}</span>
+            <button onClick={() => { setTimes(null); setGeoFailed(true); setCityInput('') }}
+              style={{ fontSize: 11, color: 'var(--gold)', background: 'none', border: 'none', cursor: 'pointer', marginLeft: 8, textDecoration: 'underline' }}>
+              Changer
+            </button>
+          </div>
+        )}
+
+        {loading && !geoFailed && <div style={{ textAlign: 'center', padding: 40, color: 'var(--text-muted)' }}>Localisation en cours...</div>}
+
+        {/* Formulaire de ville si géoloc refusée ou changement */}
+        {geoFailed && !times && (
+          <div style={{ padding: '20px 0' }}>
+            <div style={{ fontSize: 13, color: 'var(--text-dim)', textAlign: 'center', marginBottom: 12, lineHeight: 1.7 }}>
+              Entre ta ville pour afficher les horaires de prière
+            </div>
+            <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+              <input value={cityInput} onChange={e => setCityInput(e.target.value)}
+                placeholder="Ex: Paris, Lyon, Casablanca..."
+                onKeyDown={e => { if (e.key === 'Enter') searchCity() }}
+                style={{
+                  flex: 1, padding: '12px', borderRadius: 8, fontSize: 14,
+                  background: 'var(--bg-elevated)', border: '1px solid rgba(201,168,76,.15)',
+                  color: 'var(--text)'
+                }}
+              />
+              <Button onClick={searchCity} disabled={!cityInput.trim() || loading}>
+                {loading ? '...' : 'Chercher'}
+              </Button>
+            </div>
+            <button onClick={getLocation}
+              style={{ width: '100%', padding: '10px', borderRadius: 8, cursor: 'pointer', fontSize: 12, color: 'var(--text-muted)', background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.08)' }}>
+              Utiliser ma position GPS
+            </button>
+            {error && <div style={{ color: 'var(--red)', fontSize: 12, textAlign: 'center', marginTop: 8 }}>{error}</div>}
           </div>
         )}
 
