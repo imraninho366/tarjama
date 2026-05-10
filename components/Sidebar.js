@@ -6,6 +6,7 @@ const NAV_ITEMS = [
   { href: '/',             icon: 'ت', label: 'Traduction', ar: 'ترجمة' },
   { href: '/quiz',         icon: 'ق', label: 'Quiz',       ar: 'اختبار' },
   { href: '/dictionnaire', icon: 'م', label: 'Dictionnaire', ar: 'المعجم' },
+  { href: '/prieres',      icon: '۩', label: 'Prières',    ar: 'الصلاة' },
   { href: '/hadith',       icon: 'ح', label: 'Hadith',     ar: 'الحديث' },
   { href: '/duas',         icon: 'د', label: 'Invocations', ar: 'الدعاء' },
   { href: '/piliers',      icon: 'ر', label: 'Piliers',    ar: 'الأركان' },

@@ -4,9 +4,9 @@ import styles from './BottomNav.module.css'
 
 const TABS = [
   { href: '/',             icon: 'ت', label: 'Traduire' },
+  { href: '/prieres',      icon: '۩', label: 'Prières' },
   { href: '/quiz',         icon: 'ق', label: 'Quiz' },
   { href: '/dictionnaire', icon: 'م', label: 'Dico' },
-  { href: '/hadith',       icon: 'ح', label: 'Hadith' },
   { href: '/profil',       icon: '◉', label: 'Profil' },
 ]
 
