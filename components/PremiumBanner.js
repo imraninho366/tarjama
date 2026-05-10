@@ -51,7 +51,7 @@ export default function PremiumBanner({ action, limit, onClose }) {
           ))}
         </div>
         <button
-          onClick={() => window.open('https://buy.stripe.com/your-link', '_blank')}
+          onClick={() => window.open('https://ko-fi.com/tarjama9', '_blank')}
           style={{
             width: '100%', padding: '14px 0', borderRadius: 10,
             border: 'none', cursor: 'pointer',
@@ -60,7 +60,7 @@ export default function PremiumBanner({ action, limit, onClose }) {
             marginBottom: 10
           }}
         >
-          Devenir Premium — 4,99€/mois
+          Soutenir Tarjama ☕
         </button>
         <button
           onClick={onClose}
