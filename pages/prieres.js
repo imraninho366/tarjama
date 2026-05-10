@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Button from '../components/common/Button'
 
@@ -39,10 +38,9 @@ function calculateQibla(lat, lng) {
   return (qibla + 360) % 360
 }
 
-export default function PrieresPage({ user }) {
-  const router = useRouter()
+export default function PrieresPage() {
   const [times, setTimes] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [coords, setCoords] = useState(null)
   const [now, setNow] = useState(new Date())
@@ -50,22 +48,23 @@ export default function PrieresPage({ user }) {
   const [showQibla, setShowQibla] = useState(false)
   const [cityInput, setCityInput] = useState('')
   const [cityName, setCityName] = useState('')
-  const [geoFailed, setGeoFailed] = useState(false)
 
   useEffect(() => {
-    if (!user) { router.push('/'); return }
     const saved = localStorage.getItem('tarjama_location')
     if (saved) {
       try {
         const { lat, lng, city } = JSON.parse(saved)
         setCoords({ lat, lng })
         setCityName(city || '')
+        setLoading(true)
         loadTimes(lat, lng)
-      } catch { getLocation() }
-    } else { getLocation() }
+        return
+      } catch {}
+    }
+    getLocation()
     const timer = setInterval(() => setNow(new Date()), 30000)
     return () => clearInterval(timer)
-  }, [user])
+  }, [])
 
   const saveLocation = (lat, lng, city) => {
     localStorage.setItem('tarjama_location', JSON.stringify({ lat, lng, city }))
@@ -125,8 +124,6 @@ export default function PrieresPage({ user }) {
     return () => window.removeEventListener('deviceorientation', handler)
   }, [showQibla])
 
-  if (!user) return null
-
   const nowMinutes = now.getHours() * 60 + now.getMinutes()
 
   let nextPrayer = null
@@ -168,17 +165,17 @@ export default function PrieresPage({ user }) {
         {cityName && times && (
           <div style={{ textAlign: 'center', marginBottom: 8 }}>
             <span style={{ fontSize: 12, color: 'var(--text-dim)' }}>{cityName}</span>
-            <button onClick={() => { setTimes(null); setGeoFailed(true); setCityInput('') }}
+            <button onClick={() => { setTimes(null); setCityInput('') }}
               style={{ fontSize: 11, color: 'var(--gold)', background: 'none', border: 'none', cursor: 'pointer', marginLeft: 8, textDecoration: 'underline' }}>
               Changer
             </button>
           </div>
         )}
 
-        {loading && !geoFailed && <div style={{ textAlign: 'center', padding: 40, color: 'var(--text-muted)' }}>Localisation en cours...</div>}
+        {loading && <div style={{ textAlign: 'center', padding: 40, color: 'var(--text-muted)' }}>Chargement...</div>}
 
-        {/* Formulaire de ville si géoloc refusée ou changement */}
-        {geoFailed && !times && (
+        {/* Formulaire de ville — toujours visible si pas d'horaires */}
+        {!times && !loading && (
           <div style={{ padding: '20px 0' }}>
             <div style={{ fontSize: 13, color: 'var(--text-dim)', textAlign: 'center', marginBottom: 12, lineHeight: 1.7 }}>
               Entre ta ville pour afficher les horaires de prière
@@ -194,7 +191,7 @@ export default function PrieresPage({ user }) {
                 }}
               />
               <Button onClick={searchCity} disabled={!cityInput.trim() || loading}>
-                {loading ? '...' : 'Chercher'}
+                Chercher
               </Button>
             </div>
             <button onClick={getLocation}
