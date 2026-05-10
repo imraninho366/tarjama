@@ -13,7 +13,8 @@ export default function PremiumBanner({ action, limit, onClose }) {
       position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
       background: 'rgba(5,5,8,.85)', zIndex: 100,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      padding: 20
+      padding: 20, overflowY: 'auto',
+      WebkitOverflowScrolling: 'touch'
     }}>
       <div style={{
         maxWidth: 380, width: '100%', background: '#1a1a2e',

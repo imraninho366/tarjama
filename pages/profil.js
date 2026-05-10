@@ -91,7 +91,7 @@ export default function ProfilPage({ user, profile, onLogout }) {
         </div>
 
         {/* Stats principales */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, marginBottom: 20 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8, marginBottom: 20 }}>
           {[
             [total, 'Versets', G.gold],
             [excellent, 'Excellents', G.green],

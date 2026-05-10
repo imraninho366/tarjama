@@ -26,9 +26,9 @@ export default function LandingPage() {
     <div style={{ maxWidth: 640, margin: '0 auto', padding: '0 20px' }}>
 
       {/* Hero */}
-      <div style={{ textAlign: 'center', padding: '48px 0 32px' }}>
-        <div style={{ fontSize: 48, fontFamily: 'var(--font-arabic)', color: G.gold, marginBottom: 8 }}>ب</div>
-        <h1 style={{ fontSize: 32, fontFamily: 'var(--font-display)', color: G.text, margin: '0 0 8px', fontWeight: 700, letterSpacing: 3 }}>
+      <div style={{ textAlign: 'center', padding: '32px 0 24px' }}>
+        <div style={{ fontSize: 40, fontFamily: 'var(--font-arabic)', color: G.gold, marginBottom: 8 }}>ب</div>
+        <h1 style={{ fontSize: 'clamp(24px, 7vw, 32px)', fontFamily: 'var(--font-display)', color: G.text, margin: '0 0 8px', fontWeight: 700, letterSpacing: 3 }}>
           TARJAMA
         </h1>
         <p style={{ fontSize: 14, color: G.goldLight, letterSpacing: 2, textTransform: 'uppercase', margin: '0 0 20px' }}>
@@ -57,7 +57,7 @@ export default function LandingPage() {
 
       {/* Stats */}
       <div style={{
-        display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, marginBottom: 32,
+        display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8, marginBottom: 32,
         padding: '16px 12px', background: 'rgba(201,168,76,.04)',
         borderRadius: 12, border: '1px solid rgba(201,168,76,.1)'
       }}>

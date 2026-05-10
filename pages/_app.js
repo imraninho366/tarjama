@@ -135,7 +135,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
       </Layout>
       {showInstall && installPrompt && (
         <div style={{
-          position:'fixed',bottom:72,left:12,right:12,zIndex:50,
+          position:'fixed',bottom:'calc(var(--bottomnav-height) + env(safe-area-inset-bottom, 0px) + 8px)',left:12,right:12,zIndex:50,
           background:'#1a1a2e',border:'1px solid rgba(201,168,76,.25)',borderRadius:12,
           padding:'14px 16px',display:'flex',alignItems:'center',gap:12,
           boxShadow:'0 -4px 24px rgba(0,0,0,.5)'
