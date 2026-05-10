@@ -15,7 +15,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
   const [displayedRoute, setDisplayedRoute] = useState(router.pathname)
   const [installPrompt, setInstallPrompt] = useState(null)
   const [showInstall, setShowInstall] = useState(false)
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState('light')
   const timeoutRef = useRef(null)
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
   }, [])
 
   useEffect(() => {
-    const saved = localStorage.getItem('tarjama_theme') || 'dark'
+    const saved = localStorage.getItem('tarjama_theme') || 'light'
     setTheme(saved)
     document.documentElement.setAttribute('data-theme', saved)
   }, [])
