@@ -1,8 +1,16 @@
 // API Vercel — génère les traductions françaises via Groq
 // Appelée par la page /gen-dico en lots de 40 mots
 
+import { rateLimit } from '../../lib/rateLimit'
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
+  const { ok } = rateLimit(req, { limit: 3, windowMs: 60000 })
+  if (!ok) return res.status(429).json({ error: 'Trop de requêtes.' })
+
+  const apiKey = process.env.GROQ_API_KEY
+  if (!apiKey) return res.status(500).json({ error: 'Clé Groq non configurée' })
+
   const { batch } = req.body  // [{l: lemma, r: root, c: count}]
   if (!batch?.length) return res.status(400).json({ error: 'batch manquant' })
 

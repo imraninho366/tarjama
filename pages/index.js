@@ -54,19 +54,19 @@ function AudioPlayer({src}){
       <button onClick={toggle} aria-label={playing?'Pause':'Écouter'} style={{
         width:36,height:36,borderRadius:'50%',border:'1px solid rgba(201,168,76,.3)',
         background:playing?'rgba(201,168,76,.15)':'rgba(201,168,76,.07)',
-        color:G.gold,cursor:'pointer',display:'flex',alignItems:'center',
+        color:'var(--gold)',cursor:'pointer',display:'flex',alignItems:'center',
         justifyContent:'center',fontSize:14,flexShrink:0,transition:'all .2s'
       }}>
         {loading?'···':playing?'❚❚':'►'}
       </button>
       <div style={{flex:1,minWidth:0}}>
-        <div style={{fontSize:9,letterSpacing:2,textTransform:'uppercase',color:G.textMuted,marginBottom:4}}>Mishary Al-Afasy</div>
+        <div style={{fontSize:9,letterSpacing:2,textTransform:'uppercase',color:'var(--text-muted)',marginBottom:4}}>Mishary Al-Afasy</div>
         <div style={{height:3,background:'rgba(201,168,76,.1)',borderRadius:2,overflow:'hidden',cursor:'pointer'}}
           onClick={e=>{if(!audioRef.current||!duration)return;const rect=e.currentTarget.getBoundingClientRect();audioRef.current.currentTime=(e.clientX-rect.left)/rect.width*duration}}>
           <div style={{height:'100%',width:`${duration?Math.round(current/duration*100):0}%`,background:'linear-gradient(90deg,#8B6914,#C9A84C)',borderRadius:2,transition:'width .3s'}}/>
         </div>
       </div>
-      <span style={{fontFamily:'var(--font-display)',fontSize:11,color:G.gold,flexShrink:0,minWidth:40,textAlign:'right'}}>
+      <span style={{fontFamily:'var(--font-display)',fontSize:11,color:'var(--gold)',flexShrink:0,minWidth:40,textAlign:'right'}}>
         {playing||current>0?fmt(current):fmt(duration)}
       </span>
     </div>
@@ -469,8 +469,8 @@ export default function App({ user, profile, onLogout }){
           </div>
           {total===0&&(
             <div style={{padding:'16px',margin:'0 0 16px',background:'rgba(201,168,76,.06)',borderRadius:12,border:'1px solid rgba(201,168,76,.12)'}}>
-              <div style={{fontSize:13,color:G.text,fontWeight:600,marginBottom:8}}>Comment ça marche ?</div>
-              <div style={{fontSize:12,color:G.textDim,lineHeight:1.8}}>
+              <div style={{fontSize:13,color:'var(--text)',fontWeight:600,marginBottom:8}}>Comment ça marche ?</div>
+              <div style={{fontSize:12,color:'var(--text-dim)',lineHeight:1.8}}>
                 1. Choisis une sourate (commence par Al-Fatiha)<br/>
                 2. Lis le verset en arabe et écoute la récitation<br/>
                 3. Écris ta traduction en français<br/>
@@ -480,7 +480,7 @@ export default function App({ user, profile, onLogout }){
             </div>
           )}
           {total>0&&<div className={s.statsGrid}>
-            {[['Traduits',G.gold,total],['Excellents',G.green,correct],['Partiels',G.orange,partial],['À revoir',G.red,wrong],['Streak',G.purple,`${getStreak()}j`]].map(([lbl,clr,num])=>(
+            {[['Traduits','var(--gold)',total],['Excellents','var(--green)',correct],['Partiels','var(--orange)',partial],['À revoir','var(--red)',wrong],['Streak','var(--purple)',`${getStreak()}j`]].map(([lbl,clr,num])=>(
               <div key={lbl} className={s.statCard}>
                 <span className={s.statNum} style={{color:clr}}>{num}</span>
                 <span className={s.statLabel}>{lbl}</span>
@@ -515,13 +515,13 @@ export default function App({ user, profile, onLogout }){
               <div className={s.sectionLabel} style={{marginBottom:8}}>Classement</div>
               {leaderboard.slice(0,5).map((u,i)=>(
                 <div key={i} style={{display:'flex',alignItems:'center',gap:10,padding:'8px 12px',borderBottom:`1px solid rgba(201,168,76,.06)`}}>
-                  <span style={{fontFamily:'var(--font-display)',fontSize:16,color:i===0?G.gold:i===1?G.textDim:G.textMuted,width:24,textAlign:'center',fontWeight:700}}>{i+1}</span>
-                  <div style={{width:28,height:28,borderRadius:'50%',background:u.color||G.gold,display:'flex',alignItems:'center',justifyContent:'center',fontSize:12,color:'#fff',fontWeight:700}}>{u.username?.[0]?.toUpperCase()||'?'}</div>
+                  <span style={{fontFamily:'var(--font-display)',fontSize:16,color:i===0?G.gold:i===1?'var(--text-dim)':'var(--text-muted)',width:24,textAlign:'center',fontWeight:700}}>{i+1}</span>
+                  <div style={{width:28,height:28,borderRadius:'50%',background:u.color||'var(--gold)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:12,color:'#fff',fontWeight:700}}>{u.username?.[0]?.toUpperCase()||'?'}</div>
                   <div style={{flex:1,minWidth:0}}>
-                    <div style={{fontSize:13,color:G.text,fontWeight:u.username===profile.username?700:400}}>{u.username}{u.username===profile.username?' (toi)':''}</div>
+                    <div style={{fontSize:13,color:'var(--text)',fontWeight:u.username===profile.username?700:400}}>{u.username}{u.username===profile.username?' (toi)':''}</div>
                   </div>
-                  <span style={{fontSize:13,color:G.green,fontWeight:600}}>{u.excellent}</span>
-                  <span style={{fontSize:10,color:G.textMuted}}>/{u.total}</span>
+                  <span style={{fontSize:13,color:'var(--green)',fontWeight:600}}>{u.excellent}</span>
+                  <span style={{fontSize:10,color:'var(--text-muted)'}}>/{u.total}</span>
                 </div>
               ))}
             </div>
@@ -546,7 +546,7 @@ export default function App({ user, profile, onLogout }){
           </div>
           {rl.map(item=>{
             const sInfo=item.sInfo||{ar:'?',fr:'?'}
-            const badge={wrong:{label:'Faux',clr:G.red,bg:G.red+'1e'},partial:{label:'Partiel',clr:G.orange,bg:G.orange+'1e'},skipped:{label:'Passé',clr:G.textMuted,bg:G.textMuted+'1e'}}[item.niveau]||{label:'?',clr:G.textMuted,bg:'transparent'}
+            const badge={wrong:{label:'Faux',clr:'var(--red)',bg:'var(--red)'+'1e'},partial:{label:'Partiel',clr:'var(--orange)',bg:'var(--orange)'+'1e'},skipped:{label:'Passé',clr:'var(--text-muted)',bg:'var(--text-muted)'+'1e'}}[item.niveau]||{label:'?',clr:'var(--text-muted)',bg:'transparent'}
             return(
               <div key={item.key} className={s.reviewItem} onClick={()=>{
                 const info={n:item.sNum,ar:sInfo.ar,fr:sInfo.fr,v:sInfo.v||0}
@@ -633,7 +633,7 @@ export default function App({ user, profile, onLogout }){
 
           {/* Hifz toggle */}
           {!hifzMode&&<div style={{display:'flex',justifyContent:'flex-end',padding:'0 16px 8px'}}>
-            <Button variant="secondary" small onClick={startHifz} style={{color:G.purple,borderColor:'rgba(155,127,212,.25)'}}>Mode Hifz</Button>
+            <Button variant="secondary" small onClick={startHifz} style={{color:'var(--purple)',borderColor:'rgba(155,127,212,.25)'}}>Mode Hifz</Button>
           </div>}
 
           {/* Hifz mode */}
@@ -646,9 +646,9 @@ export default function App({ user, profile, onLogout }){
 
               {hifzStep==='listen'&&(
                 <div style={{textAlign:'center',padding:'10px 0'}}>
-                  <div style={{fontSize:13,color:G.textDim,marginBottom:16,lineHeight:1.8}}>
+                  <div style={{fontSize:13,color:'var(--text-dim)',marginBottom:16,lineHeight:1.8}}>
                     1. Écoute la récitation du verset<br/>
-                    <span style={{color:G.textMuted,fontSize:11}}>Tu peux l'écouter plusieurs fois</span>
+                    <span style={{color:'var(--text-muted)',fontSize:11}}>Tu peux l'écouter plusieurs fois</span>
                   </div>
 
                   {/* Recording section */}
@@ -657,14 +657,14 @@ export default function App({ user, profile, onLogout }){
                     <div className={s.recActions}>
                       {!recording&&!recLoading&&<Button variant="danger" small onClick={startRecording}>Enregistrer</Button>}
                       {recording&&<Button variant="danger" small onClick={stopRecording} className={s.recPulsing}>Arrêter</Button>}
-                      {recording&&<span style={{fontSize:11,color:G.red}} className={s.recPulsing}>Enregistrement en cours...</span>}
-                      {recLoading&&<span style={{fontSize:11,color:G.textMuted}}>Analyse en cours...</span>}
+                      {recording&&<span style={{fontSize:11,color:'var(--red)'}} className={s.recPulsing}>Enregistrement en cours...</span>}
+                      {recLoading&&<span style={{fontSize:11,color:'var(--text-muted)'}}>Analyse en cours...</span>}
                     </div>
 
                     {recScore&&(
                       <div className={s.recScore}>
                         <div className={s.recScoreHeader}>
-                          <span className={s.recScoreNum} style={{color:recScore.score>=70?G.green:recScore.score>=50?G.orange:G.red}}>{recScore.score}%</span>
+                          <span className={s.recScoreNum} style={{color:recScore.score>=70?'var(--green)':recScore.score>=50?'var(--orange)':'var(--red)'}}>{recScore.score}%</span>
                           <span className={s.recScoreSub}>{recScore.correct}/{recScore.total} mots corrects</span>
                         </div>
                         <div className={s.recWords}>
@@ -677,7 +677,7 @@ export default function App({ user, profile, onLogout }){
                     )}
                   </div>
 
-                  <Button variant="secondary" onClick={()=>{setHifzStep('write');setRecScore(null);setRecTranscript('')}} style={{color:G.purple,borderColor:'rgba(155,127,212,.3)'}}>
+                  <Button variant="secondary" onClick={()=>{setHifzStep('write');setRecScore(null);setRecTranscript('')}} style={{color:'var(--purple)',borderColor:'rgba(155,127,212,.3)'}}>
                     Mode écrit → Écrire de mémoire
                   </Button>
                 </div>
@@ -685,13 +685,13 @@ export default function App({ user, profile, onLogout }){
 
               {hifzStep==='write'&&(
                 <div>
-                  <div style={{fontSize:13,color:G.textDim,marginBottom:10,lineHeight:1.8}}>
+                  <div style={{fontSize:13,color:'var(--text-dim)',marginBottom:10,lineHeight:1.8}}>
                     2. Écris le verset de mémoire en arabe
-                    <span style={{display:'block',color:G.textMuted,fontSize:11}}>Sans regarder le texte au-dessus !</span>
+                    <span style={{display:'block',color:'var(--text-muted)',fontSize:11}}>Sans regarder le texte au-dessus !</span>
                   </div>
                   <textarea value={hifzInput} onChange={e=>setHifzInput(e.target.value)} placeholder="اكتب الآية من الذاكرة..." dir="rtl" className={s.hifzTextarea} lang="ar"/>
                   <div className={s.actions} style={{marginTop:10}}>
-                    <Button variant="secondary" onClick={checkHifz} disabled={!hifzInput.trim()} style={{color:G.purple,borderColor:'rgba(155,127,212,.3)',flex:'1 1 auto'}}>Vérifier ma mémorisation</Button>
+                    <Button variant="secondary" onClick={checkHifz} disabled={!hifzInput.trim()} style={{color:'var(--purple)',borderColor:'rgba(155,127,212,.3)',flex:'1 1 auto'}}>Vérifier ma mémorisation</Button>
                     <Button variant="ghost" onClick={()=>setHifzStep('listen')}>← Réécouter</Button>
                   </div>
                 </div>
@@ -705,13 +705,13 @@ export default function App({ user, profile, onLogout }){
                       <div style={{fontSize:12,color:nvlColor[hifzResult.niveau],fontWeight:700,textTransform:'uppercase',letterSpacing:1}}>
                         {hifzResult.niveau==='excellent'?'Mémorisé !':hifzResult.niveau==='good'?'Presque parfait':hifzResult.niveau==='partial'?'Continue !':'À retravailler'}
                       </div>
-                      <div style={{fontSize:11,color:G.textMuted}}>Score de mémorisation</div>
+                      <div style={{fontSize:11,color:'var(--text-muted)'}}>Score de mémorisation</div>
                     </div>
                   </div>
-                  <div style={{fontSize:11,color:G.textMuted,marginBottom:8}}>Verset correct :</div>
-                  <div style={{fontFamily:'var(--font-arabic)',fontSize:20,color:G.goldLight,direction:'rtl',textAlign:'right',lineHeight:1.8}} lang="ar">{hifzResult.correct}</div>
+                  <div style={{fontSize:11,color:'var(--text-muted)',marginBottom:8}}>Verset correct :</div>
+                  <div style={{fontFamily:'var(--font-arabic)',fontSize:20,color:'var(--gold-light)',direction:'rtl',textAlign:'right',lineHeight:1.8}} lang="ar">{hifzResult.correct}</div>
                   <div className={s.actions} style={{marginTop:12}}>
-                    <Button variant="secondary" small onClick={()=>{setHifzInput('');setHifzResult(null);setHifzStep('listen')}} style={{color:G.purple,borderColor:'rgba(155,127,212,.25)'}}>Réessayer</Button>
+                    <Button variant="secondary" small onClick={()=>{setHifzInput('');setHifzResult(null);setHifzStep('listen')}} style={{color:'var(--purple)',borderColor:'rgba(155,127,212,.25)'}}>Réessayer</Button>
                     {!isLast&&<Button variant="success" small onClick={()=>{exitHifz();goVerse(vIdx+1)}} style={{flex:'1 1 auto'}}>Verset suivant →</Button>}
                   </div>
                 </div>
@@ -746,13 +746,13 @@ export default function App({ user, profile, onLogout }){
                 <Button onClick={verify} disabled={verifying||!userTrans.trim()} className={s.actionMain}>
                   {verifying?'...':'✓ Vérifier'}
                 </Button>
-                <Button variant="secondary" onClick={fetchHint} disabled={hinting} style={{color:G.purple,borderColor:'rgba(155,127,212,.25)'}}>
+                <Button variant="secondary" onClick={fetchHint} disabled={hinting} style={{color:'var(--purple)',borderColor:'rgba(155,127,212,.25)'}}>
                   {hinting?'...':showHint?'Masquer':'Indice'}
                 </Button>
                 <Button variant="ghost" onClick={skipVerse}>→ Passer</Button>
               </>}
-              {vIdx>0&&<Button variant="secondary" onClick={()=>goVerse(vIdx-1)} style={{color:G.blue,borderColor:'rgba(91,155,213,.2)'}}>← Préc.</Button>}
-              {existing&&(existing.niveau==='wrong'||existing.niveau==='partial'||existing.niveau==='skipped')&&<Button variant="secondary" onClick={retryVerse} style={{color:G.orange,borderColor:'rgba(212,135,76,.25)'}}>Réessayer</Button>}
+              {vIdx>0&&<Button variant="secondary" onClick={()=>goVerse(vIdx-1)} style={{color:'var(--blue)',borderColor:'rgba(91,155,213,.2)'}}>← Préc.</Button>}
+              {existing&&(existing.niveau==='wrong'||existing.niveau==='partial'||existing.niveau==='skipped')&&<Button variant="secondary" onClick={retryVerse} style={{color:'var(--orange)',borderColor:'rgba(212,135,76,.25)'}}>Réessayer</Button>}
               {existing&&!isLast&&<Button variant="success" onClick={()=>goVerse(vIdx+1)} className={s.actionMain}>Suivant →</Button>}
               {existing&&isLast&&<Button variant="success" onClick={()=>{setView('done');setShowConfetti(true);setTimeout(()=>setShowConfetti(false),3500);const st=computeStats(progress,getStreak());const nb=getNewBadges(st);if(nb.length>0)setNewBadge(nb[0])}} className={s.actionMain}>Terminer</Button>}
             </div>
@@ -799,7 +799,7 @@ export default function App({ user, profile, onLogout }){
           <div className={s.doneTitle}>Sourate terminée !</div>
           <div className={s.doneSourate}>{sourate.name_ar} — {sourate.name_fr}</div>
           <div className={s.doneStats}>
-            {[['Excellents',G.green,correct],['Partiels',G.orange,partial],['À revoir',G.red,wrong],['Score',G.gold,`${pct}%`]].map(([lbl,clr,val])=>(
+            {[['Excellents','var(--green)',correct],['Partiels','var(--orange)',partial],['À revoir','var(--red)',wrong],['Score','var(--gold)',`${pct}%`]].map(([lbl,clr,val])=>(
               <div key={lbl} className={s.doneStat}>
                 <span className={s.doneStatNum} style={{color:clr}}>{val}</span>
                 <span className={s.doneStatLabel}>{lbl}</span>

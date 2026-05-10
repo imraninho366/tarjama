@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tarjama-v1'
+const CACHE_NAME = 'tarjama-v2'
 const STATIC_ASSETS = [
   '/',
   '/quiz',
@@ -9,6 +9,20 @@ const STATIC_ASSETS = [
   '/prophetes',
   '/hadith',
   '/profil',
+  '/prieres',
+  '/defi',
+  '/dhikr',
+  '/savant',
+  '/humeur',
+  '/duel',
+  '/connexions',
+  '/revelation',
+  '/racines',
+  '/parcours',
+  '/calligraphie',
+  '/tajweed',
+  '/mentions-legales',
+  '/404',
   '/quran_vocab.json',
   '/duas.json',
   '/piliers.json',

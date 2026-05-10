@@ -5,8 +5,12 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 )
 
+import { rateLimit } from '../../lib/rateLimit'
+
 export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).end()
+  const { ok } = rateLimit(req, { limit: 10, windowMs: 60000 })
+  if (!ok) return res.status(429).json({ error: 'Trop de requêtes.' })
 
   try {
     const { data: profiles } = await supabase

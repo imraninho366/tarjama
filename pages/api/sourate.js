@@ -1,6 +1,10 @@
+import { rateLimit } from '../../lib/rateLimit'
+
 export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).end()
-  
+  const { ok } = rateLimit(req, { limit: 30, windowMs: 60000 })
+  if (!ok) return res.status(429).json({ error: 'Trop de requêtes.' })
+
   const { num } = req.query
   if (!num || isNaN(num) || num < 1 || num > 114) {
     return res.status(400).json({ error: 'Numéro de sourate invalide (1-114)' })

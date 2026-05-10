@@ -1,3 +1,4 @@
+import { rateLimit } from '../../lib/rateLimit'
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
@@ -18,6 +19,9 @@ function getDuelVerse() {
 }
 
 export default async function handler(req, res) {
+  const { ok } = rateLimit(req, { limit: 15, windowMs: 60000 })
+  if (!ok) return res.status(429).json({ error: 'Trop de requêtes.' })
+
   if (req.method === 'POST') {
     const { action, code, user_id, username, score } = req.body
 

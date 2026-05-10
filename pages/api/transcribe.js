@@ -1,5 +1,9 @@
+import { rateLimit } from '../../lib/rateLimit'
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
+  const { ok } = rateLimit(req, { limit: 5, windowMs: 60000 })
+  if (!ok) return res.status(429).json({ error: 'Trop de requêtes.' })
 
   const apiKey = process.env.GROQ_API_KEY
   if (!apiKey) return res.status(500).json({ error: 'Clé Groq non configurée' })
