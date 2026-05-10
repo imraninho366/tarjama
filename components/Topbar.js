@@ -11,6 +11,9 @@ const PAGE_NAMES = {
   '/piliers':      { fr: 'Piliers', ar: 'الأركان' },
   '/prophetes':    { fr: 'Prophètes', ar: 'الأنبياء' },
   '/alphabet':     { fr: 'Alphabet', ar: 'الحروف' },
+  '/defi':         { fr: 'Défis', ar: 'التحدي' },
+  '/racines':      { fr: 'Racines', ar: 'الجذور' },
+  '/parcours':     { fr: 'Parcours', ar: 'المسار' },
   '/profil':       { fr: 'Profil', ar: 'الملف' },
 }
 

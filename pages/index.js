@@ -6,6 +6,9 @@ import { G, nvlColor, nvlBg, nvlBorder } from '../lib/theme'
 import Head from 'next/head'
 import AuthScreen from '../components/AuthScreen'
 import LandingPage from '../components/LandingPage'
+import Confetti from '../components/Confetti'
+import BadgeUnlock from '../components/BadgeUnlock'
+import { computeStats, getNewBadges } from '../lib/badges'
 import Button from '../components/common/Button'
 import Toast from '../components/common/Toast'
 import s from '../styles/Home.module.css'
@@ -101,6 +104,8 @@ export default function App({ user, profile, onLogout }){
   const [recScore,setRecScore]=useState(null)
   const [recLoading,setRecLoading]=useState(false)
   const [leaderboard,setLeaderboard]=useState([])
+  const [showConfetti,setShowConfetti]=useState(false)
+  const [newBadge,setNewBadge]=useState(null)
 
   const showToast=(m,t='info')=>setToast({message:m,type:t})
 
@@ -730,7 +735,7 @@ export default function App({ user, profile, onLogout }){
               {vIdx>0&&<Button variant="secondary" onClick={()=>goVerse(vIdx-1)} style={{color:G.blue,borderColor:'rgba(91,155,213,.2)'}}>← Préc.</Button>}
               {existing&&(existing.niveau==='wrong'||existing.niveau==='partial'||existing.niveau==='skipped')&&<Button variant="secondary" onClick={retryVerse} style={{color:G.orange,borderColor:'rgba(212,135,76,.25)'}}>Réessayer</Button>}
               {existing&&!isLast&&<Button variant="success" onClick={()=>goVerse(vIdx+1)} className={s.actionMain}>Suivant →</Button>}
-              {existing&&isLast&&<Button variant="success" onClick={()=>setView('done')} className={s.actionMain}>Terminer</Button>}
+              {existing&&isLast&&<Button variant="success" onClick={()=>{setView('done');setShowConfetti(true);setTimeout(()=>setShowConfetti(false),3500);const st=computeStats(progress,getStreak());const nb=getNewBadges(st);if(nb.length>0)setNewBadge(nb[0])}} className={s.actionMain}>Terminer</Button>}
             </div>
           </div>
 
@@ -794,7 +799,8 @@ export default function App({ user, profile, onLogout }){
         </div>
       })()}
 
-      {/* Toast */}
+      <Confetti active={showConfetti}/>
+      {newBadge&&<BadgeUnlock badge={newBadge} onClose={()=>setNewBadge(null)}/>}
       <Toast message={toast?.message} type={toast?.type} onClose={()=>setToast(null)}/>
     </>
   )

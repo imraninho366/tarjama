@@ -113,6 +113,10 @@ export default function Quiz() {
         best:   Math.max(prev.best, newStreak)
       }
     })
+    if (isOk) {
+      const prev = parseInt(localStorage.getItem('tarjama_quiz_correct') || '0')
+      localStorage.setItem('tarjama_quiz_correct', String(prev + 1))
+    }
     setHistory(prev => [{
       ar:   question.ar,
       sens: question.sens?.[0] || '',

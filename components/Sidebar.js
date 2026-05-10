@@ -11,6 +11,9 @@ const NAV_ITEMS = [
   { href: '/piliers',      icon: 'ر', label: 'Piliers',    ar: 'الأركان' },
   { href: '/prophetes',    icon: 'ن', label: 'Prophètes',  ar: 'الأنبياء' },
   { href: '/alphabet',     icon: 'أ', label: 'Alphabet',   ar: 'الحروف' },
+  { href: '/defi',         icon: '✦', label: 'Défis',      ar: 'التحدي' },
+  { href: '/racines',      icon: 'ج', label: 'Racines',    ar: 'الجذور' },
+  { href: '/parcours',     icon: '▸', label: 'Parcours',   ar: 'المسار' },
   { href: '/profil',       icon: '◉', label: 'Profil',     ar: 'الملف' },
 ]
 
