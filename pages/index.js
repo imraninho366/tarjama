@@ -106,6 +106,7 @@ export default function App({ user, profile, onLogout }){
   const [leaderboard,setLeaderboard]=useState([])
   const [showConfetti,setShowConfetti]=useState(false)
   const [newBadge,setNewBadge]=useState(null)
+  const [smartVerse,setSmartVerse]=useState(null)
 
   const showToast=(m,t='info')=>setToast({message:m,type:t})
 

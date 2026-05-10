@@ -36,6 +36,8 @@ export default function Dictionnaire({ user, profile }) {
   const [selected, setSelected] = useState(null)
   const [sortBy, setSortBy] = useState('freq')
   const [visibleCount, setVisibleCount] = useState(50)
+  const [mnemo, setMnemo] = useState('')
+  const [mnemoLoading, setMnemoLoading] = useState(false)
   const loading = vocabLoading
 
   useEffect(() => {
@@ -297,6 +299,31 @@ export default function Dictionnaire({ user, profile }) {
                   <div className={s.exampleArabic}>{selected.exemple_autre}</div>
                 </div>
               )}
+
+              {/* Mnémonique IA */}
+              <div style={{ padding: '12px 0' }}>
+                <Button variant="secondary" full onClick={async () => {
+                  if (mnemo) { setMnemo(''); return }
+                  setMnemoLoading(true)
+                  try {
+                    const r = await fetch('/api/mnemo', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ar: selected.ar, translit: selected.translit, sens: selected.sens }) })
+                    const data = await r.json()
+                    setMnemo(data.mnemo || 'Non disponible')
+                  } catch { setMnemo('Erreur') }
+                  setMnemoLoading(false)
+                }} disabled={mnemoLoading}>
+                  {mnemoLoading ? '...' : mnemo ? 'Masquer' : 'Mnémonique IA'}
+                </Button>
+                {mnemo && (
+                  <div style={{
+                    marginTop: 8, padding: '12px', borderRadius: 8,
+                    background: 'rgba(155,127,212,.06)', border: '1px solid rgba(155,127,212,.15)',
+                    fontSize: 13, color: 'var(--text-dim)', lineHeight: 1.8, fontStyle: 'italic'
+                  }}>
+                    {mnemo}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}
