@@ -458,20 +458,33 @@ export default function App({ user, profile, onLogout }){
             <span className={s.welcomeAr}>أَهْلًا وَسَهْلًا</span>
             <div>
               <div className={s.welcomeTitle}>Bienvenue, {profile.username} !</div>
-              <div className={s.welcomeSub}>Recherche une sourate et commence à traduire.</div>
+              <div className={s.welcomeSub}>{total===0?'Prêt à apprendre le Coran ? Commence par Al-Fatiha !':'Recherche une sourate et continue à traduire.'}</div>
             </div>
           </div>
-          <div className={s.statsGrid}>
+          {total===0&&(
+            <div style={{padding:'16px',margin:'0 0 16px',background:'rgba(201,168,76,.06)',borderRadius:12,border:'1px solid rgba(201,168,76,.12)'}}>
+              <div style={{fontSize:13,color:G.text,fontWeight:600,marginBottom:8}}>Comment ça marche ?</div>
+              <div style={{fontSize:12,color:G.textDim,lineHeight:1.8}}>
+                1. Choisis une sourate (commence par Al-Fatiha)<br/>
+                2. Lis le verset en arabe et écoute la récitation<br/>
+                3. Écris ta traduction en français<br/>
+                4. L'IA corrige et t'explique les mots importants<br/>
+                5. Progresse verset par verset !
+              </div>
+            </div>
+          )}
+          {total>0&&<div className={s.statsGrid}>
             {[['Traduits',G.gold,total],['Excellents',G.green,correct],['Partiels',G.orange,partial],['À revoir',G.red,wrong],['Streak',G.purple,`${getStreak()}j`]].map(([lbl,clr,num])=>(
               <div key={lbl} className={s.statCard}>
                 <span className={s.statNum} style={{color:clr}}>{num}</span>
                 <span className={s.statLabel}>{lbl}</span>
               </div>
             ))}
-          </div>
+          </div>}
           <div className={s.dashboardCta}>
-            <p className={s.dashboardCtaText}>Recherche une sourate dans la barre ci-dessus</p>
-            <Button onClick={()=>openSourate(SUGGESTIONS[0])}>Commencer par Al-Fatiha →</Button>
+            {total===0&&<p className={s.dashboardCtaText}>Ta première sourate t'attend !</p>}
+            {total>0&&<p className={s.dashboardCtaText}>Recherche une sourate dans la barre ci-dessus</p>}
+            <Button onClick={()=>openSourate(SUGGESTIONS[0])}>{total===0?'Commencer Al-Fatiha →':'Continuer Al-Fatiha →'}</Button>
           </div>
           {leaderboard.length>0&&(
             <div style={{marginTop:20}}>

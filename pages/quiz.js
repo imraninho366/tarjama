@@ -1,7 +1,10 @@
 import { useState, useEffect, useCallback } from 'react'
 import Head from 'next/head'
 import { G } from '../lib/theme'
+import { useVocab } from '../lib/useVocab'
+import { checkLimit, trackUsage } from '../lib/freemium'
 import Button from '../components/common/Button'
+import PremiumBanner from '../components/PremiumBanner'
 import s from '../styles/Quiz.module.css'
 
 function shuffle(arr) {
@@ -44,24 +47,17 @@ const MODES = [
 ]
 
 export default function Quiz() {
-  const [vocab,      setVocab]      = useState([])
-  const [mode,       setMode]       = useState(null)   // null = écran d'accueil
+  const { vocab, loading: vocabLoading } = useVocab()
+  const [mode,       setMode]       = useState(null)
   const [question,   setQuestion]   = useState(null)
   const [choices,    setChoices]    = useState([])
-  const [selected,   setSelected]   = useState(null)   // index choix
-  const [correct,    setCorrect]    = useState(null)   // index correct
+  const [selected,   setSelected]   = useState(null)
+  const [correct,    setCorrect]    = useState(null)
   const [score,      setScore]      = useState({ ok: 0, total: 0, streak: 0, best: 0 })
-  const [history,    setHistory]    = useState([])     // {ar, sens, ok}
+  const [history,    setHistory]    = useState([])
   const [done,       setDone]       = useState(false)
-  const [loading,    setLoading]    = useState(true)
-
-  // Charger le vocab
-  useEffect(() => {
-    fetch('/quran_vocab.json')
-      .then(r => r.json())
-      .then(d => { setVocab(d.mots || []); setLoading(false) })
-      .catch(() => setLoading(false))
-  }, [])
+  const [showPremium, setShowPremium] = useState(false)
+  const loading = vocabLoading
 
   // Filtrer selon mode
   const getPool = useCallback((m) => {
@@ -107,6 +103,7 @@ export default function Quiz() {
 
     const isOk = idx === correct
     playFeedback(isOk)
+    trackUsage('quiz')
     setScore(prev => {
       const newStreak = isOk ? prev.streak + 1 : 0
       return {
@@ -309,7 +306,11 @@ export default function Quiz() {
             <Button
               variant={selected === correct ? 'success' : 'primary'}
               full
-              onClick={() => nextQuestion(mode)}
+              onClick={() => {
+                const { allowed, limit } = checkLimit('quiz')
+                if (!allowed) { setShowPremium(true); return }
+                nextQuestion(mode)
+              }}
             >
               Suivant
             </Button>
@@ -343,6 +344,7 @@ export default function Quiz() {
           </div>
         )}
       </div>
+      {showPremium && <PremiumBanner action="quiz" limit={10} onClose={() => setShowPremium(false)} />}
     </>
   )
 }

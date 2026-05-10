@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 import { G, TYPE_COLORS, FREQ_COLORS } from '../lib/theme'
+import { useVocab } from '../lib/useVocab'
 import Button from '../components/common/Button'
 import s from '../styles/Dictionnaire.module.css'
 
@@ -29,33 +30,17 @@ function normalize(str) {
 
 export default function Dictionnaire({ user, profile }) {
   const router = useRouter()
-  const [vocab, setVocab] = useState([])
+  const { vocab, loading: vocabLoading } = useVocab()
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('tous')
   const [selected, setSelected] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [sortBy, setSortBy] = useState('freq') // freq | recent | alpha
+  const [sortBy, setSortBy] = useState('freq')
   const [visibleCount, setVisibleCount] = useState(50)
+  const loading = vocabLoading
 
   useEffect(() => {
-    if (!user) {
-      router.push('/')
-      return
-    }
-    loadData()
+    if (!user) { router.push('/'); return }
   }, [user, router])
-
-  const loadData = async () => {
-    // Load static Quran dictionary
-    try {
-      const r = await fetch('/quran_vocab.json')
-      const data = await r.json()
-      setVocab(data.mots || [])
-    } catch(e) {
-      setVocab([])
-    }
-    setLoading(false)
-  }
 
   const filtered = vocab
     .filter(w => {

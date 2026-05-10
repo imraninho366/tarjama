@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import { G } from '../lib/theme'
 import AuthScreen from './AuthScreen'
 
@@ -133,9 +134,12 @@ export default function LandingPage() {
 
       {/* Footer */}
       <div style={{ textAlign: 'center', padding: '16px 0 32px', borderTop: '1px solid rgba(201,168,76,.06)' }}>
-        <div style={{ fontSize: 11, color: G.textMuted }}>
+        <div style={{ fontSize: 11, color: G.textMuted, marginBottom: 6 }}>
           Tarjama — Apprendre le Coran en français
         </div>
+        <Link href="/mentions-legales" style={{ fontSize: 10, color: G.textMuted, textDecoration: 'underline' }}>
+          Mentions légales & Confidentialité
+        </Link>
       </div>
     </div>
   )
