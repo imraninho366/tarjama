@@ -13,6 +13,8 @@ const PAGE_NAMES = {
   '/prophetes':    { fr: 'Prophètes', ar: 'الأنبياء' },
   '/alphabet':     { fr: 'Alphabet', ar: 'الحروف' },
   '/defi':         { fr: 'Défis', ar: 'التحدي' },
+  '/dhikr':        { fr: 'Dhikr', ar: 'الأذكار' },
+  '/savant':       { fr: 'Savant IA', ar: 'العالِم' },
   '/humeur':       { fr: 'Humeur', ar: 'المشاعر' },
   '/duel':         { fr: 'Duel', ar: 'المبارزة' },
   '/connexions':   { fr: 'Connexions', ar: 'الروابط' },

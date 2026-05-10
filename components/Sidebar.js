@@ -13,12 +13,14 @@ const NAV_SECTIONS = [
   ]},
   { title: 'Pratiquer', ar: 'تدرّب', items: [
     { href: '/prieres',      icon: '۩', label: 'Prières',    ar: 'الصلاة' },
+    { href: '/dhikr',        icon: '◯', label: 'Dhikr',      ar: 'الأذكار' },
     { href: '/calligraphie', icon: '✎', label: 'Calligraphie', ar: 'الخط' },
     { href: '/tajweed',      icon: '♪', label: 'Tajweed',    ar: 'التجويد' },
     { href: '/defi',         icon: '✦', label: 'Défis',      ar: 'التحدي' },
     { href: '/duel',         icon: '⚔', label: 'Duel',       ar: 'المبارزة' },
   ]},
   { title: 'Explorer', ar: 'اكتشف', items: [
+    { href: '/savant',       icon: '☪', label: 'Savant IA',  ar: 'العالِم' },
     { href: '/humeur',       icon: '♡', label: 'Humeur',     ar: 'المشاعر' },
     { href: '/connexions',   icon: '◎', label: 'Connexions', ar: 'الروابط' },
     { href: '/revelation',   icon: '↓', label: 'Révélation', ar: 'النزول' },
