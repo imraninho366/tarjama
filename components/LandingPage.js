@@ -69,6 +69,26 @@ export default function LandingPage() {
         <div className={s.verseRef}>Sourate Yusuf (12:2)</div>
       </div>
 
+      {/* Ajouter à l'écran d'accueil */}
+      <div className={s.installGuide}>
+        <div className={s.installTitle}>Installe Tarjama sur ton téléphone</div>
+        <div className={s.installSteps}>
+          <div className={s.installStep}>
+            <span className={s.installStepNum}>1</span>
+            <span>Appuie sur <strong>Partager</strong> (Safari) ou <strong>⋮</strong> (Chrome)</span>
+          </div>
+          <div className={s.installStep}>
+            <span className={s.installStepNum}>2</span>
+            <span>Choisis <strong>« Sur l'écran d'accueil »</strong></span>
+          </div>
+          <div className={s.installStep}>
+            <span className={s.installStepNum}>3</span>
+            <span>Appuie <strong>Ajouter</strong> — c'est prêt !</span>
+          </div>
+        </div>
+        <div className={s.installNote}>Fonctionne hors-ligne, comme une vraie app</div>
+      </div>
+
       {!showAuth && (
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <button className={s.cta} onClick={() => setShowAuth(true)}>
