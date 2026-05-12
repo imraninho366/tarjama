@@ -28,22 +28,30 @@ export default function DefiPage({ user, profile }) {
 
   useEffect(() => {
     if (!user) { router.push('/'); return }
-    loadData()
+    loadData(user.id)
   }, [user])
 
-  const loadData = async () => {
-    const [progRes, lbRes] = await Promise.all([
-      supabase.from('progress').select('sourate_num, verse_num, niveau').eq('user_id', user.id),
-      fetch('/api/leaderboard').then(r => r.json()).catch(() => ({ leaderboard: [] }))
-    ])
-    const map = {}
-    progRes.data?.forEach(r => { map[`${r.sourate_num}:${r.verse_num}`] = { niveau: r.niveau } })
-    setProgress(map)
-    setLeaderboard(lbRes.leaderboard || [])
+  const loadData = async (userId) => {
+    try {
+      const [progRes, lbRes] = await Promise.all([
+        supabase.from('progress').select('sourate_num, verse_num, niveau').eq('user_id', userId),
+        fetch('/api/leaderboard').then(r => r.json()).catch(() => ({ leaderboard: [] }))
+      ])
+      const map = {}
+      progRes.data?.forEach(r => { map[`${r.sourate_num}:${r.verse_num}`] = { niveau: r.niveau } })
+      setProgress(map)
+      setLeaderboard(lbRes.leaderboard || [])
+    } catch {}
     setLoading(false)
   }
 
   if (!user || !profile) return null
+  if (loading) return (
+    <div style={{ textAlign: 'center', padding: 60 }}>
+      <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 20, color: 'var(--gold)' }}>التحدي</div>
+      <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 8 }}>Chargement...</div>
+    </div>
+  )
 
   const daily = getDailyVerse()
   const dailyDone = !!progress[`${daily.sNum}:${daily.vNum}`]
