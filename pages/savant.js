@@ -13,6 +13,7 @@ const SUGGESTIONS = [
 
 export default function SavantPage() {
   const [question, setQuestion] = useState('')
+  const [askedQuestion, setAskedQuestion] = useState('')
   const [answer, setAnswer] = useState('')
   const [loading, setLoading] = useState(false)
   const [history, setHistory] = useState([])
@@ -23,6 +24,7 @@ export default function SavantPage() {
     if (!query) return
     setLoading(true)
     setAnswer('')
+    setAskedQuestion(query)
     try {
       const r = await fetch('/api/savant', {
         method: 'POST',
@@ -119,6 +121,11 @@ export default function SavantPage() {
             background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.1)',
             animation: 'fadeInUp .3s ease'
           }}>
+            {askedQuestion && (
+              <div style={{ fontSize: 14, color: 'var(--text)', fontWeight: 600, marginBottom: 12, paddingBottom: 10, borderBottom: '1px solid rgba(201,168,76,.08)' }}>
+                {askedQuestion}
+              </div>
+            )}
             <div style={{ fontSize: 10, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 10 }}>
               Réponse
             </div>
