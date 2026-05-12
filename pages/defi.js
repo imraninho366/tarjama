@@ -48,18 +48,11 @@ export default function DefiPage({ user, profile }) {
     </div>
   )
 
-  const daily = getDailyVerse()
+  const daily = getDailyVerse() || { sNum: 1, vNum: 1, info: null }
   const dailyDone = !!progress[`${daily.sNum}:${daily.vNum}`]
-  let stats, unlocked, locked
-  try {
-    stats = computeStats(progress)
-    unlocked = getUnlockedBadges(stats)
-    locked = BADGES.filter(b => !unlocked.find(u => u.id === b.id))
-  } catch {
-    stats = { total: 0, excellent: 0, souratesCompleted: 0, streak: 0, quizCorrect: 0 }
-    unlocked = []
-    locked = BADGES
-  }
+  const stats = (() => { try { return computeStats(progress) } catch { return { total: 0, excellent: 0, souratesCompleted: 0, streak: 0, quizCorrect: 0, fatihaComplete: false, nightOwl: false, earlyBird: false } } })()
+  const unlocked = (() => { try { return getUnlockedBadges(stats) } catch { return [] } })()
+  const locked = BADGES.filter(b => !unlocked.find(u => u.id === b.id))
 
   const tabStyle = (t) => ({
     padding: '10px 16px', fontSize: 11, letterSpacing: 1, textTransform: 'uppercase',
