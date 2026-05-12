@@ -16,7 +16,6 @@ const NAV_SECTIONS = [
     { href: '/dhikr',        icon: '◯', label: 'Dhikr',      ar: 'الأذكار' },
     { href: '/calligraphie', icon: '✎', label: 'Calligraphie', ar: 'الخط' },
     { href: '/tajweed',      icon: '♪', label: 'Tajweed',    ar: 'التجويد' },
-    { href: '/defi',         icon: '✦', label: 'Défis',      ar: 'التحدي' },
     { href: '/duel',         icon: '⚔', label: 'Duel',       ar: 'المبارزة' },
   ]},
   { title: 'Explorer', ar: 'اكتشف', items: [

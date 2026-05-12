@@ -10,7 +10,7 @@ const STATIC_ASSETS = [
   '/hadith',
   '/profil',
   '/prieres',
-  '/defi',
+  
   '/dhikr',
   '/savant',
   '/humeur',
