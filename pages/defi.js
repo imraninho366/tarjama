@@ -24,7 +24,6 @@ export default function DefiPage({ user, profile }) {
   const [tab, setTab] = useState('defi')
   const [progress, setProgress] = useState({})
   const [loading, setLoading] = useState(true)
-  const [leaderboard, setLeaderboard] = useState([])
 
   useEffect(() => {
     if (!user) { router.push('/'); return }
@@ -33,14 +32,10 @@ export default function DefiPage({ user, profile }) {
 
   const loadData = async (userId) => {
     try {
-      const [progRes, lbRes] = await Promise.all([
-        supabase.from('progress').select('sourate_num, verse_num, niveau').eq('user_id', userId),
-        fetch('/api/leaderboard').then(r => r.json()).catch(() => ({ leaderboard: [] }))
-      ])
+      const { data } = await supabase.from('progress').select('sourate_num, verse_num, niveau').eq('user_id', userId)
       const map = {}
-      progRes.data?.forEach(r => { map[`${r.sourate_num}:${r.verse_num}`] = { niveau: r.niveau } })
+      data?.forEach(r => { map[`${r.sourate_num}:${r.verse_num}`] = { niveau: r.niveau } })
       setProgress(map)
-      setLeaderboard(lbRes.leaderboard || [])
     } catch {}
     setLoading(false)
   }
@@ -112,30 +107,6 @@ export default function DefiPage({ user, profile }) {
               )}
             </div>
 
-            {/* Classement du jour */}
-            <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 8 }}>
-              Classement
-            </div>
-            {leaderboard.slice(0, 10).map((u, i) => (
-              <div key={i} style={{
-                display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0',
-                borderBottom: '1px solid rgba(201,168,76,.05)'
-              }}>
-                <span style={{
-                  fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, width: 24, textAlign: 'center',
-                  color: i === 0 ? '#FFD700' : i === 1 ? '#C0C0C0' : i === 2 ? '#CD7F32' : 'var(--text-muted)'
-                }}>{i + 1}</span>
-                <div style={{
-                  width: 28, height: 28, borderRadius: '50%', background: u.color || 'var(--gold)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 12, color: '#fff', fontWeight: 700
-                }}>{u.username?.[0]?.toUpperCase()}</div>
-                <div style={{ flex: 1, fontSize: 13, color: 'var(--text)', fontWeight: u.username === profile.username ? 700 : 400 }}>
-                  {u.username}{u.username === profile.username ? ' (toi)' : ''}
-                </div>
-                <span style={{ fontSize: 14, color: 'var(--green)', fontWeight: 700 }}>{u.excellent}</span>
-              </div>
-            ))}
           </div>
         )}
 

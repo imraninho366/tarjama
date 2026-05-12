@@ -10,7 +10,6 @@ export default function ProfilPage({ user, profile, onLogout }) {
   const router = useRouter()
   const [progress, setProgress] = useState({})
   const [loading, setLoading] = useState(true)
-  const [leaderboard, setLeaderboard] = useState([])
   const [tab, setTab] = useState('stats')
 
   useEffect(() => {
@@ -19,16 +18,12 @@ export default function ProfilPage({ user, profile, onLogout }) {
   }, [user])
 
   const loadData = async () => {
-    const [progRes, lbRes] = await Promise.all([
-      supabase.from('progress').select('*').eq('user_id', user.id),
-      fetch('/api/leaderboard').then(r => r.json()).catch(() => ({ leaderboard: [] }))
-    ])
+    const { data } = await supabase.from('progress').select('*').eq('user_id', user.id)
     const map = {}
-    progRes.data?.forEach(r => {
+    data?.forEach(r => {
       map[`${r.sourate_num}:${r.verse_num}`] = { niveau: r.niveau, ts: r.updated_at }
     })
     setProgress(map)
-    setLeaderboard(lbRes.leaderboard || [])
     setLoading(false)
   }
 
@@ -53,7 +48,6 @@ export default function ProfilPage({ user, profile, onLogout }) {
     return { ...s, done, ok, pct: s.v > 0 ? Math.round(done / s.v * 100) : 0 }
   }).filter(s => s.done > 0).sort((a, b) => b.pct - a.pct)
 
-  const rank = leaderboard.findIndex(u => u.username === profile.username) + 1
 
   const days = new Set()
   entries.forEach(p => {
@@ -95,11 +89,6 @@ export default function ProfilPage({ user, profile, onLogout }) {
           <div style={{ fontSize: 20, fontFamily: 'var(--font-display)', color: 'var(--text)', fontWeight: 600 }}>
             {profile.username}
           </div>
-          {rank > 0 && (
-            <div style={{ fontSize: 12, color: 'var(--gold)', marginTop: 4 }}>
-              #{rank} au classement
-            </div>
-          )}
         </div>
 
         {/* Stats principales */}
@@ -146,7 +135,6 @@ export default function ProfilPage({ user, profile, onLogout }) {
         {/* Tabs */}
         <div style={{ display: 'flex', borderBottom: '1px solid rgba(201,168,76,.1)', marginBottom: 16 }}>
           <button onClick={() => setTab('stats')} style={tabStyle('stats')}>Progression</button>
-          <button onClick={() => setTab('classement')} style={tabStyle('classement')}>Classement</button>
         </div>
 
         {/* Progression par sourate */}
@@ -181,40 +169,6 @@ export default function ProfilPage({ user, profile, onLogout }) {
                   fontSize: 12, fontWeight: 700, minWidth: 36, textAlign: 'right',
                   color: s.pct >= 80 ? 'var(--green)' : s.pct >= 40 ? 'var(--gold)' : 'var(--orange)'
                 }}>{s.pct}%</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Classement complet */}
-        {tab === 'classement' && (
-          <div>
-            {leaderboard.map((u, i) => (
-              <div key={i} style={{
-                display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0',
-                borderBottom: '1px solid rgba(201,168,76,.05)',
-                background: u.username === profile.username ? 'rgba(201,168,76,.05)' : 'transparent',
-                borderRadius: u.username === profile.username ? 6 : 0,
-                padding: u.username === profile.username ? '10px 8px' : '10px 0'
-              }}>
-                <span style={{
-                  fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 700, width: 28, textAlign: 'center',
-                  color: i === 0 ? '#FFD700' : i === 1 ? '#C0C0C0' : i === 2 ? '#CD7F32' : 'var(--text-muted)'
-                }}>{i + 1}</span>
-                <div style={{
-                  width: 32, height: 32, borderRadius: '50%', background: u.color || 'var(--gold)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 14, color: 'var(--bg-card)', fontWeight: 700
-                }}>{u.username?.[0]?.toUpperCase() || '?'}</div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 13, color: 'var(--text)', fontWeight: u.username === profile.username ? 700 : 400 }}>
-                    {u.username}{u.username === profile.username ? ' (toi)' : ''}
-                  </div>
-                </div>
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: 14, color: 'var(--green)', fontWeight: 700 }}>{u.excellent}</div>
-                  <div style={{ fontSize: 10, color: 'var(--text-muted)' }}>{u.total} versets</div>
-                </div>
               </div>
             ))}
           </div>

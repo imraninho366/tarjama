@@ -112,7 +112,6 @@ export default function App({ user, profile, onLogout }){
   const [recTranscript,setRecTranscript]=useState('')
   const [recScore,setRecScore]=useState(null)
   const [recLoading,setRecLoading]=useState(false)
-  const [leaderboard,setLeaderboard]=useState([])
   const [showConfetti,setShowConfetti]=useState(false)
   const [newBadge,setNewBadge]=useState(null)
   const [smartVerse,setSmartVerse]=useState(null)
@@ -123,10 +122,6 @@ export default function App({ user, profile, onLogout }){
   useEffect(()=>{if(sourate)sessionStorage.setItem('tarjama_sourate',JSON.stringify(sourate));else sessionStorage.removeItem('tarjama_sourate')},[sourate])
   useEffect(()=>{sessionStorage.setItem('tarjama_vidx',String(vIdx))},[vIdx])
 
-  useEffect(()=>{
-    if(!user) return
-    fetch('/api/leaderboard').then(r=>r.json()).then(d=>setLeaderboard(d.leaderboard||[])).catch(()=>{})
-  },[user])
 
   // Search sourates
   useEffect(()=>{
