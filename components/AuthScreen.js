@@ -12,12 +12,13 @@ export default function AuthScreen() {
   const doLogin = async (e) => {
     e.preventDefault()
     setAuthError('')
-    const email = e.target.email.value.trim()
+    const input = e.target.email.value.trim()
     const password = e.target.password.value
-    if (!email || !password) return setAuthError('Remplis tous les champs')
+    if (!input || !password) return setAuthError('Remplis tous les champs')
+    const email = input.includes('@') ? input : `${input.toLowerCase().replace(/\s+/g, '_')}@tarjama.app`
     setAuthLoading(true)
     const { error } = await supabase.auth.signInWithPassword({ email, password })
-    if (error) setAuthError('Email ou mot de passe incorrect.')
+    if (error) setAuthError('Identifiants incorrects.')
     setAuthLoading(false)
   }
 
@@ -95,10 +96,10 @@ export default function AuthScreen() {
             </div>
           )}
 
-          {/* Email */}
+          {/* Email / Username */}
           <div className={styles.field}>
-            <label className={styles.label}>Adresse email</label>
-            <input name="email" type="email" placeholder="ton.email@gmail.com" required autoComplete="email" className={styles.input} />
+            <label className={styles.label}>{authMode === 'login' ? 'Email ou nom d\'utilisateur' : 'Adresse email'}</label>
+            <input name="email" type={authMode === 'login' ? 'text' : 'email'} placeholder={authMode === 'login' ? 'Email ou pseudo' : 'ton.email@gmail.com'} required autoComplete="email" className={styles.input} />
           </div>
 
           {/* Mot de passe */}
