@@ -1,4 +1,4 @@
-const CDN = 'https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions'
+const CDN = 'https://raw.githubusercontent.com/fawazahmed0/hadith-api/1/editions'
 const COLLECTIONS = {
   bukhari: { name: 'Sahih al-Bukhari', nameAr: 'صحيح البخاري', author: 'Imam al-Bukhari' },
   muslim:  { name: 'Sahih Muslim',     nameAr: 'صحيح مسلم',     author: 'Imam Muslim' },
