@@ -103,7 +103,7 @@ export default function Dictionnaire({ user, profile }) {
         {/* SEARCH */}
         <div className={s.searchBar}>
           <span className={s.searchIcon}>◇</span>
-          <input
+          <input type="search" autoComplete="off"
             value={search}
             onChange={e => { setSearch(e.target.value); setVisibleCount(50) }}
             placeholder="Recherche en arabe، translittération ou français..."

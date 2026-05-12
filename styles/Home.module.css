@@ -118,11 +118,14 @@
 
 /* ── Suggestions ───────────────────────────────────────────── */
 .sectionLabel {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--text-muted);
   padding-left: 2px;
+  padding-top: var(--space-lg);
+  margin-top: var(--space-md);
+  border-top: 1px solid rgba(201, 168, 76, 0.08);
 }
 
 .sourateItem {

@@ -60,7 +60,13 @@
 
 /* ── Section groups ───────────────────────────────────────── */
 .navSection {
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.06);
+}
+
+.navSection:last-child {
+  border-bottom: none;
 }
 
 .sectionHeader {
@@ -154,7 +160,7 @@
 
 .navLabel {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 1.5px;
   color: var(--text-dim);
@@ -167,7 +173,7 @@
 
 .navLabelAr {
   font-family: var(--font-arabic);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-muted);
   direction: rtl;
   text-align: left;

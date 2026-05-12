@@ -74,9 +74,18 @@ function AudioPlayer({src}){
 }
 
 export default function App({ user, profile, onLogout }){
-  const [view,setView]=useState('dashboard')
-  const [sourate,setSourate]=useState(null)
-  const [vIdx,setVIdx]=useState(0)
+  const [view,setView]=useState(()=>{
+    if(typeof window==='undefined') return 'dashboard'
+    return sessionStorage.getItem('tarjama_view')||'dashboard'
+  })
+  const [sourate,setSourate]=useState(()=>{
+    if(typeof window==='undefined') return null
+    try{const s=sessionStorage.getItem('tarjama_sourate');return s?JSON.parse(s):null}catch{return null}
+  })
+  const [vIdx,setVIdx]=useState(()=>{
+    if(typeof window==='undefined') return 0
+    return parseInt(sessionStorage.getItem('tarjama_vidx')||'0')
+  })
   const [progress,setProgress]=useState({})
   const [loadingVerse,setLoadingVerse]=useState(false)
   const [search,setSearch]=useState('')
@@ -109,6 +118,10 @@ export default function App({ user, profile, onLogout }){
   const [smartVerse,setSmartVerse]=useState(null)
 
   const showToast=(m,t='info')=>setToast({message:m,type:t})
+
+  useEffect(()=>{sessionStorage.setItem('tarjama_view',view)},[view])
+  useEffect(()=>{if(sourate)sessionStorage.setItem('tarjama_sourate',JSON.stringify(sourate));else sessionStorage.removeItem('tarjama_sourate')},[sourate])
+  useEffect(()=>{sessionStorage.setItem('tarjama_vidx',String(vIdx))},[vIdx])
 
   useEffect(()=>{
     if(!user) return
@@ -399,7 +412,7 @@ export default function App({ user, profile, onLogout }){
       <div className={s.searchBox}>
         <div className={s.searchInput}>
           <span className={s.searchIcon}>◇</span>
-          <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Rechercher une sourate..." className={s.searchField}/>
+          <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Rechercher une sourate..." className={s.searchField} type="search" autoComplete="off" name="sourate-search"/>
           {search&&<span className={s.searchClear} onClick={()=>setSearch('')}>✕</span>}
         </div>
         {searchResults.length>0&&(

@@ -81,7 +81,7 @@ export default function DuasPage({ user }) {
         {/* Search */}
         <div className={s.searchBar}>
           <span className={s.searchIcon}>&#8981;</span>
-          <input
+          <input type="search" autoComplete="off"
             className={s.searchField}
             placeholder="Rechercher une invocation..."
             value={search}
