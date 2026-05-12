@@ -4,6 +4,8 @@ import Head from 'next/head'
 import { supabase } from '../lib/supabase'
 import { SOURATES_LIST } from '../lib/sourates'
 import { G, AVATAR_COLORS } from '../lib/theme'
+import { isAdmin } from '../lib/freemium'
+import Link from 'next/link'
 import Button from '../components/common/Button'
 
 export default function ProfilPage({ user, profile, onLogout }) {
@@ -175,7 +177,16 @@ export default function ProfilPage({ user, profile, onLogout }) {
         )}
 
         {/* Actions */}
-        <div style={{ marginTop: 24, paddingBottom: 32 }}>
+        <div style={{ marginTop: 24, paddingBottom: 32, display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {isAdmin(user.id) && (
+            <Link href="/admin" style={{
+              display: 'block', textAlign: 'center', padding: '12px', borderRadius: 8,
+              background: 'rgba(201,168,76,.08)', border: '1px solid rgba(201,168,76,.15)',
+              color: 'var(--gold)', fontSize: 14, fontWeight: 600, textDecoration: 'none'
+            }}>
+              Administration
+            </Link>
+          )}
           <Button variant="ghost" full onClick={onLogout} style={{ color: 'var(--red)', borderColor: 'rgba(201,107,107,.2)' }}>
             Déconnexion
           </Button>
