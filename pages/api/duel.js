@@ -18,26 +18,32 @@ function getDuelVerse() {
   return { sourate_num: sNum, verse_num: vNum }
 }
 
+function generateSeed() {
+  return Math.floor(Math.random() * 1000000)
+}
+
 export default async function handler(req, res) {
   const { ok } = rateLimit(req, { limit: 15, windowMs: 60000 })
   if (!ok) return res.status(429).json({ error: 'Trop de requêtes.' })
 
   if (req.method === 'POST') {
-    const { action, code, user_id, username, score } = req.body
+    const { action, code, user_id, username, score, mode } = req.body
 
     if (action === 'create') {
       const duelCode = generateCode()
       const verse = getDuelVerse()
+      const seed = generateSeed()
       const { error } = await supabase.from('duels').insert({
         code: duelCode,
         sourate_num: verse.sourate_num,
         verse_num: verse.verse_num,
         player1_id: user_id,
         player1_name: username,
+        mode: mode || 'traduction',
         status: 'waiting'
       })
       if (error) return res.status(500).json({ error: error.message })
-      return res.json({ code: duelCode, ...verse })
+      return res.json({ code: duelCode, mode: mode || 'traduction', ...verse, seed })
     }
 
     if (action === 'join') {
@@ -51,7 +57,7 @@ export default async function handler(req, res) {
         status: 'active'
       }).eq('code', code)
 
-      return res.json({ code, sourate_num: duel.sourate_num, verse_num: duel.verse_num, opponent: duel.player1_name })
+      return res.json({ code, mode: duel.mode, sourate_num: duel.sourate_num, verse_num: duel.verse_num, opponent: duel.player1_name })
     }
 
     if (action === 'submit') {
