@@ -8,6 +8,21 @@ export default function AuthScreen() {
   const [authError, setAuthError] = useState('')
   const [authLoading, setAuthLoading] = useState(false)
   const [regColor, setRegColor] = useState('#C9A84C')
+  const [resetSent, setResetSent] = useState(false)
+
+  const doReset = async (e) => {
+    e.preventDefault()
+    setAuthError('')
+    const email = e.target.email.value.trim()
+    if (!email || !email.includes('@')) return setAuthError('Entre ton adresse email')
+    setAuthLoading(true)
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin
+    })
+    if (error) setAuthError(error.message)
+    else setResetSent(true)
+    setAuthLoading(false)
+  }
 
   const doLogin = async (e) => {
     e.preventDefault()
@@ -86,7 +101,7 @@ export default function AuthScreen() {
           </button>
         </div>
 
-        <form key={authMode} onSubmit={authMode === 'login' ? doLogin : doRegister}>
+        <form key={authMode} onSubmit={authMode === 'login' ? doLogin : authMode === 'register' ? doRegister : doReset}>
 
           {/* Inscription : prénom */}
           {authMode === 'register' && (
@@ -98,15 +113,17 @@ export default function AuthScreen() {
 
           {/* Email / Username */}
           <div className={styles.field}>
-            <label className={styles.label}>{authMode === 'login' ? 'Email ou nom d\'utilisateur' : 'Adresse email'}</label>
+            <label className={styles.label}>{authMode === 'login' ? 'Email ou nom d\'utilisateur' : authMode === 'reset' ? 'Ton adresse email' : 'Adresse email'}</label>
             <input name="email" type={authMode === 'login' ? 'text' : 'email'} placeholder={authMode === 'login' ? 'Email ou pseudo' : 'ton.email@gmail.com'} required autoComplete="email" className={styles.input} />
           </div>
 
-          {/* Mot de passe */}
-          <div className={styles.field}>
-            <label className={styles.label}>Mot de passe{authMode === 'register' ? ' (min 6 car.)' : ''}</label>
-            <input name="password" type="password" placeholder="••••••••" required autoComplete={authMode === 'login' ? 'current-password' : 'new-password'} className={styles.input} />
-          </div>
+          {/* Mot de passe (pas en mode reset) */}
+          {authMode !== 'reset' && (
+            <div className={styles.field}>
+              <label className={styles.label}>Mot de passe{authMode === 'register' ? ' (min 6 car.)' : ''}</label>
+              <input name="password" type="password" placeholder="••••••••" required autoComplete={authMode === 'login' ? 'current-password' : 'new-password'} className={styles.input} />
+            </div>
+          )}
 
           {/* Couleur (inscription) */}
           {authMode === 'register' && (
@@ -127,19 +144,33 @@ export default function AuthScreen() {
 
           <button type="submit" disabled={authLoading} className={styles.submitBtn}>
             {authLoading
-              ? (authMode === 'login' ? 'Connexion...' : 'Création...')
-              : (authMode === 'login' ? 'Se connecter' : 'Créer mon compte')
+              ? (authMode === 'login' ? 'Connexion...' : authMode === 'register' ? 'Création...' : 'Envoi...')
+              : (authMode === 'login' ? 'Se connecter' : authMode === 'register' ? 'Créer mon compte' : 'Envoyer le lien')
             }
           </button>
         </form>
 
         {authError && <div className={styles.error}>{authError}</div>}
 
+        {resetSent && (
+          <div className={styles.success}>
+            Un email de réinitialisation a été envoyé. Vérifie ta boîte mail (et tes spams).
+          </div>
+        )}
+
         <div className={styles.switchText}>
-          {authMode === 'login' ? (
-            <span>Pas encore de compte ? <button className={styles.switchLink} onClick={() => { setAuthMode('register'); setAuthError('') }}>Inscris-toi</button></span>
-          ) : (
+          {authMode === 'login' && (
+            <>
+              <button className={styles.switchLink} onClick={() => { setAuthMode('reset'); setAuthError(''); setResetSent(false) }}>Mot de passe oublié ?</button>
+              <br /><br />
+              <span>Pas encore de compte ? <button className={styles.switchLink} onClick={() => { setAuthMode('register'); setAuthError('') }}>Inscris-toi</button></span>
+            </>
+          )}
+          {authMode === 'register' && (
             <span>Déjà un compte ? <button className={styles.switchLink} onClick={() => { setAuthMode('login'); setAuthError('') }}>Connecte-toi</button></span>
+          )}
+          {authMode === 'reset' && (
+            <span>Retour à la <button className={styles.switchLink} onClick={() => { setAuthMode('login'); setAuthError(''); setResetSent(false) }}>connexion</button></span>
           )}
         </div>
       </div>

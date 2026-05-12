@@ -151,6 +151,17 @@
   animation: fadeInUp 0.2s ease;
 }
 
+.success {
+  color: var(--green);
+  font-size: 13px;
+  text-align: center;
+  margin-top: var(--space-md);
+  padding: 10px;
+  background: var(--green-glow);
+  border-radius: var(--radius-sm);
+  animation: fadeInUp 0.2s ease;
+}
+
 /* ── Switch text ──────────────────────────────────────────── */
 .switchText {
   text-align: center;
