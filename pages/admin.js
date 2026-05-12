@@ -56,9 +56,12 @@ export default function AdminPage({ user }) {
     if (!confirm(`Supprimer le compte de ${username} ? Cette action est irréversible.`)) return
     await supabase.from('premium_users').delete().eq('id', userId)
     await supabase.from('progress').delete().eq('user_id', userId)
+    await supabase.from('duels').delete().eq('player1_id', userId)
+    await supabase.from('duels').delete().eq('player2_id', userId)
     await supabase.from('profiles').delete().eq('id', userId)
+    setUsers(prev => prev.filter(u => u.id !== userId))
+    setPremiumUsers(prev => prev.filter(p => p.id !== userId))
     setMessage(`${username} supprimé`)
-    loadData()
   }
 
   return (

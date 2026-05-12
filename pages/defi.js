@@ -108,7 +108,12 @@ export default function DefiPage({ user, profile }) {
                   Défi complété !
                 </div>
               ) : (
-                <Button onClick={() => router.push('/')}>
+                <Button onClick={() => {
+                  sessionStorage.setItem('tarjama_view', 'sourate')
+                  sessionStorage.setItem('tarjama_sourate', JSON.stringify({ num: daily.sNum, name_ar: daily.info?.ar, name_fr: daily.info?.fr, verses: null }))
+                  sessionStorage.setItem('tarjama_vidx', String(daily.vNum - 1))
+                  router.push('/')
+                }}>
                   Relever le défi →
                 </Button>
               )}
