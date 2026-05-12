@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import { Analytics } from '@vercel/analytics/react'
+import { loadPremiumStatus } from '../lib/freemium'
 import '../styles/globals.css'
 
 // Pages qui ne montrent pas la nav (auth screen)
@@ -88,6 +89,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
   }, [router])
 
   const loadProfile = async (userId, retries = 2) => {
+    loadPremiumStatus(userId).catch(() => {})
     const { data } = await supabase
       .from('profiles')
       .select('*')
