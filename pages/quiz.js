@@ -57,7 +57,17 @@ export default function Quiz() {
   const [history,    setHistory]    = useState([])
   const [done,       setDone]       = useState(false)
   const [showPremium, setShowPremium] = useState(false)
+  const [showTranslit, setShowTranslit] = useState(() => {
+    if (typeof window === 'undefined') return true
+    return localStorage.getItem('tarjama_quiz_translit') !== 'false'
+  })
   const loading = vocabLoading
+
+  const toggleTranslit = () => {
+    const next = !showTranslit
+    setShowTranslit(next)
+    localStorage.setItem('tarjama_quiz_translit', String(next))
+  }
 
   // Filtrer selon mode
   const getPool = useCallback((m) => {
@@ -117,12 +127,13 @@ export default function Quiz() {
       const prev = parseInt(localStorage.getItem('tarjama_quiz_correct') || '0')
       localStorage.setItem('tarjama_quiz_correct', String(prev + 1))
     }
-    setHistory(prev => [{
-      ar:   question.ar,
-      sens: question.sens?.[0] || '',
-      type: question.type,
-      ok:   isOk
-    }, ...prev.slice(0, 19)])
+    const entry = { ar: question.ar, sens: question.sens?.[0] || '', type: question.type, ok: isOk }
+    setHistory(prev => [entry, ...prev.slice(0, 19)])
+    try {
+      const hist = JSON.parse(localStorage.getItem('tarjama_quiz_history') || '[]')
+      hist.unshift(entry)
+      localStorage.setItem('tarjama_quiz_history', JSON.stringify(hist.slice(0, 200)))
+    } catch {}
   }
 
   const pct = score.total > 0 ? Math.round(score.ok / score.total * 100) : 0
@@ -165,6 +176,52 @@ export default function Quiz() {
           ))}
         </div>
 
+        {/* Dashboard mots connus */}
+        {(() => {
+          const quizCorrect = parseInt(typeof window !== 'undefined' ? localStorage.getItem('tarjama_quiz_correct') || '0' : '0')
+          const quizHistory = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('tarjama_quiz_history') || '[]') : []
+          const knownWords = [...new Set(quizHistory.filter(h => h.ok).map(h => h.ar))]
+          const weakWords = [...new Set(quizHistory.filter(h => !h.ok).map(h => h.ar))].filter(w => !knownWords.includes(w))
+          return quizCorrect > 0 ? (
+            <div style={{ marginBottom: 20, padding: 16, borderRadius: 12, background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.08)' }}>
+              <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 10, textAlign: 'center' }}>Tes stats quiz</div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: knownWords.length > 0 ? 12 : 0 }}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: 22, fontFamily: 'var(--font-display)', color: 'var(--gold)', fontWeight: 700 }}>{quizCorrect}</div>
+                  <div style={{ fontSize: 9, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 1 }}>Bonnes réponses</div>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: 22, fontFamily: 'var(--font-display)', color: 'var(--green)', fontWeight: 700 }}>{knownWords.length}</div>
+                  <div style={{ fontSize: 9, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 1 }}>Mots connus</div>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: 22, fontFamily: 'var(--font-display)', color: 'var(--orange)', fontWeight: 700 }}>{weakWords.length}</div>
+                  <div style={{ fontSize: 9, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 1 }}>À revoir</div>
+                </div>
+              </div>
+              {knownWords.length > 0 && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
+                  {knownWords.slice(0, 20).map((w, i) => (
+                    <span key={i} style={{ fontFamily: 'var(--font-arabic)', fontSize: 13, color: 'var(--green)', padding: '2px 8px', borderRadius: 6, background: 'rgba(76,175,125,.08)' }}>{w}</span>
+                  ))}
+                  {knownWords.length > 20 && <span style={{ fontSize: 11, color: 'var(--text-muted)', padding: '2px 8px' }}>+{knownWords.length - 20}</span>}
+                </div>
+              )}
+            </div>
+          ) : null
+        })()}
+
+        <div style={{ marginBottom: 12, textAlign: 'center' }}>
+          <button onClick={toggleTranslit} style={{
+            fontSize: 11, padding: '6px 14px', borderRadius: 20, cursor: 'pointer',
+            background: showTranslit ? 'rgba(201,168,76,.12)' : 'rgba(201,168,76,.04)',
+            border: `1px solid ${showTranslit ? 'rgba(201,168,76,.25)' : 'rgba(201,168,76,.08)'}`,
+            color: showTranslit ? 'var(--gold)' : 'var(--text-muted)'
+          }}>
+            {showTranslit ? 'Phonétique activée ✓' : 'Activer la phonétique'}
+          </button>
+        </div>
+
         <div className={s.statsFooter}>
           {vocab.length.toLocaleString('fr')} MOTS DANS LE DICTIONNAIRE
         </div>
@@ -187,6 +244,15 @@ export default function Quiz() {
         <div className={s.topBar}>
           <button onClick={() => setMode(null)} className={s.quitBtn}>
             Quitter
+          </button>
+          <button onClick={toggleTranslit} style={{
+            fontSize: 10, padding: '4px 10px', borderRadius: 12, cursor: 'pointer',
+            background: showTranslit ? 'rgba(201,168,76,.12)' : 'rgba(201,168,76,.04)',
+            border: `1px solid ${showTranslit ? 'rgba(201,168,76,.25)' : 'rgba(201,168,76,.08)'}`,
+            color: showTranslit ? 'var(--gold)' : 'var(--text-muted)',
+            letterSpacing: 1, textTransform: 'uppercase'
+          }}>
+            {showTranslit ? 'Phonétique ✓' : 'Phonétique'}
           </button>
           <div className={s.scoreArea}>
             {score.streak >= 3 && (
@@ -228,10 +294,18 @@ export default function Quiz() {
             {question.ar}
           </div>
 
-          {/* Translittération */}
-          <div className={s.translit}>
-            {question.translit}
-          </div>
+          {/* Translittération (toggle) */}
+          {showTranslit && question.translit && (
+            <div className={s.translit}>
+              {question.translit}
+            </div>
+          )}
+          {!showTranslit && (
+            <button onClick={() => setShowTranslit(true)} style={{
+              fontSize: 11, color: 'var(--text-muted)', background: 'none', border: 'none',
+              cursor: 'pointer', padding: '4px 0', textDecoration: 'underline'
+            }}>Voir la phonétique</button>
+          )}
 
           {/* Racine */}
           {question.racine && (
