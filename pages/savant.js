@@ -67,7 +67,7 @@ export default function SavantPage() {
 
         {/* Input */}
         <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-          <input
+          <input type="search" autoComplete="off"
             ref={inputRef}
             value={question}
             onChange={e => setQuestion(e.target.value)}

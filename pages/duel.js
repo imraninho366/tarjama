@@ -220,7 +220,7 @@ export default function DuelPage({ user, profile }) {
             <div style={{ padding: '16px', borderRadius: 12, background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.1)' }}>
               <div style={{ fontSize: 13, color: 'var(--text)', fontWeight: 600, marginBottom: 10 }}>Rejoindre un duel</div>
               <div style={{ display: 'flex', gap: 8 }}>
-                <input value={joinCode} onChange={e => setJoinCode(e.target.value.toUpperCase())} placeholder="CODE" maxLength={6}
+                <input autoComplete="off" value={joinCode} onChange={e => setJoinCode(e.target.value.toUpperCase())} placeholder="CODE" maxLength={6}
                   style={{ flex: 1, padding: '12px', borderRadius: 8, fontSize: 18, textAlign: 'center', letterSpacing: 6, fontWeight: 700, background: 'var(--bg-elevated)', border: '1px solid rgba(201,168,76,.15)', color: 'var(--gold)', fontFamily: 'var(--font-display)' }}
                 />
                 <Button onClick={joinDuel} disabled={loading || joinCode.length < 4}>Rejoindre</Button>

@@ -56,7 +56,7 @@ export default function RacinesPage({ user }) {
           borderRadius: 6, padding: '9px 12px'
         }}>
           <span style={{ color: 'var(--gold)', fontSize: 14 }}>◇</span>
-          <input
+          <input type="search" autoComplete="off"
             value={search} onChange={e => { setSearch(e.target.value); setSelected(null) }}
             placeholder="Chercher une racine, un mot ou un sens..."
             style={{ width: '100%', fontSize: 13, background: 'transparent', border: 'none', color: 'var(--text)' }}

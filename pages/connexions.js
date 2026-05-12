@@ -68,7 +68,7 @@ export default function ConnexionsPage({ user }) {
             </div>
 
             <div style={{ display: 'flex', gap: 8 }}>
-              <input value={custom} onChange={e => setCustom(e.target.value)}
+              <input autoComplete="off" value={custom} onChange={e => setCustom(e.target.value)}
                 placeholder="Ou cherche un thème..."
                 onKeyDown={e => { if (e.key === 'Enter' && custom.trim()) search(custom.trim()) }}
                 style={{ flex: 1, padding: '12px', borderRadius: 8, fontSize: 13, background: 'var(--bg-elevated)', border: '1px solid rgba(201,168,76,.12)', color: 'var(--text)' }}

@@ -181,7 +181,7 @@ export default function PrieresPage() {
               Entre ta ville pour afficher les horaires de prière
             </div>
             <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
-              <input value={cityInput} onChange={e => setCityInput(e.target.value)}
+              <input autoComplete="off" value={cityInput} onChange={e => setCityInput(e.target.value)}
                 placeholder="Ex: Paris, Lyon, Casablanca..."
                 onKeyDown={e => { if (e.key === 'Enter') searchCity() }}
                 style={{
