@@ -40,6 +40,9 @@ export default function ProfilPage({ user, profile, onLogout }) {
   const partial = entries.filter(p => p.niveau === 'partial').length
   const wrong = entries.filter(p => p.niveau === 'wrong').length
 
+  // Total versets dans le Coran
+  const TOTAL_QURAN_VERSES = 6236
+
   const sourates = SOURATES_LIST.map(s => {
     const done = Object.keys(progress).filter(k => k.startsWith(`${s.n}:`)).length
     const ok = Object.keys(progress).filter(k => {
@@ -56,6 +59,15 @@ export default function ProfilPage({ user, profile, onLogout }) {
   entries.forEach(p => {
     if (p.ts) { const d = new Date(p.ts); days.add(`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`) }
   })
+
+  // Mots connus (quiz)
+  const quizHistory = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('tarjama_quiz_history') || '[]') : []
+  const knownWords = [...new Set(quizHistory.filter(h => h.ok).map(h => h.ar))]
+  const TOTAL_QURAN_WORDS = 6344
+  const pctMotsConnus = TOTAL_QURAN_WORDS > 0 ? Math.round(knownWords.length / TOTAL_QURAN_WORDS * 100) : 0
+
+  // % mémorisation du Coran (versets excellents / total versets)
+  const pctMemorisation = TOTAL_QURAN_VERSES > 0 ? Math.round(excellent / TOTAL_QURAN_VERSES * 100) : 0
 
   const tabStyle = (t) => ({
     padding: '8px 16px', fontSize: 12, letterSpacing: 1, textTransform: 'uppercase',
@@ -91,12 +103,11 @@ export default function ProfilPage({ user, profile, onLogout }) {
         </div>
 
         {/* Stats principales */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8, marginBottom: 20 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 12 }}>
           {[
-            [total, 'Versets', 'var(--gold)'],
+            [total, 'Versets traduits', 'var(--gold)'],
             [excellent, 'Excellents', 'var(--green)'],
-            [days.size, 'Jours actifs', 'var(--blue)'],
-            [sourates.length, 'Sourates', 'var(--purple)']
+            [knownWords.length, 'Mots connus', 'var(--blue)'],
           ].map(([num, lbl, clr]) => (
             <div key={lbl} style={{
               textAlign: 'center', padding: '12px 4px',
@@ -104,9 +115,32 @@ export default function ProfilPage({ user, profile, onLogout }) {
               border: '1px solid rgba(201,168,76,.08)'
             }}>
               <div style={{ fontSize: 22, fontFamily: 'var(--font-display)', color: clr, fontWeight: 700 }}>{num}</div>
-              <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 1 }}>{lbl}</div>
+              <div style={{ fontSize: 9, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 1 }}>{lbl}</div>
             </div>
           ))}
+        </div>
+
+        {/* Barres de progression Coran */}
+        <div style={{ marginBottom: 20, padding: '14px 16px', borderRadius: 10, background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.08)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+            <span style={{ fontSize: 12, color: 'var(--text)' }}>Vocabulaire du Coran</span>
+            <span style={{ fontSize: 14, fontFamily: 'var(--font-display)', color: 'var(--blue)', fontWeight: 700 }}>{pctMotsConnus}%</span>
+          </div>
+          <div style={{ height: 6, background: 'rgba(201,168,76,.08)', borderRadius: 3, overflow: 'hidden', marginBottom: 4 }}>
+            <div style={{ height: '100%', borderRadius: 3, width: `${pctMotsConnus}%`, background: 'var(--blue)', transition: 'width .5s ease' }} />
+          </div>
+          <div style={{ fontSize: 10, color: 'var(--text-muted)' }}>{knownWords.length} / {TOTAL_QURAN_WORDS} mots uniques</div>
+
+          <div style={{ borderTop: '1px solid rgba(201,168,76,.06)', marginTop: 12, paddingTop: 12 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+              <span style={{ fontSize: 12, color: 'var(--text)' }}>Mémorisation du Coran</span>
+              <span style={{ fontSize: 14, fontFamily: 'var(--font-display)', color: 'var(--green)', fontWeight: 700 }}>{pctMemorisation}%</span>
+            </div>
+            <div style={{ height: 6, background: 'rgba(201,168,76,.08)', borderRadius: 3, overflow: 'hidden', marginBottom: 4 }}>
+              <div style={{ height: '100%', borderRadius: 3, width: `${pctMemorisation}%`, background: 'var(--green)', transition: 'width .5s ease' }} />
+            </div>
+            <div style={{ fontSize: 10, color: 'var(--text-muted)' }}>{excellent} / {TOTAL_QURAN_VERSES} versets maîtrisés</div>
+          </div>
         </div>
 
         {/* Tabs */}
