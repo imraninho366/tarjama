@@ -51,6 +51,16 @@ export default function AdminPage({ user }) {
     loadData()
   }
 
+  const handleDelete = async (userId, username) => {
+    if (userId === user.id) { setMessage('Tu ne peux pas te supprimer toi-même'); return }
+    if (!confirm(`Supprimer le compte de ${username} ? Cette action est irréversible.`)) return
+    await supabase.from('premium_users').delete().eq('id', userId)
+    await supabase.from('progress').delete().eq('user_id', userId)
+    await supabase.from('profiles').delete().eq('id', userId)
+    setMessage(`${username} supprimé`)
+    loadData()
+  }
+
   return (
     <>
       <Head><title>Admin — Tarjama</title></Head>
@@ -103,6 +113,11 @@ export default function AdminPage({ user }) {
               {isPrem && !isMe && (
                 <Button variant="ghost" onClick={() => handleRevoke(u.id, u.username)} style={{ fontSize: 11, padding: '6px 12px', color: 'var(--red)' }}>
                   Retirer
+                </Button>
+              )}
+              {!isMe && (
+                <Button variant="ghost" onClick={() => handleDelete(u.id, u.username)} style={{ fontSize: 11, padding: '6px 10px', color: 'var(--red)' }}>
+                  ✕
                 </Button>
               )}
               {isMe && <span style={{ fontSize: 10, color: 'var(--gold)', fontWeight: 700 }}>ADMIN</span>}
