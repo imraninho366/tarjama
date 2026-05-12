@@ -510,22 +510,6 @@ export default function App({ user, profile, onLogout }){
               <div style={{fontSize:10,color:'var(--text-muted)',marginTop:6}}>S.{smartVerse.sourate_num}:{smartVerse.verset_num} — {smartVerse.sourate_ar}</div>
             </div>
           )}
-          {leaderboard.length>0&&(
-            <div style={{marginTop:20}}>
-              <div className={s.sectionLabel} style={{marginBottom:8}}>Classement</div>
-              {leaderboard.slice(0,5).map((u,i)=>(
-                <div key={i} style={{display:'flex',alignItems:'center',gap:10,padding:'8px 12px',borderBottom:`1px solid rgba(201,168,76,.06)`}}>
-                  <span style={{fontFamily:'var(--font-display)',fontSize:16,color:i===0?G.gold:i===1?'var(--text-dim)':'var(--text-muted)',width:24,textAlign:'center',fontWeight:700}}>{i+1}</span>
-                  <div style={{width:28,height:28,borderRadius:'50%',background:u.color||'var(--gold)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:12,color:'#fff',fontWeight:700}}>{u.username?.[0]?.toUpperCase()||'?'}</div>
-                  <div style={{flex:1,minWidth:0}}>
-                    <div style={{fontSize:13,color:'var(--text)',fontWeight:u.username===profile.username?700:400}}>{u.username}{u.username===profile.username?' (toi)':''}</div>
-                  </div>
-                  <span style={{fontSize:13,color:'var(--green)',fontWeight:600}}>{u.excellent}</span>
-                  <span style={{fontSize:10,color:'var(--text-muted)'}}>/{u.total}</span>
-                </div>
-              ))}
-            </div>
-          )}
         </>
       })()}
 
