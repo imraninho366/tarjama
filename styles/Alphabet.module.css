@@ -110,27 +110,32 @@
 }
 
 .letterBarBtn {
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-sm);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
   cursor: pointer;
   background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  color: var(--text-dim);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  color: var(--text);
   font-family: var(--font-arabic);
-  font-size: 17px;
+  font-size: 20px;
   direction: rtl;
   transition: all var(--duration-fast) var(--ease-out);
   min-height: 44px;
-  min-width: 34px;
+  min-width: 38px;
+  font-weight: 700;
 }
 
 .letterBarBtn:hover {
-  border-color: rgba(201, 168, 76, 0.2);
+  border-color: rgba(201, 168, 76, 0.3);
+  background: rgba(201, 168, 76, 0.06);
 }
 
 .letterBarActive {
-  border-color: currentColor;
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.1);
+  box-shadow: 0 0 12px var(--gold-glow);
 }
 
 /* ── Lesson card ──────────────────────────────────────────── */
@@ -170,7 +175,8 @@
 
 .heroLetter {
   font-family: var(--font-arabic);
-  font-size: 120px;
+  font-size: 140px;
+  color: var(--gold);
   direction: rtl;
   line-height: 1;
   display: block;
@@ -181,6 +187,7 @@
     0 0 30px var(--gold-glow-strong),
     0 0 60px var(--gold-glow);
   animation: breathe 4s ease-in-out infinite;
+  font-weight: 700;
 }
 
 .heroLetter:active {
@@ -255,23 +262,24 @@
 }
 
 .formeCard:not(:last-child) {
-  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  border-right: 1px solid rgba(201, 168, 76, 0.08);
 }
 
 .formeCard:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(201, 168, 76, 0.05);
 }
 
 .formeLetter {
   font-family: var(--font-arabic);
-  font-size: 28px;
-  color: var(--text);
+  font-size: 32px;
+  color: var(--gold);
   direction: rtl;
   margin-bottom: 4px;
+  font-weight: 700;
 }
 
 .formeLabel {
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--text-muted);
