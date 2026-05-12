@@ -472,18 +472,30 @@ export default function App({ user, profile, onLogout }){
         const total=Object.keys(progress).length
         let correct=0,partial=0,wrong=0
         Object.values(progress).forEach(p=>{if(p.niveau==='excellent'||p.niveau==='good')correct++;else if(p.niveau==='partial')partial++;else if(p.niveau==='wrong')wrong++})
+
+        const VERSE_COUNTS_DASH={1:7,2:286,3:200,4:176,5:120,6:165,7:206,8:75,9:129,10:109,11:123,12:111,13:43,14:52,15:99,16:128,17:111,18:110,19:98,20:135,21:112,22:78,23:118,24:64,25:77,26:227,27:93,28:88,29:69,30:60,31:34,32:30,33:73,34:54,35:45,36:83,37:182,38:88,39:75,40:85,41:54,42:53,43:89,44:59,45:37,46:35,47:38,48:29,49:18,50:45,51:60,52:49,53:62,54:55,55:78,56:96,57:29,58:22,59:24,60:13,61:14,62:11,63:11,64:18,65:12,66:12,67:30,68:52,69:52,70:44,71:28,72:28,73:20,74:56,75:40,76:31,77:50,78:40,79:46,80:42,81:29,82:19,83:36,84:25,85:22,86:17,87:19,88:26,89:30,90:20,91:15,92:21,93:11,94:8,95:8,96:19,97:5,98:8,99:8,100:11,101:11,102:8,103:3,104:9,105:5,106:4,107:7,108:3,109:6,110:3,111:5,112:4,113:5,114:6}
+
+        const sourateProgress=SOURATES_LIST.map(ss=>{
+          const done=Object.keys(progress).filter(k=>k.startsWith(`${ss.n}:`)).length
+          const vTotal=VERSE_COUNTS_DASH[ss.n]||ss.v||0
+          const pct=vTotal>0?Math.round(done/vTotal*100):0
+          return{...ss,done,vTotal,pct}
+        })
+        const startedSourates=sourateProgress.filter(ss=>ss.done>0).sort((a,b)=>b.pct-a.pct)
+        const completedCount=startedSourates.filter(ss=>ss.pct>=100).length
+
         return<>
           <div className={s.welcome}>
             <span className={s.welcomeAr}>أَهْلًا وَسَهْلًا</span>
             <div>
               <div className={s.welcomeTitle}>Bienvenue, {profile.username} !</div>
-              <div className={s.welcomeSub}>{total===0?'Prêt à apprendre le Coran ? Commence par Al-Fatiha !':'Recherche une sourate et continue à traduire.'}</div>
+              <div className={s.welcomeSub}>{total===0?'Prêt à apprendre le Coran ? Commence par Al-Fatiha !':'Continue ta progression !'}</div>
             </div>
           </div>
           {total===0&&(
             <div style={{padding:'16px',margin:'0 0 16px',background:'rgba(201,168,76,.06)',borderRadius:12,border:'1px solid rgba(201,168,76,.12)'}}>
-              <div style={{fontSize:13,color:'var(--text)',fontWeight:600,marginBottom:8}}>Comment ça marche ?</div>
-              <div style={{fontSize:12,color:'var(--text-dim)',lineHeight:1.8}}>
+              <div style={{fontSize:14,color:'var(--text)',fontWeight:600,marginBottom:8}}>Comment ça marche ?</div>
+              <div style={{fontSize:13,color:'var(--text-dim)',lineHeight:1.9}}>
                 1. Choisis une sourate (commence par Al-Fatiha)<br/>
                 2. Lis le verset en arabe et écoute la récitation<br/>
                 3. Écris ta traduction en français<br/>
@@ -492,37 +504,48 @@ export default function App({ user, profile, onLogout }){
               </div>
             </div>
           )}
+
+          {/* Stats principales */}
           {total>0&&<div className={s.statsGrid}>
-            {[['Traduits','var(--gold)',total],['Excellents','var(--green)',correct],['Partiels','var(--orange)',partial],['À revoir','var(--red)',wrong],['Streak','var(--purple)',`${getStreak()}j`]].map(([lbl,clr,num])=>(
+            {[['Versets traduits','var(--gold)',total],['Sourates complètes','var(--green)',completedCount],['Sourates commencées','var(--blue)',startedSourates.length],['Streak','var(--purple)',`${getStreak()}j`]].map(([lbl,clr,num])=>(
               <div key={lbl} className={s.statCard}>
                 <span className={s.statNum} style={{color:clr}}>{num}</span>
                 <span className={s.statLabel}>{lbl}</span>
               </div>
             ))}
           </div>}
-          <div className={s.dashboardCta}>
-            {total===0&&<p className={s.dashboardCtaText}>Ta première sourate t'attend !</p>}
-            {total>0&&<p className={s.dashboardCtaText}>Recherche une sourate dans la barre ci-dessus</p>}
-            <Button onClick={()=>openSourate(SUGGESTIONS[0])}>{total===0?'Commencer Al-Fatiha →':'Continuer Al-Fatiha →'}</Button>
+
+          {/* Liste des sourates commencées */}
+          {startedSourates.length>0&&(
+            <div style={{marginTop:16}}>
+              <div className={s.sectionLabel} style={{marginBottom:10}}>Tes sourates</div>
+              {startedSourates.map(ss=>(
+                <div key={ss.n} onClick={()=>openSourate(ss)} style={{
+                  display:'flex',alignItems:'center',gap:10,padding:'10px 0',
+                  borderBottom:'1px solid rgba(201,168,76,.06)',cursor:'pointer'
+                }}>
+                  <span style={{fontSize:12,color:'var(--text-muted)',width:28,textAlign:'right',fontFamily:'var(--font-display)'}}>{ss.n}</span>
+                  <div style={{flex:1,minWidth:0}}>
+                    <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:4}}>
+                      <span style={{fontFamily:'var(--font-arabic)',fontSize:16,color:'var(--gold-light)'}}>{ss.ar}</span>
+                      <span style={{fontSize:13,color:'var(--text)'}}>{ss.fr}</span>
+                    </div>
+                    <div style={{height:4,background:'rgba(201,168,76,.08)',borderRadius:2,overflow:'hidden'}}>
+                      <div style={{height:'100%',borderRadius:2,width:`${ss.pct}%`,background:ss.pct>=100?'var(--green)':ss.pct>=50?'var(--gold)':'var(--orange)',transition:'width .5s ease'}}/>
+                    </div>
+                  </div>
+                  <div style={{textAlign:'right',flexShrink:0}}>
+                    <div style={{fontSize:13,fontWeight:700,color:ss.pct>=100?'var(--green)':ss.pct>=50?'var(--gold)':'var(--orange)'}}>{ss.pct}%</div>
+                    <div style={{fontSize:10,color:'var(--text-muted)'}}>{ss.done}/{ss.vTotal}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className={s.dashboardCta} style={{marginTop:16}}>
+            <Button onClick={()=>openSourate(SUGGESTIONS[0])}>{total===0?'Commencer Al-Fatiha →':'Continuer →'}</Button>
           </div>
-          {total>0&&!smartVerse&&(
-            <div style={{textAlign:'center',marginTop:12}}>
-              <Button variant="secondary" onClick={async()=>{
-                const weak=Object.entries(progress).filter(([,p])=>p.niveau==='wrong'||p.niveau==='partial').slice(0,5).map(([k])=>k.split(':')[0])
-                if(weak.length===0) return
-                try{const r=await fetch('/api/smart-verse',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({weakWords:weak})});const d=await r.json();if(d.arabe)setSmartVerse(d)}catch{}
-              }}>Verset intelligent pour toi</Button>
-            </div>
-          )}
-          {smartVerse&&(
-            <div style={{marginTop:12,padding:16,borderRadius:10,background:'rgba(155,127,212,.06)',border:'1px solid rgba(155,127,212,.15)',animation:'fadeInUp .3s ease'}}>
-              <div style={{fontSize:10,color:'var(--purple)',textTransform:'uppercase',letterSpacing:2,marginBottom:8}}>Verset recommandé pour toi</div>
-              <div style={{fontFamily:'var(--font-arabic)',fontSize:20,color:'var(--gold-light)',direction:'rtl',textAlign:'right',lineHeight:2,marginBottom:8}}>{smartVerse.arabe}</div>
-              <div style={{fontSize:13,color:'var(--text)',fontStyle:'italic',marginBottom:6}}>« {smartVerse.traduction} »</div>
-              <div style={{fontSize:11,color:'var(--text-dim)'}}>{smartVerse.conseil}</div>
-              <div style={{fontSize:10,color:'var(--text-muted)',marginTop:6}}>S.{smartVerse.sourate_num}:{smartVerse.verset_num} — {smartVerse.sourate_ar}</div>
-            </div>
-          )}
         </>
       })()}
 
