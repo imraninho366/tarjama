@@ -142,6 +142,12 @@
   animation: fadeInUp 0.8s var(--ease-out) 0.5s both;
 }
 
+/* ── Auth section ────────────────────────────────────────── */
+.authSection {
+  margin-bottom: var(--space-xl);
+  animation: fadeInUp 0.6s var(--ease-out) 0.3s both;
+}
+
 /* ── Stats Bar ───────────────────────────────────────────── */
 .statsBar {
   display: grid;
@@ -228,22 +234,27 @@
   vertical-align: middle;
 }
 
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
 .featureItem {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-lg);
-  padding: var(--space-lg) 0;
-  border-bottom: 1px solid rgba(201, 168, 76, 0.04);
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: rgba(201, 168, 76, 0.03);
+  border: 1px solid rgba(201, 168, 76, 0.06);
   animation: fadeInUp 0.5s var(--ease-out) both;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .featureItem:hover {
-  transform: translateX(6px);
-}
-
-.featureItem:last-child {
-  border-bottom: none;
+  background: rgba(201, 168, 76, 0.06);
+  border-color: rgba(201, 168, 76, 0.12);
 }
 
 .featureIcon {
@@ -479,10 +490,14 @@
     display: none;
   }
 
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
   .featureIcon {
-    width: 44px;
-    height: 44px;
-    font-size: 19px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
   }
 
   .verseQuote {

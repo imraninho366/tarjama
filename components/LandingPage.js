@@ -1,15 +1,14 @@
-import { useState } from 'react'
 import Link from 'next/link'
 import AuthScreen from './AuthScreen'
 import s from './LandingPage.module.css'
 
 const FEATURES = [
-  { icon: 'ت', title: 'Traduction verset par verset', desc: 'Traduis le Coran avec correction IA instantanée et feedback bienveillant' },
-  { icon: 'ق', title: 'Quiz vocabulaire', desc: '6 300+ mots coraniques avec racines triconsonantiques et fréquences' },
-  { icon: 'م', title: 'Dictionnaire complet', desc: 'Recherche instantanée en arabe, translittération ou français — avec mnémoniques IA' },
-  { icon: '۩', title: 'Horaires de prière & Qibla', desc: 'Prières du jour géolocalisées et boussole vers la Mecque' },
-  { icon: '☪', title: 'Savant IA', desc: 'Pose tes questions sur l\'Islam — réponses sourcées du Coran et des hadiths' },
-  { icon: 'أ', title: 'Alphabet & Calligraphie', desc: '28 lettres avec prononciation, formes et pratique au doigt' },
+  { icon: 'ت', title: 'Traduction verset par verset', desc: 'Traduis le Coran avec correction IA instantanée' },
+  { icon: 'ق', title: 'Quiz vocabulaire', desc: '6 300+ mots coraniques avec racines et fréquences' },
+  { icon: '۩', title: 'Horaires de prière & Qibla', desc: 'Prières du jour et boussole vers la Mecque' },
+  { icon: '☪', title: 'Savant IA', desc: 'Réponses sourcées du Coran et des hadiths' },
+  { icon: 'م', title: 'Dictionnaire complet', desc: 'Recherche instantanée avec mnémoniques IA' },
+  { icon: 'أ', title: 'Alphabet & Calligraphie', desc: '28 lettres avec prononciation et pratique' },
 ]
 
 const STATS = [
@@ -20,25 +19,25 @@ const STATS = [
 ]
 
 export default function LandingPage() {
-  const [showAuth, setShowAuth] = useState(false)
-
   return (
     <div className={s.container}>
 
+      {/* Hero court */}
       <div className={s.hero}>
         <div className={s.heroIcon}>ب</div>
         <h1 className={s.heroTitle}>TARJAMA</h1>
         <p className={s.heroSub}>ترجمة — Traduction coranique</p>
         <p className={s.heroDesc}>
-          Apprends le vocabulaire du Coran en traduisant verset par verset.
-          Correction IA, quiz, dictionnaire, prières et plus — tout en français.
+          Apprends le Coran en traduisant verset par verset — gratuit.
         </p>
-        <button className={s.cta} onClick={() => setShowAuth(true)}>
-          Commencer gratuitement →
-        </button>
-        <p className={s.ctaNote}>Gratuit · Pas de carte bancaire · Créé en 30 secondes</p>
       </div>
 
+      {/* Formulaire toujours visible */}
+      <div className={s.authSection}>
+        <AuthScreen />
+      </div>
+
+      {/* Stats */}
       <div className={s.statsBar}>
         {STATS.map(([num, label]) => (
           <div key={label} className={s.statItem}>
@@ -48,19 +47,23 @@ export default function LandingPage() {
         ))}
       </div>
 
+      {/* Features */}
       <div className={s.featuresSection}>
         <div className={s.featuresTitle}>Fonctionnalités</div>
-        {FEATURES.map((f, i) => (
-          <div key={i} className={s.featureItem} style={{ animationDelay: `${0.1 + i * 0.08}s` }}>
-            <div className={s.featureIcon}>{f.icon}</div>
-            <div>
-              <div className={s.featureName}>{f.title}</div>
-              <div className={s.featureDesc}>{f.desc}</div>
+        <div className={s.featuresGrid}>
+          {FEATURES.map((f, i) => (
+            <div key={i} className={s.featureItem} style={{ animationDelay: `${0.1 + i * 0.06}s` }}>
+              <div className={s.featureIcon}>{f.icon}</div>
+              <div>
+                <div className={s.featureName}>{f.title}</div>
+                <div className={s.featureDesc}>{f.desc}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
+      {/* Verset */}
       <div className={s.verseQuote}>
         <div className={s.verseArabic}>إِنَّا أَنزَلْنَاهُ قُرْآنًا عَرَبِيًّا لَّعَلَّكُمْ تَعْقِلُونَ</div>
         <div className={s.verseFrench}>
@@ -69,6 +72,7 @@ export default function LandingPage() {
         <div className={s.verseRef}>Sourate Yusuf · verset 2</div>
       </div>
 
+      {/* Install */}
       <div className={s.installGuide}>
         <div className={s.installTitle}>Installe Tarjama sur ton téléphone</div>
         <div className={s.installSteps}>
@@ -88,20 +92,7 @@ export default function LandingPage() {
         <div className={s.installNote}>Fonctionne hors-ligne, comme une vraie app</div>
       </div>
 
-      {!showAuth && (
-        <div style={{ textAlign: 'center', marginBottom: 40 }}>
-          <button className={s.cta} onClick={() => setShowAuth(true)}>
-            Créer mon compte gratuitement →
-          </button>
-        </div>
-      )}
-
-      {showAuth && (
-        <div style={{ marginBottom: 40 }}>
-          <AuthScreen />
-        </div>
-      )}
-
+      {/* Footer */}
       <div className={s.footer}>
         <div className={s.footerText}>Tarjama</div>
         <Link href="/mentions-legales" className={s.footerLink}>
