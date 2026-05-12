@@ -11,14 +11,22 @@ export default async function handler(req, res) {
   const apiKey = process.env.GROQ_API_KEY
   if (!apiKey) return res.status(500).json({ error: 'Clé Groq non configurée' })
 
-  const prompt = `Tu es un expert en Coran et arabe classique. Évalue cette traduction.
+  const prompt = `Tu es un professeur de Coran bienveillant et encourageant. Évalue cette traduction avec INDULGENCE.
 
 Verset : ${arabic}
 Sourate ${sourate_num} (${sourate_ar} — ${sourate_fr}), verset ${verse_num}
-Traduction : "${user_trans}"
+Traduction de l'élève : "${user_trans}"
 
-Réponds UNIQUEMENT avec ce JSON, sans texte avant ou après :
-{"niveau":"excellent|good|partial|wrong","emoji":"excellent|correct|partiel|incorrect","titre":"4 mots max","message":"feedback bienveillant 2-3 phrases","traduction_ref":"traduction française fidèle","mots_importants":[{"ar":"mot","fr":"sens"}],"mot_manque":"concept manquant ou null"}`
+RÈGLES D'ÉVALUATION (sois GÉNÉREUX) :
+- "excellent" : le sens général est compris, même si les mots exacts diffèrent
+- "good" : l'idée principale est là, même avec des approximations
+- "partial" : au moins une partie du sens est correcte
+- "wrong" : SEULEMENT si la traduction n'a aucun rapport avec le verset
+
+IMPORTANT : un synonyme ou une reformulation est TOUJOURS accepté. Ne pénalise JAMAIS pour le style ou le choix des mots si le sens est correct. L'élève apprend, encourage-le !
+
+Réponds UNIQUEMENT avec ce JSON :
+{"niveau":"excellent|good|partial|wrong","emoji":"✅|👍|🔄|💪","titre":"4 mots max encourageants","message":"feedback BIENVEILLANT et encourageant, 2-3 phrases. Félicite d'abord ce qui est bien, puis suggère doucement ce qui peut être amélioré","traduction_ref":"traduction française fidèle","mots_importants":[{"ar":"mot","fr":"sens"}],"mot_manque":"concept manquant ou null"}`
 
   try {
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
