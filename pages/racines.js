@@ -15,6 +15,14 @@ export default function RacinesPage({ user }) {
     const map = {}
     vocab.forEach(w => {
       if (!w.racine) return
+      // Filter out inconsistent roots: root letters must be Arabic only
+      if (/[a-z]/i.test(w.racine)) return
+      const rootLetters = w.racine.split('-').map(l => l.trim())
+      if (rootLetters.length !== 3) return
+      // Check at least 1 root letter appears in the word (filter column-shifted)
+      const clean = (w.ar || '').replace(/[ً-ٰٟٱ]/g, '')
+      const found = rootLetters.filter(r => clean.includes(r)).length
+      if (found === 0) return
       if (!map[w.racine]) map[w.racine] = { racine: w.racine, mots: [], totalFreq: 0 }
       map[w.racine].mots.push(w)
       map[w.racine].totalFreq += w.freq || 0
