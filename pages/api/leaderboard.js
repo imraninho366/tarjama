@@ -13,15 +13,18 @@ export default async function handler(req, res) {
   if (!ok) return res.status(429).json({ error: 'Trop de requêtes.' })
 
   try {
-    const { data: profiles } = await supabase
+    const { data: profiles, error: profErr } = await supabase
       .from('profiles')
       .select('id, username, color')
 
+    if (profErr) return res.status(500).json({ error: profErr.message })
     if (!profiles?.length) return res.json({ leaderboard: [] })
 
-    const { data: progress } = await supabase
+    const { data: progress, error: progErr } = await supabase
       .from('progress')
       .select('user_id, niveau')
+
+    if (progErr) return res.status(500).json({ error: progErr.message })
 
     const stats = {}
     profiles.forEach(p => {

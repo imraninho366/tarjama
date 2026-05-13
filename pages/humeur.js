@@ -36,7 +36,7 @@ export default function HumeurPage({ user }) {
       if (data.error) throw new Error(data.error)
       setVersets(data.versets || [])
     } catch (err) {
-      setVersets([])
+      setVersets('error')
     }
     setLoading(false)
   }
@@ -97,7 +97,7 @@ export default function HumeurPage({ user }) {
         )}
 
         {/* Results */}
-        {versets && versets.length > 0 && (
+        {versets && versets !== 'error' && versets.length > 0 && (
           <div>
             <button onClick={() => { setVersets(null); setSelected(null) }}
               style={{ fontSize: 12, color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer', marginBottom: 16 }}>
@@ -137,7 +137,14 @@ export default function HumeurPage({ user }) {
           </div>
         )}
 
-        {versets && versets.length === 0 && (
+        {versets === 'error' && (
+          <div style={{ textAlign: 'center', padding: 32, color: 'var(--red)' }}>
+            Erreur de connexion. Vérifie ton internet et réessaie.
+            <br/><button onClick={() => { setVersets(null); setSelected(null) }} style={{ marginTop: 12, color: 'var(--gold)', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>Réessayer</button>
+          </div>
+        )}
+
+        {versets && versets !== 'error' && versets.length === 0 && (
           <div style={{ textAlign: 'center', padding: 32, color: 'var(--text-muted)' }}>
             Aucun verset trouvé. Réessaie avec une autre humeur.
           </div>

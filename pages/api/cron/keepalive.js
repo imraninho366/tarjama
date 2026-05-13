@@ -10,10 +10,11 @@ export default async function handler(req, res) {
     const { error } = await supabase.from('profiles').select('id').limit(1)
     if (error) throw error
 
-    await supabase.from('keepalive').upsert(
+    const { error: keepErr } = await supabase.from('keepalive').upsert(
       { id: 1, pinged_at: new Date().toISOString() },
       { onConflict: 'id' }
     )
+    if (keepErr) console.error('[keepalive] upsert failed:', keepErr.message)
 
     return res.status(200).json({ ok: true, pingedAt: new Date().toISOString() })
   } catch (err) {

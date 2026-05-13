@@ -39,7 +39,7 @@ Utilise les diacritiques : ā, ī, ū, ḥ, ḫ, ẓ, ṭ, ṣ, ḍ, ġ`
       cacheSet(cacheKey, translit)
       return res.status(200).json({ translit })
     } catch (err) {
-      return res.status(500).json({ translit: 'Non disponible.' })
+      return res.status(500).json({ error: 'Translittération non disponible' })
     }
   }
 
@@ -67,6 +67,6 @@ Format : " Mots-clés : [...] | Thème : [...]"`
     cacheSet(cacheKey, hint)
     return res.status(200).json({ hint })
   } catch (err) {
-    return res.status(500).json({ hint: 'Indice temporairement indisponible.' })
+    return res.status(500).json({ error: 'Indice temporairement indisponible' })
   }
 }

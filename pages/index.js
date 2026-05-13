@@ -175,7 +175,8 @@ export default function App({ user, profile, onLogout }){
     const score=Math.round(matches/correctWords.length*100)
     const niveau=score>=90?'excellent':score>=70?'good':score>=50?'partial':'wrong'
     setHifzResult({score,niveau,correct})
-    await supabase.from('progress').upsert({user_id:user.id,sourate_num:sourate.num,verse_num:verse.n,user_trans:`[Hifz] ${hifzInput}`,niveau,feedback:{titre:'Mode Hifz',message:`Score de mémorisation : ${score}%`,niveau}},{onConflict:'user_id,sourate_num,verse_num'})
+    const{error:hifzErr}=await supabase.from('progress').upsert({user_id:user.id,sourate_num:sourate.num,verse_num:verse.n,user_trans:`[Hifz] ${hifzInput}`,niveau,feedback:{titre:'Mode Hifz',message:`Score de mémorisation : ${score}%`,niveau}},{onConflict:'user_id,sourate_num,verse_num'})
+    if(hifzErr)console.error('Hifz save error:',hifzErr.message)
     setProgress(prev=>({...prev,[`${sourate.num}:${verse.n}`]:{userTrans:`[Hifz] ${hifzInput}`,niveau,feedback:{niveau}}}))
   }
 
@@ -350,7 +351,8 @@ export default function App({ user, profile, onLogout }){
 
   const skipVerse=async()=>{
     const v=sourate.verses[vIdx]
-    await supabase.from('progress').upsert({user_id:user.id,sourate_num:sourate.num,verse_num:v.n,user_trans:'(passé)',niveau:'skipped',feedback:null},{onConflict:'user_id,sourate_num,verse_num'})
+    const{error}=await supabase.from('progress').upsert({user_id:user.id,sourate_num:sourate.num,verse_num:v.n,user_trans:'(passé)',niveau:'skipped',feedback:null},{onConflict:'user_id,sourate_num,verse_num'})
+    if(error){showToast('Erreur sauvegarde','error');return}
     setProgress(prev=>({...prev,[`${sourate.num}:${v.n}`]:{userTrans:'(passé)',niveau:'skipped'}}))
     if(vIdx<sourate.verses.length-1)goVerse(vIdx+1);else setView('done')
   }
@@ -359,7 +361,8 @@ export default function App({ user, profile, onLogout }){
     if(!sourate||!sourate.verses[vIdx])return
     const v=sourate.verses[vIdx]
     const key=`${sourate.num}:${v.n}`
-    await supabase.from("progress").delete().eq("user_id",user.id).eq("sourate_num",sourate.num).eq("verse_num",v.n)
+    const{error}=await supabase.from("progress").delete().eq("user_id",user.id).eq("sourate_num",sourate.num).eq("verse_num",v.n)
+    if(error){showToast('Erreur suppression','error');return}
     setProgress(prev=>{const next={...prev};delete next[key];return next})
     setUserTrans("");setFeedback(null);setHint("");setShowHint(false)
     showToast("Réessaie ta traduction !")

@@ -89,16 +89,18 @@ export default function TarjamaApp({ Component, pageProps, router }) {
   }, [router])
 
   const loadProfile = async (userId, retries = 2) => {
-    loadPremiumStatus(userId).catch(() => {})
-    const { data } = await supabase
+    loadPremiumStatus(userId).catch(e => console.error('Premium check failed:', e))
+    const { data, error } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', userId)
       .single()
     if (data) {
       setProfile(data)
-    } else if (retries > 0) {
+    } else if (error && error.code === 'PGRST116' && retries > 0) {
       setTimeout(() => loadProfile(userId, retries - 1), 500)
+    } else if (error) {
+      console.error('loadProfile error:', error.message)
     }
   }
 

@@ -34,7 +34,7 @@ export default function ConnexionsPage({ user }) {
       const r = await fetch('/api/humeur', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mood: `versets sur le thème : ${theme}` }) })
       const data = await r.json()
       setVersets(data.versets || [])
-    } catch { setVersets([]) }
+    } catch { setVersets('error') }
     setLoading(false)
   }
 
@@ -85,7 +85,14 @@ export default function ConnexionsPage({ user }) {
           </div>
         )}
 
-        {versets && versets.length > 0 && (
+        {versets === 'error' && (
+          <div style={{ textAlign: 'center', padding: 32, color: 'var(--red)' }}>
+            Erreur de connexion. Vérifie ton internet.
+            <br/><button onClick={() => { setVersets(null); setSelected(null) }} style={{ marginTop: 12, color: 'var(--gold)', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>Réessayer</button>
+          </div>
+        )}
+
+        {versets && versets !== 'error' && versets.length > 0 && (
           <div>
             <button onClick={() => { setVersets(null); setSelected(null) }}
               style={{ fontSize: 12, color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer', marginBottom: 16 }}>

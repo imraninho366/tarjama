@@ -20,7 +20,8 @@ export default function ProfilPage({ user, profile, onLogout }) {
   }, [user])
 
   const loadData = async () => {
-    const { data } = await supabase.from('progress').select('*').eq('user_id', user.id)
+    const { data, error } = await supabase.from('progress').select('*').eq('user_id', user.id)
+    if (error) { console.error('profil loadData:', error.message); setLoading(false); return }
     const map = {}
     data?.forEach(r => {
       map[`${r.sourate_num}:${r.verse_num}`] = { niveau: r.niveau, ts: r.updated_at }

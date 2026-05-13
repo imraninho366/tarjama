@@ -47,22 +47,23 @@ export default async function handler(req, res) {
     }
 
     if (action === 'join') {
-      const { data: duel } = await supabase.from('duels').select('*').eq('code', code).single()
-      if (!duel) return res.status(404).json({ error: 'Duel introuvable' })
+      const { data: duel, error: findErr } = await supabase.from('duels').select('*').eq('code', code).single()
+      if (findErr || !duel) return res.status(404).json({ error: 'Duel introuvable' })
       if (duel.status !== 'waiting') return res.status(400).json({ error: 'Duel déjà commencé' })
 
-      await supabase.from('duels').update({
+      const { error: joinErr } = await supabase.from('duels').update({
         player2_id: user_id,
         player2_name: username,
         status: 'active'
       }).eq('code', code)
+      if (joinErr) return res.status(500).json({ error: joinErr.message })
 
       return res.json({ code, mode: duel.mode, sourate_num: duel.sourate_num, verse_num: duel.verse_num, opponent: duel.player1_name })
     }
 
     if (action === 'submit') {
-      const { data: duel } = await supabase.from('duels').select('*').eq('code', code).single()
-      if (!duel) return res.status(404).json({ error: 'Duel introuvable' })
+      const { data: duel, error: findErr } = await supabase.from('duels').select('*').eq('code', code).single()
+      if (findErr || !duel) return res.status(404).json({ error: 'Duel introuvable' })
 
       const isP1 = duel.player1_id === user_id
       const update = isP1 ? { player1_score: score } : { player2_score: score }
@@ -71,13 +72,14 @@ export default async function handler(req, res) {
         update.status = 'finished'
       }
 
-      await supabase.from('duels').update(update).eq('code', code)
+      const { error: updateErr } = await supabase.from('duels').update(update).eq('code', code)
+      if (updateErr) return res.status(500).json({ error: updateErr.message })
       return res.json({ ok: true })
     }
 
     if (action === 'status') {
-      const { data: duel } = await supabase.from('duels').select('*').eq('code', code).single()
-      if (!duel) return res.status(404).json({ error: 'Duel introuvable' })
+      const { data: duel, error: statusErr } = await supabase.from('duels').select('*').eq('code', code).single()
+      if (statusErr || !duel) return res.status(404).json({ error: 'Duel introuvable' })
       return res.json(duel)
     }
   }
