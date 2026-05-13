@@ -73,8 +73,30 @@ export default async function handler(req, res) {
 - `npm run build` — production build
 - No linter or tests configured
 
+## Development Workflow
+
+For every new feature or bugfix, follow these steps IN ORDER:
+
+```
+1. /plan                          → Restate requirements + risks + validated plan
+2. agent: code-architect          → Design + blueprint (files, interfaces, data flow)
+3. agent: code-explorer           → Understand existing code to touch
+4. (implement)                    → + ecc:tdd-workflow if strict TDD
+5. agent: code-reviewer           → Quality/security review
+6. agent: silent-failure-hunter   → Check swallowed Supabase/API errors
+7. /verify                        → build + lint + test + typecheck
+8. agent: doc-updater             → Update CLAUDE.md if needed
+9. git commit (or /checkpoint)    → Save state
+```
+
+**Exception:** For small changes (<10 lines — typo, minor CSS, copy update):
+→ Apply only steps 4 + 7 + 9.
+
 ## Conventions
 - Commit: imperative English, `Co-Authored-By: Claude` footer
 - Rate limit all external API routes
 - Service worker caches all pages offline
 - Freemium: quiz 10/day, translation unlimited, admin unlimited
+- Always destructure `{ data, error }` from Supabase calls — never ignore errors
+- API routes: check `!response.ok` before caching Groq responses
+- Use CSS variables (`var(--gold)`) not JS theme tokens (`G.gold`) in new code
