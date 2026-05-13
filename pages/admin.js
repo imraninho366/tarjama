@@ -54,14 +54,19 @@ export default function AdminPage({ user }) {
   const handleDelete = async (userId, username) => {
     if (userId === user.id) { setMessage('Tu ne peux pas te supprimer toi-même'); return }
     if (!confirm(`Supprimer le compte de ${username} ? Cette action est irréversible.`)) return
-    await supabase.from('premium_users').delete().eq('id', userId)
-    await supabase.from('progress').delete().eq('user_id', userId)
-    await supabase.from('duels').delete().eq('player1_id', userId)
-    await supabase.from('duels').delete().eq('player2_id', userId)
-    await supabase.from('profiles').delete().eq('id', userId)
-    setUsers(prev => prev.filter(u => u.id !== userId))
-    setPremiumUsers(prev => prev.filter(p => p.id !== userId))
-    setMessage(`${username} supprimé`)
+    try {
+      await supabase.from('premium_users').delete().eq('id', userId)
+      await supabase.from('progress').delete().eq('user_id', userId)
+      await supabase.from('duels').delete().eq('player1_id', userId)
+      await supabase.from('duels').delete().eq('player2_id', userId)
+      const { error } = await supabase.from('profiles').delete().eq('id', userId)
+      if (error) throw error
+      setUsers(prev => prev.filter(u => u.id !== userId))
+      setPremiumUsers(prev => prev.filter(p => p.id !== userId))
+      setMessage(`${username} supprimé`)
+    } catch (err) {
+      setMessage(`Erreur suppression : ${err.message || 'Réessaie'}`)
+    }
   }
 
   return (

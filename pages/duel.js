@@ -138,13 +138,19 @@ export default function DuelPage({ user, profile }) {
   const submitRound = async () => {
     if (!translation.trim() || !verse) return
     setLoading(true)
-    const r = await fetch('/api/verify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ arabic: verse.ar, sourate_num: verse.sourate_num, verse_num: verse.n, sourate_ar: verse.sourate_ar, sourate_fr: verse.sourate_fr, user_trans: translation }) })
-    const feedback = await r.json()
-    const scoreMap = { excellent: 100, good: 75, partial: 50, wrong: 25 }
-    const score = scoreMap[feedback.niveau] || 0
-    setFeedbacks(prev => [...prev, { ...feedback, userTrans: translation }])
-    setRoundScores(prev => [...prev, score])
-    setShowCorrection(true); setLoading(false)
+    try {
+      const r = await fetch('/api/verify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ arabic: verse.ar, sourate_num: verse.sourate_num, verse_num: verse.n, sourate_ar: verse.sourate_ar, sourate_fr: verse.sourate_fr, user_trans: translation }) })
+      const feedback = await r.json()
+      const scoreMap = { excellent: 100, good: 75, partial: 50, wrong: 25 }
+      const score = scoreMap[feedback.niveau] || 0
+      setFeedbacks(prev => [...prev, { ...feedback, userTrans: translation }])
+      setRoundScores(prev => [...prev, score])
+      setShowCorrection(true)
+    } catch (err) {
+      setError('Erreur réseau. Vérifie ta connexion.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const nextRound = () => {

@@ -42,6 +42,7 @@ export default function PrieresPage() {
   const [times, setTimes] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [geoFailed, setGeoFailed] = useState(false)
   const [coords, setCoords] = useState(null)
   const [now, setNow] = useState(new Date())
   const [heading, setHeading] = useState(null)

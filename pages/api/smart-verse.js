@@ -29,8 +29,9 @@ Réponds UNIQUEMENT en JSON :
       body: JSON.stringify({ model: 'llama-3.3-70b-versatile', messages: [{ role: 'user', content: prompt }], temperature: 0.3, response_format: { type: 'json_object' } })
     })
     const data = await response.json()
+    if (!response.ok) return res.status(500).json({ error: data?.error?.message || 'Erreur IA' })
     const result = JSON.parse(data.choices?.[0]?.message?.content || '{}')
-    cacheSet(cacheKey, result)
+    if (result.arabe) cacheSet(cacheKey, result)
     return res.status(200).json(result)
   } catch (err) {
     return res.status(500).json({ error: err.message })

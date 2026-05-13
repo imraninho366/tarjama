@@ -37,8 +37,9 @@ Réponds UNIQUEMENT avec le mnémonique, sans introduction ni explication.`
       body: JSON.stringify({ model: 'llama-3.3-70b-versatile', messages: [{ role: 'user', content: prompt }], temperature: 0.7, max_tokens: 150 })
     })
     const data = await response.json()
+    if (!response.ok) return res.status(500).json({ error: data?.error?.message || 'Erreur IA' })
     const mnemo = data.choices?.[0]?.message?.content || ''
-    cacheSet(cacheKey, mnemo)
+    if (mnemo) cacheSet(cacheKey, mnemo)
     return res.status(200).json({ mnemo })
   } catch (err) {
     return res.status(500).json({ error: err.message })

@@ -137,7 +137,8 @@ export default function App({ user, profile, onLogout }){
   },[user])
 
   const loadProgress=async(uid)=>{
-    const{data}=await supabase.from('progress').select('*').eq('user_id',uid)
+    const{data,error}=await supabase.from('progress').select('*').eq('user_id',uid)
+    if(error){console.error('loadProgress error:',error.message);showToast('Erreur chargement progression','error');return}
     const map={}
     data?.forEach(r=>{map[`${r.sourate_num}:${r.verse_num}`]={userTrans:r.user_trans,niveau:r.niveau,feedback:r.feedback,ts:r.updated_at}})
     setProgress(map)
