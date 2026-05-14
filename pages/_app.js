@@ -1,10 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
+import { Playfair_Display, Source_Sans_3, Amiri, Reem_Kufi } from 'next/font/google'
 import { supabase } from '../lib/supabase'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import { Analytics } from '@vercel/analytics/react'
 import { loadPremiumStatus } from '../lib/freemium'
 import '../styles/globals.css'
+
+const playfair = Playfair_Display({ subsets: ['latin'], weight: ['400', '600', '700'], display: 'swap', variable: '--tarjama-font-display' })
+const sourceSans = Source_Sans_3({ subsets: ['latin'], weight: ['300', '400', '600', '700'], display: 'swap', variable: '--tarjama-font-body' })
+const amiri = Amiri({ subsets: ['arabic', 'latin'], weight: ['400', '700'], display: 'swap', variable: '--tarjama-font-arabic' })
+const reemKufi = Reem_Kufi({ subsets: ['arabic', 'latin'], weight: ['400', '500', '600', '700'], display: 'swap', variable: '--tarjama-font-arabic-display' })
 
 // Pages qui ne montrent pas la nav (auth screen)
 const NO_NAV_PATHS = ['/gen-dico']
@@ -113,8 +119,10 @@ export default function TarjamaApp({ Component, pageProps, router }) {
 
   const hideNav = !user || NO_NAV_PATHS.includes(router.pathname)
 
+  const fontClasses = `${playfair.variable} ${sourceSans.variable} ${amiri.variable} ${reemKufi.variable}`
+
   return (
-    <>
+    <div className={fontClasses}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         <meta name="theme-color" content={theme === 'light' ? '#F2EFE8' : '#C9A84C'}/>
@@ -175,6 +183,6 @@ export default function TarjamaApp({ Component, pageProps, router }) {
         </div>
       )}
       <Analytics />
-    </>
+    </div>
   )
 }
