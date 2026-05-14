@@ -70,7 +70,7 @@ export default function Topbar({ profile, onToggleSidebar, theme, onToggleTheme 
         <div className={styles.userSection}>
           <div
             className={styles.avatar}
-            style={{ background: profile.color || '#C9A84C' }}
+            style={{ background: profile.color || 'var(--tarjama-color-primary)' }}
           >
             {profile.username?.[0]?.toUpperCase() || '?'}
           </div>

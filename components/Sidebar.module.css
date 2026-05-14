@@ -176,7 +176,7 @@
   font-size: 13px;
   color: var(--text-muted);
   direction: rtl;
-  text-align: left;
+  text-align: start;
 }
 
 /* ── Section stats ─────────────────────────────────────────── */

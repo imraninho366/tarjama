@@ -116,7 +116,7 @@
   cursor: pointer;
   transition: all var(--duration-normal) ease;
   flex-shrink: 0;
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 .themeToggle:hover {

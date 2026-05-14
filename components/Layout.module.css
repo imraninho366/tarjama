@@ -11,7 +11,7 @@
 /* ── Main content ──────────────────────────────────────────── */
 .main {
   flex: 1;
-  margin-left: var(--sidebar-width);
+  margin-inline-start: var(--sidebar-width);
   padding: var(--space-lg);
   min-height: calc(100vh - var(--topbar-height));
   position: relative;
@@ -27,7 +27,7 @@
 /* Tablette : pas de sidebar fixe */
 @media (max-width: 1023px) {
   .main {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 }
 

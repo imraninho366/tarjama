@@ -67,7 +67,8 @@ function GoldParticles() {
         const flicker = 0.7 + Math.sin(t * 1.5 + p.phase) * 0.3
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(201, 168, 76, ${p.opacity * flicker})`
+        const rgb = getComputedStyle(document.documentElement).getPropertyValue('--tarjama-color-primary-rgb').trim() || '184, 147, 42'
+        ctx.fillStyle = `rgba(${rgb}, ${p.opacity * flicker})`
         ctx.fill()
       }
 
@@ -82,7 +83,7 @@ function GoldParticles() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className={styles.particles} />
+  return <canvas ref={canvasRef} className={styles.particles} aria-hidden="true" />
 }
 
 export default function Layout({ children, user, profile, onLogout, hideNav, theme, onToggleTheme }) {
