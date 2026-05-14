@@ -124,7 +124,7 @@ export default function CalligraphiePage({ user }) {
         {/* Lettre à écrire */}
         <div style={{
           textAlign: 'center', padding: '16px', marginBottom: 12,
-          background: 'rgba(201,168,76,.06)', borderRadius: 12, border: '1px solid rgba(201,168,76,.1)'
+          background: 'rgba(var(--tarjama-color-primary-rgb),.06)', borderRadius: 12, border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)'
         }}>
           <div style={{ fontSize: 11, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 8 }}>
             Dessine cette lettre
@@ -139,7 +139,7 @@ export default function CalligraphiePage({ user }) {
         {/* Canvas */}
         <div style={{
           position: 'relative', borderRadius: 12, overflow: 'hidden',
-          border: '2px solid rgba(201,168,76,.2)', marginBottom: 12,
+          border: '2px solid rgba(var(--tarjama-color-primary-rgb),.2)', marginBottom: 12,
           background: 'var(--bg-card)'
         }}>
           <canvas
@@ -160,7 +160,7 @@ export default function CalligraphiePage({ user }) {
           {showAnswer && (
             <div style={{
               position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-              fontFamily: 'var(--font-arabic)', fontSize: 180, color: 'rgba(76,175,125,.15)',
+              fontFamily: 'var(--font-arabic)', fontSize: 180, color: 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.15)',
               pointerEvents: 'none', lineHeight: 1
             }}>
               {letter.ar}
@@ -181,9 +181,9 @@ export default function CalligraphiePage({ user }) {
         {/* Actions */}
         <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
           <Button variant="ghost" onClick={clearCanvas} style={{ flex: 1 }}>Effacer</Button>
-          {!showAnswer && <Button variant="secondary" onClick={reveal} style={{ flex: 1, color: 'var(--purple)', borderColor: 'rgba(155,127,212,.25)' }}>Voir la réponse</Button>}
+          {!showAnswer && <Button variant="secondary" onClick={reveal} style={{ flex: 1, color: 'var(--purple)', borderColor: 'rgba(var(--tarjama-color-purple-rgb, 155, 127, 212),.25)' }}>Voir la réponse</Button>}
           {showAnswer && <>
-            <Button variant="secondary" onClick={next} style={{ flex: 1, color: 'var(--red)', borderColor: 'rgba(201,107,107,.25)' }}>Pas encore</Button>
+            <Button variant="secondary" onClick={next} style={{ flex: 1, color: 'var(--red)', borderColor: 'rgba(var(--tarjama-color-error-rgb, 184, 74, 74),.25)' }}>Pas encore</Button>
             <Button variant="success" onClick={markCorrect} style={{ flex: 1 }}>Correct !</Button>
           </>}
         </div>
@@ -194,8 +194,8 @@ export default function CalligraphiePage({ user }) {
             <button key={i} onClick={() => { setCurrentIdx(i); clearCanvas() }} style={{
               width: 32, height: 32, borderRadius: 6, cursor: 'pointer',
               fontFamily: 'var(--font-arabic)', fontSize: 16,
-              background: i === currentIdx ? 'rgba(201,168,76,.15)' : 'rgba(201,168,76,.04)',
-              border: `1px solid ${i === currentIdx ? 'rgba(201,168,76,.3)' : 'rgba(201,168,76,.06)'}`,
+              background: i === currentIdx ? 'rgba(var(--tarjama-color-primary-rgb),.15)' : 'rgba(var(--tarjama-color-primary-rgb),.04)',
+              border: `1px solid ${i === currentIdx ? 'rgba(var(--tarjama-color-primary-rgb),.3)' : 'rgba(var(--tarjama-color-primary-rgb),.06)'}`,
               color: i === currentIdx ? 'var(--gold)' : 'var(--text-muted)'
             }}>
               {l.ar}

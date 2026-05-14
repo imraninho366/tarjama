@@ -21,7 +21,7 @@ export default function BadgeUnlock({ badge, onClose }) {
         display: 'flex', alignItems: 'center', gap: 12,
         padding: '12px 20px', borderRadius: 16,
         background: 'var(--bg-card)', border: '2px solid var(--gold)',
-        boxShadow: '0 8px 32px rgba(201,168,76,.3)',
+        boxShadow: '0 8px 32px rgba(var(--tarjama-color-primary-rgb),.3)',
         minWidth: 260
       }}>
         <span style={{ fontSize: 36 }}>{badge.icon}</span>

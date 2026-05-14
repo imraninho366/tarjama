@@ -212,9 +212,9 @@ export default function DuelPage({ user, profile }) {
               {MODES.map(m => (
                 <button key={m.id} onClick={() => createDuel(m.id)} disabled={loading} style={{
                   display: 'flex', alignItems: 'center', gap: 14, padding: '16px', borderRadius: 12, cursor: 'pointer',
-                  background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.12)', textAlign: 'left', transition: 'all .15s'
+                  background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.12)', textAlign: 'left', transition: 'all .15s'
                 }}>
-                  <div style={{ width: 48, height: 48, borderRadius: 10, background: 'rgba(201,168,76,.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-arabic)', fontSize: 22, color: 'var(--gold)', flexShrink: 0 }}>{m.icon}</div>
+                  <div style={{ width: 48, height: 48, borderRadius: 10, background: 'rgba(var(--tarjama-color-primary-rgb),.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-arabic)', fontSize: 22, color: 'var(--gold)', flexShrink: 0 }}>{m.icon}</div>
                   <div>
                     <div style={{ fontSize: 15, color: 'var(--text)', fontWeight: 600 }}>{m.title}</div>
                     <div style={{ fontSize: 12, color: 'var(--text-dim)', marginTop: 2 }}>{m.desc}</div>
@@ -223,11 +223,11 @@ export default function DuelPage({ user, profile }) {
               ))}
             </div>
             <div style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: 11, padding: 8 }}>— ou —</div>
-            <div style={{ padding: '16px', borderRadius: 12, background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.1)' }}>
+            <div style={{ padding: '16px', borderRadius: 12, background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)' }}>
               <div style={{ fontSize: 13, color: 'var(--text)', fontWeight: 600, marginBottom: 10 }}>Rejoindre un duel</div>
               <div style={{ display: 'flex', gap: 8 }}>
                 <input autoComplete="off" value={joinCode} onChange={e => setJoinCode(e.target.value.toUpperCase())} placeholder="CODE" maxLength={6}
-                  style={{ flex: 1, padding: '12px', borderRadius: 8, fontSize: 18, textAlign: 'center', letterSpacing: 6, fontWeight: 700, background: 'var(--bg-elevated)', border: '1px solid rgba(201,168,76,.15)', color: 'var(--gold)', fontFamily: 'var(--font-display)' }}
+                  style={{ flex: 1, padding: '12px', borderRadius: 8, fontSize: 18, textAlign: 'center', letterSpacing: 6, fontWeight: 700, background: 'var(--bg-elevated)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.15)', color: 'var(--gold)', fontFamily: 'var(--font-display)' }}
                 />
                 <Button onClick={joinDuel} disabled={loading || joinCode.length < 4}>Rejoindre</Button>
               </div>
@@ -257,13 +257,13 @@ export default function DuelPage({ user, profile }) {
           <div>
             <div style={{ display: 'flex', gap: 4, marginBottom: 16 }}>
               {verses.map((_, i) => (
-                <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i < round ? (roundScores[i] >= 75 ? 'var(--green)' : roundScores[i] >= 50 ? 'var(--orange)' : 'var(--red)') : i === round ? 'var(--gold)' : 'rgba(201,168,76,.1)' }} />
+                <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i < round ? (roundScores[i] >= 75 ? 'var(--green)' : roundScores[i] >= 50 ? 'var(--orange)' : 'var(--red)') : i === round ? 'var(--gold)' : 'rgba(var(--tarjama-color-primary-rgb),.1)' }} />
               ))}
             </div>
             <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, textAlign: 'center', marginBottom: 12 }}>Verset {round + 1} / {verses.length} · {verse.sourate_ar}</div>
-            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 24, color: 'var(--gold-light)', direction: 'rtl', textAlign: 'right', lineHeight: 2, padding: '16px', background: 'rgba(201,168,76,.04)', borderRadius: 10, marginBottom: 16, border: '1px solid rgba(201,168,76,.1)' }}>{verse.ar}</div>
+            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 24, color: 'var(--gold-light)', direction: 'rtl', textAlign: 'right', lineHeight: 2, padding: '16px', background: 'rgba(var(--tarjama-color-primary-rgb),.04)', borderRadius: 10, marginBottom: 16, border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)' }}>{verse.ar}</div>
             <textarea value={translation} onChange={e => setTranslation(e.target.value)} placeholder="Traduis ce verset..."
-              style={{ width: '100%', padding: '12px', borderRadius: 8, fontSize: 14, minHeight: 80, background: 'var(--bg-elevated)', border: '1px solid rgba(201,168,76,.15)', color: 'var(--text)', resize: 'vertical', lineHeight: 1.7 }}
+              style={{ width: '100%', padding: '12px', borderRadius: 8, fontSize: 14, minHeight: 80, background: 'var(--bg-elevated)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.15)', color: 'var(--text)', resize: 'vertical', lineHeight: 1.7 }}
             />
             <Button variant="primary" full onClick={submitRound} disabled={loading || !translation.trim()} style={{ marginTop: 12 }}>
               {loading ? 'Vérification...' : 'Valider'}
@@ -278,14 +278,14 @@ export default function DuelPage({ user, profile }) {
               <div style={{ fontSize: 36, marginBottom: 4 }}>{roundScores[round] >= 75 ? '✅' : roundScores[round] >= 50 ? '🟡' : '❌'}</div>
               <div style={{ fontSize: 18, fontFamily: 'var(--font-display)', color: roundScores[round] >= 75 ? 'var(--green)' : roundScores[round] >= 50 ? 'var(--orange)' : 'var(--red)', fontWeight: 700 }}>{currentFeedback.titre || 'Résultat'}</div>
             </div>
-            <div style={{ padding: 16, borderRadius: 10, background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.08)', marginBottom: 12 }}>
+            <div style={{ padding: 16, borderRadius: 10, background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)', marginBottom: 12 }}>
               {currentFeedback.message && <div style={{ fontSize: 13, color: 'var(--text-dim)', lineHeight: 1.8, marginBottom: 12 }}>{currentFeedback.message}</div>}
               <div style={{ marginBottom: 12 }}>
                 <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 4 }}>Ta traduction</div>
                 <div style={{ fontSize: 13, color: 'var(--text)', fontStyle: 'italic' }}>« {currentFeedback.userTrans} »</div>
               </div>
               {currentFeedback.traduction_ref && (
-                <div style={{ padding: '10px 12px', background: 'rgba(76,175,125,.06)', borderRadius: 6, borderLeft: '3px solid var(--green)', marginBottom: 12 }}>
+                <div style={{ padding: '10px 12px', background: 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.06)', borderRadius: 6, borderLeft: '3px solid var(--green)', marginBottom: 12 }}>
                   <div style={{ fontSize: 10, color: 'var(--green)', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 4 }}>Traduction de référence</div>
                   <div style={{ fontSize: 13, color: 'var(--text)', lineHeight: 1.7 }}>{currentFeedback.traduction_ref}</div>
                 </div>
@@ -293,7 +293,7 @@ export default function DuelPage({ user, profile }) {
               {currentFeedback.mots_importants?.length > 0 && (
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                   {currentFeedback.mots_importants.map((w, i) => (
-                    <span key={i} style={{ padding: '4px 10px', borderRadius: 6, fontSize: 12, background: 'rgba(201,168,76,.08)', border: '1px solid rgba(201,168,76,.12)' }}>
+                    <span key={i} style={{ padding: '4px 10px', borderRadius: 6, fontSize: 12, background: 'rgba(var(--tarjama-color-primary-rgb),.08)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.12)' }}>
                       <span style={{ fontFamily: 'var(--font-arabic)', color: 'var(--gold-light)', marginRight: 6 }}>{w.ar}</span>
                       <span style={{ color: 'var(--text-dim)' }}>{w.fr}</span>
                     </span>
@@ -310,7 +310,7 @@ export default function DuelPage({ user, profile }) {
           <div>
             <div style={{ display: 'flex', gap: 4, marginBottom: 16 }}>
               {quizQuestions.map((_, i) => (
-                <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i < round ? (roundScores[i] >= 100 ? 'var(--green)' : 'var(--red)') : i === round ? 'var(--gold)' : 'rgba(201,168,76,.1)' }} />
+                <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i < round ? (roundScores[i] >= 100 ? 'var(--green)' : 'var(--red)') : i === round ? 'var(--gold)' : 'rgba(var(--tarjama-color-primary-rgb),.1)' }} />
               ))}
             </div>
             <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, textAlign: 'center', marginBottom: 16 }}>
@@ -318,7 +318,7 @@ export default function DuelPage({ user, profile }) {
             </div>
 
             {/* Question */}
-            <div style={{ textAlign: 'center', padding: '20px 16px', marginBottom: 16, background: 'rgba(201,168,76,.04)', borderRadius: 12, border: '1px solid rgba(201,168,76,.1)' }}>
+            <div style={{ textAlign: 'center', padding: '20px 16px', marginBottom: 16, background: 'rgba(var(--tarjama-color-primary-rgb),.04)', borderRadius: 12, border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)' }}>
               {selectedMode === 'quiz-vocab' ? (
                 <>
                   <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 32, color: 'var(--gold-light)', direction: 'rtl', marginBottom: 6 }}>{quizQuestion.ar}</div>
@@ -334,13 +334,13 @@ export default function DuelPage({ user, profile }) {
               {quizQuestion.choices.map((choice, i) => {
                 const isSelected = selected === i
                 const isCorrect = i === quizQuestion.correct
-                let bg = 'rgba(201,168,76,.04)'
-                let border = 'rgba(201,168,76,.1)'
+                let bg = 'rgba(var(--tarjama-color-primary-rgb),.04)'
+                let border = 'rgba(var(--tarjama-color-primary-rgb),.1)'
                 let color = 'var(--text)'
                 if (quizDone) {
-                  if (isCorrect) { bg = 'rgba(76,175,125,.1)'; border = 'var(--green)'; color = 'var(--green)' }
-                  else if (isSelected) { bg = 'rgba(201,107,107,.1)'; border = 'var(--red)'; color = 'var(--red)' }
-                  else { bg = 'rgba(201,168,76,.02)'; color = 'var(--text-muted)' }
+                  if (isCorrect) { bg = 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.1)'; border = 'var(--green)'; color = 'var(--green)' }
+                  else if (isSelected) { bg = 'rgba(var(--tarjama-color-error-rgb, 184, 74, 74),.1)'; border = 'var(--red)'; color = 'var(--red)' }
+                  else { bg = 'rgba(var(--tarjama-color-primary-rgb),.02)'; color = 'var(--text-muted)' }
                 }
                 return (
                   <button key={i} onClick={() => handleQuizAnswer(i)} disabled={quizDone} style={{
@@ -351,7 +351,7 @@ export default function DuelPage({ user, profile }) {
                     <div style={{
                       width: 28, height: 28, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontSize: 12, fontWeight: 700, flexShrink: 0,
-                      background: quizDone && isCorrect ? 'var(--green)' : quizDone && isSelected ? 'var(--red)' : 'rgba(201,168,76,.1)',
+                      background: quizDone && isCorrect ? 'var(--green)' : quizDone && isSelected ? 'var(--red)' : 'rgba(var(--tarjama-color-primary-rgb),.1)',
                       color: quizDone && (isCorrect || isSelected) ? '#fff' : 'var(--text-muted)'
                     }}>{['A', 'B', 'C', 'D'][i]}</div>
                     <span style={{ fontSize: 14, color, lineHeight: 1.5 }}>{choice}</span>
@@ -364,7 +364,7 @@ export default function DuelPage({ user, profile }) {
 
             {/* Explication après réponse */}
             {quizDone && quizQuestion.explanation && (
-              <div style={{ padding: '12px', borderRadius: 8, background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.08)', marginBottom: 16, animation: 'fadeInUp .3s ease' }}>
+              <div style={{ padding: '12px', borderRadius: 8, background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)', marginBottom: 16, animation: 'fadeInUp .3s ease' }}>
                 <div style={{ fontSize: 12, color: 'var(--text-dim)', lineHeight: 1.7 }}>{quizQuestion.explanation}</div>
               </div>
             )}

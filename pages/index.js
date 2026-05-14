@@ -44,7 +44,7 @@ function AudioPlayer({src}){
   }
 
   return(
-    <div style={{padding:'8px 16px',borderBottom:'1px solid rgba(201,168,76,.06)',display:'flex',alignItems:'center',gap:12}}>
+    <div style={{padding:'8px 16px',borderBottom:'1px solid rgba(var(--tarjama-color-primary-rgb),.06)',display:'flex',alignItems:'center',gap:12}}>
       <audio ref={audioRef} src={src} preload="none"
         onTimeUpdate={e=>setCurrent(e.target.currentTime)}
         onLoadedMetadata={e=>setDuration(e.target.duration)}
@@ -52,8 +52,8 @@ function AudioPlayer({src}){
         onError={()=>{setPlaying(false);setLoading(false)}}
       />
       <button onClick={toggle} aria-label={playing?'Pause':'Écouter'} style={{
-        width:36,height:36,borderRadius:'50%',border:'1px solid rgba(201,168,76,.3)',
-        background:playing?'rgba(201,168,76,.15)':'rgba(201,168,76,.07)',
+        width:36,height:36,borderRadius:'50%',border:'1px solid rgba(var(--tarjama-color-primary-rgb),.3)',
+        background:playing?'rgba(var(--tarjama-color-primary-rgb),.15)':'rgba(var(--tarjama-color-primary-rgb),.07)',
         color:'var(--gold)',cursor:'pointer',display:'flex',alignItems:'center',
         justifyContent:'center',fontSize:14,flexShrink:0,transition:'all .2s'
       }}>
@@ -61,7 +61,7 @@ function AudioPlayer({src}){
       </button>
       <div style={{flex:1,minWidth:0}}>
         <div style={{fontSize:9,letterSpacing:2,textTransform:'uppercase',color:'var(--text-muted)',marginBottom:4}}>Mishary Al-Afasy</div>
-        <div style={{height:3,background:'rgba(201,168,76,.1)',borderRadius:2,overflow:'hidden',cursor:'pointer'}}
+        <div style={{height:3,background:'rgba(var(--tarjama-color-primary-rgb),.1)',borderRadius:2,overflow:'hidden',cursor:'pointer'}}
           onClick={e=>{if(!audioRef.current||!duration)return;const rect=e.currentTarget.getBoundingClientRect();audioRef.current.currentTime=(e.clientX-rect.left)/rect.width*duration}}>
           <div style={{height:'100%',width:`${duration?Math.round(current/duration*100):0}%`,background:'linear-gradient(90deg,#8B6914,#C9A84C)',borderRadius:2,transition:'width .3s'}}/>
         </div>
@@ -492,7 +492,7 @@ export default function App({ user, profile, onLogout }){
             </div>
           </div>
           {total===0&&(
-            <div style={{padding:'16px',margin:'0 0 16px',background:'rgba(201,168,76,.06)',borderRadius:12,border:'1px solid rgba(201,168,76,.12)'}}>
+            <div style={{padding:'16px',margin:'0 0 16px',background:'rgba(var(--tarjama-color-primary-rgb),.06)',borderRadius:12,border:'1px solid rgba(var(--tarjama-color-primary-rgb),.12)'}}>
               <div style={{fontSize:14,color:'var(--text)',fontWeight:600,marginBottom:8}}>Comment ça marche ?</div>
               <div style={{fontSize:13,color:'var(--text-dim)',lineHeight:1.9}}>
                 1. Choisis une sourate (commence par Al-Fatiha)<br/>
@@ -521,7 +521,7 @@ export default function App({ user, profile, onLogout }){
               {startedSourates.map(ss=>(
                 <div key={ss.n} onClick={()=>openSourate(ss)} style={{
                   display:'flex',alignItems:'center',gap:10,padding:'10px 0',
-                  borderBottom:'1px solid rgba(201,168,76,.06)',cursor:'pointer'
+                  borderBottom:'1px solid rgba(var(--tarjama-color-primary-rgb),.06)',cursor:'pointer'
                 }}>
                   <span style={{fontSize:12,color:'var(--text-muted)',width:28,textAlign:'right',fontFamily:'var(--font-display)'}}>{ss.n}</span>
                   <div style={{flex:1,minWidth:0}}>
@@ -529,7 +529,7 @@ export default function App({ user, profile, onLogout }){
                       <span style={{fontFamily:'var(--font-arabic)',fontSize:16,color:'var(--gold-light)'}}>{ss.ar}</span>
                       <span style={{fontSize:13,color:'var(--text)'}}>{ss.fr}</span>
                     </div>
-                    <div style={{height:4,background:'rgba(201,168,76,.08)',borderRadius:2,overflow:'hidden'}}>
+                    <div style={{height:4,background:'rgba(var(--tarjama-color-primary-rgb),.08)',borderRadius:2,overflow:'hidden'}}>
                       <div style={{height:'100%',borderRadius:2,width:`${ss.pct}%`,background:ss.pct>=100?'var(--green)':ss.pct>=50?'var(--gold)':'var(--orange)',transition:'width .5s ease'}}/>
                     </div>
                   </div>
@@ -652,7 +652,7 @@ export default function App({ user, profile, onLogout }){
 
           {/* Hifz toggle */}
           {!hifzMode&&<div style={{display:'flex',justifyContent:'flex-end',padding:'0 16px 8px'}}>
-            <Button variant="secondary" small onClick={startHifz} style={{color:'var(--purple)',borderColor:'rgba(155,127,212,.25)'}}>Mode Hifz</Button>
+            <Button variant="secondary" small onClick={startHifz} style={{color:'var(--purple)',borderColor:'rgba(var(--tarjama-color-purple-rgb, 155, 127, 212),.25)'}}>Mode Hifz</Button>
           </div>}
 
           {/* Hifz mode */}
@@ -696,7 +696,7 @@ export default function App({ user, profile, onLogout }){
                     )}
                   </div>
 
-                  <Button variant="secondary" onClick={()=>{setHifzStep('write');setRecScore(null);setRecTranscript('')}} style={{color:'var(--purple)',borderColor:'rgba(155,127,212,.3)'}}>
+                  <Button variant="secondary" onClick={()=>{setHifzStep('write');setRecScore(null);setRecTranscript('')}} style={{color:'var(--purple)',borderColor:'rgba(var(--tarjama-color-purple-rgb, 155, 127, 212),.3)'}}>
                     Mode écrit → Écrire de mémoire
                   </Button>
                 </div>
@@ -710,7 +710,7 @@ export default function App({ user, profile, onLogout }){
                   </div>
                   <textarea value={hifzInput} onChange={e=>setHifzInput(e.target.value)} placeholder="اكتب الآية من الذاكرة..." dir="rtl" className={s.hifzTextarea} lang="ar"/>
                   <div className={s.actions} style={{marginTop:10}}>
-                    <Button variant="secondary" onClick={checkHifz} disabled={!hifzInput.trim()} style={{color:'var(--purple)',borderColor:'rgba(155,127,212,.3)',flex:'1 1 auto'}}>Vérifier ma mémorisation</Button>
+                    <Button variant="secondary" onClick={checkHifz} disabled={!hifzInput.trim()} style={{color:'var(--purple)',borderColor:'rgba(var(--tarjama-color-purple-rgb, 155, 127, 212),.3)',flex:'1 1 auto'}}>Vérifier ma mémorisation</Button>
                     <Button variant="ghost" onClick={()=>setHifzStep('listen')}>← Réécouter</Button>
                   </div>
                 </div>
@@ -730,7 +730,7 @@ export default function App({ user, profile, onLogout }){
                   <div style={{fontSize:11,color:'var(--text-muted)',marginBottom:8}}>Verset correct :</div>
                   <div style={{fontFamily:'var(--font-arabic)',fontSize:20,color:'var(--gold-light)',direction:'rtl',textAlign:'right',lineHeight:1.8}} lang="ar">{hifzResult.correct}</div>
                   <div className={s.actions} style={{marginTop:12}}>
-                    <Button variant="secondary" small onClick={()=>{setHifzInput('');setHifzResult(null);setHifzStep('listen')}} style={{color:'var(--purple)',borderColor:'rgba(155,127,212,.25)'}}>Réessayer</Button>
+                    <Button variant="secondary" small onClick={()=>{setHifzInput('');setHifzResult(null);setHifzStep('listen')}} style={{color:'var(--purple)',borderColor:'rgba(var(--tarjama-color-purple-rgb, 155, 127, 212),.25)'}}>Réessayer</Button>
                     {!isLast&&<Button variant="success" small onClick={()=>{exitHifz();goVerse(vIdx+1)}} style={{flex:'1 1 auto'}}>Verset suivant →</Button>}
                   </div>
                 </div>
@@ -765,13 +765,13 @@ export default function App({ user, profile, onLogout }){
                 <Button onClick={verify} disabled={verifying||!userTrans.trim()} className={s.actionMain}>
                   {verifying?'...':'✓ Vérifier'}
                 </Button>
-                <Button variant="secondary" onClick={fetchHint} disabled={hinting} style={{color:'var(--purple)',borderColor:'rgba(155,127,212,.25)'}}>
+                <Button variant="secondary" onClick={fetchHint} disabled={hinting} style={{color:'var(--purple)',borderColor:'rgba(var(--tarjama-color-purple-rgb, 155, 127, 212),.25)'}}>
                   {hinting?'...':showHint?'Masquer':'Indice'}
                 </Button>
                 <Button variant="ghost" onClick={skipVerse}>→ Passer</Button>
               </>}
-              {vIdx>0&&<Button variant="secondary" onClick={()=>goVerse(vIdx-1)} style={{color:'var(--blue)',borderColor:'rgba(91,155,213,.2)'}}>← Préc.</Button>}
-              {existing&&(existing.niveau==='wrong'||existing.niveau==='partial'||existing.niveau==='skipped')&&<Button variant="secondary" onClick={retryVerse} style={{color:'var(--orange)',borderColor:'rgba(212,135,76,.25)'}}>Réessayer</Button>}
+              {vIdx>0&&<Button variant="secondary" onClick={()=>goVerse(vIdx-1)} style={{color:'var(--blue)',borderColor:'rgba(var(--tarjama-color-info-rgb, 30, 58, 95),.2)'}}>← Préc.</Button>}
+              {existing&&(existing.niveau==='wrong'||existing.niveau==='partial'||existing.niveau==='skipped')&&<Button variant="secondary" onClick={retryVerse} style={{color:'var(--orange)',borderColor:'rgba(var(--tarjama-color-warning-rgb, 192, 112, 48),.25)'}}>Réessayer</Button>}
               {existing&&!isLast&&<Button variant="success" onClick={()=>goVerse(vIdx+1)} className={s.actionMain}>Suivant →</Button>}
               {existing&&isLast&&<Button variant="success" onClick={()=>{setView('done');setShowConfetti(true);setTimeout(()=>setShowConfetti(false),3500);const st=computeStats(progress,getStreak());const nb=getNewBadges(st);if(nb.length>0)setNewBadge(nb[0])}} className={s.actionMain}>Terminer</Button>}
             </div>

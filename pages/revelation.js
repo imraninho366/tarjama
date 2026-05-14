@@ -37,9 +37,9 @@ export default function RevelationPage({ user }) {
           {[['all', 'Toutes'], ['mecquoise', 'Mecquoises (86)'], ['medinoise', 'Médinoises (28)']].map(([id, label]) => (
             <button key={id} onClick={() => setFilter(id)} style={{
               padding: '8px 14px', borderRadius: 6, fontSize: 11, fontWeight: 600,
-              background: filter === id ? 'rgba(201,168,76,.12)' : 'transparent',
+              background: filter === id ? 'rgba(var(--tarjama-color-primary-rgb),.12)' : 'transparent',
               color: filter === id ? 'var(--gold)' : 'var(--text-muted)',
-              border: `1px solid ${filter === id ? 'rgba(201,168,76,.25)' : 'rgba(201,168,76,.08)'}`,
+              border: `1px solid ${filter === id ? 'rgba(var(--tarjama-color-primary-rgb),.25)' : 'rgba(var(--tarjama-color-primary-rgb),.08)'}`,
               cursor: 'pointer'
             }}>{label}</button>
           ))}
@@ -49,7 +49,7 @@ export default function RevelationPage({ user }) {
         {sel && (
           <div style={{
             marginBottom: 16, padding: 16, borderRadius: 12,
-            background: 'rgba(201,168,76,.06)', border: '1px solid rgba(201,168,76,.15)'
+            background: 'rgba(var(--tarjama-color-primary-rgb),.06)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.15)'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
               <div>
@@ -64,7 +64,7 @@ export default function RevelationPage({ user }) {
               <span>Versets : <strong>{sel.v}</strong></span>
               <span style={{
                 padding: '2px 8px', borderRadius: 4,
-                background: sel.period === 'mecquoise' ? 'rgba(212,135,76,.1)' : 'rgba(91,155,213,.1)',
+                background: sel.period === 'mecquoise' ? 'rgba(var(--tarjama-color-warning-rgb, 192, 112, 48),.1)' : 'rgba(var(--tarjama-color-info-rgb, 30, 58, 95),.1)',
                 color: sel.period === 'mecquoise' ? 'var(--orange)' : 'var(--blue)'
               }}>
                 {sel.period === 'mecquoise' ? 'Mecquoise' : 'Médinoise'}
@@ -80,13 +80,13 @@ export default function RevelationPage({ user }) {
 
         {/* Timeline */}
         <div style={{ position: 'relative', paddingLeft: 24 }}>
-          <div style={{ position: 'absolute', left: 10, top: 0, bottom: 0, width: 2, background: 'linear-gradient(to bottom, rgba(212,135,76,.3), rgba(91,155,213,.3))' }} />
+          <div style={{ position: 'absolute', left: 10, top: 0, bottom: 0, width: 2, background: 'linear-gradient(to bottom, rgba(var(--tarjama-color-warning-rgb, 192, 112, 48),.3), rgba(var(--tarjama-color-info-rgb, 30, 58, 95),.3))' }} />
 
           {filtered.map((s, i) => (
             <div key={s.n} onClick={() => setSelected(s.n)} style={{
               position: 'relative', marginBottom: 6, padding: '8px 12px', borderRadius: 8, cursor: 'pointer',
-              background: selected === s.n ? 'rgba(201,168,76,.08)' : 'transparent',
-              border: `1px solid ${selected === s.n ? 'rgba(201,168,76,.2)' : 'transparent'}`,
+              background: selected === s.n ? 'rgba(var(--tarjama-color-primary-rgb),.08)' : 'transparent',
+              border: `1px solid ${selected === s.n ? 'rgba(var(--tarjama-color-primary-rgb),.2)' : 'transparent'}`,
               display: 'flex', alignItems: 'center', gap: 10, transition: 'all .15s',
               animation: `fadeInUp 0.3s ease ${Math.min(i * 0.02, 0.5)}s both`
             }}>

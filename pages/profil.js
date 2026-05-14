@@ -68,7 +68,7 @@ export default function ProfilPage({ user, profile, onLogout }) {
 
   const tabStyle = (t) => ({
     padding: '8px 16px', fontSize: 12, letterSpacing: 1, textTransform: 'uppercase',
-    background: tab === t ? 'rgba(201,168,76,.12)' : 'transparent',
+    background: tab === t ? 'rgba(var(--tarjama-color-primary-rgb),.12)' : 'transparent',
     color: tab === t ? 'var(--gold)' : 'var(--text-muted)',
     border: 'none', borderBottom: tab === t ? `2px solid ${'var(--gold)'}` : '2px solid transparent',
     cursor: 'pointer', fontWeight: 600
@@ -103,8 +103,8 @@ export default function ProfilPage({ user, profile, onLogout }) {
           ].map(([num, lbl, clr]) => (
             <div key={lbl} style={{
               textAlign: 'center', padding: '12px 4px',
-              background: 'rgba(201,168,76,.04)', borderRadius: 8,
-              border: '1px solid rgba(201,168,76,.08)'
+              background: 'rgba(var(--tarjama-color-primary-rgb),.04)', borderRadius: 8,
+              border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)'
             }}>
               <div style={{ fontSize: 22, fontFamily: 'var(--font-display)', color: clr, fontWeight: 700 }}>{num}</div>
               <div style={{ fontSize: 9, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 1 }}>{lbl}</div>
@@ -113,22 +113,22 @@ export default function ProfilPage({ user, profile, onLogout }) {
         </div>
 
         {/* Barres de progression Coran */}
-        <div style={{ marginBottom: 20, padding: '14px 16px', borderRadius: 10, background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.08)' }}>
+        <div style={{ marginBottom: 20, padding: '14px 16px', borderRadius: 10, background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
             <span style={{ fontSize: 12, color: 'var(--text)' }}>Vocabulaire du Coran</span>
             <span style={{ fontSize: 14, fontFamily: 'var(--font-display)', color: 'var(--blue)', fontWeight: 700 }}>{pctMotsConnus}%</span>
           </div>
-          <div style={{ height: 6, background: 'rgba(201,168,76,.08)', borderRadius: 3, overflow: 'hidden', marginBottom: 4 }}>
+          <div style={{ height: 6, background: 'rgba(var(--tarjama-color-primary-rgb),.08)', borderRadius: 3, overflow: 'hidden', marginBottom: 4 }}>
             <div style={{ height: '100%', borderRadius: 3, width: `${pctMotsConnus}%`, background: 'var(--blue)', transition: 'width .5s ease' }} />
           </div>
           <div style={{ fontSize: 10, color: 'var(--text-muted)' }}>{knownWords.length} / {TOTAL_QURAN_WORDS} mots uniques</div>
 
-          <div style={{ borderTop: '1px solid rgba(201,168,76,.06)', marginTop: 12, paddingTop: 12 }}>
+          <div style={{ borderTop: '1px solid rgba(var(--tarjama-color-primary-rgb),.06)', marginTop: 12, paddingTop: 12 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
               <span style={{ fontSize: 12, color: 'var(--text)' }}>Mémorisation du Coran</span>
               <span style={{ fontSize: 14, fontFamily: 'var(--font-display)', color: 'var(--green)', fontWeight: 700 }}>{pctMemorisation}%</span>
             </div>
-            <div style={{ height: 6, background: 'rgba(201,168,76,.08)', borderRadius: 3, overflow: 'hidden', marginBottom: 4 }}>
+            <div style={{ height: 6, background: 'rgba(var(--tarjama-color-primary-rgb),.08)', borderRadius: 3, overflow: 'hidden', marginBottom: 4 }}>
               <div style={{ height: '100%', borderRadius: 3, width: `${pctMemorisation}%`, background: 'var(--green)', transition: 'width .5s ease' }} />
             </div>
             <div style={{ fontSize: 10, color: 'var(--text-muted)' }}>{excellent} / {TOTAL_QURAN_VERSES} versets maîtrisés</div>
@@ -136,7 +136,7 @@ export default function ProfilPage({ user, profile, onLogout }) {
         </div>
 
         {/* Tabs */}
-        <div style={{ display: 'flex', borderBottom: '1px solid rgba(201,168,76,.1)', marginBottom: 16 }}>
+        <div style={{ display: 'flex', borderBottom: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)', marginBottom: 16 }}>
           <button onClick={() => setTab('stats')} style={tabStyle('stats')}>Progression</button>
         </div>
 
@@ -151,7 +151,7 @@ export default function ProfilPage({ user, profile, onLogout }) {
             {sourates.map(s => (
               <div key={s.n} style={{
                 display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0',
-                borderBottom: '1px solid rgba(201,168,76,.05)'
+                borderBottom: '1px solid rgba(var(--tarjama-color-primary-rgb),.05)'
               }}>
                 <span style={{ fontSize: 11, color: 'var(--text-muted)', width: 24, textAlign: 'right' }}>{s.n}</span>
                 <div style={{ flex: 1, minWidth: 0 }}>
@@ -159,7 +159,7 @@ export default function ProfilPage({ user, profile, onLogout }) {
                     <span style={{ fontSize: 13, color: 'var(--text)' }}>{s.ar} — {s.fr}</span>
                     <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>{s.done}/{s.v}</span>
                   </div>
-                  <div style={{ height: 4, background: 'rgba(201,168,76,.08)', borderRadius: 2, overflow: 'hidden' }}>
+                  <div style={{ height: 4, background: 'rgba(var(--tarjama-color-primary-rgb),.08)', borderRadius: 2, overflow: 'hidden' }}>
                     <div style={{
                       height: '100%', borderRadius: 2,
                       width: `${s.pct}%`,
@@ -182,13 +182,13 @@ export default function ProfilPage({ user, profile, onLogout }) {
           {isAdmin(user.id) && (
             <Link href="/admin" style={{
               display: 'block', textAlign: 'center', padding: '12px', borderRadius: 8,
-              background: 'rgba(201,168,76,.08)', border: '1px solid rgba(201,168,76,.15)',
+              background: 'rgba(var(--tarjama-color-primary-rgb),.08)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.15)',
               color: 'var(--gold)', fontSize: 14, fontWeight: 600, textDecoration: 'none'
             }}>
               Administration
             </Link>
           )}
-          <Button variant="ghost" full onClick={onLogout} style={{ color: 'var(--red)', borderColor: 'rgba(201,107,107,.2)' }}>
+          <Button variant="ghost" full onClick={onLogout} style={{ color: 'var(--red)', borderColor: 'rgba(var(--tarjama-color-error-rgb, 184, 74, 74),.2)' }}>
             Déconnexion
           </Button>
         </div>

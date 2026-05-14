@@ -82,14 +82,14 @@ export default function AdminPage({ user }) {
         </div>
 
         {message && (
-          <div style={{ padding: '10px 14px', borderRadius: 8, background: 'rgba(76,175,125,.08)', border: '1px solid rgba(76,175,125,.2)', fontSize: 13, color: 'var(--green)', textAlign: 'center', marginBottom: 12 }}>
+          <div style={{ padding: '10px 14px', borderRadius: 8, background: 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.08)', border: '1px solid rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.2)', fontSize: 13, color: 'var(--green)', textAlign: 'center', marginBottom: 12 }}>
             {message}
           </div>
         )}
 
         <input type="search" autoComplete="off" value={search} onChange={e => setSearch(e.target.value)}
           placeholder="Chercher un utilisateur..."
-          style={{ width: '100%', padding: '12px', borderRadius: 8, fontSize: 14, background: 'var(--bg-elevated)', border: '1px solid rgba(201,168,76,.15)', color: 'var(--text)', marginBottom: 16 }}
+          style={{ width: '100%', padding: '12px', borderRadius: 8, fontSize: 14, background: 'var(--bg-elevated)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.15)', color: 'var(--text)', marginBottom: 16 }}
         />
 
         {loading && <div style={{ textAlign: 'center', padding: 32, color: 'var(--text-muted)' }}>Chargement...</div>}
@@ -100,7 +100,7 @@ export default function AdminPage({ user }) {
           return (
             <div key={u.id} style={{
               display: 'flex', alignItems: 'center', gap: 10, padding: '12px 0',
-              borderBottom: '1px solid rgba(201,168,76,.06)'
+              borderBottom: '1px solid rgba(var(--tarjama-color-primary-rgb),.06)'
             }}>
               <div style={{
                 width: 32, height: 32, borderRadius: '50%', background: u.color || 'var(--gold)',

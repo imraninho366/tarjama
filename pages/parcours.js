@@ -64,7 +64,7 @@ export default function ParcoursPage({ user }) {
             {PARCOURS.map(p => (
               <div key={p.id} style={{
                 padding: '16px', borderRadius: 12,
-                background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.12)',
+                background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.12)',
                 cursor: 'pointer', transition: 'all .15s'
               }} onClick={() => startParcours(p)}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
@@ -84,7 +84,7 @@ export default function ParcoursPage({ user }) {
             <div style={{
               display: 'flex', justifyContent: 'space-between', alignItems: 'center',
               padding: '12px 16px', marginBottom: 16,
-              background: 'rgba(201,168,76,.06)', borderRadius: 10, border: '1px solid rgba(201,168,76,.12)'
+              background: 'rgba(var(--tarjama-color-primary-rgb),.06)', borderRadius: 10, border: '1px solid rgba(var(--tarjama-color-primary-rgb),.12)'
             }}>
               <div>
                 <div style={{ fontSize: 14, color: 'var(--text)', fontWeight: 600 }}>{parcours.title}</div>
@@ -97,7 +97,7 @@ export default function ParcoursPage({ user }) {
             </div>
 
             {/* Barre de progression */}
-            <div style={{ height: 6, background: 'rgba(201,168,76,.08)', borderRadius: 3, marginBottom: 20, overflow: 'hidden' }}>
+            <div style={{ height: 6, background: 'rgba(var(--tarjama-color-primary-rgb),.08)', borderRadius: 3, marginBottom: 20, overflow: 'hidden' }}>
               <div style={{
                 height: '100%', borderRadius: 3, transition: 'width .5s ease',
                 width: `${Math.round(((currentDay + 1) / parcours.days) * 100)}%`,
@@ -113,7 +113,7 @@ export default function ParcoursPage({ user }) {
               <div key={i} style={{
                 display: 'flex', alignItems: 'center', gap: 12, padding: '12px',
                 marginBottom: 8, borderRadius: 8,
-                background: 'var(--bg-card)', border: '1px solid rgba(201,168,76,.1)'
+                background: 'var(--bg-card)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)'
               }}>
                 <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 24, color: 'var(--gold-light)', direction: 'rtl', minWidth: 70, textAlign: 'right' }}>
                   {w.ar}

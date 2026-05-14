@@ -183,7 +183,7 @@ export default function Quiz() {
           const knownWords = [...new Set(quizHistory.filter(h => h.ok).map(h => h.ar))]
           const weakWords = [...new Set(quizHistory.filter(h => !h.ok).map(h => h.ar))].filter(w => !knownWords.includes(w))
           return quizCorrect > 0 ? (
-            <div style={{ marginBottom: 20, padding: 16, borderRadius: 12, background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.08)' }}>
+            <div style={{ marginBottom: 20, padding: 16, borderRadius: 12, background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)' }}>
               <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 10, textAlign: 'center' }}>Tes stats quiz</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: knownWords.length > 0 ? 12 : 0 }}>
                 <div style={{ textAlign: 'center' }}>
@@ -202,7 +202,7 @@ export default function Quiz() {
               {knownWords.length > 0 && (
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
                   {knownWords.slice(0, 20).map((w, i) => (
-                    <span key={i} style={{ fontFamily: 'var(--font-arabic)', fontSize: 13, color: 'var(--green)', padding: '2px 8px', borderRadius: 6, background: 'rgba(76,175,125,.08)' }}>{w}</span>
+                    <span key={i} style={{ fontFamily: 'var(--font-arabic)', fontSize: 13, color: 'var(--green)', padding: '2px 8px', borderRadius: 6, background: 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.08)' }}>{w}</span>
                   ))}
                   {knownWords.length > 20 && <span style={{ fontSize: 11, color: 'var(--text-muted)', padding: '2px 8px' }}>+{knownWords.length - 20}</span>}
                 </div>
@@ -214,8 +214,8 @@ export default function Quiz() {
         <div style={{ marginBottom: 12, textAlign: 'center' }}>
           <button onClick={toggleTranslit} style={{
             fontSize: 11, padding: '6px 14px', borderRadius: 20, cursor: 'pointer',
-            background: showTranslit ? 'rgba(201,168,76,.12)' : 'rgba(201,168,76,.04)',
-            border: `1px solid ${showTranslit ? 'rgba(201,168,76,.25)' : 'rgba(201,168,76,.08)'}`,
+            background: showTranslit ? 'rgba(var(--tarjama-color-primary-rgb),.12)' : 'rgba(var(--tarjama-color-primary-rgb),.04)',
+            border: `1px solid ${showTranslit ? 'rgba(var(--tarjama-color-primary-rgb),.25)' : 'rgba(var(--tarjama-color-primary-rgb),.08)'}`,
             color: showTranslit ? 'var(--gold)' : 'var(--text-muted)'
           }}>
             {showTranslit ? 'Phonétique activée ✓' : 'Activer la phonétique'}
@@ -247,8 +247,8 @@ export default function Quiz() {
           </button>
           <button onClick={toggleTranslit} style={{
             fontSize: 10, padding: '4px 10px', borderRadius: 12, cursor: 'pointer',
-            background: showTranslit ? 'rgba(201,168,76,.12)' : 'rgba(201,168,76,.04)',
-            border: `1px solid ${showTranslit ? 'rgba(201,168,76,.25)' : 'rgba(201,168,76,.08)'}`,
+            background: showTranslit ? 'rgba(var(--tarjama-color-primary-rgb),.12)' : 'rgba(var(--tarjama-color-primary-rgb),.04)',
+            border: `1px solid ${showTranslit ? 'rgba(var(--tarjama-color-primary-rgb),.25)' : 'rgba(var(--tarjama-color-primary-rgb),.08)'}`,
             color: showTranslit ? 'var(--gold)' : 'var(--text-muted)',
             letterSpacing: 1, textTransform: 'uppercase'
           }}>

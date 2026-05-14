@@ -35,7 +35,7 @@ export default function MentionsLegales() {
 
         {section('Propriété intellectuelle', 'Le texte coranique est dans le domaine public. Les traductions de référence sont générées par intelligence artificielle. Le code source de l\'application est la propriété de l\'éditeur.')}
 
-        <div style={{ fontSize: 11, color: G.textMuted, marginTop: 32, borderTop: '1px solid rgba(201,168,76,.08)', paddingTop: 16 }}>
+        <div style={{ fontSize: 11, color: G.textMuted, marginTop: 32, borderTop: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)', paddingTop: 16 }}>
           Dernière mise à jour : mai 2026
         </div>
       </div>

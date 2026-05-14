@@ -102,7 +102,7 @@ export default function TajweedPage({ user }) {
                 return (
                   <button key={num} onClick={() => loadSourate(num)} style={{
                     padding: '10px 14px', borderRadius: 8, cursor: 'pointer',
-                    background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.1)',
+                    background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)',
                     textAlign: 'left', transition: 'all .15s', flex: '1 1 140px'
                   }}>
                     <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 16, color: 'var(--gold-light)', direction: 'rtl' }}>{info?.ar}</div>
@@ -131,7 +131,7 @@ export default function TajweedPage({ user }) {
             {/* Texte arabe avec coloration */}
             <div style={{
               padding: '20px 16px', borderRadius: 12, marginBottom: 16, textAlign: 'center',
-              background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.1)'
+              background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)'
             }}>
               {!result ? (
                 <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 26, color: 'var(--gold-light)', direction: 'rtl', lineHeight: 2.2 }}>
@@ -142,7 +142,7 @@ export default function TajweedPage({ user }) {
                   {result.details.map((d, i) => (
                     <span key={i} style={{
                       color: d.ok ? 'var(--green)' : 'var(--red)',
-                      background: d.ok ? 'rgba(76,175,125,.1)' : 'rgba(201,107,107,.1)',
+                      background: d.ok ? 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.1)' : 'rgba(var(--tarjama-color-error-rgb, 184, 74, 74),.1)',
                       padding: '2px 4px', borderRadius: 4, margin: '0 2px',
                       transition: 'all .3s ease',
                       animation: `fadeInUp 0.3s ease ${i * 0.05}s both`
@@ -158,8 +158,8 @@ export default function TajweedPage({ user }) {
             {result && (
               <div style={{
                 textAlign: 'center', marginBottom: 16, padding: '12px',
-                background: result.score >= 80 ? 'rgba(76,175,125,.06)' : result.score >= 50 ? 'rgba(201,168,76,.06)' : 'rgba(201,107,107,.06)',
-                borderRadius: 10, border: `1px solid ${result.score >= 80 ? 'rgba(76,175,125,.2)' : result.score >= 50 ? 'rgba(201,168,76,.2)' : 'rgba(201,107,107,.2)'}`,
+                background: result.score >= 80 ? 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.06)' : result.score >= 50 ? 'rgba(var(--tarjama-color-primary-rgb),.06)' : 'rgba(var(--tarjama-color-error-rgb, 184, 74, 74),.06)',
+                borderRadius: 10, border: `1px solid ${result.score >= 80 ? 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.2)' : result.score >= 50 ? 'rgba(var(--tarjama-color-primary-rgb),.2)' : 'rgba(var(--tarjama-color-error-rgb, 184, 74, 74),.2)'}`,
                 animation: 'fadeInUp .3s ease'
               }}>
                 <div style={{

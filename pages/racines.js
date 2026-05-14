@@ -52,7 +52,7 @@ export default function RacinesPage({ user }) {
 
         <div style={{
           display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16,
-          background: 'var(--bg-elevated)', border: '1px solid rgba(201,168,76,.15)',
+          background: 'var(--bg-elevated)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.15)',
           borderRadius: 6, padding: '9px 12px'
         }}>
           <span style={{ color: 'var(--gold)', fontSize: 14 }}>◇</span>
@@ -68,7 +68,7 @@ export default function RacinesPage({ user }) {
         {selectedRoot && (
           <div style={{
             marginBottom: 16, padding: 16, borderRadius: 12,
-            background: 'rgba(201,168,76,.06)', border: '1px solid rgba(201,168,76,.15)'
+            background: 'rgba(var(--tarjama-color-primary-rgb),.06)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.15)'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
               <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 32, color: 'var(--gold)', direction: 'rtl' }}>
@@ -83,7 +83,7 @@ export default function RacinesPage({ user }) {
               {selectedRoot.mots.sort((a, b) => (b.freq || 0) - (a.freq || 0)).map((m, i) => (
                 <div key={i} style={{
                   display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px',
-                  background: 'var(--bg-card)', borderRadius: 6, border: '1px solid rgba(201,168,76,.08)'
+                  background: 'var(--bg-card)', borderRadius: 6, border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)'
                 }}>
                   <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 20, color: 'var(--gold-light)', direction: 'rtl', minWidth: 60, textAlign: 'right' }}>
                     {m.ar}
@@ -114,7 +114,7 @@ export default function RacinesPage({ user }) {
                 <button key={r.racine} onClick={() => setSelected(r.racine)} style={{
                   fontFamily: 'var(--font-arabic)', fontSize: size, direction: 'rtl',
                   color: 'var(--gold-light)', opacity, padding: '6px 10px', borderRadius: 6,
-                  background: 'rgba(201,168,76,.06)', border: '1px solid rgba(201,168,76,.1)',
+                  background: 'rgba(var(--tarjama-color-primary-rgb),.06)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)',
                   cursor: 'pointer', transition: 'all .15s'
                 }}>
                   {r.racine}

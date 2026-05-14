@@ -56,8 +56,8 @@ export default function ConnexionsPage({ user }) {
               {THEMES.map(t => (
                 <button key={t.id} onClick={() => { setSelected(t.id); search(t.label) }} style={{
                   padding: '14px 8px', borderRadius: 10, cursor: 'pointer', textAlign: 'center',
-                  background: selected === t.id ? 'rgba(201,168,76,.12)' : 'rgba(201,168,76,.04)',
-                  border: `1px solid ${selected === t.id ? 'rgba(201,168,76,.3)' : 'rgba(201,168,76,.08)'}`,
+                  background: selected === t.id ? 'rgba(var(--tarjama-color-primary-rgb),.12)' : 'rgba(var(--tarjama-color-primary-rgb),.04)',
+                  border: `1px solid ${selected === t.id ? 'rgba(var(--tarjama-color-primary-rgb),.3)' : 'rgba(var(--tarjama-color-primary-rgb),.08)'}`,
                   transition: 'all .15s'
                 }}>
                   <div style={{ fontSize: 24, marginBottom: 4 }}>{t.icon}</div>
@@ -71,7 +71,7 @@ export default function ConnexionsPage({ user }) {
               <input autoComplete="off" value={custom} onChange={e => setCustom(e.target.value)}
                 placeholder="Ou cherche un thème..."
                 onKeyDown={e => { if (e.key === 'Enter' && custom.trim()) search(custom.trim()) }}
-                style={{ flex: 1, padding: '12px', borderRadius: 8, fontSize: 13, background: 'var(--bg-elevated)', border: '1px solid rgba(201,168,76,.12)', color: 'var(--text)' }}
+                style={{ flex: 1, padding: '12px', borderRadius: 8, fontSize: 13, background: 'var(--bg-elevated)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.12)', color: 'var(--text)' }}
               />
               <Button onClick={() => custom.trim() && search(custom.trim())} disabled={!custom.trim()}>→</Button>
             </div>
@@ -100,13 +100,13 @@ export default function ConnexionsPage({ user }) {
             </button>
 
             <div style={{ position: 'relative', paddingLeft: 20 }}>
-              <div style={{ position: 'absolute', left: 8, top: 0, bottom: 0, width: 2, background: 'rgba(201,168,76,.15)' }} />
+              <div style={{ position: 'absolute', left: 8, top: 0, bottom: 0, width: 2, background: 'rgba(var(--tarjama-color-primary-rgb),.15)' }} />
               {versets.map((v, i) => (
                 <div key={i} style={{ position: 'relative', marginBottom: 20, animation: `fadeInUp 0.4s ease ${i * 0.15}s both` }}>
                   <div style={{ position: 'absolute', left: -16, top: 8, width: 10, height: 10, borderRadius: '50%', background: 'var(--gold)', border: '2px solid var(--bg-deep)' }} />
                   <div style={{
                     padding: 16, borderRadius: 10,
-                    background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.1)'
+                    background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)'
                   }}>
                     <div style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: 2, marginBottom: 8 }}>
                       S.{v.sourate_num}:{v.verset_num} · {v.sourate_ar}

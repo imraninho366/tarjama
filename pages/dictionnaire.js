@@ -317,7 +317,7 @@ export default function Dictionnaire({ user, profile }) {
                 {mnemo && (
                   <div style={{
                     marginTop: 8, padding: '12px', borderRadius: 8,
-                    background: 'rgba(155,127,212,.06)', border: '1px solid rgba(155,127,212,.15)',
+                    background: 'rgba(var(--tarjama-color-purple-rgb, 155, 127, 212),.06)', border: '1px solid rgba(var(--tarjama-color-purple-rgb, 155, 127, 212),.15)',
                     fontSize: 13, color: 'var(--text-dim)', lineHeight: 1.8, fontStyle: 'italic'
                   }}>
                     {mnemo}

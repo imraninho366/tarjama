@@ -90,13 +90,13 @@ export default function GenDico() {
 
   if (!authed) return (
     <div style={{minHeight:'100vh',background:G.dark,display:'flex',alignItems:'center',justifyContent:'center'}}>
-      <div style={{background:G.dark3,border:`1px solid rgba(201,168,76,.2)`,borderRadius:6,padding:'32px 28px',width:340}}>
+      <div style={{background:G.dark3,border:`1px solid rgba(var(--tarjama-color-primary-rgb),.2)`,borderRadius:6,padding:'32px 28px',width:340}}>
         <div style={{fontFamily:'Cinzel,serif',fontSize:18,color:G.gold,marginBottom:4}}>TARJAMA — GÉNÉRATION</div>
         <div style={{fontSize:11,color:G.textMuted,letterSpacing:2,marginBottom:20}}>ACCÈS RESTREINT</div>
         <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setPwErr(false)}}
           onKeyDown={e=>{if(e.key==='Enter'){if(pw===PW)setAuthed(true);else setPwErr(true)}}}
           placeholder="Mot de passe..." autoFocus
-          style={{width:'100%',background:G.dark4,border:`1px solid ${pwErr?G.red:'rgba(201,168,76,.2)'}`,color:G.text,padding:'10px 12px',borderRadius:3,fontFamily:'Lato,sans-serif',fontSize:14,outline:'none',marginBottom:8}}/>
+          style={{width:'100%',background:G.dark4,border:`1px solid ${pwErr?G.red:'rgba(var(--tarjama-color-primary-rgb),.2)'}`,color:G.text,padding:'10px 12px',borderRadius:3,fontFamily:'Lato,sans-serif',fontSize:14,outline:'none',marginBottom:8}}/>
         {pwErr && <div style={{fontSize:12,color:G.red,marginBottom:8}}>Incorrect</div>}
         <button onClick={()=>{if(pw===PW)setAuthed(true);else setPwErr(true)}}
           style={{width:'100%',background:G.gold,color:G.dark,border:'none',borderRadius:3,padding:'10px',fontFamily:'Lato,sans-serif',fontWeight:700,fontSize:12,letterSpacing:2,cursor:'pointer'}}>
@@ -118,7 +118,7 @@ export default function GenDico() {
         {/* Stats */}
         <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:12,marginBottom:20}}>
           {[['Mots actuels', existingVocab.length, G.gold],['Lots traités', `${progress.done}/${progress.total}`, '#5B9BD5'],['Nouveaux mots', newWords.length, G.green]].map(([l,v,c])=>(
-            <div key={l} style={{background:G.dark3,border:`1px solid rgba(201,168,76,.1)`,borderRadius:4,padding:'12px 16px'}}>
+            <div key={l} style={{background:G.dark3,border:`1px solid rgba(var(--tarjama-color-primary-rgb),.1)`,borderRadius:4,padding:'12px 16px'}}>
               <div style={{fontFamily:'Cinzel,serif',fontSize:26,color:c}}>{v}</div>
               <div style={{fontSize:10,color:G.textMuted,textTransform:'uppercase',letterSpacing:2,marginTop:2}}>{l}</div>
             </div>
@@ -131,7 +131,7 @@ export default function GenDico() {
             <div style={{display:'flex',justifyContent:'space-between',marginBottom:4,fontSize:11,color:G.textMuted}}>
               <span>Progression</span><span style={{color:G.gold}}>{pct}%</span>
             </div>
-            <div style={{height:4,background:'rgba(201,168,76,.1)',borderRadius:2}}>
+            <div style={{height:4,background:'rgba(var(--tarjama-color-primary-rgb),.1)',borderRadius:2}}>
               <div style={{height:'100%',width:`${pct}%`,background:'linear-gradient(90deg,#8B6914,#C9A84C)',borderRadius:2,transition:'width .3s'}}/>
             </div>
           </div>
@@ -157,12 +157,12 @@ export default function GenDico() {
           </button>}
         </div>
 
-        {status==='done' && <div style={{padding:'10px 14px',background:'rgba(76,175,125,.08)',border:`1px solid rgba(76,175,125,.2)`,borderRadius:4,fontSize:12,color:G.green,marginBottom:16}}>
+        {status==='done' && <div style={{padding:'10px 14px',background:'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.08)',border:`1px solid rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.2)`,borderRadius:4,fontSize:12,color:G.green,marginBottom:16}}>
           Terminé ! Remplace <code style={{color:G.gold}}>public/quran_vocab.json</code> par le fichier téléchargé puis redéploie sur Vercel.
         </div>}
 
         {/* Log */}
-        <div ref={logRef} style={{background:G.dark4,border:`1px solid rgba(201,168,76,.08)`,borderRadius:4,padding:14,height:340,overflowY:'auto',fontFamily:'monospace',fontSize:11}}>
+        <div ref={logRef} style={{background:G.dark4,border:`1px solid rgba(var(--tarjama-color-primary-rgb),.08)`,borderRadius:4,padding:14,height:340,overflowY:'auto',fontFamily:'monospace',fontSize:11}}>
           {log.length===0 && <div style={{color:G.textMuted}}>En attente...</div>}
           {log.map((e,i)=>(
             <div key={i} style={{marginBottom:2,color:e.t==='error'?G.red:e.t==='success'?G.green:G.textDim}}>

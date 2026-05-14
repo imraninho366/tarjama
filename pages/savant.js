@@ -57,7 +57,7 @@ export default function SavantPage() {
         {/* Avertissement */}
         <div style={{
           padding: '10px 14px', marginBottom: 16, borderRadius: 8,
-          background: 'rgba(212,135,76,.06)', border: '1px solid rgba(212,135,76,.15)',
+          background: 'rgba(var(--tarjama-color-warning-rgb, 192, 112, 48),.06)', border: '1px solid rgba(var(--tarjama-color-warning-rgb, 192, 112, 48),.15)',
           fontSize: 11, color: 'var(--text-dim)', lineHeight: 1.7, textAlign: 'center'
         }}>
           Les réponses sont basées sur le Coran et les hadiths authentiques.
@@ -75,7 +75,7 @@ export default function SavantPage() {
             placeholder="Ex: Comment faire la prière du Fajr ?"
             style={{
               flex: 1, padding: '14px', borderRadius: 10, fontSize: 14,
-              background: 'var(--bg-elevated)', border: '1px solid rgba(201,168,76,.15)',
+              background: 'var(--bg-elevated)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.15)',
               color: 'var(--text)'
             }}
           />
@@ -94,7 +94,7 @@ export default function SavantPage() {
               {SUGGESTIONS.map(s => (
                 <button key={s} onClick={() => { setQuestion(s); ask(s) }} style={{
                   padding: '8px 14px', borderRadius: 20, fontSize: 12, cursor: 'pointer',
-                  background: 'rgba(201,168,76,.06)', border: '1px solid rgba(201,168,76,.1)',
+                  background: 'rgba(var(--tarjama-color-primary-rgb),.06)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)',
                   color: 'var(--text-dim)', transition: 'all .15s'
                 }}>
                   {s}
@@ -118,11 +118,11 @@ export default function SavantPage() {
         {answer && !loading && (
           <div style={{
             padding: 16, borderRadius: 12, marginBottom: 16,
-            background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.1)',
+            background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)',
             animation: 'fadeInUp .3s ease'
           }}>
             {askedQuestion && (
-              <div style={{ fontSize: 14, color: 'var(--text)', fontWeight: 600, marginBottom: 12, paddingBottom: 10, borderBottom: '1px solid rgba(201,168,76,.08)' }}>
+              <div style={{ fontSize: 14, color: 'var(--text)', fontWeight: 600, marginBottom: 12, paddingBottom: 10, borderBottom: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)' }}>
                 {askedQuestion}
               </div>
             )}
@@ -137,7 +137,7 @@ export default function SavantPage() {
             </div>
             <div style={{
               marginTop: 12, padding: '8px 12px', borderRadius: 6,
-              background: 'rgba(212,135,76,.06)', border: '1px solid rgba(212,135,76,.1)',
+              background: 'rgba(var(--tarjama-color-warning-rgb, 192, 112, 48),.06)', border: '1px solid rgba(var(--tarjama-color-warning-rgb, 192, 112, 48),.1)',
               fontSize: 10, color: 'var(--orange)', lineHeight: 1.6, textAlign: 'center'
             }}>
               Cette réponse est générée par IA. Pour toute décision religieuse importante, consulte un savant qualifié.
@@ -155,7 +155,7 @@ export default function SavantPage() {
               <button key={i} onClick={() => { setQuestion(h.q); setAnswer(h.a) }} style={{
                 display: 'block', width: '100%', textAlign: 'left', padding: '10px 12px',
                 marginBottom: 4, borderRadius: 8, cursor: 'pointer',
-                background: 'transparent', border: '1px solid rgba(201,168,76,.06)',
+                background: 'transparent', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.06)',
                 color: 'var(--text-dim)', fontSize: 12, transition: 'all .15s'
               }}>
                 {h.q}

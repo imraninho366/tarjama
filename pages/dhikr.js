@@ -89,7 +89,7 @@ export default function DhikrPage() {
               <button key={d.id} onClick={() => selectDhikr(i)} style={{
                 display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px',
                 borderRadius: 10, cursor: 'pointer', textAlign: 'left',
-                background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.1)',
+                background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)',
                 transition: 'all .15s'
               }}>
                 {d.ar ? (
@@ -134,8 +134,8 @@ export default function DhikrPage() {
               onClick={increment}
               style={{
                 width: 200, height: 200, borderRadius: '50%', margin: '0 auto 20px',
-                background: completed ? 'rgba(76,175,125,.08)' : 'rgba(201,168,76,.06)',
-                border: `3px solid ${completed ? 'var(--green)' : 'rgba(201,168,76,.2)'}`,
+                background: completed ? 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.08)' : 'rgba(var(--tarjama-color-primary-rgb),.06)',
+                border: `3px solid ${completed ? 'var(--green)' : 'rgba(var(--tarjama-color-primary-rgb),.2)'}`,
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                 cursor: 'pointer', userSelect: 'none', WebkitTapHighlightColor: 'transparent',
                 transition: 'all .15s', position: 'relative'
@@ -144,7 +144,7 @@ export default function DhikrPage() {
               {/* Barre de progression circulaire */}
               {dhikr.target > 0 && (
                 <svg width="200" height="200" style={{ position: 'absolute', top: 0, left: 0, transform: 'rotate(-90deg)' }}>
-                  <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(201,168,76,.08)" strokeWidth="3" />
+                  <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(var(--tarjama-color-primary-rgb),.08)" strokeWidth="3" />
                   <circle cx="100" cy="100" r="95" fill="none"
                     stroke={completed ? 'var(--green)' : 'var(--gold)'}
                     strokeWidth="3" strokeLinecap="round"

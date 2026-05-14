@@ -60,8 +60,8 @@ export default function HumeurPage({ user }) {
               {MOODS.map(m => (
                 <button key={m.id} onClick={() => { setSelected(m.id); search(m.label) }} style={{
                   padding: '16px 8px', borderRadius: 10, cursor: 'pointer', textAlign: 'center',
-                  background: selected === m.id ? 'rgba(201,168,76,.12)' : 'rgba(201,168,76,.04)',
-                  border: `1px solid ${selected === m.id ? 'rgba(201,168,76,.3)' : 'rgba(201,168,76,.08)'}`,
+                  background: selected === m.id ? 'rgba(var(--tarjama-color-primary-rgb),.12)' : 'rgba(var(--tarjama-color-primary-rgb),.04)',
+                  border: `1px solid ${selected === m.id ? 'rgba(var(--tarjama-color-primary-rgb),.3)' : 'rgba(var(--tarjama-color-primary-rgb),.08)'}`,
                   transition: 'all .15s'
                 }}>
                   <div style={{ fontSize: 28, marginBottom: 4 }}>{m.icon}</div>
@@ -77,7 +77,7 @@ export default function HumeurPage({ user }) {
                 onKeyDown={e => { if (e.key === 'Enter' && custom.trim()) search(custom.trim()) }}
                 style={{
                   flex: 1, padding: '12px', borderRadius: 8, fontSize: 13,
-                  background: 'var(--bg-elevated)', border: '1px solid rgba(201,168,76,.12)',
+                  background: 'var(--bg-elevated)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.12)',
                   color: 'var(--text)'
                 }}
               />
@@ -107,7 +107,7 @@ export default function HumeurPage({ user }) {
             {versets.map((v, i) => (
               <div key={i} style={{
                 marginBottom: 16, padding: 16, borderRadius: 12,
-                background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.1)',
+                background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)',
                 animation: `fadeInUp 0.4s ease ${i * 0.15}s both`
               }}>
                 <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 8 }}>
@@ -116,7 +116,7 @@ export default function HumeurPage({ user }) {
                 <div style={{
                   fontFamily: 'var(--font-arabic)', fontSize: 22, color: 'var(--gold-light)',
                   direction: 'rtl', textAlign: 'right', lineHeight: 2, marginBottom: 12,
-                  padding: '8px 0', borderBottom: '1px solid rgba(201,168,76,.06)'
+                  padding: '8px 0', borderBottom: '1px solid rgba(var(--tarjama-color-primary-rgb),.06)'
                 }}>
                   {v.arabe}
                 </div>
@@ -128,7 +128,7 @@ export default function HumeurPage({ user }) {
                 </div>
                 <div style={{
                   fontSize: 12, color: 'var(--green)', padding: '8px 12px',
-                  background: 'rgba(76,175,125,.06)', borderRadius: 6, borderLeft: '3px solid var(--green)'
+                  background: 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.06)', borderRadius: 6, borderLeft: '3px solid var(--green)'
                 }}>
                   {v.conseil}
                 </div>

@@ -35,7 +35,7 @@ export default function PremiumBanner({ action, limit, onClose }) {
         <div style={{
           display: 'flex', flexDirection: 'column', gap: 8,
           fontSize: 12, color: 'var(--text-dim)', textAlign: 'left',
-          padding: '12px 16px', background: 'rgba(201,168,76,.05)',
+          padding: '12px 16px', background: 'rgba(var(--tarjama-color-primary-rgb),.05)',
           borderRadius: 8, marginBottom: 20
         }}>
           {[

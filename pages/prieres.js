@@ -187,7 +187,7 @@ export default function PrieresPage() {
                 onKeyDown={e => { if (e.key === 'Enter') searchCity() }}
                 style={{
                   flex: 1, padding: '12px', borderRadius: 8, fontSize: 14,
-                  background: 'var(--bg-elevated)', border: '1px solid rgba(201,168,76,.15)',
+                  background: 'var(--bg-elevated)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.15)',
                   color: 'var(--text)'
                 }}
               />
@@ -196,7 +196,7 @@ export default function PrieresPage() {
               </Button>
             </div>
             <button onClick={getLocation}
-              style={{ width: '100%', padding: '10px', borderRadius: 8, cursor: 'pointer', fontSize: 12, color: 'var(--text-muted)', background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.08)' }}>
+              style={{ width: '100%', padding: '10px', borderRadius: 8, cursor: 'pointer', fontSize: 12, color: 'var(--text-muted)', background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)' }}>
               Utiliser ma position GPS
             </button>
             {error && <div style={{ color: 'var(--red)', fontSize: 12, textAlign: 'center', marginTop: 8 }}>{error}</div>}
@@ -207,8 +207,8 @@ export default function PrieresPage() {
         {times && nextPrayer && (
           <div style={{
             textAlign: 'center', padding: '24px 16px', marginBottom: 16, borderRadius: 16,
-            background: 'linear-gradient(135deg, rgba(201,168,76,.08), rgba(201,168,76,.03))',
-            border: '1px solid rgba(201,168,76,.2)'
+            background: 'linear-gradient(135deg, rgba(var(--tarjama-color-primary-rgb),.08), rgba(var(--tarjama-color-primary-rgb),.03))',
+            border: '1px solid rgba(var(--tarjama-color-primary-rgb),.2)'
           }}>
             <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 3, marginBottom: 6 }}>
               Prochaine prière
@@ -225,7 +225,7 @@ export default function PrieresPage() {
             </div>
             <div style={{
               display: 'inline-block', marginTop: 8, padding: '6px 16px', borderRadius: 20,
-              background: 'rgba(201,168,76,.1)', fontSize: 13, color: 'var(--gold)', fontWeight: 600
+              background: 'rgba(var(--tarjama-color-primary-rgb),.1)', fontSize: 13, color: 'var(--gold)', fontWeight: 600
             }}>
               dans {formatCountdown(nextPrayerMinutes)}
             </div>
@@ -244,9 +244,9 @@ export default function PrieresPage() {
               return (
                 <div key={key} style={{
                   display: 'flex', alignItems: 'center', gap: 12, padding: '14px 12px',
-                  borderBottom: '1px solid rgba(201,168,76,.06)',
+                  borderBottom: '1px solid rgba(var(--tarjama-color-primary-rgb),.06)',
                   opacity: isPast && !isNext ? 0.4 : 1,
-                  background: isNext ? 'rgba(201,168,76,.06)' : 'transparent',
+                  background: isNext ? 'rgba(var(--tarjama-color-primary-rgb),.06)' : 'transparent',
                   borderRadius: isNext ? 8 : 0
                 }}>
                   <span style={{ fontSize: 22, width: 32, textAlign: 'center' }}>{p.icon}</span>
@@ -274,8 +274,8 @@ export default function PrieresPage() {
           <div style={{ marginBottom: 24 }}>
             <button onClick={() => setShowQibla(!showQibla)} style={{
               width: '100%', padding: '14px', borderRadius: 10, cursor: 'pointer',
-              background: showQibla ? 'rgba(201,168,76,.1)' : 'rgba(201,168,76,.04)',
-              border: `1px solid ${showQibla ? 'rgba(201,168,76,.25)' : 'rgba(201,168,76,.1)'}`,
+              background: showQibla ? 'rgba(var(--tarjama-color-primary-rgb),.1)' : 'rgba(var(--tarjama-color-primary-rgb),.04)',
+              border: `1px solid ${showQibla ? 'rgba(var(--tarjama-color-primary-rgb),.25)' : 'rgba(var(--tarjama-color-primary-rgb),.1)'}`,
               fontSize: 14, color: 'var(--text)', fontWeight: 600, textAlign: 'center'
             }}>
               {showQibla ? 'Masquer' : 'Boussole Qibla'} 🕋
@@ -284,13 +284,13 @@ export default function PrieresPage() {
             {showQibla && (
               <div style={{
                 textAlign: 'center', padding: '24px 16px', marginTop: 12, borderRadius: 12,
-                background: 'rgba(201,168,76,.04)', border: '1px solid rgba(201,168,76,.1)'
+                background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)'
               }}>
                 {/* Boussole */}
                 <div style={{
                   width: 200, height: 200, margin: '0 auto 16px', position: 'relative',
-                  borderRadius: '50%', border: '2px solid rgba(201,168,76,.2)',
-                  background: 'rgba(201,168,76,.03)'
+                  borderRadius: '50%', border: '2px solid rgba(var(--tarjama-color-primary-rgb),.2)',
+                  background: 'rgba(var(--tarjama-color-primary-rgb),.03)'
                 }}>
                   {/* Directions */}
                   {['N', 'E', 'S', 'O'].map((d, i) => (
