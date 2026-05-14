@@ -1,137 +1,102 @@
 /* ══════════════════════════════════════════════════════════════
    TARJAMA — Global Design System
-   Un manuscrit coranique ancien rencontre une interface moderne
+   Direction : "Riyad" — Le Jardin Numérique
    ══════════════════════════════════════════════════════════════ */
 
-/* ── Fonts ──────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;700&display=swap');
+/* ── Tokens (source unique) ────────────────────────────────── */
+@import './tokens.css';
 
-/* ── CSS Custom Properties ─────────────────────────────────── */
+/* ── Fonts — new Riyad fonts + Amiri ───────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&family=Reem+Kufi:wght@400;500;600;700&display=swap');
+
+/* ── Legacy Aliases ────────────────────────────────────────── */
+/* Map old token names → new --tarjama-* tokens for backward compat.
+   New code should use --tarjama-* directly.
+   These aliases will be removed when all pages are migrated. */
 :root {
-  /* Backgrounds — profondeur progressive */
-  --bg-abyss:    #050508;
-  --bg-deep:     #09090E;
-  --bg-surface:  #0F0F18;
-  --bg-card:     #161622;
-  --bg-elevated: #1D1D2C;
+  /* Backgrounds */
+  --bg-abyss:    var(--tarjama-color-background);
+  --bg-deep:     var(--tarjama-color-background);
+  --bg-surface:  var(--tarjama-color-surface);
+  --bg-card:     var(--tarjama-color-surface-elevated);
+  --bg-elevated: var(--tarjama-color-surface);
 
-  /* Or — dégradé complet */
-  --gold-dim:    #6B5210;
-  --gold-dark:   #8B6914;
-  --gold:        #C9A84C;
-  --gold-light:  #E8C97A;
-  --gold-bright: #F5DFA0;
-  --gold-glow:   rgba(201, 168, 76, 0.15);
-  --gold-glow-strong: rgba(201, 168, 76, 0.25);
+  /* Gold */
+  --gold-dim:    var(--tarjama-color-primary-dim);
+  --gold-dark:   var(--tarjama-color-primary-dim);
+  --gold:        var(--tarjama-color-primary);
+  --gold-light:  var(--tarjama-color-primary-light);
+  --gold-bright: var(--tarjama-color-primary-light);
+  --gold-glow:   rgba(var(--tarjama-color-primary-rgb), 0.15);
+  --gold-glow-strong: rgba(var(--tarjama-color-primary-rgb), 0.25);
 
-  /* Texte */
-  --text:        #EDE8D8;
-  --text-dim:    #9A9280;
-  --text-muted:  #5A5448;
+  /* Text */
+  --text:        var(--tarjama-color-text);
+  --text-dim:    var(--tarjama-color-text-secondary);
+  --text-muted:  var(--tarjama-color-text-muted);
 
-  /* Sémantique */
-  --green:       #4CAF7D;
-  --green-glow:  rgba(76, 175, 125, 0.12);
-  --blue:        #5B9BD5;
-  --blue-glow:   rgba(91, 155, 213, 0.12);
-  --red:         #C96B6B;
-  --red-glow:    rgba(201, 107, 107, 0.12);
-  --orange:      #D4874C;
-  --orange-glow: rgba(212, 135, 76, 0.12);
+  /* Semantic */
+  --green:       var(--tarjama-color-success);
+  --green-glow:  var(--tarjama-color-success-light);
+  --blue:        var(--tarjama-color-info);
+  --blue-glow:   var(--tarjama-color-info-light);
+  --red:         var(--tarjama-color-error);
+  --red-glow:    var(--tarjama-color-error-light);
+  --orange:      var(--tarjama-color-warning);
+  --orange-glow: var(--tarjama-color-warning-light);
   --purple:      #9B7FD4;
   --purple-glow: rgba(155, 127, 212, 0.12);
 
-  /* Glassmorphism */
-  --glass-bg:       rgba(9, 9, 14, 0.78);
-  --glass-bg-light: rgba(15, 15, 24, 0.65);
-  --glass-border:   rgba(201, 168, 76, 0.08);
+  /* Glass — mapped to surface overlay */
+  --glass-bg:       var(--tarjama-color-surface-overlay);
+  --glass-bg-light: var(--tarjama-color-surface-overlay);
+  --glass-border:   var(--tarjama-color-border);
   --glass-blur:     16px;
 
-  /* Fonts */
-  --font-arabic:  'Amiri', serif;
-  --font-serif:   'EB Garamond', 'Georgia', serif;
-  --font-sans:    'Lato', sans-serif;
-  --font-display: 'Cinzel', serif;
+  /* Fonts — now Riyad fonts */
+  --font-arabic:  var(--tarjama-font-arabic);
+  --font-serif:   var(--tarjama-font-display);
+  --font-sans:    var(--tarjama-font-body);
+  --font-display: var(--tarjama-font-display);
 
-  /* Spacing */
-  --space-xs:  4px;
-  --space-sm:  8px;
-  --space-md:  16px;
-  --space-lg:  24px;
-  --space-xl:  32px;
-  --space-2xl: 48px;
+  /* Spacing aliases */
+  --space-xs:  var(--tarjama-space-1);
+  --space-sm:  var(--tarjama-space-2);
+  --space-md:  var(--tarjama-space-4);
+  --space-lg:  var(--tarjama-space-6);
+  --space-xl:  var(--tarjama-space-8);
+  --space-2xl: var(--tarjama-space-12);
 
-  /* Radius */
-  --radius-sm:  3px;
-  --radius-md:  6px;
-  --radius-lg:  12px;
-  --radius-xl:  20px;
+  /* Radius aliases */
+  --radius-sm:  var(--tarjama-radius-sm);
+  --radius-md:  var(--tarjama-radius-md);
+  --radius-lg:  var(--tarjama-radius-lg);
+  --radius-xl:  var(--tarjama-radius-xl);
 
-  /* Transitions */
-  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --duration-fast: 120ms;
-  --duration-normal: 220ms;
-  --duration-slow: 400ms;
+  /* Motion aliases */
+  --ease-out:        var(--tarjama-ease-out);
+  --ease-spring:     var(--tarjama-ease-spring);
+  --duration-fast:   var(--tarjama-duration-fast);
+  --duration-normal: var(--tarjama-duration-normal);
+  --duration-slow:   var(--tarjama-duration-slow);
 
-  /* Z-index layers */
-  --z-base:     1;
-  --z-dropdown: 10;
-  --z-sticky:   20;
-  --z-overlay:  30;
-  --z-modal:    40;
-  --z-toast:    50;
+  /* Z-index aliases */
+  --z-base:     var(--tarjama-z-base);
+  --z-dropdown: var(--tarjama-z-dropdown);
+  --z-sticky:   var(--tarjama-z-sticky);
+  --z-overlay:  var(--tarjama-z-overlay);
+  --z-modal:    var(--tarjama-z-modal);
+  --z-toast:    var(--tarjama-z-toast);
 
-  /* Sidebar */
-  --sidebar-width: 280px;
-  --topbar-height: 56px;
-  --bottomnav-height: 64px;
+  /* Layout aliases */
+  --sidebar-width: var(--tarjama-sidebar-width);
+  --topbar-height: var(--tarjama-topbar-height);
+  --bottomnav-height: var(--tarjama-bottomnav-height);
 }
 
-/* ── Light theme override ─────────────────────────────────── */
-[data-theme="light"] {
-  --bg-abyss:    #F8F6F1;
-  --bg-deep:     #F2EFE8;
-  --bg-surface:  #EAE6DD;
-  --bg-card:     #FFFFFF;
-  --bg-elevated: #F5F3ED;
-
-  --gold-dim:    #B8972E;
-  --gold-dark:   #9A7D1F;
-  --gold:        #8B6914;
-  --gold-light:  #6B5210;
-  --gold-bright: #4A3A0D;
-  --gold-glow:   rgba(139, 105, 20, 0.1);
-  --gold-glow-strong: rgba(139, 105, 20, 0.18);
-
-  --text:        #1A1810;
-  --text-dim:    #5A5648;
-  --text-muted:  #9A9588;
-
-  --green:       #2D8E5E;
-  --green-glow:  rgba(45, 142, 94, 0.1);
-  --blue:        #3A7BBF;
-  --blue-glow:   rgba(58, 123, 191, 0.1);
-  --red:         #B84A4A;
-  --red-glow:    rgba(184, 74, 74, 0.1);
-  --orange:      #C07030;
-  --orange-glow: rgba(192, 112, 48, 0.1);
-  --purple:      #7B5FB8;
-  --purple-glow: rgba(123, 95, 184, 0.1);
-
-  --glass-bg:       rgba(242, 239, 232, 0.9);
-  --glass-bg-light: rgba(248, 246, 241, 0.85);
-  --glass-border:   rgba(139, 105, 20, 0.12);
-}
-
-[data-theme="light"] ::selection {
-  background: rgba(139, 105, 20, 0.2);
-  color: #1A1810;
-}
-
-[data-theme="light"] ::-webkit-scrollbar-thumb {
-  background: rgba(139, 105, 20, 0.15);
-}
+/* Light theme is now the default in tokens.css (:root).
+   Dark theme overrides are in tokens.css [data-theme="dark"].
+   Legacy light overrides removed — aliases cascade automatically. */
 
 /* ── Reset ──────────────────────────────────────────────────── */
 *, *::before, *::after {
