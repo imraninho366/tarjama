@@ -45,7 +45,7 @@ export default function PremiumBanner({ action, limit, onClose }) {
             'Soutiens un projet éducatif islamique',
           ].map(f => (
             <div key={f} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ color: G.gold }}>✓</span>
+              <span style={{ color: 'var(--tarjama-color-primary)' }}>✓</span>
               <span>{f}</span>
             </div>
           ))}

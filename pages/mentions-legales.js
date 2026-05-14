@@ -5,8 +5,8 @@ import { G } from '../lib/theme'
 export default function MentionsLegales() {
   const section = (title, content) => (
     <div style={{ marginBottom: 24 }}>
-      <h2 style={{ fontSize: 16, color: G.gold, fontFamily: 'var(--font-display)', marginBottom: 8 }}>{title}</h2>
-      <div style={{ fontSize: 13, color: G.textDim, lineHeight: 1.8 }}>{content}</div>
+      <h2 style={{ fontSize: 16, color: 'var(--tarjama-color-primary)', fontFamily: 'var(--font-display)', marginBottom: 8 }}>{title}</h2>
+      <div style={{ fontSize: 13, color: 'var(--tarjama-color-text-secondary)', lineHeight: 1.8 }}>{content}</div>
     </div>
   )
 
@@ -14,8 +14,8 @@ export default function MentionsLegales() {
     <>
       <Head><title>Mentions légales — Tarjama</title></Head>
       <div style={{ maxWidth: 600, margin: '0 auto', padding: '24px 20px 64px' }}>
-        <Link href="/" style={{ fontSize: 12, color: G.textMuted, textDecoration: 'none' }}>← Retour</Link>
-        <h1 style={{ fontSize: 24, fontFamily: 'var(--font-display)', color: G.text, margin: '16px 0 24px' }}>
+        <Link href="/" style={{ fontSize: 12, color: 'var(--tarjama-color-text-muted)', textDecoration: 'none' }}>← Retour</Link>
+        <h1 style={{ fontSize: 24, fontFamily: 'var(--font-display)', color: 'var(--tarjama-color-text)', margin: '16px 0 24px' }}>
           Mentions légales & Politique de confidentialité
         </h1>
 
@@ -35,7 +35,7 @@ export default function MentionsLegales() {
 
         {section('Propriété intellectuelle', 'Le texte coranique est dans le domaine public. Les traductions de référence sont générées par intelligence artificielle. Le code source de l\'application est la propriété de l\'éditeur.')}
 
-        <div style={{ fontSize: 11, color: G.textMuted, marginTop: 32, borderTop: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)', paddingTop: 16 }}>
+        <div style={{ fontSize: 11, color: 'var(--tarjama-color-text-muted)', marginTop: 32, borderTop: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)', paddingTop: 16 }}>
           Dernière mise à jour : mai 2026
         </div>
       </div>

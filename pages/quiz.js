@@ -137,11 +137,11 @@ export default function Quiz() {
   }
 
   const pct = score.total > 0 ? Math.round(score.ok / score.total * 100) : 0
-  const pctColor = pct >= 80 ? G.green : pct >= 50 ? G.orange : G.red
+  const pctColor = pct >= 80 ? 'var(--tarjama-color-success)' : pct >= 50 ? 'var(--tarjama-color-warning)' : 'var(--tarjama-color-error)'
 
   const typeColor = {
-    nom: G.blue, verbe: G.purple, adjectif: G.orange,
-    particule: G.green, préposition: G.gold, expression: G.goldLight
+    nom: 'var(--tarjama-color-info)', verbe: 'var(--tarjama-color-purple-rgb, 155, 127, 212)', adjectif: 'var(--tarjama-color-warning)',
+    particule: 'var(--tarjama-color-success)', préposition: 'var(--tarjama-color-primary)', expression: 'var(--tarjama-color-primary-light)'
   }
 
   // ── LOADING ──────────────────────────────────────────────────────────────
@@ -282,8 +282,8 @@ export default function Quiz() {
           <div
             className={s.typeBadge}
             style={{
-              color: typeColor[question.type] || G.textMuted,
-              background: `${typeColor[question.type] || G.textMuted}15`,
+              color: typeColor[question.type] || 'var(--tarjama-color-text-muted)',
+              background: `${typeColor[question.type] || 'var(--tarjama-color-text-muted)'}15`,
             }}
           >
             {question.type}

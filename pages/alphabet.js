@@ -35,7 +35,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'اللَّهُ', translit:'Allāh', fr:'Allah', verset:'S.1:1' },
     harakat:['اَ','اِ','اُ'],
-    couleur:G.gold,
+    couleur:'var(--tarjama-color-primary)',
     audio:'أَلِفْ'
   },
   {
@@ -48,7 +48,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'بِسْمِ اللَّهِ', translit:'Bismi llāh', fr:'Au nom d\'Allah', verset:'S.1:1' },
     harakat:['بَ','بِ','بُ','بْ'],
-    couleur:G.blue,
+    couleur:'var(--tarjama-color-info)',
     audio:'بَاءْ'
   },
   {
@@ -61,7 +61,7 @@ const LETTERS = [
     solaire:true,
     exemple:{ ar:'التَّوَّابُ', translit:'at-Tawwāb', fr:'Le Grand Pardonneur', verset:'S.2:37' },
     harakat:['تَ','تِ','تُ','تْ'],
-    couleur:G.blue,
+    couleur:'var(--tarjama-color-info)',
     audio:'تَاءْ'
   },
   {
@@ -87,7 +87,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'جَنَّةٌ', translit:'Janna', fr:'Le Paradis', verset:'S.2:25' },
     harakat:['جَ','جِ','جُ','جْ'],
-    couleur:G.green,
+    couleur:'var(--tarjama-color-success)',
     audio:'جِيمْ'
   },
   {
@@ -100,7 +100,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'الرَّحْمَنُ', translit:'ar-Raḥmān', fr:'Le Tout Miséricordieux', verset:'S.1:1' },
     harakat:['حَ','حِ','حُ','حْ'],
-    couleur:G.gold,
+    couleur:'var(--tarjama-color-primary)',
     audio:'حَاءْ'
   },
   {
@@ -113,7 +113,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'خَيْرٌ', translit:'Khayr', fr:'Le bien', verset:'S.2:54' },
     harakat:['خَ','خِ','خُ','خْ'],
-    couleur:G.orange,
+    couleur:'var(--tarjama-color-warning)',
     audio:'خَاءْ'
   },
   {
@@ -126,7 +126,7 @@ const LETTERS = [
     solaire:true,
     exemple:{ ar:'الدِّينُ', translit:'ad-Dīn', fr:'La religion', verset:'S.1:4' },
     harakat:['دَ','دِ','دُ','دْ'],
-    couleur:G.blue,
+    couleur:'var(--tarjama-color-info)',
     audio:'دَالْ'
   },
   {
@@ -139,7 +139,7 @@ const LETTERS = [
     solaire:true,
     exemple:{ ar:'ذِكْرٌ', translit:'Dhikr', fr:'Le rappel d\'Allah', verset:'S.13:28' },
     harakat:['ذَ','ذِ','ذُ','ذْ'],
-    couleur:G.purple,
+    couleur:'var(--tarjama-color-purple-rgb, 155, 127, 212)',
     audio:'ذَالْ'
   },
   {
@@ -152,7 +152,7 @@ const LETTERS = [
     solaire:true,
     exemple:{ ar:'الرَّحِيمُ', translit:'ar-Raḥīm', fr:'Le Très Miséricordieux', verset:'S.1:1' },
     harakat:['رَ','رِ','رُ','رْ'],
-    couleur:G.gold,
+    couleur:'var(--tarjama-color-primary)',
     audio:'رَاءْ'
   },
   {
@@ -165,7 +165,7 @@ const LETTERS = [
     solaire:true,
     exemple:{ ar:'زَكَاةٌ', translit:'Zakāt', fr:'L\'aumône purificatrice', verset:'S.2:43' },
     harakat:['زَ','زِ','زُ','زْ'],
-    couleur:G.green,
+    couleur:'var(--tarjama-color-success)',
     audio:'زَايْ'
   },
   {
@@ -178,7 +178,7 @@ const LETTERS = [
     solaire:true,
     exemple:{ ar:'السَّلَامُ', translit:'as-Salām', fr:'La Paix', verset:'S.59:23' },
     harakat:['سَ','سِ','سُ','سْ'],
-    couleur:G.blue,
+    couleur:'var(--tarjama-color-info)',
     audio:'سِينْ'
   },
   {
@@ -191,7 +191,7 @@ const LETTERS = [
     solaire:true,
     exemple:{ ar:'الشَّمْسُ', translit:'ash-Shams', fr:'Le Soleil', verset:'S.91:1' },
     harakat:['شَ','شِ','شُ','شْ'],
-    couleur:G.purple,
+    couleur:'var(--tarjama-color-purple-rgb, 155, 127, 212)',
     audio:'شِينْ'
   },
   {
@@ -204,7 +204,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'الصَّلَاةُ', translit:'aṣ-Ṣalāh', fr:'La Prière', verset:'S.2:43' },
     harakat:['صَ','صِ','صُ','صْ'],
-    couleur:G.orange,
+    couleur:'var(--tarjama-color-warning)',
     audio:'صَادْ'
   },
   {
@@ -217,7 +217,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'الأَرْضُ', translit:'al-Arḍ', fr:'La Terre', verset:'S.2:22' },
     harakat:['ضَ','ضِ','ضُ','ضْ'],
-    couleur:G.red,
+    couleur:'var(--tarjama-color-error)',
     audio:'ضَادْ'
   },
   {
@@ -230,7 +230,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'الطَّرِيقُ', translit:'aṭ-Ṭarīq', fr:'La voie', verset:'S.4:68' },
     harakat:['طَ','طِ','طُ','طْ'],
-    couleur:G.orange,
+    couleur:'var(--tarjama-color-warning)',
     audio:'طَاءْ'
   },
   {
@@ -243,7 +243,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'الظَّالِمُونَ', translit:'aẓ-Ẓālimūn', fr:'Les injustes', verset:'S.2:254' },
     harakat:['ظَ','ظِ','ظُ','ظْ'],
-    couleur:G.red,
+    couleur:'var(--tarjama-color-error)',
     audio:'ظَاءْ'
   },
   {
@@ -256,7 +256,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'الْعَلِيمُ', translit:'al-ʿAlīm', fr:'L\'Omniscient', verset:'S.2:29' },
     harakat:['عَ','عِ','عُ','عْ'],
-    couleur:G.gold,
+    couleur:'var(--tarjama-color-primary)',
     audio:'عَيْنْ'
   },
   {
@@ -269,7 +269,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'الْغَفُورُ', translit:'al-Ghafūr', fr:'Le Grand Pardonneur', verset:'S.2:173' },
     harakat:['غَ','غِ','غُ','غْ'],
-    couleur:G.purple,
+    couleur:'var(--tarjama-color-purple-rgb, 155, 127, 212)',
     audio:'غَيْنْ'
   },
   {
@@ -282,7 +282,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'الْفَاتِحَةُ', translit:'al-Fātiḥa', fr:'L\'Ouverture', verset:'Sourate 1' },
     harakat:['فَ','فِ','فُ','فْ'],
-    couleur:G.blue,
+    couleur:'var(--tarjama-color-info)',
     audio:'فَاءْ'
   },
   {
@@ -295,7 +295,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'الْقُرْآنُ', translit:'al-Qurʾān', fr:'Le Coran', verset:'S.2:185' },
     harakat:['قَ','قِ','قُ','قْ'],
-    couleur:G.gold,
+    couleur:'var(--tarjama-color-primary)',
     audio:'قَافْ'
   },
   {
@@ -308,7 +308,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'الْكَرِيمُ', translit:'al-Karīm', fr:'Le Généreux', verset:'S.27:40' },
     harakat:['كَ','كِ','كُ','كْ'],
-    couleur:G.green,
+    couleur:'var(--tarjama-color-success)',
     audio:'كَافْ'
   },
   {
@@ -321,7 +321,7 @@ const LETTERS = [
     solaire:true,
     exemple:{ ar:'اللَّهُ', translit:'Allāh', fr:'Allah', verset:'S.1:1' },
     harakat:['لَ','لِ','لُ','لْ'],
-    couleur:G.gold,
+    couleur:'var(--tarjama-color-primary)',
     audio:'لَامْ'
   },
   {
@@ -334,7 +334,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'الرَّحِيمُ', translit:'ar-Raḥīm', fr:'Le Miséricordieux', verset:'S.1:1' },
     harakat:['مَ','مِ','مُ','مْ'],
-    couleur:G.blue,
+    couleur:'var(--tarjama-color-info)',
     audio:'مِيمْ'
   },
   {
@@ -347,7 +347,7 @@ const LETTERS = [
     solaire:true,
     exemple:{ ar:'النُّورُ', translit:'an-Nūr', fr:'La Lumière', verset:'S.24:35' },
     harakat:['نَ','نِ','نُ','نْ'],
-    couleur:G.purple,
+    couleur:'var(--tarjama-color-purple-rgb, 155, 127, 212)',
     audio:'نُونْ'
   },
   {
@@ -360,7 +360,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'اللَّهُ', translit:'Allāh', fr:'Le H final du nom divin', verset:'S.1:1' },
     harakat:['هَ','هِ','هُ','هْ'],
-    couleur:G.gold,
+    couleur:'var(--tarjama-color-primary)',
     audio:'هَاءْ'
   },
   {
@@ -373,7 +373,7 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'وَاللَّهُ', translit:'wa-llāh', fr:'Et Allah / Par Allah', verset:'S.3:62' },
     harakat:['وَ','وِ','وُ','وْ'],
-    couleur:G.green,
+    couleur:'var(--tarjama-color-success)',
     audio:'وَاوْ'
   },
   {
@@ -386,21 +386,21 @@ const LETTERS = [
     solaire:false,
     exemple:{ ar:'يَا أَيُّهَا النَّاسُ', translit:'Yā ayyuhā n-nās', fr:'Ô vous les hommes !', verset:'S.2:21' },
     harakat:['يَ','يِ','يُ','يْ'],
-    couleur:G.blue,
+    couleur:'var(--tarjama-color-info)',
     audio:'يَاءْ'
   },
 ]
 
 const HARAKAT = [
-  { sym:'َ', nom:'Fatḥa', translit:'a', son:'Voyelle courte A', exemple:'كَتَبَ', ex_fr:'kataba', couleur:G.gold },
-  { sym:'ِ', nom:'Kasra', translit:'i', son:'Voyelle courte I', exemple:'كِتَابٌ', ex_fr:'kitāb', couleur:G.blue },
-  { sym:'ُ', nom:'Ḍamma', translit:'u', son:'Voyelle courte U', exemple:'كُتُبٌ', ex_fr:'kutub', couleur:G.green },
-  { sym:'ً', nom:'Tanwīn Fatḥ', translit:'an', son:'Double A final (indéfini)', exemple:'كِتَابًا', ex_fr:'kitāban', couleur:G.orange },
-  { sym:'ٌ', nom:'Tanwīn Ḍamm', translit:'un', son:'Double U final (indéfini)', exemple:'كِتَابٌ', ex_fr:'kitābun', couleur:G.orange },
-  { sym:'ٍ', nom:'Tanwīn Kasr', translit:'in', son:'Double I final (indéfini)', exemple:'كِتَابٍ', ex_fr:'kitābin', couleur:G.orange },
-  { sym:'ْ', nom:'Sukūn', translit:'—', son:'Consonne sans voyelle (arrêt)', exemple:'مَلَكْ', ex_fr:'malak', couleur:G.textDim },
-  { sym:'ّ', nom:'Shadda', translit:'×2', son:'Consonne doublée (gémination)', exemple:'اللَّهُ', ex_fr:'allāh', couleur:G.red },
-  { sym:'ٰ', nom:'Alif Khanjarī', translit:'ā', son:'Alif diacritique (A long)', exemple:'الرَّحْمَنُ', ex_fr:'raḥmān', couleur:G.purple },
+  { sym:'َ', nom:'Fatḥa', translit:'a', son:'Voyelle courte A', exemple:'كَتَبَ', ex_fr:'kataba', couleur:'var(--tarjama-color-primary)' },
+  { sym:'ِ', nom:'Kasra', translit:'i', son:'Voyelle courte I', exemple:'كِتَابٌ', ex_fr:'kitāb', couleur:'var(--tarjama-color-info)' },
+  { sym:'ُ', nom:'Ḍamma', translit:'u', son:'Voyelle courte U', exemple:'كُتُبٌ', ex_fr:'kutub', couleur:'var(--tarjama-color-success)' },
+  { sym:'ً', nom:'Tanwīn Fatḥ', translit:'an', son:'Double A final (indéfini)', exemple:'كِتَابًا', ex_fr:'kitāban', couleur:'var(--tarjama-color-warning)' },
+  { sym:'ٌ', nom:'Tanwīn Ḍamm', translit:'un', son:'Double U final (indéfini)', exemple:'كِتَابٌ', ex_fr:'kitābun', couleur:'var(--tarjama-color-warning)' },
+  { sym:'ٍ', nom:'Tanwīn Kasr', translit:'in', son:'Double I final (indéfini)', exemple:'كِتَابٍ', ex_fr:'kitābin', couleur:'var(--tarjama-color-warning)' },
+  { sym:'ْ', nom:'Sukūn', translit:'—', son:'Consonne sans voyelle (arrêt)', exemple:'مَلَكْ', ex_fr:'malak', couleur:'var(--tarjama-color-text-secondary)' },
+  { sym:'ّ', nom:'Shadda', translit:'×2', son:'Consonne doublée (gémination)', exemple:'اللَّهُ', ex_fr:'allāh', couleur:'var(--tarjama-color-error)' },
+  { sym:'ٰ', nom:'Alif Khanjarī', translit:'ā', son:'Alif diacritique (A long)', exemple:'الرَّحْمَنُ', ex_fr:'raḥmān', couleur:'var(--tarjama-color-purple-rgb, 155, 127, 212)' },
 ]
 
 function shuffle(arr) {
@@ -597,7 +597,7 @@ export default function Alphabet() {
 
               {/* Mnémo */}
               <div className={s.infoSectionMnemo}>
-                <div className={s.infoLabel} style={{ color: G.gold }}>Memorisation</div>
+                <div className={s.infoLabel} style={{ color: 'var(--tarjama-color-primary)' }}>Memorisation</div>
                 <div className={s.infoTextSmall}>{letter.mnemo}</div>
               </div>
 
@@ -704,8 +704,8 @@ export default function Alphabet() {
             {/* Lettres solaires / lunaires */}
             <div className={s.solarLunar}>
               {[
-                {label:'Lettres lunaires',sub:'ال se prononce "al-"',color:G.gold,letters:LETTERS.filter(l=>!l.solaire)},
-                {label:'Lettres solaires',sub:'ال s\'assimile a la lettre',color:G.red,letters:LETTERS.filter(l=>l.solaire)},
+                {label:'Lettres lunaires',sub:'ال se prononce "al-"',color:'var(--tarjama-color-primary)',letters:LETTERS.filter(l=>!l.solaire)},
+                {label:'Lettres solaires',sub:'ال s\'assimile a la lettre',color:'var(--tarjama-color-error)',letters:LETTERS.filter(l=>l.solaire)},
               ].map(g => (
                 <div key={g.label} className={s.solarLunarCard}>
                   <div style={{ position:'absolute', top:0, left:0, right:0, height:2, background:g.color }} />
@@ -756,9 +756,9 @@ export default function Alphabet() {
               <div className={s.longVowelsTitle}>VOYELLES LONGUES</div>
               <div className={s.longVowelsGrid}>
                 {[
-                  {ar:'ا',name:'Alif',son:'a — A long',exemple:'كِتَابٌ',ex_fr:'kitab',couleur:G.gold},
-                  {ar:'و',name:'Waw',son:'u — U long',exemple:'رَسُولٌ',ex_fr:'rasul',couleur:G.green},
-                  {ar:'ي',name:'Ya',son:'i — I long',exemple:'بِسْمِ',ex_fr:'bismi',couleur:G.blue},
+                  {ar:'ا',name:'Alif',son:'a — A long',exemple:'كِتَابٌ',ex_fr:'kitab',couleur:'var(--tarjama-color-primary)'},
+                  {ar:'و',name:'Waw',son:'u — U long',exemple:'رَسُولٌ',ex_fr:'rasul',couleur:'var(--tarjama-color-success)'},
+                  {ar:'ي',name:'Ya',son:'i — I long',exemple:'بِسْمِ',ex_fr:'bismi',couleur:'var(--tarjama-color-info)'},
                 ].map((v,i) => (
                   <button key={i} onClick={()=>speak(v.exemple)} className={s.vowelCard} style={{ borderColor: `${v.couleur}40` }}>
                     <div className={s.vowelAr} style={{ color: v.couleur }}>{v.ar}</div>
@@ -845,8 +845,8 @@ export default function Alphabet() {
                     if (answered && isSel && !isOk) choiceClass += ' ' + s.quizChoiceWrong
 
                     const textColor = answered
-                      ? (isOk ? G.green : (isSel ? G.red : G.text))
-                      : G.text
+                      ? (isOk ? 'var(--tarjama-color-success)' : (isSel ? 'var(--tarjama-color-error)' : 'var(--tarjama-color-text)'))
+                      : 'var(--tarjama-color-text)'
 
                     // Badge classes
                     let badgeClass = s.quizChoiceBadge

@@ -89,17 +89,17 @@ export default function GenDico() {
   const pct = progress.total ? Math.round(progress.done / progress.total * 100) : 0
 
   if (!authed) return (
-    <div style={{minHeight:'100vh',background:G.dark,display:'flex',alignItems:'center',justifyContent:'center'}}>
-      <div style={{background:G.dark3,border:`1px solid rgba(var(--tarjama-color-primary-rgb),.2)`,borderRadius:6,padding:'32px 28px',width:340}}>
-        <div style={{fontFamily:'Cinzel,serif',fontSize:18,color:G.gold,marginBottom:4}}>TARJAMA — GÉNÉRATION</div>
-        <div style={{fontSize:11,color:G.textMuted,letterSpacing:2,marginBottom:20}}>ACCÈS RESTREINT</div>
+    <div style={{minHeight:'100vh',background:'var(--tarjama-color-background)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+      <div style={{background:'var(--tarjama-color-surface)',border:`1px solid rgba(var(--tarjama-color-primary-rgb),.2)`,borderRadius:6,padding:'32px 28px',width:340}}>
+        <div style={{fontFamily:'Cinzel,serif',fontSize:18,color:'var(--tarjama-color-primary)',marginBottom:4}}>TARJAMA — GÉNÉRATION</div>
+        <div style={{fontSize:11,color:'var(--tarjama-color-text-muted)',letterSpacing:2,marginBottom:20}}>ACCÈS RESTREINT</div>
         <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setPwErr(false)}}
           onKeyDown={e=>{if(e.key==='Enter'){if(pw===PW)setAuthed(true);else setPwErr(true)}}}
           placeholder="Mot de passe..." autoFocus
-          style={{width:'100%',background:G.dark4,border:`1px solid ${pwErr?G.red:'rgba(var(--tarjama-color-primary-rgb),.2)'}`,color:G.text,padding:'10px 12px',borderRadius:3,fontFamily:'Lato,sans-serif',fontSize:14,outline:'none',marginBottom:8}}/>
-        {pwErr && <div style={{fontSize:12,color:G.red,marginBottom:8}}>Incorrect</div>}
+          style={{width:'100%',background:'var(--tarjama-color-surface-elevated)',border:`1px solid ${pwErr?'var(--tarjama-color-error)':'rgba(var(--tarjama-color-primary-rgb),.2)'}`,color:'var(--tarjama-color-text)',padding:'10px 12px',borderRadius:3,fontFamily:'Lato,sans-serif',fontSize:14,outline:'none',marginBottom:8}}/>
+        {pwErr && <div style={{fontSize:12,color:'var(--tarjama-color-error)',marginBottom:8}}>Incorrect</div>}
         <button onClick={()=>{if(pw===PW)setAuthed(true);else setPwErr(true)}}
-          style={{width:'100%',background:G.gold,color:G.dark,border:'none',borderRadius:3,padding:'10px',fontFamily:'Lato,sans-serif',fontWeight:700,fontSize:12,letterSpacing:2,cursor:'pointer'}}>
+          style={{width:'100%',background:'var(--tarjama-color-primary)',color:'var(--tarjama-color-background)',border:'none',borderRadius:3,padding:'10px',fontFamily:'Lato,sans-serif',fontWeight:700,fontSize:12,letterSpacing:2,cursor:'pointer'}}>
           ACCÉDER
         </button>
       </div>
@@ -109,18 +109,18 @@ export default function GenDico() {
   return (
     <>
       <Head><title>Génération Dictionnaire — Tarjama</title></Head>
-      <div style={{maxWidth:760,margin:'0 auto',padding:24,minHeight:'100vh',background:G.dark,color:G.text,fontFamily:'Lato,sans-serif'}}>
-        <div style={{fontFamily:'Cinzel,serif',fontSize:20,color:G.gold,marginBottom:4}}>GÉNÉRATION DICTIONNAIRE</div>
-        <div style={{fontSize:11,color:G.textMuted,letterSpacing:2,marginBottom:24}}>
+      <div style={{maxWidth:760,margin:'0 auto',padding:24,minHeight:'100vh',background:'var(--tarjama-color-background)',color:'var(--tarjama-color-text)',fontFamily:'Lato,sans-serif'}}>
+        <div style={{fontFamily:'Cinzel,serif',fontSize:20,color:'var(--tarjama-color-primary)',marginBottom:4}}>GÉNÉRATION DICTIONNAIRE</div>
+        <div style={{fontSize:11,color:'var(--tarjama-color-text-muted)',letterSpacing:2,marginBottom:24}}>
           {pending.length} LEMMES CORANIQUES · {existingVocab.length} MOTS ACTUELS
         </div>
 
         {/* Stats */}
         <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:12,marginBottom:20}}>
-          {[['Mots actuels', existingVocab.length, G.gold],['Lots traités', `${progress.done}/${progress.total}`, '#5B9BD5'],['Nouveaux mots', newWords.length, G.green]].map(([l,v,c])=>(
-            <div key={l} style={{background:G.dark3,border:`1px solid rgba(var(--tarjama-color-primary-rgb),.1)`,borderRadius:4,padding:'12px 16px'}}>
+          {[['Mots actuels', existingVocab.length, 'var(--tarjama-color-primary)'],['Lots traités', `${progress.done}/${progress.total}`, '#5B9BD5'],['Nouveaux mots', newWords.length, 'var(--tarjama-color-success)']].map(([l,v,c])=>(
+            <div key={l} style={{background:'var(--tarjama-color-surface)',border:`1px solid rgba(var(--tarjama-color-primary-rgb),.1)`,borderRadius:4,padding:'12px 16px'}}>
               <div style={{fontFamily:'Cinzel,serif',fontSize:26,color:c}}>{v}</div>
-              <div style={{fontSize:10,color:G.textMuted,textTransform:'uppercase',letterSpacing:2,marginTop:2}}>{l}</div>
+              <div style={{fontSize:10,color:'var(--tarjama-color-text-muted)',textTransform:'uppercase',letterSpacing:2,marginTop:2}}>{l}</div>
             </div>
           ))}
         </div>
@@ -128,8 +128,8 @@ export default function GenDico() {
         {/* Barre de progression */}
         {progress.total > 0 && (
           <div style={{marginBottom:16}}>
-            <div style={{display:'flex',justifyContent:'space-between',marginBottom:4,fontSize:11,color:G.textMuted}}>
-              <span>Progression</span><span style={{color:G.gold}}>{pct}%</span>
+            <div style={{display:'flex',justifyContent:'space-between',marginBottom:4,fontSize:11,color:'var(--tarjama-color-text-muted)'}}>
+              <span>Progression</span><span style={{color:'var(--tarjama-color-primary)'}}>{pct}%</span>
             </div>
             <div style={{height:4,background:'rgba(var(--tarjama-color-primary-rgb),.1)',borderRadius:2}}>
               <div style={{height:'100%',width:`${pct}%`,background:'linear-gradient(90deg,#8B6914,#C9A84C)',borderRadius:2,transition:'width .3s'}}/>
@@ -140,33 +140,33 @@ export default function GenDico() {
         {/* Boutons */}
         <div style={{display:'flex',gap:10,marginBottom:20,flexWrap:'wrap'}}>
           {status==='idle' && <button onClick={startGen}
-            style={{background:G.green,color:G.dark,border:'none',borderRadius:3,padding:'10px 20px',fontFamily:'Lato,sans-serif',fontWeight:700,fontSize:11,letterSpacing:2,textTransform:'uppercase',cursor:'pointer'}}>
+            style={{background:'var(--tarjama-color-success)',color:'var(--tarjama-color-background)',border:'none',borderRadius:3,padding:'10px 20px',fontFamily:'Lato,sans-serif',fontWeight:700,fontSize:11,letterSpacing:2,textTransform:'uppercase',cursor:'pointer'}}>
             LANCER ({pending.length} mots — ~{Math.ceil(pending.length/40*0.4/60)} min)
           </button>}
           {status==='running' && <button onClick={()=>{runRef.current=false}}
-            style={{background:G.orange,color:G.dark,border:'none',borderRadius:3,padding:'10px 20px',fontFamily:'Lato,sans-serif',fontWeight:700,fontSize:11,letterSpacing:2,cursor:'pointer'}}>
+            style={{background:'var(--tarjama-color-warning)',color:'var(--tarjama-color-background)',border:'none',borderRadius:3,padding:'10px 20px',fontFamily:'Lato,sans-serif',fontWeight:700,fontSize:11,letterSpacing:2,cursor:'pointer'}}>
             PAUSE
           </button>}
           {status==='paused' && <button onClick={startGen}
-            style={{background:G.green,color:G.dark,border:'none',borderRadius:3,padding:'10px 20px',fontFamily:'Lato,sans-serif',fontWeight:700,fontSize:11,letterSpacing:2,cursor:'pointer'}}>
+            style={{background:'var(--tarjama-color-success)',color:'var(--tarjama-color-background)',border:'none',borderRadius:3,padding:'10px 20px',fontFamily:'Lato,sans-serif',fontWeight:700,fontSize:11,letterSpacing:2,cursor:'pointer'}}>
             REPRENDRE
           </button>}
           {(status==='done' || newWords.length>0) && <button onClick={()=>download([...existingVocab,...newWords])}
-            style={{background:G.gold,color:G.dark,border:'none',borderRadius:3,padding:'10px 20px',fontFamily:'Lato,sans-serif',fontWeight:700,fontSize:11,letterSpacing:2,cursor:'pointer'}}>
+            style={{background:'var(--tarjama-color-primary)',color:'var(--tarjama-color-background)',border:'none',borderRadius:3,padding:'10px 20px',fontFamily:'Lato,sans-serif',fontWeight:700,fontSize:11,letterSpacing:2,cursor:'pointer'}}>
             TELECHARGER JSON ({existingVocab.length+newWords.length} mots)
           </button>}
         </div>
 
-        {status==='done' && <div style={{padding:'10px 14px',background:'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.08)',border:`1px solid rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.2)`,borderRadius:4,fontSize:12,color:G.green,marginBottom:16}}>
-          Terminé ! Remplace <code style={{color:G.gold}}>public/quran_vocab.json</code> par le fichier téléchargé puis redéploie sur Vercel.
+        {status==='done' && <div style={{padding:'10px 14px',background:'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.08)',border:`1px solid rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.2)`,borderRadius:4,fontSize:12,color:'var(--tarjama-color-success)',marginBottom:16}}>
+          Terminé ! Remplace <code style={{color:'var(--tarjama-color-primary)'}}>public/quran_vocab.json</code> par le fichier téléchargé puis redéploie sur Vercel.
         </div>}
 
         {/* Log */}
-        <div ref={logRef} style={{background:G.dark4,border:`1px solid rgba(var(--tarjama-color-primary-rgb),.08)`,borderRadius:4,padding:14,height:340,overflowY:'auto',fontFamily:'monospace',fontSize:11}}>
-          {log.length===0 && <div style={{color:G.textMuted}}>En attente...</div>}
+        <div ref={logRef} style={{background:'var(--tarjama-color-surface-elevated)',border:`1px solid rgba(var(--tarjama-color-primary-rgb),.08)`,borderRadius:4,padding:14,height:340,overflowY:'auto',fontFamily:'monospace',fontSize:11}}>
+          {log.length===0 && <div style={{color:'var(--tarjama-color-text-muted)'}}>En attente...</div>}
           {log.map((e,i)=>(
-            <div key={i} style={{marginBottom:2,color:e.t==='error'?G.red:e.t==='success'?G.green:G.textDim}}>
-              <span style={{color:G.textMuted,marginRight:6}}>{e.time}</span>{e.msg}
+            <div key={i} style={{marginBottom:2,color:e.t==='error'?'var(--tarjama-color-error)':e.t==='success'?'var(--tarjama-color-success)':'var(--tarjama-color-text-secondary)'}}>
+              <span style={{color:'var(--tarjama-color-text-muted)',marginRight:6}}>{e.time}</span>{e.msg}
             </div>
           ))}
         </div>

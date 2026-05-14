@@ -141,10 +141,10 @@ export default function Dictionnaire({ user, profile }) {
         {/* STATS */}
         <div className={s.statsGrid}>
           {[
-            ['Total', G.gold, vocab.length],
-            ['Noms', G.blue, vocab.filter(w => w.type === 'nom').length],
-            ['Verbes', G.green, vocab.filter(w => w.type === 'verbe').length],
-            ['Très fréquents', G.gold, vocab.filter(w => w.freq_label === 'très fréquent').length],
+            ['Total', 'var(--tarjama-color-primary)', vocab.length],
+            ['Noms', 'var(--tarjama-color-info)', vocab.filter(w => w.type === 'nom').length],
+            ['Verbes', 'var(--tarjama-color-success)', vocab.filter(w => w.type === 'verbe').length],
+            ['Très fréquents', 'var(--tarjama-color-primary)', vocab.filter(w => w.freq_label === 'très fréquent').length],
           ].map(([lbl, clr, num]) => (
             <div key={lbl} className={s.statCard}>
               <span className={s.statNumber} style={{ color: clr }}>{num}</span>
@@ -170,7 +170,7 @@ export default function Dictionnaire({ user, profile }) {
           <div className={s.wordGrid}>
             {filtered.slice(0, visibleCount).map((w, i) => {
               const tc = TYPE_COLORS[w.type] || TYPE_COLORS.particule
-              const fc = FREQ_COLORS[w.freq_label] || G.textMuted
+              const fc = FREQ_COLORS[w.freq_label] || 'var(--tarjama-color-text-muted)'
               const sens = Array.isArray(w.sens) ? w.sens : (typeof w.sens === 'string' ? [w.sens] : [])
               return (
                 <div
@@ -268,7 +268,7 @@ export default function Dictionnaire({ user, profile }) {
               <div className={s.detailStats}>
                 {selected.freq > 0 && (
                   <div className={s.detailStatCard}>
-                    <div className={s.detailStatNum} style={{ color: G.gold }}>{selected.freq}</div>
+                    <div className={s.detailStatNum} style={{ color: 'var(--tarjama-color-primary)' }}>{selected.freq}</div>
                     <div className={s.detailStatLabel}>Occurrences dans le Coran</div>
                   </div>
                 )}
@@ -282,7 +282,7 @@ export default function Dictionnaire({ user, profile }) {
                 )}
                 {selected.freq_label && (
                   <div className={s.detailStatCard}>
-                    <div className={s.detailStatFreq} style={{ color: FREQ_COLORS[selected.freq_label] || G.textMuted }}>
+                    <div className={s.detailStatFreq} style={{ color: FREQ_COLORS[selected.freq_label] || 'var(--tarjama-color-text-muted)' }}>
                       {selected.freq_label}
                     </div>
                     <div className={s.detailStatLabel}>Fréquence</div>
