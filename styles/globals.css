@@ -3,6 +3,11 @@
    Direction : "Riyad" — Le Jardin Numérique
    ══════════════════════════════════════════════════════════════ */
 
+/* ── Tailwind ──────────────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ── Tokens (source unique) ────────────────────────────────── */
 @import './tokens.css';
 
