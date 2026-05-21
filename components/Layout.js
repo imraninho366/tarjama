@@ -3,9 +3,8 @@ import { useRouter } from 'next/router'
 import Topbar from './Topbar'
 import Sidebar from './Sidebar'
 import BottomNav from './BottomNav'
-import styles from './Layout.module.css'
 
-// Particules dorées flottantes
+/* ═══ Gold particles ═══ */
 function GoldParticles() {
   const canvasRef = useRef(null)
   const particlesRef = useRef([])
@@ -58,7 +57,6 @@ function GoldParticles() {
       for (const p of particlesRef.current) {
         p.x += p.vx + Math.sin(t + p.phase) * 0.05
         p.y += p.vy + Math.cos(t * 0.7 + p.phase) * 0.04
-
         if (p.x < -10) p.x = window.innerWidth + 10
         if (p.x > window.innerWidth + 10) p.x = -10
         if (p.y < -10) p.y = window.innerHeight + 10
@@ -83,24 +81,28 @@ function GoldParticles() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className={styles.particles} aria-hidden="true" />
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 w-full h-full -z-[1] pointer-events-none max-sm:hidden motion-reduce:hidden"
+      aria-hidden="true"
+    />
+  )
 }
 
 export default function Layout({ children, user, profile, onLogout, hideNav, theme, onToggleTheme }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const router = useRouter()
 
-  // Fermer sidebar sur navigation
   useEffect(() => {
     const handleRoute = () => setSidebarOpen(false)
     router.events.on('routeChangeStart', handleRoute)
     return () => router.events.off('routeChangeStart', handleRoute)
   }, [router])
 
-  // Pas de nav pour l'écran d'auth
   if (hideNav) {
     return (
-      <div className={styles.layout}>
+      <div className="min-h-screen flex flex-col">
         <GoldParticles />
         {children}
       </div>
@@ -108,7 +110,7 @@ export default function Layout({ children, user, profile, onLogout, hideNav, the
   }
 
   return (
-    <div className={styles.layout}>
+    <div className="min-h-screen flex flex-col">
       <GoldParticles />
 
       <Topbar
@@ -124,8 +126,14 @@ export default function Layout({ children, user, profile, onLogout, hideNav, the
         onLogout={onLogout}
       />
 
-      <main className={styles.main}>
-        <div className={styles.pageContent} key={router.pathname}>
+      <main
+        className="flex-1 relative p-6 lg:ms-[var(--tarjama-sidebar-width)] max-sm:p-4"
+        style={{
+          minHeight: 'calc(100vh - var(--tarjama-topbar-height))',
+          paddingBottom: 'calc(var(--tarjama-bottomnav-height, 0px) + env(safe-area-inset-bottom, 0px) + 16px)',
+        }}
+      >
+        <div className="animate-[pageEnter_200ms_ease-out_both]" key={router.pathname}>
           {children}
         </div>
       </main>
