@@ -1,11 +1,11 @@
 {
   "name": "Tarjama — Traduction coranique",
   "short_name": "Tarjama",
-  "description": "Apprends le Coran en traduisant verset par verset",
+  "description": "Apprends le Coran en traduisant verset par verset avec correction IA. Gratuit.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#09090E",
-  "theme_color": "#C9A84C",
+  "background_color": "#F5F1E8",
+  "theme_color": "#B8932A",
   "orientation": "portrait",
   "icons": [
     {

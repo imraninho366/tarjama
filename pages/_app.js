@@ -124,22 +124,40 @@ export default function TarjamaApp({ Component, pageProps, router }) {
   return (
     <div className={fontClasses}>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <meta name="theme-color" content={theme === 'light' ? '#F2EFE8' : '#C9A84C'}/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="theme-color" content={theme === 'light' ? '#F5F1E8' : '#C9A84C'}/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
         <meta name="apple-mobile-web-app-title" content="Tarjama"/>
-        <meta name="description" content="Apprends le Coran en traduisant verset par verset avec correction IA"/>
-        <meta property="og:title" content="Tarjama — Traduction coranique"/>
-        <meta property="og:description" content="Apprends le vocabulaire du Coran en traduisant verset par verset. Quiz, dictionnaire, hadiths et plus."/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:image" content="/api/og"/>
-        <meta property="og:locale" content="fr_FR"/>
-        <meta name="twitter:card" content="summary"/>
-        <meta name="twitter:title" content="Tarjama — Traduction coranique"/>
-        <meta name="twitter:description" content="Apprends le vocabulaire du Coran en traduisant verset par verset avec correction IA."/>
         <link rel="manifest" href="/manifest.json"/>
         <link rel="apple-touch-icon" href="/icon.svg"/>
+        <meta name="description" content="Apprends le Coran en traduisant verset par verset avec correction IA. Quiz vocabulaire, dictionnaire arabe, horaires de prière et plus. Gratuit."/>
+        <link rel="canonical" href="https://tarjama.app"/>
+        <meta property="og:site_name" content="Tarjama"/>
+        <meta property="og:title" content="Tarjama — Apprends le Coran en traduisant"/>
+        <meta property="og:description" content="Traduis le Coran verset par verset avec correction IA. 6 300+ mots, 114 sourates, quiz, dictionnaire arabe-français. Gratuit."/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://tarjama.app"/>
+        <meta property="og:image" content="https://tarjama.app/api/og"/>
+        <meta property="og:image:width" content="1200"/>
+        <meta property="og:image:height" content="630"/>
+        <meta property="og:locale" content="fr_FR"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:title" content="Tarjama — Apprends le Coran en traduisant"/>
+        <meta name="twitter:description" content="Traduis le Coran verset par verset avec correction IA. Gratuit."/>
+        <meta name="twitter:image" content="https://tarjama.app/api/og"/>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Tarjama",
+          "url": "https://tarjama.app",
+          "description": "Apprends le Coran en traduisant verset par verset avec correction IA",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Web",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+          "inLanguage": ["fr", "ar"],
+          "author": { "@type": "Person", "name": "Imran" }
+        })}} />
       </Head>
       <Layout
         user={user}
