@@ -324,6 +324,43 @@ img, svg {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Landing Page Kinetic (Field.io light) ────────────────── */
+@keyframes glyphFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes glyphShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+@keyframes cycleVerbs {
+  0%, 16%   { transform: translateY(0); }
+  20%, 36%  { transform: translateY(-36px); }
+  40%, 56%  { transform: translateY(-72px); }
+  60%, 76%  { transform: translateY(-108px); }
+  80%, 96%  { transform: translateY(-144px); }
+  100%      { transform: translateY(-180px); }
+}
+
+@keyframes curveDrift1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33%      { transform: translate(40px, -20px) rotate(2deg); }
+  66%      { transform: translate(-20px, 30px) rotate(-1deg); }
+}
+
+@keyframes curveDrift2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50%      { transform: translate(-30px, -40px) rotate(3deg); }
+}
+
+@keyframes curveDrift3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  40%      { transform: translate(20px, 50px) rotate(-2deg); }
+  70%      { transform: translate(-40px, -10px) rotate(1.5deg); }
+}
+
 /* ── Page Transitions ──────────────────────────────────────── */
 @keyframes pageEnter {
   from {
