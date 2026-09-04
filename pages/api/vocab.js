@@ -48,6 +48,8 @@ Réponds UNIQUEMENT en JSON valide sans markdown :
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.2,
         max_tokens: 1500,
+        reasoning_effort: 'low',
+        reasoning_format: 'hidden',
         response_format: { type: 'json_object' }
       })
     })

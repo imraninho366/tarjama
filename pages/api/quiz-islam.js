@@ -32,6 +32,8 @@ Réponds UNIQUEMENT en JSON valide :
         model: GROQ_MODEL,
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.5,
+        reasoning_effort: 'low',
+        reasoning_format: 'hidden',
         response_format: { type: 'json_object' },
         seed: seed || undefined
       })

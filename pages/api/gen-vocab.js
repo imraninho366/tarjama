@@ -41,6 +41,8 @@ Réponds UNIQUEMENT en JSON valide:
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.1,
         max_tokens: 3000,
+        reasoning_effort: 'low',
+        reasoning_format: 'hidden',
         response_format: { type: 'json_object' }
       })
     })

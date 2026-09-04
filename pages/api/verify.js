@@ -40,6 +40,8 @@ Réponds UNIQUEMENT avec ce JSON :
         model: GROQ_MODEL,
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.2,
+        reasoning_effort: 'low',
+        reasoning_format: 'hidden',
         response_format: { type: 'json_object' }
       })
     })

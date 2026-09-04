@@ -46,7 +46,9 @@ Sois précis, pédagogique et accessible pour un apprenant débutant en arabe.`
         model: GROQ_MODEL,
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.3,
-        max_tokens: 600
+        max_tokens: 600,
+        reasoning_effort: 'low',
+        reasoning_format: 'hidden'
       })
     })
 

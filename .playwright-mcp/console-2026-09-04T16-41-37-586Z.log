@@ -1,0 +1,14 @@
+[     626ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://tarjama2.vercel.app/:0
+[     762ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://tarjama2.vercel.app/favicon.ico:0
+[     877ms] [LOG] Error @ https://tarjama2.vercel.app/.well-known/vercel/security/static/challenge.v2.min.js:0
+[    3011ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://tarjama2.vercel.app/manifest.json:0
+[    3023ms] [ERROR] Manifest fetch from https://tarjama2.vercel.app/manifest.json failed, code 403 @ https://tarjama2.vercel.app/:0
+[    3497ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://tarjama2.vercel.app/manifest.json:0
+[    3506ms] [ERROR] Manifest fetch from https://tarjama2.vercel.app/manifest.json failed, code 403 @ https://tarjama2.vercel.app/:0
+[    3506ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   96382ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://tarjama2.vercel.app/manifest.json:0
+[   96392ms] [ERROR] Manifest fetch from https://tarjama2.vercel.app/manifest.json failed, code 403 @ https://tarjama2.vercel.app/:0
+[   96396ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  109422ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://tarjama2.vercel.app/api/vocab:0
+[  115681ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://tarjama2.vercel.app/api/quiz-islam:0
+[  121058ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://tarjama2.vercel.app/api/smart-verse:0

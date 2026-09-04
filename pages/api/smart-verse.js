@@ -27,7 +27,7 @@ Réponds UNIQUEMENT en JSON :
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
-      body: JSON.stringify({ model: GROQ_MODEL, messages: [{ role: 'user', content: prompt }], temperature: 0.3, response_format: { type: 'json_object' } })
+      body: JSON.stringify({ model: GROQ_MODEL, messages: [{ role: 'user', content: prompt }], temperature: 0.3, response_format: { type: 'json_object' }, reasoning_effort: 'low', reasoning_format: 'hidden' })
     })
     const data = await response.json()
     if (!response.ok) return res.status(500).json({ error: data?.error?.message || 'Erreur IA' })

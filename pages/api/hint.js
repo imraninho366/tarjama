@@ -32,7 +32,8 @@ Utilise les diacritiques : ā, ī, ū, ḥ, ḫ, ẓ, ṭ, ṣ, ḍ, ġ`
         body: JSON.stringify({
           model: GROQ_MODEL,
           messages: [{ role: 'user', content: prompt }],
-          temperature: 0.1, max_tokens: 200
+          temperature: 0.1, max_tokens: 200,
+          reasoning_effort: 'low', reasoning_format: 'hidden'
         })
       })
       const data = await response.json()
@@ -59,7 +60,9 @@ Format : " Mots-clés : [...] | Thème : [...]"`
       body: JSON.stringify({
         model: GROQ_MODEL,
         messages: [{ role: 'user', content: prompt }],
-        temperature: 0.4
+        temperature: 0.4,
+        reasoning_effort: 'low',
+        reasoning_format: 'hidden'
       })
     })
     const data = await response.json()
