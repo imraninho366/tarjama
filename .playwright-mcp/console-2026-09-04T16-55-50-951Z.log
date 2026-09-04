@@ -1,0 +1,9 @@
+[     491ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[     610ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   19302ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://tarjama2.vercel.app/api/mnemo:0
+[   31358ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=password:0
+[  156670ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  156819ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  158386ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://tarjama2.vercel.app/api/mnemo:0
+[  165563ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://tarjama2.vercel.app/api/mnemo:0
+[  172737ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://tarjama2.vercel.app/api/mnemo:0
