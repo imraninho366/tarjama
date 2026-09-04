@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-06-21T16:32:47.324Z",
+  "projectRoot": "/Users/wiran/Downloads/tarjama2",
+  "structure": {
+    "hasPackageJson": true,
+    "hasTsConfig": false,
+    "hasClaudeConfig": true,
+    "hasClaudeFlow": true
+  },
+  "scannedAt": 1782059567324
+}

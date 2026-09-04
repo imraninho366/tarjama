@@ -1,4 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
+import { GROQ_MODEL } from '../../lib/groq'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
@@ -43,7 +44,7 @@ Réponds UNIQUEMENT en JSON valide sans markdown :
         'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
+        model: GROQ_MODEL,
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.2,
         max_tokens: 1500,

@@ -1,4 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
+import { GROQ_MODEL } from '../../lib/groq'
 import { cacheGet, cacheSet } from '../../lib/cache'
 
 export default async function handler(req, res) {
@@ -29,7 +30,7 @@ Utilise les diacritiques : ā, ī, ū, ḥ, ḫ, ẓ, ṭ, ṣ, ḍ, ġ`
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
         body: JSON.stringify({
-          model: 'llama-3.3-70b-versatile',
+          model: GROQ_MODEL,
           messages: [{ role: 'user', content: prompt }],
           temperature: 0.1, max_tokens: 200
         })
@@ -56,13 +57,16 @@ Format : " Mots-clés : [...] | Thème : [...]"`
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
+        model: GROQ_MODEL,
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.4
       })
     })
     const data = await response.json()
-    if (!response.ok) return res.status(500).json({ hint: 'Indice temporairement indisponible.' })
+    if (!response.ok) {
+      console.error('[hint] Groq', response.status, JSON.stringify(data?.error || data))
+      return res.status(500).json({ hint: 'Indice temporairement indisponible.' })
+    }
     const hint = data.choices?.[0]?.message?.content || 'Indice non disponible.'
     cacheSet(cacheKey, hint)
     return res.status(200).json({ hint })

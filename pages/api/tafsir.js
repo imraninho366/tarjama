@@ -1,4 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
+import { GROQ_MODEL } from '../../lib/groq'
 import { cacheGet, cacheSet } from '../../lib/cache'
 
 export default async function handler(req, res) {
@@ -42,7 +43,7 @@ Sois précis, pédagogique et accessible pour un apprenant débutant en arabe.`
         'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
+        model: GROQ_MODEL,
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.3,
         max_tokens: 600

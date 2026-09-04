@@ -1,4 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
+import { GROQ_MODEL } from '../../lib/groq'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
@@ -37,7 +38,7 @@ FORMAT de réponse :
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
+        model: GROQ_MODEL,
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: question }
@@ -47,7 +48,10 @@ FORMAT de réponse :
       })
     })
     const data = await response.json()
-    if (!response.ok) return res.status(500).json({ error: 'Erreur IA' })
+    if (!response.ok) {
+      console.error('[savant] Groq', response.status, JSON.stringify(data?.error || data))
+      return res.status(500).json({ error: data?.error?.message || 'Erreur IA' })
+    }
     const answer = data.choices?.[0]?.message?.content || ''
     return res.status(200).json({ answer })
   } catch (err) {

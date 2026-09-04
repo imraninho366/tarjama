@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-06-21T16:29:43.359Z",
+  "mode": "headless",
+  "workerType": "audit",
+  "model": "haiku",
+  "durationMs": 6587,
+  "executionId": "audit_1782059376772_xidt38",
+  "success": false,
+  "findings": {
+    "parseError": true,
+    "rawOutput": "Failed to authenticate. API Error: 401 Invalid authentication credentials\n"
+  },
+  "rawOutputPreview": "Failed to authenticate. API Error: 401 Invalid authentication credentials\n",
+  "rawOutputLength": 74
+}

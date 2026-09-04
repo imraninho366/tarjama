@@ -1,0 +1,117 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e5]:
+    - img
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: ب
+        - heading "TARJAMA" [level=1] [ref=e10]
+        - paragraph [ref=e11]: ترجمة — Traduction coranique
+        - paragraph [ref=e12]: Apprends le Coran en traduisant verset par verset — gratuit.
+      - generic [ref=e14]:
+        - text: Comprendre · فَهِمَ
+        - text: Traduire · تَرْجَمَ
+        - text: Mémoriser · حَفِظَ
+        - text: Réciter · تَلَا
+        - text: Apprendre · تَعَلَّمَ
+        - text: Comprendre · فَهِمَ
+      - generic [ref=e15]:
+        - generic [ref=e16]: بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+        - generic [ref=e17]: « Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux »
+        - generic [ref=e18]: Sourate Al-Fatiha · verset 1
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - button "Connexion" [ref=e23] [cursor=pointer]
+          - button "Inscription" [ref=e24] [cursor=pointer]
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - generic [ref=e27]: Email ou nom d'utilisateur
+            - textbox "Email ou nom d'utilisateur" [ref=e28]:
+              - /placeholder: Email ou pseudo
+          - generic [ref=e29]:
+            - generic [ref=e30]: Mot de passe
+            - textbox "Mot de passe" [ref=e31]:
+              - /placeholder: ••••••••
+          - button "Se connecter" [ref=e32] [cursor=pointer]
+        - generic [ref=e33]:
+          - button "Mot de passe oublié ?" [ref=e34] [cursor=pointer]
+          - generic [ref=e35]:
+            - text: Pas encore de compte ?
+            - button "Inscris-toi" [ref=e36] [cursor=pointer]
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e39]: 6 300+
+          - generic [ref=e40]: Mots
+        - generic [ref=e41]:
+          - generic [ref=e42]: "114"
+          - generic [ref=e43]: Sourates
+        - generic [ref=e44]:
+          - generic [ref=e45]: 130+
+          - generic [ref=e46]: Du'as
+        - generic [ref=e47]:
+          - generic [ref=e48]: "25"
+          - generic [ref=e49]: Prophètes
+      - generic [ref=e50]:
+        - heading "✦ Fonctionnalités ✦" [level=2] [ref=e51]
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - img "Traduction verset par verset" [ref=e54]: ت
+            - generic [ref=e55]:
+              - generic [ref=e56]: Traduction verset par verset
+              - generic [ref=e57]: Traduis le Coran avec correction IA instantanée
+          - generic [ref=e58]:
+            - img "Quiz vocabulaire" [ref=e59]: ق
+            - generic [ref=e60]:
+              - generic [ref=e61]: Quiz vocabulaire
+              - generic [ref=e62]: 6 300+ mots coraniques avec racines et fréquences
+          - generic [ref=e63]:
+            - img "Horaires de prière & Qibla" [ref=e64]: ۩
+            - generic [ref=e65]:
+              - generic [ref=e66]: Horaires de prière & Qibla
+              - generic [ref=e67]: Prières du jour et boussole vers la Mecque
+          - generic [ref=e68]:
+            - img "Savant IA" [ref=e69]: ع
+            - generic [ref=e70]:
+              - generic [ref=e71]: Savant IA
+              - generic [ref=e72]: Réponses sourcées du Coran et des hadiths
+          - generic [ref=e73]:
+            - img "Dictionnaire complet" [ref=e74]: م
+            - generic [ref=e75]:
+              - generic [ref=e76]: Dictionnaire complet
+              - generic [ref=e77]: Recherche instantanée avec mnémoniques IA
+          - generic [ref=e78]:
+            - img "Alphabet & Calligraphie" [ref=e79]: أ
+            - generic [ref=e80]:
+              - generic [ref=e81]: Alphabet & Calligraphie
+              - generic [ref=e82]: 28 lettres avec prononciation et pratique
+      - generic [ref=e83]:
+        - generic [ref=e84]: إِنَّا أَنزَلْنَاهُ قُرْآنًا عَرَبِيًّا لَّعَلَّكُمْ تَعْقِلُونَ
+        - generic [ref=e85]: « Nous l'avons fait descendre, un Coran en arabe, afin que vous raisonniez. »
+        - generic [ref=e86]: Sourate Yusuf · verset 2
+      - generic [ref=e87]:
+        - generic [ref=e88]: Installe Tarjama sur ton téléphone
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - generic [ref=e91]: "1"
+            - generic [ref=e92]:
+              - text: Appuie sur
+              - strong [ref=e93]: Partager
+              - text: (Safari) ou
+              - strong [ref=e94]: ⋮
+              - text: (Chrome)
+          - generic [ref=e95]:
+            - generic [ref=e96]: "2"
+            - generic [ref=e97]:
+              - text: Choisis
+              - strong [ref=e98]: « Sur l'écran d'accueil »
+          - generic [ref=e99]:
+            - generic [ref=e100]: "3"
+            - generic [ref=e101]:
+              - text: Appuie
+              - strong [ref=e102]: Ajouter
+              - text: — c'est prêt !
+        - generic [ref=e103]: Fonctionne hors-ligne, comme une vraie app
+      - contentinfo [ref=e104]:
+        - generic [ref=e105]: Tarjama
+        - link "Mentions légales & Confidentialité" [ref=e106] [cursor=pointer]:
+          - /url: /mentions-legales
+  - alert [ref=e107]

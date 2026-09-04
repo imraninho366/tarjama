@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarjama — Field.io Light Demo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #F5F1E8;
+    --surface: #FAF7F0;
+    --gold: #B8932A;
+    --gold-light: #D4AF5C;
+    --gold-dim: #8A6E1F;
+    --gold-deep: #6B5210;
+    --text: #1A1714;
+    --text-secondary: #6B6560;
+    --text-muted: #A09890;
+    --border: #E8E2D8;
+    --green: #2D7A4F;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Sans 3', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ═══ GRADIENT MESH ═══
+     On cream: deep golds + terracotta + cool sage/dusty blue
+     at very low opacity create atmospheric depth via
+     warm/cool contrast instead of brightness. */
+  canvas#mesh {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ═══ SHIMMERING GLYPH ═══ */
+  .glyph {
+    font-family: 'Amiri', serif;
+    font-size: clamp(80px, 20vw, 160px);
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+    cursor: default;
+    animation: glyphFloat 6s ease-in-out infinite;
+    color: transparent;
+  }
+
+  .glyph::before {
+    content: 'ب';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      var(--gold-deep) 0%,
+      var(--gold) 30%,
+      var(--gold-light) 50%,
+      var(--gold) 70%,
+      var(--gold-deep) 100%
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmerGold 4s ease-in-out infinite;
+    filter: drop-shadow(0 4px 20px rgba(107, 82, 16, 0.2));
+  }
+
+  @keyframes shimmerGold {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes glyphFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* ═══ TITLE ═══ */
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 8vw, 56px);
+    font-weight: 700;
+    letter-spacing: 12px;
+    color: var(--text);
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: revealUp 0.8s ease-out 0.3s forwards;
+  }
+
+  .subtitle {
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 15px;
+    color: var(--gold-dim);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: revealUp 0.8s ease-out 0.5s forwards;
+  }
+
+  /* ═══ CYCLING VERBS ═══ */
+  .verb-line {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: clamp(18px, 4vw, 24px);
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+    height: 36px;
+    overflow: hidden;
+    opacity: 0;
+    animation: revealUp 0.8s ease-out 0.7s forwards;
+  }
+
+  .verb-line span {
+    display: block;
+    animation: cycleVerbs 12s ease-in-out infinite;
+    line-height: 36px;
+  }
+
+  @keyframes cycleVerbs {
+    0%, 16% { transform: translateY(0); }
+    20%, 36% { transform: translateY(-36px); }
+    40%, 56% { transform: translateY(-72px); }
+    60%, 76% { transform: translateY(-108px); }
+    80%, 96% { transform: translateY(-144px); }
+    100% { transform: translateY(-180px); }
+  }
+
+  /* ═══ LIVE TRANSLATION STRIP ═══ */
+  .translation-strip {
+    width: 100%;
+    max-width: 520px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: revealUp 0.8s ease-out 0.9s forwards;
+  }
+
+  .strip-arabic {
+    font-family: 'Amiri', serif;
+    font-size: clamp(22px, 5vw, 30px);
+    color: var(--gold-dim);
+    direction: rtl;
+    line-height: 2;
+    margin-bottom: 12px;
+  }
+
+  .strip-french {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--text-secondary);
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  .strip-ref {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 8px;
+  }
+
+  /* ═══ CTA ═══ */
+  .cta {
+    display: inline-block;
+    padding: 16px 48px;
+    border: 2px solid var(--gold);
+    border-radius: 60px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    opacity: 0;
+    animation: revealUp 0.8s ease-out 1.1s forwards;
+  }
+
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(184, 147, 42, 0.08), transparent);
+    animation: ctaSweep 3s ease-in-out infinite;
+  }
+
+  .cta:hover {
+    background: var(--gold);
+    color: var(--surface);
+    box-shadow: 0 8px 32px rgba(107, 82, 16, 0.25);
+    transform: translateY(-2px);
+  }
+
+  @keyframes ctaSweep {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+  }
+
+  /* ═══ SLOW MOTION SVG CURVES ═══ */
+  .curves {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.08;
+  }
+
+  .curves path {
+    fill: none;
+    stroke: var(--gold-dim);
+    stroke-width: 0.5;
+    stroke-linecap: round;
+  }
+
+  .curve-1 { animation: curveDrift1 20s ease-in-out infinite; }
+  .curve-2 { animation: curveDrift2 25s ease-in-out infinite; }
+  .curve-3 { animation: curveDrift3 18s ease-in-out infinite; }
+
+  @keyframes curveDrift1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(40px, -20px) rotate(2deg); }
+    66% { transform: translate(-20px, 30px) rotate(-1deg); }
+  }
+  @keyframes curveDrift2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-30px, -40px) rotate(3deg); }
+  }
+  @keyframes curveDrift3 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    40% { transform: translate(20px, 50px) rotate(-2deg); }
+    70% { transform: translate(-40px, -10px) rotate(1.5deg); }
+  }
+
+  /* ═══ STATS ═══ */
+  .stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    animation: revealUp 0.8s ease-out 1.3s forwards;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold-dim);
+  }
+
+  .stat-label {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  @keyframes revealUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    .content { padding: 0 16px; }
+    .title { letter-spacing: 6px; }
+    .stats { gap: 24px; flex-wrap: wrap; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    canvas#mesh { display: none; }
+    .curves { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="mesh"></canvas>
+
+<svg class="curves" viewBox="0 0 1440 900" preserveAspectRatio="none">
+  <path class="curve-1" d="M0,450 Q360,200 720,400 T1440,350" />
+  <path class="curve-2" d="M0,300 Q480,600 960,250 T1440,500" />
+  <path class="curve-3" d="M-100,600 Q400,100 800,500 T1540,200" />
+</svg>
+
+<div class="content">
+  <div class="glyph" aria-hidden="true">ب</div>
+  <h1 class="title">TARJAMA</h1>
+  <p class="subtitle">ترجمة — Traduction coranique</p>
+
+  <div class="verb-line">
+    <span>
+      Comprendre · فَهِمَ<br>
+      Traduire · تَرْجَمَ<br>
+      Mémoriser · حَفِظَ<br>
+      Réciter · تَلَا<br>
+      Apprendre · تَعَلَّمَ<br>
+      Comprendre · فَهِمَ
+    </span>
+  </div>
+
+  <div class="translation-strip">
+    <div class="strip-arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <div class="strip-french">« Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux »</div>
+    <div class="strip-ref">Sourate Al-Fatiha · verset 1</div>
+  </div>
+
+  <a href="/" class="cta">Commencer gratuitement</a>
+
+  <div class="stats">
+    <div><div class="stat-num">6 300+</div><div class="stat-label">Mots</div></div>
+    <div><div class="stat-num">114</div><div class="stat-label">Sourates</div></div>
+    <div><div class="stat-num">130+</div><div class="stat-label">Du'as</div></div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('mesh');
+const ctx = canvas.getContext('2d');
+const dpr = window.devicePixelRatio || 1;
+
+function resize() {
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+  canvas.style.width = window.innerWidth + 'px';
+  canvas.style.height = window.innerHeight + 'px';
+  ctx.scale(dpr, dpr);
+}
+resize();
+window.addEventListener('resize', resize);
+
+const points = [
+  { x: 0.15, y: 0.2, r: 0.35, color: [160, 120, 40] },
+  { x: 0.75, y: 0.15, r: 0.3, color: [180, 100, 60] },
+  { x: 0.5, y: 0.6, r: 0.4, color: [140, 110, 30] },
+  { x: 0.85, y: 0.7, r: 0.3, color: [100, 130, 100] },
+  { x: 0.1, y: 0.8, r: 0.25, color: [120, 100, 80] },
+  { x: 0.6, y: 0.35, r: 0.2, color: [90, 110, 130] },
+];
+
+points.forEach(p => {
+  p.vx = (Math.random() - 0.5) * 0.0003;
+  p.vy = (Math.random() - 0.5) * 0.0003;
+  p.phase = Math.random() * Math.PI * 2;
+});
+
+function drawMesh(t) {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  ctx.clearRect(0, 0, w, h);
+
+  for (const p of points) {
+    p.x += p.vx + Math.sin(t * 0.0005 + p.phase) * 0.0001;
+    p.y += p.vy + Math.cos(t * 0.0004 + p.phase) * 0.0001;
+    if (p.x < -0.2) p.x = 1.2;
+    if (p.x > 1.2) p.x = -0.2;
+    if (p.y < -0.2) p.y = 1.2;
+    if (p.y > 1.2) p.y = -0.2;
+
+    const pulse = 1 + Math.sin(t * 0.001 + p.phase) * 0.15;
+    const radius = p.r * Math.min(w, h) * pulse;
+    const gradient = ctx.createRadialGradient(p.x * w, p.y * h, 0, p.x * w, p.y * h, radius);
+    const [r, g, b] = p.color;
+    gradient.addColorStop(0, `rgba(${r},${g},${b},0.12)`);
+    gradient.addColorStop(0.5, `rgba(${r},${g},${b},0.04)`);
+    gradient.addColorStop(1, `rgba(${r},${g},${b},0)`);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  requestAnimationFrame(drawMesh);
+}
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  requestAnimationFrame(drawMesh);
+}
+</script>
+</body>
+</html>

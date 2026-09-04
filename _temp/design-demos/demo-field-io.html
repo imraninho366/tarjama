@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  DEMO 3 · Field.io · Kinetic poetry
+  ============================================================
+  Philosophy
+    Field.io / Universal Everything school: the screen is a living
+    surface. Motion is not decoration, motion IS the brand. Materials
+    are computed (specular highlights, gradient meshes, luminous
+    metals), inspired by JWST infrared renders and oil-on-water —
+    NOT cyberpunk neon, NOT 80s-vapor purple. Cool restraint with one
+    moment of optical drama.
+
+  Why this fits tarjama2
+    The Quran in motion. Each Arabic letter is geometry that can
+    breathe. The "translation" itself is a transformation visible
+    on-screen. The kinetic register suggests the app is an instrument
+    that processes and reveals, not a static reference.
+
+  Anti-references
+    No purple/cyan cyberpunk gradient. No neon. No glitch. The
+    "kinetic" is slow, precise, near-monochromatic with one
+    luminous-gold accent — like satellite imaging, not nightclub.
+  ============================================================
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Tarjama · Field.io direction</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&family=Reem+Kufi:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void:        #0a0a0d;
+    --void-2:      #101015;
+    --surface:     #15151a;
+    --ink:         #e8e8ed;
+    --ink-soft:    #8e8e96;
+    --ink-faint:   #4a4a52;
+    --gold-1:      #d4af37;
+    --gold-2:      #f4e4bc;
+    --gold-deep:   #8a6b1e;
+    --specular:    #ffffff;
+    --blue:        #6ba4e8;  /* electric, used only as a 3% highlight */
+    --hairline:    rgba(255,255,255,0.06);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--void); color: var(--ink); }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  .stage {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+    position: relative;
+  }
+  @media (min-width: 760px) {
+    body { padding: 64px 0; background: #050507; }
+    .stage { box-shadow: 0 0 80px rgba(0,0,0,0.6); }
+  }
+
+  /* ── Hero · luminous metal ───────────────────────────────── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 60px 24px 80px;
+    overflow: hidden;
+    background: var(--void);
+  }
+  @media (min-width: 760px) { .hero { min-height: 720px; } }
+
+  /* Animated gradient mesh backdrop · JWST-style infrared field */
+  .mesh {
+    position: absolute;
+    inset: -20%;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(212, 175, 55, 0.18), transparent 45%),
+      radial-gradient(circle at 75% 70%, rgba(107, 164, 232, 0.10), transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(244, 228, 188, 0.06), transparent 55%);
+    filter: blur(40px);
+    animation: drift 32s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes drift {
+    0%   { transform: translate(0, 0) rotate(0deg);   }
+    50%  { transform: translate(-4%, 3%) rotate(180deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
+  }
+
+  /* Top status strip */
+  .strip {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 18vh;
+  }
+  .strip .live { color: var(--gold-1); }
+  .strip .live::before {
+    content: "";
+    display: inline-block;
+    width: 5px; height: 5px;
+    background: var(--gold-1);
+    border-radius: 50%;
+    margin-right: 6px;
+    box-shadow: 0 0 8px var(--gold-1);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  /* The glyph · luminous metal */
+  .glyph-frame {
+    position: relative;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .glyph-aura {
+    position: absolute;
+    inset: -40% -20%;
+    background: radial-gradient(circle, rgba(212,175,55,0.22), transparent 60%);
+    filter: blur(30px);
+    z-index: 0;
+  }
+  .glyph {
+    position: relative;
+    font-family: 'Reem Kufi', sans-serif;
+    font-weight: 500;
+    font-size: 220px;
+    line-height: 1;
+    background: linear-gradient(160deg,
+      var(--gold-2) 0%,
+      var(--gold-1) 35%,
+      var(--gold-deep) 60%,
+      var(--gold-2) 85%,
+      var(--specular) 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 8s ease-in-out infinite, breathe 6s ease-in-out infinite;
+    z-index: 1;
+  }
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 0%; }
+    50%      { background-position: 100% 100%; }
+  }
+  @keyframes breathe {
+    0%, 100% { transform: scale(1);      }
+    50%      { transform: scale(1.018); }
+  }
+
+  /* Wordmark + cycling verb */
+  .wordmark {
+    position: relative;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .wordmark .name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    font-size: 40px;
+    letter-spacing: 0.32em;
+    color: var(--ink);
+    background: linear-gradient(180deg, var(--ink), rgba(232,232,237,0.55));
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-left: 0.32em;
+    margin-bottom: 20px;
+  }
+  .verbs {
+    height: 28px;
+    overflow: hidden;
+    position: relative;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-1);
+  }
+  .verbs ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    animation: verb-cycle 12s cubic-bezier(0.65,0,0.35,1) infinite;
+  }
+  .verbs li { height: 28px; line-height: 28px; }
+  @keyframes verb-cycle {
+    0%, 22%    { transform: translateY(0); }
+    25%, 47%   { transform: translateY(-28px); }
+    50%, 72%   { transform: translateY(-56px); }
+    75%, 97%   { transform: translateY(-84px); }
+    100%       { transform: translateY(0); }
+  }
+
+  .hero .lead {
+    text-align: center;
+    margin-top: 64px;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero .lead .em { color: var(--ink); }
+
+  /* ── Translation strip · the kinetic claim made literal ──── */
+  .demo {
+    position: relative;
+    padding: 56px 24px 72px;
+    border-top: 1px solid var(--hairline);
+    background: var(--void-2);
+    overflow: hidden;
+  }
+  .demo .data-stream {
+    position: absolute;
+    inset: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--ink-faint);
+    opacity: 0.18;
+    padding: 12px 8px;
+    pointer-events: none;
+    line-height: 1.4;
+    overflow: hidden;
+    word-break: break-all;
+    animation: stream-shift 60s linear infinite;
+  }
+  @keyframes stream-shift {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-40%); }
+  }
+
+  .demo .label {
+    position: relative;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 36px;
+  }
+  .demo .label .red {
+    color: var(--gold-1);
+    margin-right: 6px;
+  }
+
+  .pair {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 18px;
+    align-items: center;
+    text-align: center;
+    min-height: 220px;
+  }
+  .pair .ar {
+    font-family: 'Reem Kufi', sans-serif;
+    font-weight: 500;
+    font-size: 64px;
+    color: var(--gold-1);
+    direction: rtl;
+    line-height: 1;
+    background: linear-gradient(180deg, var(--gold-2), var(--gold-deep));
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+    min-height: 64px;
+    transition: opacity 600ms cubic-bezier(0.22,1,0.36,1);
+  }
+  .pair .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+  .pair .arrow .line {
+    width: 60px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-1), transparent);
+    background-size: 200% 100%;
+    animation: trace 3s linear infinite;
+  }
+  @keyframes trace {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  .pair .fr {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--ink);
+    transition: opacity 600ms cubic-bezier(0.22,1,0.36,1);
+  }
+  .pair .fr .meta {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  /* The 4 pairs cycle by stacking + opacity */
+  .pair-set { position: relative; min-height: 220px; }
+  .pair-item {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: pair-cycle 16s cubic-bezier(0.5,0,0.5,1) infinite;
+  }
+  .pair-item:nth-child(1) { animation-delay:  0s; }
+  .pair-item:nth-child(2) { animation-delay:  4s; }
+  .pair-item:nth-child(3) { animation-delay:  8s; }
+  .pair-item:nth-child(4) { animation-delay: 12s; }
+  @keyframes pair-cycle {
+    0%, 1%   { opacity: 0; transform: translateY(8px); }
+    6%, 23%  { opacity: 1; transform: translateY(0); }
+    28%, 100%{ opacity: 0; transform: translateY(-8px); }
+  }
+
+  .footnote {
+    position: relative;
+    text-align: center;
+    margin-top: 56px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .footnote .em { color: var(--gold-1); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mesh, .glyph, .verbs ul, .pair-item, .pair .arrow .line, .demo .data-stream {
+      animation: none !important;
+    }
+    .pair-item:first-child { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- Hero · luminous metal -->
+  <section class="hero">
+    <div class="mesh"></div>
+
+    <div class="strip">
+      <span class="live">Tarjama · live</span>
+      <span>v0.1 · fr-FR</span>
+    </div>
+
+    <div class="glyph-frame">
+      <div class="glyph-aura"></div>
+      <div class="glyph">ب</div>
+    </div>
+
+    <div class="wordmark">
+      <div class="name">TARJAMA</div>
+      <div class="verbs">
+        <ul>
+          <li>Apprends.</li>
+          <li>Traduis.</li>
+          <li>Comprends.</li>
+          <li>Lis.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="lead">
+      Le Coran <span class="em">en mouvement.</span> Un instrument de traduction, verset après verset.
+    </p>
+  </section>
+
+  <!-- Translation strip · the kinetic claim made literal -->
+  <section class="demo">
+    <div class="data-stream" aria-hidden="true">
+      0x1a4f ن ز ل · q-r-ʔ · 0xa3e2 ع ر ب · v.translate(ar,fr) · 0x91bc · root[ن,ز,ل] · token=0x4 · سُورَة Yūsuf · 0xff21 · ع ل م · root[ع,ل,م] · 0x88e0 · derive(qaala) · 0x6712 ت ع ق ل · cognate(reason) · 0xa1bc · token=0x9 · 0x2233 · stem(ʔ-n-z-l) · 0xc4d1 · gloss.fr=descendu · 0x5510 · ك ت ب · 0xb000 · derive(yaqra'u) · root[ك,ت,ب] · 0x7a3a · session.id=0xff02 · 0x1c1d · ر-س-ل · 0xbeef · ا ل ل ه · 0x4a4a
+    </div>
+
+    <div class="label"><span class="red">▸</span> Aperçu · traduction en direct</div>
+
+    <div class="pair-set">
+
+      <div class="pair pair-item">
+        <div class="ar">نَزَلَ</div>
+        <div class="arrow"><span>AR</span><span class="line"></span><span>FR</span></div>
+        <div class="fr">il est descendu<span class="meta">racine · ن-ز-ل · 293 occ.</span></div>
+      </div>
+
+      <div class="pair pair-item">
+        <div class="ar">قُرْآن</div>
+        <div class="arrow"><span>AR</span><span class="line"></span><span>FR</span></div>
+        <div class="fr">récitation, lecture<span class="meta">racine · ق-ر-ء · 70 occ.</span></div>
+      </div>
+
+      <div class="pair pair-item">
+        <div class="ar">عَرَبِيّ</div>
+        <div class="arrow"><span>AR</span><span class="line"></span><span>FR</span></div>
+        <div class="fr">arabe, clair<span class="meta">racine · ع-ر-ب · 11 occ.</span></div>
+      </div>
+
+      <div class="pair pair-item">
+        <div class="ar">تَعْقِلُون</div>
+        <div class="arrow"><span>AR</span><span class="line"></span><span>FR</span></div>
+        <div class="fr">vous raisonnez<span class="meta">racine · ع-ق-ل · 49 occ.</span></div>
+      </div>
+
+    </div>
+
+    <div class="footnote">Quatre mots de <span class="em">Yūsuf 12 : 2</span></div>
+  </section>
+
+</div>
+</body>
+</html>

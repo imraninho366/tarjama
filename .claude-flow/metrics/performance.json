@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-06-21T16:32:51.659Z",
+  "mode": "headless",
+  "workerType": "optimize",
+  "model": "sonnet",
+  "durationMs": 4345,
+  "executionId": "optimize_1782059567314_z128f7",
+  "success": false,
+  "findings": {
+    "sections": [],
+    "codeBlocks": []
+  },
+  "rawOutputPreview": "Failed to authenticate. API Error: 401 Invalid authentication credentials\n",
+  "rawOutputLength": 74
+}

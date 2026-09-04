@@ -1,0 +1,81 @@
+[    1661ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[    1754ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   32242ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   32336ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   34344ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/quiz:0
+[   34551ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/quiz:0
+[   37249ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   37349ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   39377ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/prieres:0
+[   39580ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/prieres:0
+[   41642ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   41745ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   43926ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   44028ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   46299ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   46384ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   48734ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   48832ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   51483ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/alphabet:0
+[   51580ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/alphabet:0
+[   54253ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/dhikr:0
+[   54357ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/dhikr:0
+[   58326ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/savant:0
+[   58462ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/savant:0
+[   62723ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[   62881ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   63251ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   68236ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[   68373ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   73185ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   75907ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[   76064ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   76186ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   78154ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[   78300ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   78512ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   86588ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[   86736ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   89771ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   91938ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   92037ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   94036ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[   94189ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   94281ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   96398ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[   96550ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   96642ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   99177ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   99276ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  101497ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  101621ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  103672ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/mentions-legales:0
+[  103748ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/mentions-legales:0

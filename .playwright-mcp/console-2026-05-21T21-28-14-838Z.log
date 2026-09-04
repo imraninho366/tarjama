@@ -1,0 +1,1640 @@
+[    4258ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[    4347ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   55735ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   55854ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   59685ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/quiz:0
+[   59775ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/quiz:0
+[   62394ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   62477ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   65342ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/prieres:0
+[   65485ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/prieres:0
+[   68179ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   68269ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   71315ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   71408ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   74359ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   74464ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   78194ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   78271ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   81242ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/alphabet:0
+[   81328ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/alphabet:0
+[   85348ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/dhikr:0
+[   85466ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/dhikr:0
+[   88193ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/savant:0
+[   88296ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/savant:0
+[   90569ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[   90970ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   91059ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   93356ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[   93689ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   93781ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   96157ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[   96408ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   96509ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   98954ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[   99193ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[   99280ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  101776ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[  102054ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  102289ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  105003ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  105094ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  107741ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[  107949ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  108099ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  110689ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[  110862ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  110963ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  114226ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  114309ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  116977ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  117086ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  191382ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  191505ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  195221ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  195307ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  198258ms] [ERROR] Error: Abort fetching component for route: "/"
+    at https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:62459
+    at V.fetchComponent (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:75959)
+    at async V.getRouteInfo (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:72292)
+    at async V.change (https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:1:66617) @ https://tarjama2.vercel.app/_next/static/chunks/main-f61746aa183f4a64.js:0
+[  198524ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  198596ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  201681ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  201780ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[  204935ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  205034ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[ 5407460ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[ 5407462ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[ 5407685ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[ 5407685ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[ 5408097ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[ 5408098ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[ 5408909ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[ 5408909ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[ 5410520ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[ 5410520ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[ 6415441ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[ 6415442ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[13615440ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[13615442ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[13615660ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[13615660ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[13616070ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[13616071ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[13616897ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[13616897ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[14669232ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[14669232ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[19667808ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[19667808ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[19668016ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[19668016ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[19668424ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[19668424ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[19669234ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[19669234ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[19670843ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[19670843ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[19967816ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[19967816ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[19991653ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[19991655ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[19991872ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[19991872ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[19992278ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[19992278ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[19993094ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[19993094ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[24924556ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[24924557ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[24924772ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[24924772ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[24925180ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[24925181ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[24925989ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[24925989ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[24927604ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[24927604ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[25915630ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[25915630ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[26477999ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[26477999ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[26478208ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[26478209ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[26478619ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[26478619ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[26479430ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[26479430ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[26481038ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[26481038ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[26484246ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[26484246ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[30898693ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[30898694ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[30898912ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[30898912ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[30899320ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[30899320ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[30900129ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[30900129ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[30901736ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[30901736ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[30904946ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[30904946ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[30911359ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[30911359ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[42854186ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/rest/v1/progress?select=*&user_id=eq.cc0683b4-fdb3-4ddb-b157-f2669b99dee4:0
+[42854208ms] [ERROR] loadProgress error: TypeError: Failed to fetch @ https://tarjama2.vercel.app/_next/static/chunks/pages/index-2d9e8adcad0359d7.js:0
+[42854218ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/rest/v1/profiles?select=*&id=eq.cc0683b4-fdb3-4ddb-b157-f2669b99dee4:0
+[42854219ms] [ERROR] loadProfile error: TypeError: Failed to fetch @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:36
+[45536015ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45536016ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45536231ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45536231ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45536639ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45536639ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45537459ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45537459ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45539069ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45539070ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45542280ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45542280ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45548688ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45548688ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45561499ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45561499ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45565958ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45565958ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45566165ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45566165ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45566577ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45566577ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45567386ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45567386ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45568996ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45568996ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[45572205ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[45572205ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[46638673ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[46638674ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49193345ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49193345ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49193556ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49193556ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49193964ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49193964ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49194772ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49194772ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49196382ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49196382ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49199589ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49199589ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49206012ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49206012ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49218831ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49218831ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49223316ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49223316ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49223523ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49223523ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49223933ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49223933ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49224741ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49224741ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49226350ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49226350ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[49229559ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[49229559ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[50175037ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[50175037ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52850715ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52850716ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52850923ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52850923ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52851335ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52851335ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52852143ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52852143ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52853750ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52853750ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52856957ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52856957ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52863367ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52863367ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52876180ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52876181ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52880685ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52880686ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52880892ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52880892ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52881300ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52881300ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52882108ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52882109ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52883717ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52883717ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52886927ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52886927ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[52893350ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[52893350ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[55860822ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[55860824ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56040069ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56040069ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56040277ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56040277ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56040684ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56040684ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56041494ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56041494ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56043102ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56043102ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56046310ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56046310ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56052723ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56052723ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56065541ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56065541ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56070061ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56070061ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56070271ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56070271ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56070678ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56070679ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56071489ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56071489ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56073096ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56073097ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56076307ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56076307ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56082716ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56082716ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56185566ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56185566ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56190086ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56190086ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56190296ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56190296ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56190707ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56190707ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56191513ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56191513ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56193123ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56193123ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56196331ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56196331ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56202741ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56202741ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56215553ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56215553ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56220084ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56220084ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56220294ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56220294ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56220700ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56220700ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56221509ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56221509ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56507082ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56507082ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56534017ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56534017ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56534226ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56534227ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56534637ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56534637ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56535445ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56535445ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56537053ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56537053ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56540263ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56540263ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[56546672ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[56546672ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[58372251ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[58372251ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[58376771ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[58376771ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[59397759ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[59397759ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[60191329ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[60191330ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[60191537ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[60191537ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[60191946ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[60191946ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[60192754ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[60192754ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[60194364ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[60194364ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[60197572ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[60197572ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[60203981ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[60203981ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[61224859ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[61224859ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[62246163ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[62246164ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[62246374ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[62246374ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[62246781ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[62246781ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[62247591ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[62247592ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[63173973ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[63173973ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[63848723ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[63848723ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[63848930ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[63848930ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[63849339ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[63849339ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[63850146ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[63850146ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[63851756ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[63851756ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[63854963ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[63854963ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[63861373ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[63861374ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[64786271ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[64786271ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[65721593ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65721593ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[65721833ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65721833ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[65722239ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65722240ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[65723046ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65723046ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[65724659ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[65724659ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[66657649ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[66657649ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[67506107ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[67506107ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[67506317ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[67506317ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[67506724ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[67506724ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[67507535ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[67507535ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[67509143ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[67509143ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[67512354ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[67512354ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[67518762ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[67518762ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[67531575ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[67531575ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[68546198ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[68546198ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[68546406ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[68546406ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[68546814ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[68546814ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[68547623ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[68547623ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[69469008ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[69469008ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[71163528ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[71163528ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[71163737ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[71163738ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[71164146ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[71164147ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[71164956ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[71164956ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[71166563ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[71166563ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[71169782ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[71169782ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[71176197ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[71176197ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[71189011ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[71189011ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[71193523ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[71193524ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[71193731ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[71193732ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[71194141ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[71194141ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[72177678ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[72177678ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74819607ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74819608ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74819818ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74819819ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74820228ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74820229ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74821037ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74821037ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74822645ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74822645ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74825854ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74825855ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74832265ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74832265ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74845083ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74845083ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74849581ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74849581ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74849790ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74849790ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74850199ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74850199ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74851006ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74851006ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[74852631ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[74852633ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[75880832ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[75880833ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[99082190ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ https://coechxxziowvygxxmekf.supabase.co/rest/v1/profiles?select=*&id=eq.cc0683b4-fdb3-4ddb-b157-f2669b99dee4:0
+[99082197ms] [ERROR] loadProfile error: TypeError: Failed to fetch @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:36
+[102047099ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://coechxxziowvygxxmekf.supabase.co/rest/v1/progress?select=*&user_id=eq.cc0683b4-fdb3-4ddb-b157-f2669b99dee4:0
+[102047118ms] [ERROR] loadProgress error: JWT expired @ https://tarjama2.vercel.app/_next/static/chunks/pages/index-2d9e8adcad0359d7.js:0
+[109911271ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ https://coechxxziowvygxxmekf.supabase.co/rest/v1/profiles?select=*&id=eq.cc0683b4-fdb3-4ddb-b157-f2669b99dee4:0
+[109911273ms] [ERROR] loadProfile error: TypeError: Failed to fetch @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:36
+[109911276ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ https://coechxxziowvygxxmekf.supabase.co/rest/v1/progress?select=*&user_id=eq.cc0683b4-fdb3-4ddb-b157-f2669b99dee4:0
+[109911276ms] [ERROR] loadProgress error: TypeError: Failed to fetch @ https://tarjama2.vercel.app/_next/static/chunks/pages/index-2d9e8adcad0359d7.js:0
+[114057955ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[114057958ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[114058174ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[114058174ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[114058580ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[114058580ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[114059384ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[114059384ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[114060991ms] [ERROR] Failed to load resource: net::ERR_INTERNET_DISCONNECTED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[114060992ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at async https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25899 @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23
+[120288035ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ https://coechxxziowvygxxmekf.supabase.co/auth/v1/token?grant_type=refresh_token:0
+[120288038ms] [ERROR] TypeError: Failed to fetch
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:39401
+    at tH (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44441)
+    at tF (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:24:44185)
+    at r (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25659)
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25905
+    at https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25976
+    at new Promise (<anonymous>)
+    at rT._refreshAccessToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:25836)
+    at rT._callRefreshToken (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:28605)
+    at rT.__loadSession (https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:37:14624) @ https://tarjama2.vercel.app/_next/static/chunks/pages/_app-426cd3f01856541a.js:23

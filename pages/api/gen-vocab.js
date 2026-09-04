@@ -1,4 +1,5 @@
 // API Vercel — génère les traductions françaises via Groq
+import { GROQ_MODEL } from '../../lib/groq'
 // Appelée par la page /gen-dico en lots de 40 mots
 
 import { rateLimit } from '../../lib/rateLimit'
@@ -36,7 +37,7 @@ Réponds UNIQUEMENT en JSON valide:
         'Authorization': `Bearer ${process.env.GROQ_API_KEY}`
       },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
+        model: GROQ_MODEL,
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.1,
         max_tokens: 3000,

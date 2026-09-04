@@ -1,0 +1,6 @@
+[    2092ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[    2327ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://tarjama2.vercel.app/favicon.ico:0
+[    2380ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
+[   21455ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ https://tarjama2.vercel.app/_next/static/chunks/pages/mentions-legales-0185ca351f0f1f24.js:0
+[  170431ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://tarjama2.vercel.app/:0
+[  170559ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://tarjama2.vercel.app/:0
