@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import Head from 'next/head'
 import { Analytics } from '@vercel/analytics/react'
 import { loadPremiumStatus } from '../lib/freemium'
+import { AVATAR_COLORS } from '../lib/theme'
 import '../styles/globals.css'
 
 const playfair = Playfair_Display({ subsets: ['latin'], weight: ['400', '600', '700'], display: 'swap', variable: '--tarjama-font-display' })
@@ -29,7 +30,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
         setUser(session.user)
-        loadProfile(session.user.id)
+        loadProfile(session.user)
       }
     })
 
@@ -37,7 +38,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
       (_event, session) => {
         if (session?.user) {
           setUser(session.user)
-          loadProfile(session.user.id)
+          loadProfile(session.user)
         } else {
           setUser(null)
           setProfile(null)
@@ -94,20 +95,65 @@ export default function TarjamaApp({ Component, pageProps, router }) {
     }
   }, [router])
 
-  const loadProfile = async (userId, retries = 2) => {
+  /**
+   * Crée le profil manquant d'un utilisateur.
+   *
+   * L'inscription par email crée le profil elle-même (AuthScreen.doRegister),
+   * mais une connexion Google ne passe jamais par là : Supabase crée le compte
+   * dans auth.users sans rien écrire dans `profiles`. Or index.js renvoie sur
+   * la landing page tant que le profil est absent — l'utilisateur serait donc
+   * authentifié et bloqué dehors. Ce filet rattrape aussi les inscriptions
+   * email dont la création de profil a échoué.
+   */
+  const createMissingProfile = async (authUser) => {
+    const meta = authUser.user_metadata || {}
+    const rawName = meta.full_name || meta.name || authUser.email?.split('@')[0] || 'Utilisateur'
+    const username = rawName.trim().split(/\s+/)[0].slice(0, 20)
+    const color = AVATAR_COLORS[Math.floor(Math.random() * AVATAR_COLORS.length)]
+
+    const { data, error } = await supabase
+      .from('profiles')
+      .upsert({ id: authUser.id, username, color }, { onConflict: 'id' })
+      .select()
+      .single()
+
+    if (error) {
+      console.error('createMissingProfile error:', error.message)
+      return null
+    }
+    return data
+  }
+
+  const loadProfile = async (authUser, retries = 2) => {
+    const userId = authUser.id
     loadPremiumStatus(userId).catch(e => console.error('Premium check failed:', e))
+
     const { data, error } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', userId)
       .single()
+
     if (data) {
       setProfile(data)
-    } else if (error && error.code === 'PGRST116' && retries > 0) {
-      setTimeout(() => loadProfile(userId, retries - 1), 500)
-    } else if (error) {
-      console.error('loadProfile error:', error.message)
+      return
     }
+
+    // PGRST116 = aucune ligne trouvée.
+    if (error && error.code === 'PGRST116') {
+      // On retente d'abord : juste après une inscription email, la lecture peut
+      // précéder l'écriture du profil.
+      if (retries > 0) {
+        setTimeout(() => loadProfile(authUser, retries - 1), 500)
+        return
+      }
+      // Toujours rien : le profil n'existe vraiment pas (cas Google).
+      const created = await createMissingProfile(authUser)
+      if (created) setProfile(created)
+      return
+    }
+
+    if (error) console.error('loadProfile error:', error.message)
   }
 
   const handleLogout = async () => {
