@@ -1,5 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
-import { GROQ_MODEL } from '../../lib/groq'
+import { callAIJSON } from '../../lib/ai'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
@@ -9,8 +9,6 @@ export default async function handler(req, res) {
   const { arabic, sourate_num, verse_num, sourate_ar, sourate_fr } = req.body
   if (!arabic) return res.status(400).json({ error: 'Verset manquant' })
 
-  const apiKey = process.env.GROQ_API_KEY
-  if (!apiKey) return res.status(500).json({ error: 'Clé Groq non configurée' })
 
   const prompt = `Tu es un expert en langue arabe coranique. Analyse tous les mots importants de ce verset.
 
@@ -36,32 +34,15 @@ Réponds UNIQUEMENT en JSON valide sans markdown :
   ]
 }`
 
-  try {
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model: GROQ_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        temperature: 0.2,
-        max_tokens: 1500,
-        reasoning_effort: 'low',
-        reasoning_format: 'hidden',
-        response_format: { type: 'json_object' }
-      })
-    })
+  const { ok: aiOk, data: result, error, status } = await callAIJSON({
+    prompt, temperature: 0.2, maxTokens: 1500, route: 'vocab'
+  })
+  if (!aiOk) return res.status(status).json({ error })
 
-    const data = await response.json()
-    if (!response.ok) return res.status(500).json({ error: data?.error?.message })
-
-    const text = data.choices?.[0]?.message?.content || '{}'
-    const result = JSON.parse(text)
-    return res.status(200).json(result)
-  } catch (err) {
-    console.error('Vocab error:', err.message)
-    return res.status(500).json({ error: err.message })
+  if (!Array.isArray(result?.mots) || result.mots.length === 0) {
+    console.error('[vocab] format inattendu:', JSON.stringify(result).slice(0, 200))
+    return res.status(502).json({ error: 'Réponse IA inattendue' })
   }
+
+  return res.status(200).json(result)
 }

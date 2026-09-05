@@ -1,5 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
-import { GROQ_MODEL } from '../../lib/groq'
+import { callAIJSON } from '../../lib/ai'
 import { cacheGet, cacheSet } from '../../lib/cache'
 
 export default async function handler(req, res) {
@@ -10,8 +10,6 @@ export default async function handler(req, res) {
   const { mood } = req.body
   if (!mood) return res.status(400).json({ error: 'Humeur manquante' })
 
-  const apiKey = process.env.GROQ_API_KEY
-  if (!apiKey) return res.status(500).json({ error: 'Clé Groq non configurée' })
 
   const cacheKey = `mood:${mood.toLowerCase().trim()}`
   const cached = cacheGet(cacheKey)
@@ -24,29 +22,18 @@ Suggère 3 versets coraniques pertinents pour cette émotion/situation. Pour cha
 Réponds UNIQUEMENT en JSON valide :
 {"versets":[{"sourate_num":1,"sourate_fr":"L'Ouverture","sourate_ar":"الفاتحة","verset_num":1,"arabe":"texte arabe du verset","traduction":"traduction française","explication":"pourquoi ce verset est pertinent (2 phrases max)","conseil":"un conseil pratique bienveillant (1 phrase)"}]}`
 
-  try {
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
-      body: JSON.stringify({
-        model: GROQ_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        temperature: 0.4,
-        reasoning_effort: 'low',
-        reasoning_format: 'hidden',
-        response_format: { type: 'json_object' }
-      })
-    })
-    const data = await response.json()
-    if (!response.ok) {
-      console.error('[humeur] Groq', response.status, JSON.stringify(data?.error || data))
-      return res.status(500).json({ error: data?.error?.message || 'Erreur IA' })
-    }
-    const content = data.choices?.[0]?.message?.content
-    const result = JSON.parse(content)
-    cacheSet(cacheKey, result)
-    return res.status(200).json(result)
-  } catch (err) {
-    return res.status(500).json({ error: err.message })
+  const { ok: aiOk, data: result, error, status } = await callAIJSON({
+    prompt, temperature: 0.4, route: 'humeur'
+  })
+  if (!aiOk) return res.status(status).json({ error })
+
+  // Sans ce controle, une reponse JSON valide mais vide ({} ou versets: [])
+  // reste servie pendant 1 h a tous ceux qui saisissent la meme humeur.
+  if (!Array.isArray(result?.versets) || result.versets.length === 0) {
+    console.error('[humeur] format inattendu:', JSON.stringify(result).slice(0, 200))
+    return res.status(502).json({ error: 'Réponse IA inattendue' })
   }
+
+  cacheSet(cacheKey, result)
+  return res.status(200).json(result)
 }

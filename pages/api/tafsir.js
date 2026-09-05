@@ -1,5 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
-import { GROQ_MODEL } from '../../lib/groq'
+import { callAI } from '../../lib/ai'
 import { cacheGet, cacheSet } from '../../lib/cache'
 
 export default async function handler(req, res) {
@@ -14,8 +14,6 @@ export default async function handler(req, res) {
   const cached = cacheGet(cacheKey)
   if (cached) return res.status(200).json({ tafsir: cached })
 
-  const apiKey = process.env.GROQ_API_KEY
-  if (!apiKey) return res.status(500).json({ error: 'Clé Groq non configurée' })
 
   const prompt = `Tu es un spécialiste du Coran, de la langue arabe classique et du tafsir. Analyse ce verset coranique en français.
 
@@ -35,32 +33,11 @@ Réponds en français avec ces sections EXACTEMENT dans cet ordre, séparées pa
 
 Sois précis, pédagogique et accessible pour un apprenant débutant en arabe.`
 
-  try {
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model: GROQ_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        temperature: 0.3,
-        max_tokens: 600,
-        reasoning_effort: 'low',
-        reasoning_format: 'hidden'
-      })
-    })
+  const { ok: aiOk, content: tafsir, error, status } = await callAI({
+    prompt, temperature: 0.3, maxTokens: 600, route: 'tafsir'
+  })
+  if (!aiOk) return res.status(status).json({ error })
 
-    const data = await response.json()
-    if (!response.ok) return res.status(500).json({ error: data?.error?.message || 'Erreur' })
-
-    const tafsir = data.choices?.[0]?.message?.content || 'Non disponible.'
-    cacheSet(cacheKey, tafsir)
-    return res.status(200).json({ tafsir })
-
-  } catch (err) {
-    console.error('Tafsir error:', err.message)
-    return res.status(500).json({ error: err.message })
-  }
+  cacheSet(cacheKey, tafsir)
+  return res.status(200).json({ tafsir })
 }

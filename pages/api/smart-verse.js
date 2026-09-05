@@ -1,5 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
-import { GROQ_MODEL } from '../../lib/groq'
+import { callAIJSON } from '../../lib/ai'
 import { cacheGet, cacheSet } from '../../lib/cache'
 
 export default async function handler(req, res) {
@@ -10,8 +10,6 @@ export default async function handler(req, res) {
   const { weakWords } = req.body
   if (!weakWords?.length) return res.status(400).json({ error: 'Mots manquants' })
 
-  const apiKey = process.env.GROQ_API_KEY
-  if (!apiKey) return res.status(500).json({ error: 'Clé Groq non configurée' })
 
   const wordsStr = weakWords.slice(0, 5).join(', ')
   const cacheKey = `smart:${wordsStr}`
@@ -23,18 +21,11 @@ export default async function handler(req, res) {
 Réponds UNIQUEMENT en JSON :
 {"sourate_num":1,"sourate_fr":"nom","sourate_ar":"اسم","verset_num":1,"arabe":"texte arabe","traduction":"traduction française","mots_presents":["mot1","mot2"],"conseil":"pourquoi ce verset est bon pour réviser ces mots (1 phrase)"}`
 
-  try {
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
-      body: JSON.stringify({ model: GROQ_MODEL, messages: [{ role: 'user', content: prompt }], temperature: 0.3, response_format: { type: 'json_object' }, reasoning_effort: 'low', reasoning_format: 'hidden' })
-    })
-    const data = await response.json()
-    if (!response.ok) return res.status(500).json({ error: data?.error?.message || 'Erreur IA' })
-    const result = JSON.parse(data.choices?.[0]?.message?.content || '{}')
-    if (result.arabe) cacheSet(cacheKey, result)
-    return res.status(200).json(result)
-  } catch (err) {
-    return res.status(500).json({ error: err.message })
-  }
+  const { ok: aiOk, data: result, error, status } = await callAIJSON({
+    prompt, temperature: 0.3, route: 'smart-verse'
+  })
+  if (!aiOk) return res.status(status).json({ error })
+
+  if (result.arabe) cacheSet(cacheKey, result)
+  return res.status(200).json(result)
 }

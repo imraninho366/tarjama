@@ -1,5 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
-import { GROQ_MODEL } from '../../lib/groq'
+import { callAI } from '../../lib/ai'
 import { cacheGet, cacheSet } from '../../lib/cache'
 
 export default async function handler(req, res) {
@@ -10,8 +10,6 @@ export default async function handler(req, res) {
   const { arabic, sourate_num, verse_num, mode } = req.body
   if (!arabic) return res.status(400).json({ error: 'Verset manquant' })
 
-  const apiKey = process.env.GROQ_API_KEY
-  if (!apiKey) return res.status(500).json({ error: 'Clé Groq non configurée' })
 
   const cacheKey = `hint:${mode||'default'}:${sourate_num}:${verse_num}`
   const cached = cacheGet(cacheKey)
@@ -25,24 +23,13 @@ Donne UNIQUEMENT la translittération phonétique, mot par mot, sans aucun autre
 Exemple : "Bismi llāhi r-raḥmāni r-raḥīm"
 Utilise les diacritiques : ā, ī, ū, ḥ, ḫ, ẓ, ṭ, ṣ, ḍ, ġ`
 
-    try {
-      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
-        body: JSON.stringify({
-          model: GROQ_MODEL,
-          messages: [{ role: 'user', content: prompt }],
-          temperature: 0.1, max_tokens: 200,
-          reasoning_effort: 'low', reasoning_format: 'hidden'
-        })
-      })
-      const data = await response.json()
-      const translit = data.choices?.[0]?.message?.content || ''
-      cacheSet(cacheKey, translit)
-      return res.status(200).json({ translit })
-    } catch (err) {
-      return res.status(500).json({ error: 'Translittération non disponible' })
-    }
+    const { ok: aiOk, content: translit, error, status } = await callAI({
+      prompt, temperature: 0.1, maxTokens: 400, route: 'hint:translit'
+    })
+    if (!aiOk) return res.status(status).json({ error })
+
+    cacheSet(cacheKey, translit)
+    return res.status(200).json({ translit })
   }
 
   // Mode indice (défaut)
@@ -53,27 +40,11 @@ Donne un indice court pour traduire ce verset en français :
 - Le thème sans révéler la traduction complète
 Format : " Mots-clés : [...] | Thème : [...]"`
 
-  try {
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
-      body: JSON.stringify({
-        model: GROQ_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        temperature: 0.4,
-        reasoning_effort: 'low',
-        reasoning_format: 'hidden'
-      })
-    })
-    const data = await response.json()
-    if (!response.ok) {
-      console.error('[hint] Groq', response.status, JSON.stringify(data?.error || data))
-      return res.status(500).json({ hint: 'Indice temporairement indisponible.' })
-    }
-    const hint = data.choices?.[0]?.message?.content || 'Indice non disponible.'
-    cacheSet(cacheKey, hint)
-    return res.status(200).json({ hint })
-  } catch (err) {
-    return res.status(500).json({ error: 'Indice temporairement indisponible' })
-  }
+  const { ok: aiOk2, content: hint, error: err2, status: st2 } = await callAI({
+    prompt, temperature: 0.4, route: 'hint'
+  })
+  if (!aiOk2) return res.status(st2).json({ error: err2 })
+
+  cacheSet(cacheKey, hint)
+  return res.status(200).json({ hint })
 }
