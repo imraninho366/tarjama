@@ -1,40 +1,45 @@
 // Bump à chaque changement de stratégie : l'ancien cache est purgé à l'activation.
-const CACHE_NAME = 'tarjama-v3'
+const CACHE_NAME = 'tarjama-v4'
 
+/**
+ * Coquille minimale, préchargée à l'installation.
+ *
+ * La version précédente préchargeait 22 pages HTML et 1,5 Mo de JSON — dont
+ * quran_vocab.json à lui seul 1,2 Mo. Tout cela partait DÈS LA PREMIÈRE VISITE,
+ * en concurrence avec le chargement de la page que le visiteur attendait, et
+ * sur son forfait mobile. Quelqu'un qui ne faisait que lire la page d'accueil
+ * téléchargeait le dictionnaire complet sans jamais l'ouvrir.
+ *
+ * Rien n'est perdu : le gestionnaire fetch met déjà en cache tout ce qui passe.
+ * Les données sont donc mises en cache À LA PREMIÈRE UTILISATION RÉELLE, et
+ * chaque page visitée devient consultable hors-ligne dès sa première visite.
+ *
+ * Contrepartie assumée : une page jamais visitée n'est pas consultable
+ * hors-ligne. C'est le bon échange — personne ne consulte hors-ligne une page
+ * qu'il n'a jamais ouverte.
+ */
 const STATIC_ASSETS = [
   '/',
-  '/quiz',
-  '/dictionnaire',
-  '/alphabet',
-  '/duas',
-  '/piliers',
-  '/prophetes',
-  '/hadith',
-  '/profil',
-  '/prieres',
-  '/dhikr',
-  '/savant',
-  '/humeur',
-  '/duel',
-  '/connexions',
-  '/revelation',
-  '/racines',
-  '/parcours',
-  '/calligraphie',
-  '/tajweed',
-  '/mentions-legales',
   '/404',
-  '/quran_vocab.json',
-  '/duas.json',
-  '/piliers.json',
-  '/prophetes.json',
   '/icon.svg',
   '/manifest.json',
 ]
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS))
+    caches.open(CACHE_NAME).then((cache) =>
+      // cache.addAll est ATOMIQUE : une seule des 26 ressources en échec, et
+      // l'installation entière échouait — le service worker ne s'activait
+      // jamais, donc aucun mode hors-ligne, et sans le moindre message.
+      // Ici chaque ressource est indépendante : ce qui passe est gardé.
+      Promise.all(
+        STATIC_ASSETS.map((url) =>
+          cache.add(url).catch((err) =>
+            console.warn('[sw] préchargement ignoré pour', url, err.message)
+          )
+        )
+      )
+    )
   )
   self.skipWaiting()
 })
