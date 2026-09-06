@@ -37,6 +37,8 @@
   color: var(--gold-light);
   direction: rtl;
   margin-bottom: 4px;
+  margin-top: 0;
+  font-weight: 400;
 }
 
 .headerSub {

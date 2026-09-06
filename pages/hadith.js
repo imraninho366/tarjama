@@ -161,7 +161,7 @@ export default function HadithPage({ user }) {
       <div className={s.container}>
         {/* Header */}
         <div className={s.header}>
-          <div className={s.headerArabic}>الأحاديث الصحيحة</div>
+          <h1 className={s.headerArabic} lang="ar" dir="rtl">الأحاديث الصحيحة</h1>
           <div className={s.headerSub}>
             Hadiths authentiques — Bukhari & Muslim
           </div>

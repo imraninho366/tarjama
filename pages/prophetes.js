@@ -39,7 +39,7 @@ export default function ProphetesPage({ user }) {
       <div className={s.container}>
         {/* Header */}
         <div className={s.header}>
-          <div className={s.headerArabic}>الأنبياء والرسل</div>
+          <h1 className={s.headerArabic} lang="ar" dir="rtl">الأنبياء والرسل</h1>
           <div className={s.headerSub}>Les histoires des 25 Prophètes mentionnés dans le Coran</div>
         </div>
 

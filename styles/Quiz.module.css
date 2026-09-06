@@ -38,7 +38,7 @@
 }
 
 /* ── Page title ───────────────────────────────────────────── */
-.pageTitle {
+.pageTitle { margin: 0; font-weight: inherit;
   font-family: var(--font-display);
   font-size: 20px;
   color: var(--gold);

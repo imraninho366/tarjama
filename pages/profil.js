@@ -89,9 +89,9 @@ export default function ProfilPage({ user, profile, onLogout }) {
           }}>
             {profile.username?.[0]?.toUpperCase() || '?'}
           </div>
-          <div style={{ fontSize: 20, fontFamily: 'var(--font-display)', color: 'var(--text)', fontWeight: 600 }}>
+          <h1 style={{ fontSize: 20, fontFamily: 'var(--font-display)', color: 'var(--text)', fontWeight: 600, margin: 0 }}>
             {profile.username}
-          </div>
+          </h1>
         </div>
 
         {/* Stats principales */}

@@ -52,7 +52,7 @@ export default function HumeurPage({ user, authReady }) {
       <div style={{ maxWidth: 600, margin: '0 auto', padding: '0 16px' }}>
 
         <div style={{ textAlign: 'center', padding: '20px 0 16px' }}>
-          <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 28, color: 'var(--gold)' }}>القرآن والمشاعر</div>
+          <h1 style={{ fontFamily: 'var(--font-arabic)', fontSize: 28, color: 'var(--gold)', margin: 0, fontWeight: 400 }} lang="ar" dir="rtl">القرآن والمشاعر</h1>
           <div style={{ fontSize: 14, color: 'var(--text-dim)', marginTop: 6, lineHeight: 1.7 }}>
             Comment te sens-tu ? Le Coran a un message pour toi.
           </div>

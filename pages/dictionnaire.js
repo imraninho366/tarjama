@@ -153,7 +153,7 @@ export default function Dictionnaire({ user, profile, authReady }) {
 
         {/* HEADER */}
         <div className={s.header}>
-          <div className={s.headerArabic}>المعجم القرآني</div>
+          <h1 className={s.headerArabic} lang="ar" dir="rtl">المعجم القرآني</h1>
           <div className={s.headerSub}>
             {vocab.length} mots du vocabulaire coranique — recherche instantanée
           </div>

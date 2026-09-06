@@ -7,7 +7,7 @@
 .container { max-width: 900px; margin: 0 auto; padding: var(--space-lg) 20px; animation: fadeInUp var(--duration-slow) var(--ease-out) both; }
 
 .header { margin-bottom: var(--space-lg); }
-.headerArabic { font-family: var(--font-arabic); font-size: 22px; color: var(--gold-light); direction: rtl; margin-bottom: 4px; }
+.headerArabic { font-family: var(--font-arabic); font-size: 22px; color: var(--gold-light); direction: rtl; margin-bottom: 4px; margin-top: 0; font-weight: 400; }
 .headerSub { font-size: 13px; color: var(--text-dim); }
 
 /* Search */

@@ -116,7 +116,7 @@ export default function GenDico({ user, authReady }) {
     <>
       <Head><title>Génération Dictionnaire — Tarjama</title></Head>
       <div style={{maxWidth:760,margin:'0 auto',padding:24,minHeight:'100vh',background:'var(--tarjama-color-background)',color:'var(--tarjama-color-text)',fontFamily:'Lato,sans-serif'}}>
-        <div style={{fontFamily:'Cinzel,serif',fontSize:20,color:'var(--tarjama-color-primary)',marginBottom:4}}>GÉNÉRATION DICTIONNAIRE</div>
+        <h1 style={{fontFamily:'Cinzel,serif',fontSize:20,color:'var(--tarjama-color-primary)',marginBottom:4,marginTop:0,fontWeight:400}}>GÉNÉRATION DICTIONNAIRE</h1>
         <div style={{fontSize:11,color:'var(--tarjama-color-text-muted)',letterSpacing:2,marginBottom:24}}>
           {pending.length} LEMMES CORANIQUES · {existingVocab.length} MOTS ACTUELS
         </div>

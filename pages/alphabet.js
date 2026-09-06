@@ -487,7 +487,7 @@ export default function Alphabet() {
 
         {/* ── Header ─────────────────────────────────────────────── */}
         <div className={s.header}>
-          <span className={s.headerTitle}>ALPHABET ARABE</span>
+          <h1 className={s.headerTitle}>ALPHABET ARABE</h1>
           {tab==='quiz' && score.total>0 && (
             <div className={s.headerScore}>
               {streak>=3 && <span className={s.streakBadge}>{streak} série</span>}

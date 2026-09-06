@@ -74,7 +74,7 @@ export default function DuasPage({ user }) {
       <div className={s.container}>
         {/* Header */}
         <div className={s.header}>
-          <div className={s.headerArabic}>حصن المسلم</div>
+          <h1 className={s.headerArabic} lang="ar" dir="rtl">حصن المسلم</h1>
           <div className={s.headerSub}>La Citadelle du Musulman — Invocations et rappels</div>
         </div>
 

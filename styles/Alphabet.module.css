@@ -18,7 +18,7 @@
   margin-bottom: var(--space-lg);
 }
 
-.headerTitle {
+.headerTitle { margin: 0; font-weight: inherit;
   font-family: var(--font-display);
   font-size: 18px;
   color: var(--gold);

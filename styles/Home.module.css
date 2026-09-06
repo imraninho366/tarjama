@@ -248,7 +248,7 @@
   text-shadow: 0 0 20px var(--gold-glow);
 }
 
-.welcomeTitle {
+.welcomeTitle { margin: 0; font-weight: inherit;
   font-family: var(--font-display);
   font-size: 17px;
   color: var(--gold);

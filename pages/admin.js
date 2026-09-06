@@ -99,7 +99,7 @@ export default function AdminPage({ user }) {
       <div style={{ maxWidth: 500, margin: '0 auto', padding: '0 16px' }}>
 
         <div style={{ textAlign: 'center', padding: '20px 0 12px' }}>
-          <div style={{ fontSize: 20, fontFamily: 'var(--font-display)', color: 'var(--gold)', letterSpacing: 3 }}>ADMIN</div>
+          <h1 style={{ fontSize: 20, fontFamily: 'var(--font-display)', color: 'var(--gold)', letterSpacing: 3, margin: 0, fontWeight: 400 }}>ADMIN</h1>
           <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>
             {users.length} utilisateurs · {premiumIds.length} premium · {suggestions.length} idées
           </div>

@@ -71,7 +71,7 @@ export default function SavantPage({ user, authReady }) {
       <div style={{ maxWidth: 600, margin: '0 auto', padding: '0 16px' }}>
 
         <div style={{ textAlign: 'center', padding: '20px 0 8px' }}>
-          <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 28, color: 'var(--gold)' }}>العالِم</div>
+          <h1 style={{ fontFamily: 'var(--font-arabic)', fontSize: 28, color: 'var(--gold)', margin: 0, fontWeight: 400 }} lang="ar" dir="rtl">العالِم</h1>
           <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>Pose ta question sur l'Islam</div>
         </div>
 

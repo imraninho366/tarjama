@@ -34,7 +34,7 @@ export default function PiliersPage({ user }) {
       <div className={s.container}>
         {/* Header */}
         <div className={s.header}>
-          <div className={s.headerArabic}>{activeTab === 'islam' ? 'أركان الإسلام' : 'أركان الإيمان'}</div>
+          <h1 className={s.headerArabic} lang="ar" dir="rtl">{activeTab === 'islam' ? 'أركان الإسلام' : 'أركان الإيمان'}</h1>
           <div className={s.headerSub}>
             {activeTab === 'islam' ? 'Les 5 Piliers de l\'Islam' : 'Les 6 Piliers de la Foi'}
           </div>

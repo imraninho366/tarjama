@@ -154,7 +154,7 @@ export default function Quiz() {
         <title>Quiz — Tarjama</title>
       </Head>
       <div className={s.container}>
-        <div className={s.pageTitle}>QUIZ</div>
+        <h1 className={s.pageTitle}>QUIZ</h1>
 
         <div className={s.intro}>
           Entraîne-toi sur le vocabulaire coranique. Un mot arabe s'affiche — tu choisis sa traduction française parmi quatre propositions.

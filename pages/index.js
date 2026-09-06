@@ -504,7 +504,7 @@ export default function App({ user, profile, onLogout }){
           <div className={s.welcome}>
             <span className={s.welcomeAr}>أَهْلًا وَسَهْلًا</span>
             <div>
-              <div className={s.welcomeTitle}>Bienvenue, {profile.username} !</div>
+              <h1 className={s.welcomeTitle}>Bienvenue, {profile.username} !</h1>
               <div className={s.welcomeSub}>{total===0?'Prêt à apprendre le Coran ? Commence par Al-Fatiha !':'Continue ta progression !'}</div>
             </div>
           </div>
