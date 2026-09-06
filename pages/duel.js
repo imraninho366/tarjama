@@ -102,7 +102,13 @@ export default function DuelPage({ user, profile, authReady }) {
   // rediriger : `user` est encore null par ignorance, pas par absence.
   if (!authReady) return null
 
-  if (!user || !profile) { if (typeof window !== 'undefined') router.push('/'); return null }
+  // Le profil arrive APRES la session : _app le charge dans un second appel a
+  // Supabase. authReady ne dit donc rien sur lui. Traiter « profil pas encore
+  // arrive » comme « pas connecte » renvoyait a l'accueil un utilisateur
+  // parfaitement authentifie — constate en ouvrant /duel le 6 septembre 2026.
+  if (user && !profile) return null
+
+  if (!user) { if (typeof window !== 'undefined') router.push('/'); return null }
 
   // Si la route renvoie une page d'erreur HTML (variable manquante, exception),
   // r.json() levait une SyntaxError jamais rattrapee : setLoading(false) n'etait
