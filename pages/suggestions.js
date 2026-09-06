@@ -87,7 +87,8 @@ export default function SuggestionsPage({ user }) {
 
         <p className="text-[13px] text-[color:var(--tarjama-color-text-secondary)] leading-relaxed text-center mb-6">
           Tarjama est construite pour toi. Dis ce qui te manque — une sourate, un
-          type d&apos;exercice, un outil — et ça guidera la suite.
+          type d&apos;exercice, un outil — et je ferai tout mon possible,
+          in shâ&apos; Allah, pour l&apos;ajouter.
         </p>
 
         {/* Formulaire */}
