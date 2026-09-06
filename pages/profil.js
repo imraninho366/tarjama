@@ -9,15 +9,20 @@ import Link from 'next/link'
 import Button from '../components/common/Button'
 import { activiteParJour, calculerSeries, grilleCalendrier, repartitionQualite } from '../lib/progression'
 
-export default function ProfilPage({ user, profile, onLogout }) {
+export default function ProfilPage({ user, profile, authReady, onLogout }) {
   const router = useRouter()
   const [progress, setProgress] = useState({})
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    // authReady : la session Supabase est lue de facon asynchrone, donc au
+    // premier rendu `user` vaut null par ignorance et non par absence. Sans
+    // cette attente, ouvrir ou rafraichir /profil en etant connecte renvoyait
+    // a l'accueil.
+    if (!authReady) return
     if (!user) { router.push('/'); return }
     loadData()
-  }, [user])
+  }, [authReady, user])
 
   const loadData = async () => {
     const { data, error } = await supabase.from('progress').select('*').eq('user_id', user.id)
