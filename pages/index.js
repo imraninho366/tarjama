@@ -13,6 +13,7 @@ import Button from '../components/common/Button'
 import Toast from '../components/common/Toast'
 import s from '../styles/Home.module.css'
 import { apiFetch } from '../lib/apiClient'
+import { clickable } from '../lib/clickable'
 
 const SUGGESTIONS = [
   {n:1,ar:"الفاتحة",fr:"L'Ouverture",v:7},
@@ -62,7 +63,26 @@ function AudioPlayer({src}){
       </button>
       <div style={{flex:1,minWidth:0}}>
         <div style={{fontSize:9,letterSpacing:2,textTransform:'uppercase',color:'var(--text-muted)',marginBottom:4}}>Mishary Al-Afasy</div>
+        {/* Barre de progression : c'est un CURSEUR, pas un bouton — d'ou
+            role="slider" et non le helper clickable(). Les fleches deplacent
+            la lecture de 5 secondes, Debut et Fin sautent aux extremites.
+            Sans ca, elle ne repondait qu'au clic : un utilisateur au clavier
+            pouvait lancer la recitation mais jamais s'y deplacer. */}
         <div style={{height:3,background:'rgba(var(--tarjama-color-primary-rgb),.1)',borderRadius:2,overflow:'hidden',cursor:'pointer'}}
+          role="slider"
+          tabIndex={0}
+          aria-label="Progression de la récitation"
+          aria-valuemin={0}
+          aria-valuemax={Math.round(duration)||0}
+          aria-valuenow={Math.round(current)||0}
+          aria-valuetext={`${fmt(current)} sur ${fmt(duration)}`}
+          onKeyDown={e=>{
+            if(!audioRef.current||!duration)return
+            const saut={ArrowRight:5,ArrowLeft:-5,ArrowUp:5,ArrowDown:-5}[e.key]
+            if(saut!==undefined){e.preventDefault();audioRef.current.currentTime=Math.min(duration,Math.max(0,current+saut));return}
+            if(e.key==='Home'){e.preventDefault();audioRef.current.currentTime=0}
+            if(e.key==='End'){e.preventDefault();audioRef.current.currentTime=duration}
+          }}
           onClick={e=>{if(!audioRef.current||!duration)return;const rect=e.currentTarget.getBoundingClientRect();audioRef.current.currentTime=(e.clientX-rect.left)/rect.width*duration}}>
           <div style={{height:'100%',width:`${duration?Math.round(current/duration*100):0}%`,background:'linear-gradient(90deg,#8B6914,#C9A84C)',borderRadius:2,transition:'width .3s'}}/>
         </div>
@@ -429,12 +449,12 @@ export default function App({ user, profile, onLogout }){
         <div className={s.searchInput}>
           <span className={s.searchIcon}>◇</span>
           <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Rechercher une sourate..." className={s.searchField} type="search" autoComplete="off" name="sourate-search"/>
-          {search&&<span className={s.searchClear} onClick={()=>setSearch('')}>✕</span>}
+          {search&&<button type="button" className={s.searchClear} onClick={()=>setSearch('')} aria-label="Effacer la recherche" style={{background:'none',border:'none',padding:0,font:'inherit',cursor:'pointer'}}>✕</button>}
         </div>
         {searchResults.length>0&&(
           <div className={s.searchResults}>
             {searchResults.map(sr=>(
-              <div key={sr.n} className={s.searchResult} onClick={()=>openSourate(sr)}>
+              <div key={sr.n} className={s.searchResult} {...clickable(()=>openSourate(sr))}>
                 <span className={s.searchResultNum}>{sr.n}.</span>
                 <span className={s.searchResultAr} lang="ar" dir="rtl">{sr.ar}</span>
                 <div style={{textAlign:'right'}}>
@@ -451,7 +471,7 @@ export default function App({ user, profile, onLogout }){
 
       {/* Review button */}
       {(()=>{const rl=getReviewList();return rl.length>0?(
-        <div className={`${s.reviewBtn} ${view==='review'?s.reviewBtnActive:''}`} onClick={()=>setView('review')}>
+        <div className={`${s.reviewBtn} ${view==='review'?s.reviewBtnActive:''}`} {...clickable(()=>setView('review'))}>
           <div className={s.reviewBadge}>{rl.length}</div>
           <div>
             <div className={s.reviewLabel}>À REVOIR AUJOURD'HUI</div>
@@ -467,7 +487,7 @@ export default function App({ user, profile, onLogout }){
           const isA=sourate?.num===sg.n&&view==='sourate'
           const done=Object.keys(progress).filter(k=>k.startsWith(`${sg.n}:`)).length
           return(
-            <div key={sg.n} className={`${s.sourateItem} ${isA?s.sourateItemActive:''}`} onClick={()=>openSourate(sg)}>
+            <div key={sg.n} className={`${s.sourateItem} ${isA?s.sourateItemActive:''}`} {...clickable(()=>openSourate(sg))}>
               <span className={s.sourateNum}>{sg.n}.</span>
               <div style={{flex:1,minWidth:0}}>
                 <span className={s.sourateAr} lang="ar" dir="rtl">{sg.ar}</span>
@@ -536,7 +556,7 @@ export default function App({ user, profile, onLogout }){
             <div style={{marginTop:16}}>
               <div className={s.sectionLabel} style={{marginBottom:10}}>Tes sourates</div>
               {startedSourates.map(ss=>(
-                <div key={ss.n} onClick={()=>openSourate(ss)} style={{
+                <div key={ss.n} {...clickable(()=>openSourate(ss))} style={{
                   display:'flex',alignItems:'center',gap:10,padding:'10px 0',
                   borderBottom:'1px solid rgba(var(--tarjama-color-primary-rgb),.06)',cursor:'pointer'
                 }}>
@@ -584,10 +604,10 @@ export default function App({ user, profile, onLogout }){
             const sInfo=item.sInfo||{ar:'?',fr:'?'}
             const badge={wrong:{label:'Faux',clr:'var(--red)',bg:'var(--red)'+'1e'},partial:{label:'Partiel',clr:'var(--orange)',bg:'var(--orange)'+'1e'},skipped:{label:'Passé',clr:'var(--text-muted)',bg:'var(--text-muted)'+'1e'}}[item.niveau]||{label:'?',clr:'var(--text-muted)',bg:'transparent'}
             return(
-              <div key={item.key} className={s.reviewItem} onClick={()=>{
+              <div key={item.key} className={s.reviewItem} {...clickable(()=>{
                 const info={n:item.sNum,ar:sInfo.ar,fr:sInfo.fr,v:sInfo.v||0}
                 openSourate(info).then(()=>setTimeout(()=>goVerse(item.vNum-1),500))
-              }}>
+              })}>
                 <div className={s.reviewItemRef}>{item.sNum}:{item.vNum}</div>
                 <div style={{flex:1,minWidth:0}}>
                   <div className={s.reviewItemAr} lang="ar" dir="rtl">{sInfo.ar}</div>

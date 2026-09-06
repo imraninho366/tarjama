@@ -61,7 +61,7 @@ export default function RacinesPage({ user }) {
             placeholder="Chercher une racine, un mot ou un sens..."
             style={{ width: '100%', fontSize: 13, background: 'transparent', border: 'none', color: 'var(--text)' }}
           />
-          {search && <span onClick={() => setSearch('')} style={{ color: 'var(--text-muted)', cursor: 'pointer', fontSize: 16 }}>✕</span>}
+          {search && <button type="button" onClick={() => setSearch('')} aria-label="Effacer la recherche" style={{ color: 'var(--text-muted)', cursor: 'pointer', fontSize: 16, background: 'none', border: 'none', padding: 0, font: 'inherit' }}>✕</button>}
         </div>
 
         {/* Racine détail */}

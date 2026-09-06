@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { G } from '../lib/theme'
 import s from '../styles/Prophetes.module.css'
+import { clickable } from '../lib/clickable'
 
 export default function ProphetesPage({ user }) {
   const router = useRouter()
@@ -63,7 +64,7 @@ export default function ProphetesPage({ user }) {
             ) : (
               <div className={s.timeline}>
                 {filtered.map((p, idx) => (
-                  <div key={p.id} className={s.timelineItem} onClick={() => setSelected(p.id)}>
+                  <div key={p.id} className={s.timelineItem} {...clickable(() => setSelected(p.id))}>
                     <div className={s.timelineLine}>
                       <div className={s.timelineDot}>{p.id}</div>
                       {idx < filtered.length - 1 && <div className={s.timelineConnector} />}

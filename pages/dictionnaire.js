@@ -7,6 +7,7 @@ import { useVocab } from '../lib/useVocab'
 import Button from '../components/common/Button'
 import s from '../styles/Dictionnaire.module.css'
 import { apiFetch } from '../lib/apiClient'
+import { clickable } from '../lib/clickable'
 
 // Normalise une chaîne pour la recherche flexible
 // ex: "waqia" -> "waqia", "Wāqi'a" -> "waqia"
@@ -169,7 +170,7 @@ export default function Dictionnaire({ user, profile, authReady }) {
             className={s.searchField}
           />
           {search && (
-            <span onClick={() => setSearch('')} className={s.searchClear}>✕</span>
+            <button type="button" onClick={() => setSearch('')} className={s.searchClear} aria-label="Effacer la recherche" style={{ background: 'none', border: 'none', padding: 0, font: 'inherit', cursor: 'pointer' }}>✕</button>
           )}
         </div>
 
@@ -236,7 +237,7 @@ export default function Dictionnaire({ user, profile, authReady }) {
               return (
                 <div
                   key={i}
-                  onClick={() => setSelected(selected?.ar === w.ar ? null : w)}
+                  {...clickable(() => setSelected(selected?.ar === w.ar ? null : w))}
                   className={`${s.wordCard} ${selected?.ar === w.ar ? s.wordCardSelected : ''}`}
                   style={{ animationDelay: `${Math.min(i * 20, 400)}ms` }}
                 >

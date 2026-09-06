@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { G } from '../lib/theme'
 import s from '../styles/Duas.module.css'
+import { clickable } from '../lib/clickable'
 
 // Thèmes pour regrouper les catégories
 const THEMES = [
@@ -139,7 +140,7 @@ export default function DuasPage({ user }) {
                 <div
                   key={cat.cat_id}
                   className={s.catCard}
-                  onClick={() => { setSelectedCat(cat.cat_id); setExpandedDuas(new Set()) }}
+                  {...clickable(() => { setSelectedCat(cat.cat_id); setExpandedDuas(new Set()) })}
                 >
                   <div className={s.catNum}>{cat.cat_id}</div>
                   <div className={s.catInfo}>

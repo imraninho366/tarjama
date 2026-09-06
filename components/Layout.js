@@ -110,6 +110,20 @@ export default function Layout({ children, user, profile, onLogout, hideNav, the
     return () => router.events.off('routeChangeStart', handleRoute)
   }, [router])
 
+  useEffect(() => {
+    // Echap ferme la barre laterale.
+    //
+    // Le voile sombre derriere elle se ferme au clic, mais il reste
+    // volontairement aria-hidden et non focalisable : un rideau n'est pas un
+    // bouton, et le rendre tabulable ajouterait un arret muet dans le parcours
+    // clavier. La sortie clavier d'un panneau superpose, c'est Echap — sans
+    // quoi quelqu'un qui ouvre le menu au clavier ne peut plus en sortir.
+    if (!sidebarOpen) return
+    const onKey = (e) => { if (e.key === 'Escape') setSidebarOpen(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [sidebarOpen])
+
   if (hideNav) {
     return (
       <div className="min-h-screen flex flex-col">

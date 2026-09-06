@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useVocab } from '../lib/useVocab'
 import Button from '../components/common/Button'
+import { clickable } from '../lib/clickable'
 
 const PARCOURS = [
   { id: 'top100', title: 'Les 100 mots essentiels', desc: 'Les mots les plus fréquents du Coran', days: 30, wordsPerDay: 4, filter: (v) => v.sort((a, b) => (b.freq || 0) - (a.freq || 0)).slice(0, 100) },
@@ -66,7 +67,7 @@ export default function ParcoursPage({ user }) {
                 padding: '16px', borderRadius: 12,
                 background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.12)',
                 cursor: 'pointer', transition: 'all .15s'
-              }} onClick={() => startParcours(p)}>
+              }} {...clickable(() => startParcours(p))}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
                   <div style={{ fontSize: 15, color: 'var(--text)', fontWeight: 600 }}>{p.title}</div>
                   <span style={{ fontSize: 11, color: 'var(--gold)', fontWeight: 600 }}>{p.days} jours</span>

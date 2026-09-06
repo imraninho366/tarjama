@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { G } from '../lib/theme'
 import s from '../styles/Piliers.module.css'
+import { clickable } from '../lib/clickable'
 
 export default function PiliersPage({ user }) {
   const router = useRouter()
@@ -67,7 +68,7 @@ export default function PiliersPage({ user }) {
         {section && !selectedPilier && !loading && (
           <div className={s.pilierGrid}>
             {section.piliers.map(p => (
-              <div key={p.id} className={s.pilierCard} onClick={() => setSelectedPilier(p.id)}>
+              <div key={p.id} className={s.pilierCard} {...clickable(() => setSelectedPilier(p.id))}>
                 <div className={s.pilierIcon}>{p.icon}</div>
                 <div className={s.pilierInfo}>
                   <div className={s.pilierName}>{p.nom}</div>

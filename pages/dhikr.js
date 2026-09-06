@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Head from 'next/head'
 import Button from '../components/common/Button'
+import { clickable } from '../lib/clickable'
 
 const ADHKAR = [
   { id: 'subhanallah', ar: 'سُبْحَانَ اللَّهِ', fr: 'Gloire à Allah', translit: 'SubhanAllah', target: 33 },
@@ -131,7 +132,7 @@ export default function DhikrPage() {
 
             {/* Cercle compteur */}
             <div
-              onClick={increment}
+              {...clickable(increment)}
               style={{
                 width: 200, height: 200, borderRadius: '50%', margin: '0 auto 20px',
                 background: completed ? 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.08)' : 'rgba(var(--tarjama-color-primary-rgb),.06)',

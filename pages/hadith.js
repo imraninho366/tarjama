@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { G } from '../lib/theme'
 import s from '../styles/Hadith.module.css'
+import { clickable } from '../lib/clickable'
 
 const COLLECTIONS = [
   { id: 'bukhari', name: 'Sahih al-Bukhari', nameAr: 'صحيح البخاري' },
@@ -239,7 +240,7 @@ export default function HadithPage({ user }) {
                   <span className={s.statNum}>{sections.length}</span>
                   <span className={s.statLabel}>Chapitres</span>
                 </div>
-                <div className={s.statCard} onClick={loadRandomHadith} style={{ cursor: 'pointer' }}>
+                <div className={s.statCard} {...clickable(loadRandomHadith)} style={{ cursor: 'pointer' }}>
                   <span className={s.statNum}>&#9733;</span>
                   <span className={s.statLabel}>Hadith du jour</span>
                 </div>
@@ -271,7 +272,7 @@ export default function HadithPage({ user }) {
                     <div
                       key={sec.num}
                       className={s.chapterCard}
-                      onClick={() => loadSection(sec.num)}
+                      {...clickable(() => loadSection(sec.num))}
                     >
                       <div className={s.chapterNum}>{sec.num}</div>
                       <div className={s.chapterInfo}>
@@ -349,7 +350,7 @@ function HadithCard({ h, collection, forceExpanded = false }) {
   return (
     <div
       className={`${s.hadithCard} ${expanded ? s.hadithCardExpanded : ''}`}
-      onClick={() => !forceExpanded && setExpanded(!expanded)}
+      {...clickable(() => !forceExpanded && setExpanded(!expanded))}
       style={!forceExpanded && isLong ? { cursor: 'pointer' } : {}}
     >
       <div className={s.hadithHeader}>
