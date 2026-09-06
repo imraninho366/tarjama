@@ -12,6 +12,7 @@ import { computeStats, getNewBadges } from '../lib/badges'
 import Button from '../components/common/Button'
 import Toast from '../components/common/Toast'
 import s from '../styles/Home.module.css'
+import { apiFetch } from '../lib/apiClient'
 
 const SUGGESTIONS = [
   {n:1,ar:"الفاتحة",fr:"L'Ouverture",v:7},
@@ -214,7 +215,7 @@ export default function App({ user, profile, onLogout }){
         reader.onload=async()=>{
           const base64=reader.result.split(',')[1]
           try{
-            const r=await fetch('/api/transcribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({audio:base64,mimeType:actualMime})})
+            const r=await apiFetch('/api/transcribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({audio:base64,mimeType:actualMime})})
             const data=await r.json()
             if(data.error)throw new Error(data.error)
             const transcript=data.text||''
@@ -251,7 +252,7 @@ export default function App({ user, profile, onLogout }){
     if(translit)return
     setTranslitLoading(true)
     try{
-      const r=await fetch('/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:verse.ar,sourate_num:sourate.num,verse_num:verse.n,mode:'translit'})})
+      const r=await apiFetch('/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:verse.ar,sourate_num:sourate.num,verse_num:verse.n,mode:'translit'})})
       const data=await r.json()
       setTranslit(data.translit||'Non disponible.')
     }catch{setTranslit('Erreur.')}
@@ -264,7 +265,7 @@ export default function App({ user, profile, onLogout }){
     if(tafsir)return
     setTafsirLoading(true)
     try{
-      const r=await fetch('/api/tafsir',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:verse.ar,sourate_num:sourate.num,verse_num:verse.n,sourate_ar:sourate.name_ar,sourate_fr:sourate.name_fr})})
+      const r=await apiFetch('/api/tafsir',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:verse.ar,sourate_num:sourate.num,verse_num:verse.n,sourate_ar:sourate.name_ar,sourate_fr:sourate.name_fr})})
       const data=await r.json()
       setTafsir(data.tafsir||'Non disponible.')
     }catch{setTafsir('Erreur.')}
@@ -323,7 +324,7 @@ export default function App({ user, profile, onLogout }){
     setVerifying(true)
     const v=sourate.verses[vIdx]
     try{
-      const r=await fetch('/api/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:v.ar,sourate_num:sourate.num,verse_num:v.n,sourate_ar:sourate.name_ar,sourate_fr:sourate.name_fr,user_trans:userTrans})})
+      const r=await apiFetch('/api/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:v.ar,sourate_num:sourate.num,verse_num:v.n,sourate_ar:sourate.name_ar,sourate_fr:sourate.name_fr,user_trans:userTrans})})
       const result=await r.json()
       if(result.error)throw new Error(result.error)
       setFeedback(result)
@@ -339,7 +340,7 @@ export default function App({ user, profile, onLogout }){
       }
       setProgress(prev=>({...prev,[`${sourate.num}:${v.n}`]:{userTrans,niveau:result.niveau,feedback:result,ts:new Date().toISOString()}}))
       try{
-        const vr=await fetch('/api/vocab',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:v.ar,sourate_num:sourate.num,verse_num:v.n,sourate_ar:sourate.name_ar,sourate_fr:sourate.name_fr})})
+        const vr=await apiFetch('/api/vocab',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:v.ar,sourate_num:sourate.num,verse_num:v.n,sourate_ar:sourate.name_ar,sourate_fr:sourate.name_fr})})
         const vdata=await vr.json()
         if(vdata.mots?.length>0){
           const rows=vdata.mots.map(m=>({user_id:user.id,ar:m.ar,translit:m.translit,racine:m.racine,sens:m.sens,freq:m.freq||0,freq_label:m.freq_label,type:m.type,exemple_autre:m.exemple_autre,exemple_ref:m.exemple_ref,sourate_num:sourate.num,verse_num:v.n}))
@@ -358,7 +359,7 @@ export default function App({ user, profile, onLogout }){
     setHinting(true)
     const v=sourate.verses[vIdx]
     try{
-      const r=await fetch('/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:v.ar,sourate_num:sourate.num,verse_num:v.n})})
+      const r=await apiFetch('/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:v.ar,sourate_num:sourate.num,verse_num:v.n})})
       const data=await r.json()
       setHint(data.hint||'Indice non disponible.');setShowHint(true)
     }catch{setHint('Erreur.');setShowHint(true)}

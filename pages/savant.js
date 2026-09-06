@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import Button from '../components/common/Button'
+import { apiFetch } from '../lib/apiClient'
 
 const SUGGESTIONS = [
   'Comment faire la prière ?',
@@ -11,7 +13,8 @@ const SUGGESTIONS = [
   'Qu\'est-ce que la zakat et comment la calculer ?',
 ]
 
-export default function SavantPage() {
+export default function SavantPage({ user }) {
+  const router = useRouter()
   const [question, setQuestion] = useState('')
   const [askedQuestion, setAskedQuestion] = useState('')
   const [answer, setAnswer] = useState('')
@@ -26,7 +29,7 @@ export default function SavantPage() {
     setAnswer('')
     setAskedQuestion(query)
     try {
-      const r = await fetch('/api/savant', {
+      const r = await apiFetch('/api/savant', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: query })
@@ -42,6 +45,19 @@ export default function SavantPage() {
     }
     setLoading(false)
     setQuestion('')
+  }
+
+  // Place APRES les hooks : les regles de React interdisent de sortir d'un
+  // composant avant que tous ses hooks aient ete appeles.
+  //
+  // Cette page etait la seule, avec /gen-dico, accessible sans compte — alors
+  // que /api/savant est la route IA la plus couteuse. Elle s'aligne desormais
+  // sur toutes les autres pages, et surtout sur ce que l'API accepte : sans
+  // ce garde-fou, un visiteur non connecte verrait le formulaire, poserait sa
+  // question, et recevrait un 401 incomprehensible.
+  if (!user) {
+    if (typeof window !== 'undefined') router.push('/')
+    return null
   }
 
   return (

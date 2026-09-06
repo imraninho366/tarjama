@@ -1,4 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
+import { requireAdmin } from '../../lib/apiAuth'
 import { probeProviders } from '../../lib/ai'
 
 /**
@@ -18,6 +19,13 @@ export default async function handler(req, res) {
 
   const { ok } = rateLimit(req, { limit: 2, windowMs: 60000 })
   if (!ok) return res.status(429).json({ error: 'Trop de requêtes.' })
+
+  // Reserve a l'admin. Cette route consomme un jeton chez CHAQUE fournisseur
+  // configure a chaque appel : laissee ouverte, elle etait le moyen le plus
+  // efficace de vider six quotas d'un coup. Elle revele aussi quels
+  // fournisseurs sont a sec, ce qui indique quand frapper.
+  const user = await requireAdmin(req, res)
+  if (!user) return
 
   const providers = await probeProviders()
   const active = providers.find(p => p.ok) || null

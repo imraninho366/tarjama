@@ -2,12 +2,10 @@ import { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
 
 import { G } from '../lib/theme'
-const PW = process.env.NEXT_PUBLIC_ADMIN_PW || 'change-me'
+import { apiFetch } from '../lib/apiClient'
+import { isAdmin } from '../lib/freemium'
 
-export default function GenDico() {
-  const [authed, setAuthed]   = useState(false)
-  const [pw, setPw]           = useState('')
-  const [pwErr, setPwErr]     = useState(false)
+export default function GenDico({ user }) {
   const [status, setStatus]   = useState('idle')
   const [progress, setProg]   = useState({ done: 0, total: 0, words: 0 })
   const [log, setLog]         = useState([])
@@ -48,7 +46,7 @@ export default function GenDico() {
       setProg(p => ({ ...p, done: i + 1 }))
 
       try {
-        const r = await fetch('/api/gen-vocab', {
+        const r = await apiFetch('/api/gen-vocab', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ batch })
@@ -88,20 +86,24 @@ export default function GenDico() {
 
   const pct = progress.total ? Math.round(progress.done / progress.total * 100) : 0
 
-  if (!authed) return (
+  // Le portillon precedent comparait une saisie a NEXT_PUBLIC_ADMIN_PW. Le
+  // prefixe NEXT_PUBLIC_ signifie que la valeur est compilee DANS le bundle
+  // envoye au navigateur : n'importe qui pouvait la lire dans les sources de
+  // la page. Et faute d'avoir jamais ete definie, elle valait 'change-me'.
+  //
+  // Ce n'etait donc pas une protection, seulement son apparence. La vraie
+  // barriere est desormais cote serveur, dans le requireAdmin de
+  // /api/gen-vocab, ou l'identite vient d'un jeton Supabase que le navigateur
+  // ne peut pas fabriquer. Ce test-ci evite seulement d'afficher un outil qui
+  // ne repondrait pas.
+  if (!isAdmin(user?.id)) return (
     <div style={{minHeight:'100vh',background:'var(--tarjama-color-background)',display:'flex',alignItems:'center',justifyContent:'center'}}>
-      <div style={{background:'var(--tarjama-color-surface)',border:`1px solid rgba(var(--tarjama-color-primary-rgb),.2)`,borderRadius:6,padding:'32px 28px',width:340}}>
+      <div style={{background:'var(--tarjama-color-surface)',border:`1px solid rgba(var(--tarjama-color-primary-rgb),.2)`,borderRadius:6,padding:'32px 28px',width:340,textAlign:'center'}}>
         <div style={{fontFamily:'Cinzel,serif',fontSize:18,color:'var(--tarjama-color-primary)',marginBottom:4}}>TARJAMA — GÉNÉRATION</div>
         <div style={{fontSize:11,color:'var(--tarjama-color-text-muted)',letterSpacing:2,marginBottom:20}}>ACCÈS RESTREINT</div>
-        <input type="password" value={pw} onChange={e=>{setPw(e.target.value);setPwErr(false)}}
-          onKeyDown={e=>{if(e.key==='Enter'){if(pw===PW)setAuthed(true);else setPwErr(true)}}}
-          placeholder="Mot de passe..." autoFocus
-          style={{width:'100%',background:'var(--tarjama-color-surface-elevated)',border:`1px solid ${pwErr?'var(--tarjama-color-error)':'rgba(var(--tarjama-color-primary-rgb),.2)'}`,color:'var(--tarjama-color-text)',padding:'10px 12px',borderRadius:3,fontFamily:'Lato,sans-serif',fontSize:14,outline:'none',marginBottom:8}}/>
-        {pwErr && <div style={{fontSize:12,color:'var(--tarjama-color-error)',marginBottom:8}}>Incorrect</div>}
-        <button onClick={()=>{if(pw===PW)setAuthed(true);else setPwErr(true)}}
-          style={{width:'100%',background:'var(--tarjama-color-primary)',color:'var(--tarjama-color-background)',border:'none',borderRadius:3,padding:'10px',fontFamily:'Lato,sans-serif',fontWeight:700,fontSize:12,letterSpacing:2,cursor:'pointer'}}>
-          ACCÉDER
-        </button>
+        <div style={{fontSize:13,color:'var(--tarjama-color-text-secondary)',lineHeight:1.6}}>
+          Cet outil est réservé à l&apos;administration du dictionnaire.
+        </div>
       </div>
     </div>
   )

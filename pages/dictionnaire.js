@@ -6,6 +6,7 @@ import { G, TYPE_COLORS, FREQ_COLORS } from '../lib/theme'
 import { useVocab } from '../lib/useVocab'
 import Button from '../components/common/Button'
 import s from '../styles/Dictionnaire.module.css'
+import { apiFetch } from '../lib/apiClient'
 
 // Normalise une chaîne pour la recherche flexible
 // ex: "waqia" -> "waqia", "Wāqi'a" -> "waqia"
@@ -306,7 +307,7 @@ export default function Dictionnaire({ user, profile }) {
                   if (mnemo) { setMnemo(''); return }
                   setMnemoLoading(true)
                   try {
-                    const r = await fetch('/api/mnemo', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ar: selected.ar, translit: selected.translit, sens: selected.sens }) })
+                    const r = await apiFetch('/api/mnemo', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ar: selected.ar, translit: selected.translit, sens: selected.sens }) })
                     const data = await r.json()
                     setMnemo(data.mnemo || 'Non disponible')
                   } catch { setMnemo('Erreur') }

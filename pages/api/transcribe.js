@@ -1,9 +1,15 @@
 import { rateLimit } from '../../lib/rateLimit'
+import { requireUser } from '../../lib/apiAuth'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
   const { ok } = rateLimit(req, { limit: 5, windowMs: 60000 })
   if (!ok) return res.status(429).json({ error: 'Trop de requêtes.' })
+
+  // Sans ce controle, n'importe qui pouvait boucler sur cette route
+  // et vider le quota IA de la journee sans meme avoir de compte.
+  const user = await requireUser(req, res)
+  if (!user) return
 
   const apiKey = process.env.GROQ_API_KEY
   if (!apiKey) return res.status(500).json({ error: 'Clé Groq non configurée' })

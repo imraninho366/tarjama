@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Button from '../components/common/Button'
+import { apiFetch } from '../lib/apiClient'
 
 const MOODS = [
   { id: 'stress', label: 'Stressé(e)', icon: '😰', ar: 'قلق' },
@@ -31,7 +32,7 @@ export default function HumeurPage({ user }) {
     setLoading(true)
     setVersets(null)
     try {
-      const r = await fetch('/api/humeur', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mood }) })
+      const r = await apiFetch('/api/humeur', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mood }) })
       const data = await r.json()
       if (data.error) throw new Error(data.error)
       setVersets(data.versets || [])

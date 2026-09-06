@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { SOURATES_LIST } from '../lib/sourates'
 import Button from '../components/common/Button'
+import { apiFetch } from '../lib/apiClient'
 
 const SHORT_SOURATES = [1, 112, 113, 114, 103, 108, 110, 111, 97, 99, 100, 101, 102, 104, 105, 106, 107, 109]
 
@@ -48,7 +49,7 @@ export default function TajweedPage({ user }) {
         reader.onload = async () => {
           const base64 = reader.result.split(',')[1]
           try {
-            const r = await fetch('/api/transcribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ audio: base64, mimeType: actualMime }) })
+            const r = await apiFetch('/api/transcribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ audio: base64, mimeType: actualMime }) })
             const data = await r.json()
             if (data.text && verse) analyzeResult(data.text, verse.ar)
             else setResult({ score: 0, details: [], transcript: data.text || '' })

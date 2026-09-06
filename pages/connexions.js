@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { rateLimit } from '../lib/rateLimit'
 import Button from '../components/common/Button'
+import { apiFetch } from '../lib/apiClient'
 
 const THEMES = [
   { id: 'patience', label: 'Patience', ar: 'الصبر', icon: '🌿' },
@@ -31,7 +32,7 @@ export default function ConnexionsPage({ user }) {
   const search = async (theme) => {
     setLoading(true); setVersets(null)
     try {
-      const r = await fetch('/api/humeur', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mood: `versets sur le thème : ${theme}` }) })
+      const r = await apiFetch('/api/humeur', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mood: `versets sur le thème : ${theme}` }) })
       const data = await r.json()
       // Sans ce controle, un 429 ou un 502 renvoyait { error } : data.versets
       // valait undefined, l'etat devenait [] et la page ne rendait plus RIEN —

@@ -3,11 +3,18 @@ import { callAIJSON } from '../../lib/ai'
 // Appelée par la page /gen-dico en lots de 40 mots
 
 import { rateLimit } from '../../lib/rateLimit'
+import { requireAdmin } from '../../lib/apiAuth'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
   const { ok } = rateLimit(req, { limit: 3, windowMs: 60000 })
   if (!ok) return res.status(429).json({ error: 'Trop de requêtes.' })
+
+  // Reserve a l'admin : 3000 tokens par appel, soit la route la plus couteuse
+  // du projet. C'est un outil de generation du dictionnaire, pas une
+  // fonctionnalite destinee aux utilisateurs.
+  const user = await requireAdmin(req, res)
+  if (!user) return
 
 
   const { batch } = req.body  // [{l: lemma, r: root, c: count}]

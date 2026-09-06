@@ -1,4 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
+import { requireUser } from '../../lib/apiAuth'
 import { callAIJSON } from '../../lib/ai'
 import { cacheGet, cacheSet } from '../../lib/cache'
 
@@ -6,6 +7,11 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
   const { ok } = rateLimit(req, { limit: 8, windowMs: 60000 })
   if (!ok) return res.status(429).json({ error: 'Trop de requêtes.' })
+
+  // Sans ce controle, n'importe qui pouvait boucler sur cette route
+  // et vider le quota IA de la journee sans meme avoir de compte.
+  const user = await requireUser(req, res)
+  if (!user) return
 
   const { mood } = req.body
   if (!mood) return res.status(400).json({ error: 'Humeur manquante' })

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useVocab } from '../lib/useVocab'
 import Button from '../components/common/Button'
+import { apiFetch } from '../lib/apiClient'
 
 const MODES = [
   { id: 'traduction', icon: 'ت', title: 'Traduction', desc: 'Traduis 3 versets coraniques', rounds: 3 },
@@ -54,7 +55,9 @@ export default function DuelPage({ user, profile }) {
   // repartait toutes les 2 s indefiniment sans jamais rien afficher.
   const api = async (body) => {
     try {
-      const r = await fetch('/api/duel', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...body, user_id: user.id, username: profile.username }) })
+      // user_id et username ne sont plus envoyes : le serveur les tire du
+      // jeton de session, seule source d'identite qui ne soit pas falsifiable.
+      const r = await apiFetch('/api/duel', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
       const data = await r.json()
       if (!r.ok) return { error: data?.error || `Erreur serveur (${r.status})` }
       return data
@@ -106,7 +109,7 @@ export default function DuelPage({ user, profile }) {
 
     } else if (mode === 'quiz-islam') {
       try {
-        const r = await fetch('/api/quiz-islam', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ count: 5, seed: d.sourate_num * 1000 + d.verse_num }) })
+        const r = await apiFetch('/api/quiz-islam', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ count: 5, seed: d.sourate_num * 1000 + d.verse_num }) })
         const data = await r.json()
         setQuestions(data.questions || [])
       } catch { setError('Erreur chargement questions') }
@@ -150,7 +153,7 @@ export default function DuelPage({ user, profile }) {
     if (!translation.trim() || !verse) return
     setLoading(true)
     try {
-      const r = await fetch('/api/verify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ arabic: verse.ar, sourate_num: verse.sourate_num, verse_num: verse.n, sourate_ar: verse.sourate_ar, sourate_fr: verse.sourate_fr, user_trans: translation }) })
+      const r = await apiFetch('/api/verify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ arabic: verse.ar, sourate_num: verse.sourate_num, verse_num: verse.n, sourate_ar: verse.sourate_ar, sourate_fr: verse.sourate_fr, user_trans: translation }) })
       const feedback = await r.json()
       const scoreMap = { excellent: 100, good: 75, partial: 50, wrong: 25 }
       const score = scoreMap[feedback.niveau] || 0
