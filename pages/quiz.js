@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback , useMemo } from 'react'
 import Head from 'next/head'
 import { G } from '../lib/theme'
 import { useVocab } from '../lib/useVocab'
@@ -12,10 +12,6 @@ function shuffle(arr) {
     [a[i], a[j]] = [a[j], a[i]]
   }
   return a
-}
-
-function pickRandom(arr, n) {
-  return shuffle(arr).slice(0, n)
 }
 
 function playFeedback(correct) {
@@ -35,13 +31,29 @@ function playFeedback(correct) {
   if (navigator.vibrate) navigator.vibrate(correct ? 50 : [50, 30, 50])
 }
 
+/**
+ * Modes de quiz.
+ *
+ * Les descriptions annoncaient des nombres ecrits en dur — « 2 168 noms »
+ * quand le dictionnaire en compte 3 082, « 1 168 verbes » pour 2 185. Elles
+ * sont desormais calculees a partir des donnees reelles (voir modeCounts) :
+ * un chiffre affiche ne peut plus mentir.
+ *
+ * « Mots frequents » passe en tete parce que c'est le bon point de depart.
+ * L'ancien premier choix, « Tout le vocabulaire », piochait dans les 6344
+ * entrees dont 2976 rares — donc pres d'une question sur deux portait sur un
+ * mot introuvable ailleurs que dans un dictionnaire.
+ */
 const MODES = [
-  { id: 'all',        label: 'Tout le vocabulaire', desc: 'Tous les mots' },
-  { id: 'frequent',   label: 'Mots fréquents',      desc: 'Fréquent & très fréquent' },
-  { id: 'nom',        label: 'Noms uniquement',      desc: '2 168 noms' },
-  { id: 'verbe',      label: 'Verbes uniquement',    desc: '1 168 verbes' },
-  { id: 'adjectif',   label: 'Adjectifs uniquement', desc: '313 adjectifs' },
+  { id: 'frequent',   label: 'Mots fréquents',       desc: 'Les plus utiles pour commencer' },
+  { id: 'all',        label: 'Tout le vocabulaire',  desc: 'Hors mots rares' },
+  { id: 'nom',        label: 'Noms uniquement',      desc: null },
+  { id: 'verbe',      label: 'Verbes uniquement',    desc: null },
+  { id: 'adjectif',   label: 'Adjectifs uniquement', desc: null },
   { id: '99noms',     label: '99 noms d\'Allah',     desc: 'Asma ul-Husna' },
+  // Les mots rares ne disparaissent pas : ils deviennent un choix assume,
+  // au lieu de s'inviter dans tous les autres modes.
+  { id: 'rare',       label: 'Défi — mots rares',    desc: 'Pour les curieux' },
 ]
 
 export default function Quiz() {
@@ -66,18 +78,37 @@ export default function Quiz() {
     localStorage.setItem('tarjama_quiz_translit', String(next))
   }
 
-  // Filtrer selon mode
+  /**
+   * Mots retenus pour un mode donne.
+   *
+   * Les modes par categorie (noms, verbes, adjectifs) ecartent eux aussi les
+   * mots rares : choisir « Verbes uniquement » exprime une preference de
+   * categorie, pas une envie de tomber sur un verbe vu cinq fois dans tout le
+   * Coran. Seul le mode « rare » les convoque, et il le dit.
+   *
+   * Les mots sans sens defini sont exclus partout : ils affichaient « ? » en
+   * guise de proposition.
+   */
   const getPool = useCallback((m) => {
     if (!vocab.length) return []
+    const utilisable = vocab.filter(w => w.sens?.[0])
+    const courant = utilisable.filter(w => w.freq_label !== 'rare')
     switch(m) {
-      case 'frequent':  return vocab.filter(w => w.freq_label === 'fréquent' || w.freq_label === 'très fréquent')
-      case 'nom':       return vocab.filter(w => w.type === 'nom')
-      case 'verbe':     return vocab.filter(w => w.type === 'verbe')
-      case 'adjectif':  return vocab.filter(w => w.type === 'adjectif')
-      case '99noms':    return vocab.filter(w => w.categorie === '99 noms')
-      default:          return vocab
+      case 'frequent':  return courant.filter(w => w.freq_label === 'fréquent' || w.freq_label === 'très fréquent')
+      case 'nom':       return courant.filter(w => w.type === 'nom')
+      case 'verbe':     return courant.filter(w => w.type === 'verbe')
+      case 'adjectif':  return courant.filter(w => w.type === 'adjectif')
+      case '99noms':    return utilisable.filter(w => w.categorie === '99 noms')
+      case 'rare':      return utilisable.filter(w => w.freq_label === 'rare')
+      default:          return courant
     }
   }, [vocab])
+
+  // Compte reel de chaque mode, pour que les cartes annoncent la verite.
+  const modeCounts = useMemo(
+    () => Object.fromEntries(MODES.map(m => [m.id, getPool(m.id).length])),
+    [getPool]
+  )
 
   // Générer une question
   const nextQuestion = useCallback((m, currentScore) => {
@@ -85,7 +116,31 @@ export default function Quiz() {
     if (pool.length < 4) return
 
     const target = pool[Math.floor(Math.random() * pool.length)]
-    const wrong  = pickRandom(pool.filter(w => w.ar !== target.ar), 3)
+
+    /*
+     * Les distracteurs doivent avoir un sens DIFFERENT de la bonne reponse.
+     * Tires au hasard dans le reservoir, deux mots pouvaient partager la meme
+     * traduction : la question avait alors deux bonnes reponses et n'en
+     * acceptait qu'une. Le joueur perdait un point sans comprendre pourquoi.
+     *
+     * On tire aussi mot par mot au lieu de melanger tout le reservoir pour
+     * n'en garder que trois : l'ancien pickRandom copiait et brassait jusqu'a
+     * 6344 elements A CHAQUE QUESTION.
+     */
+    const sensPris = new Set([target.sens[0].toLowerCase()])
+    const wrong = []
+    let essais = 0
+    while (wrong.length < 3 && essais++ < 200) {
+      const c = pool[Math.floor(Math.random() * pool.length)]
+      const sens = c.sens?.[0]?.toLowerCase()
+      if (!sens || sensPris.has(sens)) continue
+      sensPris.add(sens)
+      wrong.push(c)
+    }
+    // Reservoir trop pauvre en sens distincts (cas des 99 noms, 91 entrees) :
+    // mieux vaut ne pas poser la question que d'en poser une bancale.
+    if (wrong.length < 3) return
+
     const all    = shuffle([target, ...wrong])
     const correctIdx = all.findIndex(w => w.ar === target.ar)
 
@@ -165,7 +220,7 @@ export default function Quiz() {
             <button key={m.id} onClick={() => startQuiz(m.id)} className={s.modeCard}>
               <div>
                 <div className={s.modeLabel}>{m.label}</div>
-                <div className={s.modeDesc}>{m.desc}</div>
+                <div className={s.modeDesc}>{m.desc || `${modeCounts[m.id]?.toLocaleString('fr') ?? '…'} mots`}</div>
               </div>
               <div className={s.modeArrow}>›</div>
             </button>

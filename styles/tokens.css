@@ -18,7 +18,14 @@
   --tarjama-color-background: #F5F1E8;
   --tarjama-color-surface: #FAF7F0;
   --tarjama-color-surface-elevated: #FFFFFF;
-  --tarjama-color-surface-overlay: rgba(0, 0, 0, 0.5);
+  /* Surface translucide des barres et des cartes « verre ».
+     Valait rgba(0,0,0,0.5) — du noir a 50 %. Posee sur le fond creme #F5F1E8,
+     elle donnait un gris boueux : la barre du haut, celle du bas et les cartes
+     de /alphabet et /quiz avaient l'air desactivees.
+     Le nom « overlay » vient d'un voile de modale, mais AUCUN voile n'utilise
+     ce jeton — la barre laterale a son propre bg-black/50. Il ne sert donc
+     qu'a des surfaces, et prend desormais la teinte de la surface. */
+  --tarjama-color-surface-overlay: rgba(250, 247, 240, 0.85);
 
   /* ── Colors — Text ────────────────────────────────────────── */
   --tarjama-color-text: #1A1714;
@@ -133,7 +140,10 @@
   --tarjama-color-background: #09090E;
   --tarjama-color-surface: #0F0F18;
   --tarjama-color-surface-elevated: #1D1D2C;
-  --tarjama-color-surface-overlay: rgba(0, 0, 0, 0.7);
+  /* Meme logique qu'en theme clair : la surface translucide reprend la teinte
+     de la surface sombre (#0F0F18) plutot qu'un noir pur, pour que le flou
+     d'arriere-plan laisse deviner le contenu au lieu de l'eteindre. */
+  --tarjama-color-surface-overlay: rgba(15, 15, 24, 0.85);
 
   --tarjama-color-text: #EDE8D8;
   --tarjama-color-text-secondary: #9A9280;
