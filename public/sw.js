@@ -1,5 +1,5 @@
 // Bump à chaque changement de stratégie : l'ancien cache est purgé à l'activation.
-const CACHE_NAME = 'tarjama-v4'
+const CACHE_NAME = 'tarjama-v5'
 
 /**
  * Coquille minimale, préchargée à l'installation.
@@ -66,15 +66,31 @@ function isPageRequest(request) {
     (request.headers.get('accept') || '').includes('text/html')
 }
 
+/**
+ * La requête rapporte-t-elle des DONNÉES, par opposition à un fichier ?
+ *
+ * La distinction qui compte pour le cache n'est pas « interne ou externe »
+ * mais « immuable ou vivant ». Un fichier .js de Next.js porte un hash dans
+ * son nom : son contenu ne changera jamais, le cache est sans risque. La
+ * progression d'un utilisateur change à chaque verset traduit.
+ *
+ * Écrit en liste blanche plutôt qu'en liste noire : tout ce qui n'est pas
+ * reconnu comme un fichier statique de notre propre domaine est traité comme
+ * une donnée vivante. Une liste noire aurait laissé passer le prochain
+ * service tiers, exactement comme celle-ci a laissé passer Supabase.
+ */
+function isDataRequest(request) {
+  const url = new URL(request.url)
+  if (url.origin !== self.location.origin) return true          // tout tiers
+  if (url.pathname.startsWith('/api/')) return true             // nos routes
+  if (url.pathname.startsWith('/_next/static/')) return false   // fichiers hashés
+  // Fichiers du dossier public : reconnus a leur extension.
+  return !/\.(js|css|json|png|jpe?g|svg|webp|ico|woff2?|ttf|mp3|webmanifest)$/i.test(url.pathname)
+}
+
 self.addEventListener('fetch', (event) => {
   const { request } = event
   if (request.method !== 'GET') return
-
-  // Appels API : toujours le réseau d'abord, cache en secours hors-ligne.
-  if (request.url.includes('/api/')) {
-    event.respondWith(fetch(request).catch(() => caches.match(request)))
-    return
-  }
 
   // Pages HTML : réseau d'abord.
   //
@@ -99,8 +115,42 @@ self.addEventListener('fetch', (event) => {
     return
   }
 
-  // Reste (JS, CSS, images, JSON) : cache d'abord, sans risque car ces fichiers
-  // sont soit versionnés par un hash, soit des données statiques.
+  // Données vivantes (API interne, Supabase, tout tiers) : réseau d'abord.
+  // Placé APRÈS le test des pages, qui a son propre repli hors-ligne.
+  // Données vivantes : toujours le réseau d'abord, cache en secours hors-ligne.
+  //
+  // Le test ne portait que sur « /api/ », donc uniquement les routes internes.
+  // Or Supabase répond sur xxx.supabase.co/rest/v1/… — aucun « /api/ » dans le
+  // chemin. La progression, le profil et les suggestions de chaque utilisateur
+  // tombaient donc dans la branche « cache d'abord » du bas, prévue pour les
+  // fichiers JavaScript et les images, et y restaient FIGÉS indéfiniment.
+  //
+  // Constaté le 6 septembre 2026 : 8 réponses Supabase en cache, dont
+  // /rest/v1/progress. Le profil affichait 7 versets là où la base en avait 8,
+  // et le verset traduit le jour même n'apparaissait nulle part.
+  //
+  // C'est la même panne que celle corrigée le matin pour le HTML. La règle
+  // sûre : ne servir depuis le cache en priorité QUE ce qui est immuable.
+  if (isDataRequest(request)) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          // On garde une copie pour le mode hors-ligne, mais elle ne sert
+          // qu'en dernier recours, jamais tant que le réseau répond.
+          if (response.ok) {
+            const clone = response.clone()
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone))
+          }
+          return response
+        })
+        .catch(() => caches.match(request))
+    )
+    return
+  }
+
+  // Fichiers statiques de notre domaine UNIQUEMENT (voir isDataRequest) :
+  // cache d'abord, sans risque car ils sont versionnés par un hash ou
+  // immuables. Rien de vivant n'atteint cette branche.
   event.respondWith(
     caches.match(request).then((cached) => {
       if (cached) return cached
