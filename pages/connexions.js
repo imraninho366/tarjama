@@ -33,8 +33,16 @@ export default function ConnexionsPage({ user }) {
     try {
       const r = await fetch('/api/humeur', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mood: `versets sur le thème : ${theme}` }) })
       const data = await r.json()
-      setVersets(data.versets || [])
-    } catch { setVersets('error') }
+      // Sans ce controle, un 429 ou un 502 renvoyait { error } : data.versets
+      // valait undefined, l'etat devenait [] et la page ne rendait plus RIEN —
+      // ni message, ni bouton, juste un ecran vide.
+      if (data.error) throw new Error(data.error)
+      if (!Array.isArray(data.versets) || data.versets.length === 0) throw new Error('Aucun verset trouve')
+      setVersets(data.versets)
+    } catch (err) {
+      console.error('[connexions] recherche:', err.message)
+      setVersets('error')
+    }
     setLoading(false)
   }
 

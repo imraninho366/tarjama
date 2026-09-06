@@ -34,11 +34,11 @@ export default function BottomNav() {
             {isActive && (
               <span className="absolute -top-px left-1/2 -translate-x-1/2 w-5 h-[3px] rounded-b-[3px] bg-primary shadow-[0_2px_8px_rgba(var(--tarjama-color-primary-rgb),0.25)]" aria-hidden="true" />
             )}
-            <span className={`text-lg leading-none transition-transform duration-150 ${isActive ? 'scale-110' : ''}`}>
+            <span aria-hidden="true" className={`text-lg leading-none transition-transform duration-150 ${isActive ? 'scale-110' : ''}`}>
               {tab.icon}
             </span>
             <span className={`text-[9px] font-bold tracking-[1px] uppercase transition-colors duration-200 ${
-              isActive ? 'text-primary' : 'text-[color:var(--tarjama-color-text-muted)]'
+              isActive ? 'text-primary-dim' : 'text-[color:var(--tarjama-color-text-secondary)]'
             }`}>
               {tab.label}
             </span>

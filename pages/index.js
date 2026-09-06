@@ -176,7 +176,10 @@ export default function App({ user, profile, onLogout }){
     const niveau=score>=90?'excellent':score>=70?'good':score>=50?'partial':'wrong'
     setHifzResult({score,niveau,correct})
     const{error:hifzErr}=await supabase.from('progress').upsert({user_id:user.id,sourate_num:sourate.num,verse_num:verse.n,user_trans:`[Hifz] ${hifzInput}`,niveau,feedback:{titre:'Mode Hifz',message:`Score de mémorisation : ${score}%`,niveau}},{onConflict:'user_id,sourate_num,verse_num'})
-    if(hifzErr)console.error('Hifz save error:',hifzErr.message)
+    if(hifzErr){
+      console.error('[index] sauvegarde hifz:',hifzErr.message)
+      showToast('Ton score n\'a pas pu etre enregistre.','error')
+    }
     setProgress(prev=>({...prev,[`${sourate.num}:${verse.n}`]:{userTrans:`[Hifz] ${hifzInput}`,niveau,feedback:{niveau}}}))
   }
 
@@ -220,7 +223,11 @@ export default function App({ user, profile, onLogout }){
               const result=compareArabic(verse.ar,transcript)
               setRecScore(result)
               const niveau=result.score>=90?'excellent':result.score>=70?'good':result.score>=50?'partial':'wrong'
-              await supabase.from('progress').upsert({user_id:user.id,sourate_num:sourate.num,verse_num:verse.n,user_trans:`[Récitation] ${transcript}`,niveau,feedback:{titre:'Récitation vocale',message:`Score : ${result.score}%`,niveau}},{onConflict:'user_id,sourate_num,verse_num'})
+              const{error:recErr}=await supabase.from('progress').upsert({user_id:user.id,sourate_num:sourate.num,verse_num:verse.n,user_trans:`[Récitation] ${transcript}`,niveau,feedback:{titre:'Récitation vocale',message:`Score : ${result.score}%`,niveau}},{onConflict:'user_id,sourate_num,verse_num'})
+              if(recErr){
+                console.error('[index] sauvegarde recitation:',recErr.message)
+                showToast('Ta recitation n\'a pas pu etre enregistree.','error')
+              }
               setProgress(prev=>({...prev,[`${sourate.num}:${verse.n}`]:{userTrans:`[Récitation] ${transcript}`,niveau,feedback:{niveau},ts:new Date().toISOString()}}))
             }
           }catch(err){showToast('Erreur transcription: '+err.message,'error')}
@@ -320,7 +327,16 @@ export default function App({ user, profile, onLogout }){
       const result=await r.json()
       if(result.error)throw new Error(result.error)
       setFeedback(result)
-      await supabase.from('progress').upsert({user_id:user.id,sourate_num:sourate.num,verse_num:v.n,user_trans:userTrans,niveau:result.niveau,feedback:result},{onConflict:'user_id,sourate_num,verse_num'})
+      // Sans ce controle, un echec d'enregistrement passait inapercu : l'ecran
+      // affichait le succes, les confettis et le badge, et la traduction
+      // disparaissait au rechargement suivant.
+      const{error:saveErr}=await supabase.from('progress').upsert({user_id:user.id,sourate_num:sourate.num,verse_num:v.n,user_trans:userTrans,niveau:result.niveau,feedback:result},{onConflict:'user_id,sourate_num,verse_num'})
+      if(saveErr){
+        console.error('[index] sauvegarde progression:',saveErr.message)
+        showToast('Ta traduction n\'a pas pu etre enregistree. Reessaie.','error')
+        setVerifying(false)
+        return
+      }
       setProgress(prev=>({...prev,[`${sourate.num}:${v.n}`]:{userTrans,niveau:result.niveau,feedback:result,ts:new Date().toISOString()}}))
       try{
         const vr=await fetch('/api/vocab',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:v.ar,sourate_num:sourate.num,verse_num:v.n,sourate_ar:sourate.name_ar,sourate_fr:sourate.name_fr})})
@@ -329,7 +345,7 @@ export default function App({ user, profile, onLogout }){
           const rows=vdata.mots.map(m=>({user_id:user.id,ar:m.ar,translit:m.translit,racine:m.racine,sens:m.sens,freq:m.freq||0,freq_label:m.freq_label,type:m.type,exemple_autre:m.exemple_autre,exemple_ref:m.exemple_ref,sourate_num:sourate.num,verse_num:v.n}))
           await supabase.from('vocab').upsert(rows,{onConflict:'user_id,ar',ignoreDuplicates:true})
         }
-      }catch(e){console.log('Vocab save error:',e.message)}
+      }catch(e){console.error('[index] sauvegarde vocabulaire:',e.message)}
       const msgs={excellent:'مَاشَاءَ اللَّه — Excellent !',good:'جَيِّد — Bien !',partial:'تَقْرِيبًا — Presque !',wrong:'حَاوِلْ مَرَّةً — Réessaie !'}
       showToast(msgs[result.niveau]||'',result.niveau==='excellent'||result.niveau==='good'?'success':'warning')
     }catch(err){showToast(err.message==='Failed to fetch'?'Connexion perdue. Vérifie ton internet.':`Erreur: ${err.message}`,'error')}

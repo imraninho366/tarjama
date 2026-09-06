@@ -48,9 +48,20 @@ export default function DuelPage({ user, profile }) {
 
   if (!user || !profile) { if (typeof window !== 'undefined') router.push('/'); return null }
 
+  // Si la route renvoie une page d'erreur HTML (variable manquante, exception),
+  // r.json() levait une SyntaxError jamais rattrapee : setLoading(false) n'etait
+  // jamais atteint et le bouton restait bloque, ou l'intervalle de scrutation
+  // repartait toutes les 2 s indefiniment sans jamais rien afficher.
   const api = async (body) => {
-    const r = await fetch('/api/duel', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...body, user_id: user.id, username: profile.username }) })
-    return r.json()
+    try {
+      const r = await fetch('/api/duel', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...body, user_id: user.id, username: profile.username }) })
+      const data = await r.json()
+      if (!r.ok) return { error: data?.error || `Erreur serveur (${r.status})` }
+      return data
+    } catch (err) {
+      console.error('[duel] appel API:', err.message)
+      return { error: 'Connexion perdue. Verifie ton internet.' }
+    }
   }
 
   const modeConfig = selectedMode ? MODES.find(m => m.id === selectedMode) : null

@@ -30,7 +30,12 @@
   --gold-dim:    var(--tarjama-color-primary-dim);
   --gold-dark:   var(--tarjama-color-primary-dim);
   --gold:        var(--tarjama-color-primary);
-  --gold-light:  var(--tarjama-color-primary-light);
+  /* Les modules CSS n'utilisent --gold-light QUE pour de la couleur de texte
+     (verifie : 49 occurrences, toutes en `color:`). Or #D4AF5C ne fait que
+     2,08:1 sur blanc — le texte des versets etait quasi illisible. En theme
+     clair l'alias pointe donc vers la teinte foncee ; le theme sombre le
+     remet a la teinte claire plus bas. */
+  --gold-light:  var(--tarjama-color-primary-dim);
   --gold-bright: var(--tarjama-color-primary-light);
   --gold-glow:   rgba(var(--tarjama-color-primary-rgb), 0.15);
   --gold-glow-strong: rgba(var(--tarjama-color-primary-rgb), 0.25);
@@ -103,6 +108,11 @@
    Dark theme overrides are in tokens.css [data-theme="dark"].
    Legacy light overrides removed — aliases cascade automatically. */
 
+/* Sur fond sombre, la teinte claire redevient la bonne pour le texte. */
+[data-theme="dark"] {
+  --gold-light: var(--tarjama-color-primary-light);
+}
+
 /* ── Reset ──────────────────────────────────────────────────── */
 *, *::before, *::after {
   margin: 0;
@@ -150,7 +160,10 @@ body {
 
 /* ── Focus ──────────────────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid var(--gold);
+  /* --gold (#B8932A) ne fait que 2,57:1 sur le fond creme : sous le seuil
+     de 3:1 exige pour un indicateur de focus. --gold-light vaut ici la
+     teinte foncee (4,30:1) et reste clair en theme sombre. */
+  outline: 2px solid var(--gold-light);
   outline-offset: 2px;
   box-shadow: 0 0 0 4px var(--gold-glow);
   border-radius: var(--radius-sm);

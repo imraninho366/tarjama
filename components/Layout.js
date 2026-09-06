@@ -13,10 +13,21 @@ function GoldParticles() {
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
+    // Le canvas est masque en CSS sous 640px (max-sm:hidden) et en mouvement
+    // reduit (motion-reduce:hidden). Sans cette sortie, la boucle tournait
+    // quand meme sur chaque page, en permanence, pour un effet que la majorite
+    // des utilisateurs — sur mobile — ne voit jamais.
+    const hidden = window.matchMedia('(max-width: 639px), (prefers-reduced-motion: reduce)').matches
+    if (hidden) return
+
     const ctx = canvas.getContext('2d')
     const dpr = window.devicePixelRatio || 1
-    const isMobile = window.innerWidth < 768
-    const count = isMobile ? 8 : 18
+    const count = window.innerWidth < 768 ? 8 : 18
+
+    // Lu une seule fois : getComputedStyle force un recalcul de style
+    // synchrone, et il etait appele a chaque image, soit 60 fois par seconde.
+    const rgb = getComputedStyle(document.documentElement)
+      .getPropertyValue('--tarjama-color-primary-rgb').trim() || '184, 147, 42'
 
     const resize = () => {
       canvas.width = window.innerWidth * dpr
@@ -65,7 +76,6 @@ function GoldParticles() {
         const flicker = 0.7 + Math.sin(t * 1.5 + p.phase) * 0.3
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        const rgb = getComputedStyle(document.documentElement).getPropertyValue('--tarjama-color-primary-rgb').trim() || '184, 147, 42'
         ctx.fillStyle = `rgba(${rgb}, ${p.opacity * flicker})`
         ctx.fill()
       }
