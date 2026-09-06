@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -29,7 +29,7 @@ function normalize(str) {
     .trim()
 }
 
-export default function Dictionnaire({ user, profile }) {
+export default function Dictionnaire({ user, profile, authReady }) {
   const router = useRouter()
   const { vocab, loading: vocabLoading } = useVocab()
   const [search, setSearch] = useState('')
@@ -42,11 +42,46 @@ export default function Dictionnaire({ user, profile }) {
   const loading = vocabLoading
 
   useEffect(() => {
-    if (!user) { router.push('/'); return }
-  }, [user, router])
+    // authReady : sans lui, cet effet partait au premier rendu, quand la
+    // session Supabase n'est pas encore lue et que `user` vaut null par
+    // ignorance. Un utilisateur connecte qui rafraichissait cette page etait
+    // renvoye a l'accueil.
+    if (authReady && !user) router.push('/')
+  }, [authReady, user, router])
 
-  const filtered = vocab
-    .filter(w => {
+  /**
+   * Index de recherche, construit UNE fois par chargement du vocabulaire.
+   *
+   * La version precedente appelait JSON.stringify et normalize sur chacun des
+   * 6344 mots A CHAQUE FRAPPE au clavier — soit des dizaines de milliers
+   * d'allocations de chaines par seconde de saisie, sur un telephone. Ici le
+   * travail couteux est fait une fois ; taper ne fait plus que comparer des
+   * chaines deja pretes.
+   *
+   * Les champs restent SEPARES plutot que concatenes en un seul texte :
+   * fusionner « translit » et « note » creerait des correspondances a cheval
+   * sur la frontiere des deux, donc des resultats que l'ancienne version ne
+   * renvoyait pas.
+   */
+  const indexed = useMemo(() => vocab.map(w => ({
+    w,
+    sens: w.sens ? JSON.stringify(w.sens).toLowerCase() : '',
+    translitLower: w.translit?.toLowerCase() || '',
+    nTranslit: normalize(w.translit) || '',
+    nAr: normalize(w.ar) || '',
+    nNote: normalize(w.note) || '',
+  })), [vocab])
+
+  /**
+   * Ne depend QUE de ce qui change le resultat.
+   *
+   * Sans useMemo, ce filtre et ce tri repartaient a chaque rendu — donc aussi
+   * en cliquant sur un mot, en affichant la suite de la liste, ou pendant la
+   * generation d'un moyen mnemotechnique, alors qu'aucun de ces gestes ne
+   * change la liste affichee.
+   */
+  const filtered = useMemo(() => indexed
+    .filter(({ w, sens, translitLower, nTranslit, nAr, nNote }) => {
       if (filter === '99 noms') {
         if (w.categorie !== '99 noms') return false
       } else if (filter !== 'tous' && w.type !== filter) return false
@@ -55,27 +90,50 @@ export default function Dictionnaire({ user, profile }) {
       const qn = normalize(search)
       // Recherche directe
       if (w.ar?.includes(search)) return true
-      if (w.translit?.toLowerCase().includes(q)) return true
+      if (translitLower.includes(q)) return true
       if (w.racine?.includes(search)) return true
-      if (w.sens && JSON.stringify(w.sens).toLowerCase().includes(q)) return true
+      if (sens.includes(q)) return true
       // Recherche normalisée (sans diacritiques, ex: waqia -> Wāqi'a)
       if (qn.length >= 2) {
-        if (normalize(w.translit)?.includes(qn)) return true
-        if (normalize(w.ar)?.includes(qn)) return true
-        if (normalize(w.note)?.includes(qn)) return true
+        if (nTranslit.includes(qn)) return true
+        if (nAr.includes(qn)) return true
+        if (nNote.includes(qn)) return true
       }
       return false
     })
+    .map(({ w }) => w)
+    // Le tri « recent » a ete retire : il comparait new Date(w.created_at), or
+    // AUCUN des 6344 mots ne porte ce champ. La soustraction donnait NaN, donc
+    // un ordre indefini — et le menu ne proposait de toute facon que les deux
+    // tris ci-dessous.
     .sort((a, b) => {
-      if (sortBy === 'freq') return (b.freq || 0) - (a.freq || 0)
       if (sortBy === 'alpha') return a.ar?.localeCompare(b.ar, 'ar') || 0
-      return new Date(b.created_at) - new Date(a.created_at)
-    })
+      return (b.freq || 0) - (a.freq || 0)
+    }), [indexed, filter, search, sortBy])
 
   const types = ['tous', '99 noms', 'nom', 'verbe', 'adjectif', 'particule', 'pronom', 'expression']
 
-  // Max freq for bar visual
-  const maxFreq = vocab.length > 0 ? Math.max(...vocab.map(w => w.freq || 0)) : 1
+  /**
+   * Statistiques d'en-tete et maximum de frequence, en une seule passe.
+   *
+   * Il y avait quatre parcours complets du vocabulaire a chaque rendu : trois
+   * filter pour les compteurs, et un Math.max(...vocab.map(...)). Ce dernier
+   * etalait en plus 6344 arguments sur la pile d'appel — ce qui finit par
+   * lever « Maximum call stack size exceeded » a mesure que le dictionnaire
+   * grandit.
+   */
+  const stats = useMemo(() => {
+    let maxFreq = 1, noms = 0, verbes = 0, tresFrequents = 0
+    for (const w of vocab) {
+      if ((w.freq || 0) > maxFreq) maxFreq = w.freq
+      if (w.type === 'nom') noms++
+      else if (w.type === 'verbe') verbes++
+      if (w.freq_label === 'très fréquent') tresFrequents++
+    }
+    return { maxFreq, noms, verbes, tresFrequents }
+  }, [vocab])
+
+  const maxFreq = stats.maxFreq
 
   if (!user) return null
 
@@ -133,8 +191,10 @@ export default function Dictionnaire({ user, profile }) {
             onChange={e => setSortBy(e.target.value)}
             className={s.sortSelect}
           >
+            {/* « Plus recents » a ete retire : aucun mot ne porte de date, le
+                tri ne pouvait donc rien classer. Une option qui ne fait rien
+                use la confiance plus surement qu'une option absente. */}
             <option value="freq">Par fréquence</option>
-            <option value="recent">Plus récents</option>
             <option value="alpha">Alphabétique</option>
           </select>
         </div>
@@ -143,9 +203,9 @@ export default function Dictionnaire({ user, profile }) {
         <div className={s.statsGrid}>
           {[
             ['Total', 'var(--tarjama-color-primary)', vocab.length],
-            ['Noms', 'var(--tarjama-color-info)', vocab.filter(w => w.type === 'nom').length],
-            ['Verbes', 'var(--tarjama-color-success)', vocab.filter(w => w.type === 'verbe').length],
-            ['Très fréquents', 'var(--tarjama-color-primary)', vocab.filter(w => w.freq_label === 'très fréquent').length],
+            ['Noms', 'var(--tarjama-color-info)', stats.noms],
+            ['Verbes', 'var(--tarjama-color-success)', stats.verbes],
+            ['Très fréquents', 'var(--tarjama-color-primary)', stats.tresFrequents],
           ].map(([lbl, clr, num]) => (
             <div key={lbl} className={s.statCard}>
               <span className={s.statNumber} style={{ color: clr }}>{num}</span>

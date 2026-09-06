@@ -855,7 +855,10 @@ export default function App({ user, profile, onLogout }){
       })()}
 
       <Confetti active={showConfetti}/>
-      {newBadge&&<BadgeUnlock badge={newBadge} onClose={()=>setNewBadge(null)}/>}
+      {/* Monte en permanence, meme sans badge : sa zone aria-live doit exister
+          AVANT que le badge y apparaisse, sinon rien n'est annonce. Le
+          composant gere lui-meme le cas badge=null. */}
+      <BadgeUnlock badge={newBadge} onClose={()=>setNewBadge(null)}/>
       <Toast message={toast?.message} type={toast?.type} onClose={()=>setToast(null)}/>
     </>
   )

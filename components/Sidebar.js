@@ -46,8 +46,18 @@ export default function Sidebar({ isOpen, onClose, onLogout, stats }) {
 
       {/* Sidebar */}
       <aside
-        className={`w-[var(--tarjama-sidebar-width)] max-sm:w-[260px] h-[calc(100vh-var(--tarjama-topbar-height))] fixed top-[var(--tarjama-topbar-height)] left-0 z-[var(--tarjama-z-overlay)] flex flex-col py-6 overflow-y-auto overflow-x-hidden max-lg:-translate-x-full max-lg:transition-transform max-lg:duration-300 max-lg:ease-out max-lg:shadow-[4px_0_40px_rgba(0,0,0,0.5)] ${
-          isOpen ? 'max-lg:translate-x-0' : ''
+        /* max-lg:invisible est le point important. Translatee hors ecran, la
+           barre restait dans l'ordre de tabulation ET dans l'arbre
+           d'accessibilite : au clavier sur mobile, il fallait traverser 22
+           controles invisibles avant d'atteindre le contenu de la page.
+           visibility:hidden les retire des deux d'un coup, la ou un translate
+           ne fait que les deplacer hors du champ de vision.
+
+           visibility est ajoutee a la transition pour ne basculer qu'A LA FIN
+           de la duree : sans cela la barre disparaitrait d'un coup au lieu de
+           glisser vers la gauche. */
+        className={`w-[var(--tarjama-sidebar-width)] max-sm:w-[260px] h-[calc(100vh-var(--tarjama-topbar-height))] fixed top-[var(--tarjama-topbar-height)] left-0 z-[var(--tarjama-z-overlay)] flex flex-col py-6 overflow-y-auto overflow-x-hidden max-lg:-translate-x-full max-lg:transition-[transform,visibility] max-lg:duration-300 max-lg:ease-out max-lg:shadow-[4px_0_40px_rgba(0,0,0,0.5)] ${
+          isOpen ? 'max-lg:translate-x-0' : 'max-lg:invisible'
         }`}
         style={{
           background: 'linear-gradient(180deg, var(--tarjama-color-background) 0%, var(--tarjama-color-background) 100%)',
@@ -150,7 +160,10 @@ export default function Sidebar({ isOpen, onClose, onLogout, stats }) {
         {/* Logout */}
         {onLogout && (
           <button
-            className="flex items-center gap-2 py-2.5 px-6 mx-4 mt-4 rounded-sm text-[11px] text-[color:var(--tarjama-color-text-muted)] tracking-[1.5px] uppercase cursor-pointer transition-all duration-200 hover:text-error hover:bg-[rgba(var(--tarjama-color-error-rgb,220,38,38),0.12)]"
+            /* min-h-11 = 44px, la cible tactile minimale des recommandations
+               WCAG. Le bouton faisait 35px de haut : atteignable a la souris,
+               frustrant au pouce. */
+            className="flex items-center gap-2 min-h-11 py-2.5 px-6 mx-4 mt-4 rounded-sm text-[11px] text-[color:var(--tarjama-color-text-muted)] tracking-[1.5px] uppercase cursor-pointer transition-all duration-200 hover:text-error hover:bg-[rgba(var(--tarjama-color-error-rgb,220,38,38),0.12)]"
             onClick={onLogout}
           >
             <span>&#8617;</span>
