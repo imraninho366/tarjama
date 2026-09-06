@@ -9,6 +9,7 @@ export default function AdminPage({ user }) {
   const router = useRouter()
   const [users, setUsers] = useState([])
   const [premiumUsers, setPremiumUsers] = useState([])
+  const [suggestions, setSuggestions] = useState([])
   const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(true)
   const [message, setMessage] = useState('')
@@ -19,13 +20,36 @@ export default function AdminPage({ user }) {
   }, [user])
 
   const loadData = async () => {
-    const [profilesRes, premiumRes] = await Promise.all([
+    const [profilesRes, premiumRes, suggestionsRes] = await Promise.all([
       supabase.from('profiles').select('id, username, color'),
-      supabase.from('premium_users').select('id, created_at')
+      supabase.from('premium_users').select('id, created_at'),
+      supabase.from('suggestions')
+        .select('id, user_id, message, created_at, handled')
+        .order('created_at', { ascending: false })
     ])
     setUsers(profilesRes.data || [])
     setPremiumUsers(premiumRes.data || [])
+    // Une erreur ici ne doit pas afficher une liste vide sans explication.
+    if (suggestionsRes.error) {
+      console.error('[admin] suggestions:', suggestionsRes.error.message)
+      setMessage("Les suggestions n'ont pas pu être chargées.")
+    } else {
+      setSuggestions(suggestionsRes.data || [])
+    }
     setLoading(false)
+  }
+
+  const handleToggleHandled = async (id, handled) => {
+    const { error } = await supabase.from('suggestions').update({ handled: !handled }).eq('id', id)
+    if (error) { setMessage('Erreur : ' + error.message); return }
+    setSuggestions(prev => prev.map(s => s.id === id ? { ...s, handled: !handled } : s))
+  }
+
+  const handleDeleteSuggestion = async (id) => {
+    if (!confirm('Supprimer cette suggestion ? Cette action est irréversible.')) return
+    const { error } = await supabase.from('suggestions').delete().eq('id', id)
+    if (error) { setMessage('Erreur : ' + error.message); return }
+    setSuggestions(prev => prev.filter(s => s.id !== id))
   }
 
   if (!user || !isAdmin(user.id)) return null
@@ -77,7 +101,7 @@ export default function AdminPage({ user }) {
         <div style={{ textAlign: 'center', padding: '20px 0 12px' }}>
           <div style={{ fontSize: 20, fontFamily: 'var(--font-display)', color: 'var(--gold)', letterSpacing: 3 }}>ADMIN</div>
           <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 4 }}>
-            {users.length} utilisateurs · {premiumIds.length} premium
+            {users.length} utilisateurs · {premiumIds.length} premium · {suggestions.length} idées
           </div>
         </div>
 
@@ -132,6 +156,59 @@ export default function AdminPage({ user }) {
             </div>
           )
         })}
+
+        {/* ── Boîte à idées ─────────────────────────────────── */}
+        {suggestions.length > 0 && (
+          <div style={{ marginTop: 32 }}>
+            <div style={{
+              fontSize: 11, color: 'var(--gold)', letterSpacing: 3,
+              textTransform: 'uppercase', textAlign: 'center', marginBottom: 16, fontWeight: 700
+            }}>
+              Idées des utilisateurs
+            </div>
+
+            {suggestions.map(s => {
+              const author = users.find(u => u.id === s.user_id)
+              return (
+                <div key={s.id} style={{
+                  padding: '14px 0',
+                  borderBottom: '1px solid rgba(var(--tarjama-color-primary-rgb),.06)',
+                  opacity: s.handled ? 0.5 : 1
+                }}>
+                  <div style={{
+                    fontSize: 14, color: 'var(--text)', lineHeight: 1.6,
+                    whiteSpace: 'pre-wrap', marginBottom: 6
+                  }}>
+                    {s.message}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>
+                      {author?.username || 'Utilisateur supprimé'} ·{' '}
+                      {new Date(s.created_at).toLocaleDateString('fr-FR', {
+                        day: 'numeric', month: 'short', year: 'numeric'
+                      })}
+                    </span>
+                    <div style={{ flex: 1 }} />
+                    <Button
+                      variant="ghost"
+                      onClick={() => handleToggleHandled(s.id, s.handled)}
+                      style={{ fontSize: 11, padding: '4px 10px', color: s.handled ? 'var(--text-muted)' : 'var(--green)' }}
+                    >
+                      {s.handled ? 'Rouvrir' : 'Marquer traitée'}
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      onClick={() => handleDeleteSuggestion(s.id)}
+                      style={{ fontSize: 11, padding: '4px 8px', color: 'var(--red)' }}
+                    >
+                      ✕
+                    </Button>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        )}
 
         <div style={{ height: 32 }} />
       </div>

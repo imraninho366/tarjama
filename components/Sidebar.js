@@ -26,6 +26,7 @@ const NAV_SECTIONS = [
     { href: '/duas',         icon: 'د', label: 'Invocations', ar: 'الدعاء' },
     { href: '/piliers',      icon: 'ر', label: 'Piliers',    ar: 'الأركان' },
     { href: '/prophetes',    icon: 'ن', label: 'Prophètes',  ar: 'الأنبياء' },
+    { href: '/suggestions',  icon: '✦', label: 'Proposer une idée', ar: 'اقتراح' },
   ]},
 ]
 
