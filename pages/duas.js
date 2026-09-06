@@ -65,7 +65,7 @@ export default function DuasPage({ user }) {
     })
   }
 
-  if (!user) return <div className={s.loading}><div className={s.loadingText}>دعاء</div></div>
+  if (!user) return <div className={s.loading}><div className={s.loadingText} aria-hidden="true">دعاء</div></div>
 
   return (
     <>
@@ -130,7 +130,7 @@ export default function DuasPage({ user }) {
         {!selectedCat && !loading && (
           filteredCats.length === 0 ? (
             <div className={s.empty}>
-              <div className={s.emptyIcon}>دعاء</div>
+              <div className={s.emptyIcon} aria-hidden="true">دعاء</div>
               <div className={s.emptyText}>Aucune invocation trouvee</div>
             </div>
           ) : (
@@ -152,7 +152,7 @@ export default function DuasPage({ user }) {
           )
         )}
 
-        {loading && <div className={s.loading}><div className={s.loadingText}>...</div></div>}
+        {loading && <div className={s.loading}><div className={s.loadingText} aria-hidden="true">...</div></div>}
 
         {/* Category detail view */}
         {selectedCategory && (

@@ -76,7 +76,7 @@ export default function Sidebar({ isOpen, onClose, onLogout, stats }) {
             <div key={section.title} className="mb-4 pb-2 border-b border-[rgba(var(--tarjama-color-primary-rgb),0.06)] last:border-b-0">
               <div className="flex items-center justify-between px-4 pt-4 pb-1">
                 <span className="text-[9px] font-bold tracking-[3px] uppercase text-primary-dim">{section.title}</span>
-                <span className="font-arabic text-[11px] text-[color:var(--tarjama-color-text-muted)] opacity-50" dir="rtl">{section.ar}</span>
+                <span className="font-arabic text-[11px] text-[color:var(--tarjama-color-text-muted)] opacity-50" dir="rtl" aria-hidden="true">{section.ar}</span>
               </div>
               {section.items.map(item => {
                 const isActive = router.pathname === item.href
@@ -95,7 +95,7 @@ export default function Sidebar({ isOpen, onClose, onLogout, stats }) {
                     )}
                     <span className={`w-9 h-9 flex items-center justify-center rounded-sm text-base shrink-0 transition-colors duration-200 ${
                       isActive ? 'bg-[rgba(var(--tarjama-color-primary-rgb),0.12)]' : 'bg-[rgba(var(--tarjama-color-primary-rgb),0.06)]'
-                    }`}>
+                    }`} aria-hidden="true">
                       {item.icon}
                     </span>
                     <span className="flex flex-col gap-px min-w-0">
@@ -104,7 +104,7 @@ export default function Sidebar({ isOpen, onClose, onLogout, stats }) {
                       }`}>
                         {item.label}
                       </span>
-                      <span className="font-arabic text-[13px] text-[color:var(--tarjama-color-text-muted)]" dir="rtl" style={{ textAlign: 'start' }}>
+                      <span className="font-arabic text-[13px] text-[color:var(--tarjama-color-text-muted)]" dir="rtl" style={{ textAlign: 'start' }} aria-hidden="true">
                         {item.ar}
                       </span>
                     </span>
@@ -128,12 +128,12 @@ export default function Sidebar({ isOpen, onClose, onLogout, stats }) {
               )}
               <span className={`w-9 h-9 flex items-center justify-center rounded-sm text-base shrink-0 ${
                 router.pathname === '/profil' ? 'bg-[rgba(var(--tarjama-color-primary-rgb),0.12)]' : 'bg-[rgba(var(--tarjama-color-primary-rgb),0.06)]'
-              }`}>&#9673;</span>
+              }`} aria-hidden="true">&#9673;</span>
               <span className="flex flex-col gap-px min-w-0">
                 <span className={`font-display text-[13px] font-semibold tracking-[1.5px] ${
                   router.pathname === '/profil' ? 'text-primary-light' : 'text-[color:var(--tarjama-color-text-secondary)]'
                 }`}>Profil</span>
-                <span className="font-arabic text-[13px] text-[color:var(--tarjama-color-text-muted)]" dir="rtl" style={{ textAlign: 'start' }}>الملف</span>
+                <span className="font-arabic text-[13px] text-[color:var(--tarjama-color-text-muted)]" dir="rtl" style={{ textAlign: 'start' }} aria-hidden="true">الملف</span>
               </span>
             </Link>
           </div>
@@ -166,7 +166,7 @@ export default function Sidebar({ isOpen, onClose, onLogout, stats }) {
             className="flex items-center gap-2 min-h-11 py-2.5 px-6 mx-4 mt-4 rounded-sm text-[11px] text-[color:var(--tarjama-color-text-muted)] tracking-[1.5px] uppercase cursor-pointer transition-all duration-200 hover:text-error hover:bg-[rgba(var(--tarjama-color-error-rgb,220,38,38),0.12)]"
             onClick={onLogout}
           >
-            <span>&#8617;</span>
+            <span aria-hidden="true">&#8617;</span>
             Déconnexion
           </button>
         )}

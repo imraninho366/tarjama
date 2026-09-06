@@ -551,7 +551,7 @@ export default function Alphabet() {
                   title="Ecouter la prononciation"
                   className={s.heroLetter}
                   style={{ color: letter.couleur }}
-                >
+                 lang="ar" dir="rtl">
                   {letter.ar}
                 </button>
 
@@ -569,7 +569,7 @@ export default function Alphabet() {
               <div className={s.formesGrid}>
                 {letter.formes.map((f,i) => (
                   <button key={i} onClick={()=>speak(f + 'ا')} className={s.formeCard}>
-                    <div className={s.formeLetter}>{f}</div>
+                    <div className={s.formeLetter} lang="ar" dir="rtl">{f}</div>
                     <div className={s.formeLabel}>{letter.labels[i]}</div>
                   </button>
                 ))}
@@ -579,7 +579,7 @@ export default function Alphabet() {
               <div className={s.vocRow}>
                 <span className={s.vocLabel}>Vocalisation :</span>
                 {letter.harakat.map((h,i) => (
-                  <button key={i} onClick={()=>speak(h)} className={s.vocBtn}>
+                  <button key={i} onClick={()=>speak(h)} className={s.vocBtn} lang="ar" dir="rtl">
                     {h}
                   </button>
                 ))}
@@ -603,7 +603,7 @@ export default function Alphabet() {
 
               {/* Exemple coranique */}
               <div className={s.exampleSection}>
-                <button onClick={()=>speak(letter.exemple.ar)} className={s.exampleArabic}>
+                <button onClick={()=>speak(letter.exemple.ar)} className={s.exampleArabic} lang="ar" dir="rtl">
                   {letter.exemple.ar}
                 </button>
                 <div>
@@ -654,7 +654,7 @@ export default function Alphabet() {
                     borderColor: gridSel===i ? l.couleur : undefined,
                   }}
                 >
-                  <div className={s.gridAr} style={{ color: gridSel===i ? l.couleur : undefined }}>{l.ar}</div>
+                  <div className={s.gridAr} style={{ color: gridSel===i ? l.couleur : undefined }} lang="ar" dir="rtl">{l.ar}</div>
                   <div className={s.gridName}>{l.name}</div>
                 </button>
               ))}
@@ -667,7 +667,7 @@ export default function Alphabet() {
                 <div key={gridSel} className={s.gridDetail} style={{ borderTopColor: l.couleur }}>
                   <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:l.couleur }} />
                   <div className={s.gridDetailHeader}>
-                    <button onClick={()=>speak(l.audio)} className={s.gridDetailLetter} style={{ color: l.couleur }}>
+                    <button onClick={()=>speak(l.audio)} className={s.gridDetailLetter} style={{ color: l.couleur }} lang="ar" dir="rtl">
                       {l.ar}
                     </button>
                     <div>
@@ -677,7 +677,7 @@ export default function Alphabet() {
                       <div className={s.gridDetailFormes}>
                         {l.formes.map((f,i)=>(
                           <div key={i} className={s.gridDetailForme}>
-                            <button onClick={()=>speak(f)} className={s.gridDetailFormeLetter}>{f}</button>
+                            <button onClick={()=>speak(f)} className={s.gridDetailFormeLetter} lang="ar" dir="rtl">{f}</button>
                             <div className={s.gridDetailFormeLabel}>{l.labels[i]}</div>
                           </div>
                         ))}
@@ -688,7 +688,7 @@ export default function Alphabet() {
                     {l.son}
                   </div>
                   <div className={s.gridDetailExample}>
-                    <button onClick={()=>speak(l.exemple.ar)} className={s.gridDetailExAr}>{l.exemple.ar}</button>
+                    <button onClick={()=>speak(l.exemple.ar)} className={s.gridDetailExAr} lang="ar" dir="rtl">{l.exemple.ar}</button>
                     <span className={s.gridDetailExFr}>{l.exemple.fr}</span>
                   </div>
                   <button
@@ -711,7 +711,7 @@ export default function Alphabet() {
                   <div style={{ position:'absolute', top:0, left:0, right:0, height:2, background:g.color }} />
                   <div className={s.solarLunarTitle} style={{ color: g.color }}>{g.label}</div>
                   <div className={s.solarLunarSub}>{g.sub}</div>
-                  <div className={s.solarLunarLetters}>
+                  <div className={s.solarLunarLetters} lang="ar" dir="rtl">
                     {g.letters.map(l=>l.ar).join(' ')}
                   </div>
                 </div>
@@ -732,7 +732,7 @@ export default function Alphabet() {
             <div className={s.harakatList}>
               {HARAKAT.map((h,i) => (
                 <button key={i} onClick={()=>speak(h.exemple)} className={s.harakatRow} style={{ color: h.couleur, borderLeftColor: h.couleur }}>
-                  <div className={s.harakatSym} style={{ color: h.couleur }}>
+                  <div className={s.harakatSym} style={{ color: h.couleur }} lang="ar" dir="rtl">
                     {'بـ' + h.sym}
                   </div>
                   <div className={s.harakatInfo}>
@@ -742,7 +742,7 @@ export default function Alphabet() {
                     </div>
                     <div className={s.harakatSon}>{h.son}</div>
                     <div className={s.harakatExample}>
-                      <span className={s.harakatExAr}>{h.exemple}</span>
+                      <span className={s.harakatExAr} lang="ar" dir="rtl">{h.exemple}</span>
                       <span className={s.harakatExFr}>{h.ex_fr}</span>
                       <span className={s.harakatPlay}>&#9654;</span>
                     </div>
@@ -761,10 +761,10 @@ export default function Alphabet() {
                   {ar:'ي',name:'Ya',son:'i — I long',exemple:'بِسْمِ',ex_fr:'bismi',couleur:'var(--tarjama-color-info)'},
                 ].map((v,i) => (
                   <button key={i} onClick={()=>speak(v.exemple)} className={s.vowelCard} style={{ borderColor: `${v.couleur}40` }}>
-                    <div className={s.vowelAr} style={{ color: v.couleur }}>{v.ar}</div>
+                    <div className={s.vowelAr} style={{ color: v.couleur }} lang="ar" dir="rtl">{v.ar}</div>
                     <div className={s.vowelName}>{v.name}</div>
                     <div className={s.vowelSon}>{v.son}</div>
-                    <div className={s.vowelExAr}>{v.exemple}</div>
+                    <div className={s.vowelExAr} lang="ar" dir="rtl">{v.exemple}</div>
                     <div className={s.vowelExFr}>{v.ex_fr}</div>
                   </button>
                 ))}
@@ -815,7 +815,7 @@ export default function Alphabet() {
                       <div className={s.quizPrompt}>
                         Quel est le nom de cette lettre ?
                       </div>
-                      <button onClick={()=>speak(quizQ.audio)} className={s.quizBigLetter}>
+                      <button onClick={()=>speak(quizQ.audio)} className={s.quizBigLetter} lang="ar" dir="rtl">
                         {quizQ.ar}
                       </button>
                       <div className={s.quizHint}>Clique pour entendre</div>
@@ -863,7 +863,7 @@ export default function Alphabet() {
                         className={`${choiceClass} ${quizMode==='letter' ? s.quizChoicePadLetter : s.quizChoicePadName}`}
                       >
                         {quizMode==='letter' ? (
-                          <div className={s.quizChoiceLetter} style={{ color: textColor }}>{l.ar}</div>
+                          <div className={s.quizChoiceLetter} style={{ color: textColor }} lang="ar" dir="rtl">{l.ar}</div>
                         ) : (
                           <div className={s.quizChoiceRow}>
                             <div className={badgeClass}>

@@ -198,7 +198,7 @@ export default function Quiz() {
               {knownWords.length > 0 && (
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
                   {knownWords.slice(0, 20).map((w, i) => (
-                    <span key={i} style={{ fontFamily: 'var(--font-arabic)', fontSize: 13, color: 'var(--green)', padding: '2px 8px', borderRadius: 6, background: 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.08)' }}>{w}</span>
+                    <span key={i} style={{ fontFamily: 'var(--font-arabic)', fontSize: 13, color: 'var(--green)', padding: '2px 8px', borderRadius: 6, background: 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.08)' }} lang="ar" dir="rtl">{w}</span>
                   ))}
                   {knownWords.length > 20 && <span style={{ fontSize: 11, color: 'var(--text-muted)', padding: '2px 8px' }}>+{knownWords.length - 20}</span>}
                 </div>
@@ -286,7 +286,7 @@ export default function Quiz() {
           </div>
 
           {/* Mot arabe */}
-          <div className={s.arabicWord}>
+          <div className={s.arabicWord} lang="ar" dir="rtl">
             {question.ar}
           </div>
 

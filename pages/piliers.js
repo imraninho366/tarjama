@@ -26,7 +26,7 @@ export default function PiliersPage({ user }) {
   const section = data?.[activeTab]
   const pilier = section?.piliers?.find(p => p.id === selectedPilier)
 
-  if (!user) return <div className={s.loading}><div className={s.loadingText}>أركان</div></div>
+  if (!user) return <div className={s.loading}><div className={s.loadingText} aria-hidden="true">أركان</div></div>
 
   return (
     <>
@@ -56,7 +56,7 @@ export default function PiliersPage({ user }) {
           </button>
         </div>
 
-        {loading && <div className={s.loading}><div className={s.loadingText}>...</div></div>}
+        {loading && <div className={s.loading}><div className={s.loadingText} aria-hidden="true">...</div></div>}
 
         {/* Intro */}
         {section && !selectedPilier && !loading && (
@@ -71,7 +71,7 @@ export default function PiliersPage({ user }) {
                 <div className={s.pilierIcon}>{p.icon}</div>
                 <div className={s.pilierInfo}>
                   <div className={s.pilierName}>{p.nom}</div>
-                  <div className={s.pilierNameAr}>{p.nomAr}</div>
+                  <div className={s.pilierNameAr} lang="ar" dir="rtl">{p.nomAr}</div>
                   <div className={s.pilierSousTitre}>{p.sousTitre || p.resume}</div>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function PiliersPage({ user }) {
               <span className={s.detailIcon}>{pilier.icon}</span>
               <div>
                 <div className={s.detailName}>{pilier.nom}</div>
-                <div className={s.detailNameAr}>{pilier.nomAr}</div>
+                <div className={s.detailNameAr} lang="ar" dir="rtl">{pilier.nomAr}</div>
               </div>
             </div>
 
@@ -124,7 +124,7 @@ export default function PiliersPage({ user }) {
                     <div key={pr.nom} className={s.priereRow}>
                       <div className={s.priereMain}>
                         <div className={s.priereNom}>{pr.nom}</div>
-                        <div className={s.priereNomAr}>{pr.nomAr}</div>
+                        <div className={s.priereNomAr} lang="ar" dir="rtl">{pr.nomAr}</div>
                       </div>
                       <div className={s.priereDetails}>
                         <div className={s.priereHoraire}>{pr.horaire}</div>
@@ -172,7 +172,7 @@ export default function PiliersPage({ user }) {
                     <span className={s.stepNum}>{step.etape}</span>
                     <div>
                       <div className={s.stepTitle}>{step.titre}</div>
-                      <div className={s.stepTitleAr}>{step.titreAr}</div>
+                      <div className={s.stepTitleAr} lang="ar" dir="rtl">{step.titreAr}</div>
                     </div>
                   </div>
 
@@ -211,7 +211,7 @@ export default function PiliersPage({ user }) {
                     <span className={s.stepNum}>{step.etape}</span>
                     <div>
                       <div className={s.stepTitle}>{step.titre}</div>
-                      <div className={s.stepTitleAr}>{step.titreAr}</div>
+                      <div className={s.stepTitleAr} lang="ar" dir="rtl">{step.titreAr}</div>
                     </div>
                   </div>
 

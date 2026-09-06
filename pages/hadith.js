@@ -152,7 +152,7 @@ export default function HadithPage({ user }) {
 
   const colInfo = COLLECTIONS.find(c => c.id === collection)
 
-  if (!user) return <div className={s.loading}><div className={s.loadingText}>حديث</div></div>
+  if (!user) return <div className={s.loading}><div className={s.loadingText} aria-hidden="true">حديث</div></div>
 
   return (
     <>
@@ -210,7 +210,7 @@ export default function HadithPage({ user }) {
 
             {searchResults.length === 0 && !searchLoading && (
               <div className={s.empty}>
-                <div className={s.emptyIcon}>&#1581;</div>
+                <div className={s.emptyIcon} aria-hidden="true">&#1581;</div>
                 <div className={s.emptyText}>Aucun hadith trouve pour cette recherche</div>
               </div>
             )}
@@ -226,7 +226,7 @@ export default function HadithPage({ user }) {
         {/* Main view — not searching, no section selected */}
         {!selectedSection && searchResults === null && !randomHadith && (
           loading ? (
-            <div className={s.loading}><div className={s.loadingText}>...</div></div>
+            <div className={s.loading}><div className={s.loadingText} aria-hidden="true">...</div></div>
           ) : (
             <>
               {/* Stats + Hadith du jour button */}
@@ -262,7 +262,7 @@ export default function HadithPage({ user }) {
               {/* Chapter grid */}
               {filteredSections.length === 0 ? (
                 <div className={s.empty}>
-                  <div className={s.emptyIcon}>&#1581;</div>
+                  <div className={s.emptyIcon} aria-hidden="true">&#1581;</div>
                   <div className={s.emptyText}>Aucun chapitre pour ce theme</div>
                 </div>
               ) : (
@@ -313,7 +313,7 @@ export default function HadithPage({ user }) {
             </div>
 
             {loading ? (
-              <div className={s.loading}><div className={s.loadingText}>...</div></div>
+              <div className={s.loading}><div className={s.loadingText} aria-hidden="true">...</div></div>
             ) : (
               <>
                 <div className={s.hadithList}>

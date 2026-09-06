@@ -75,7 +75,7 @@ export default function ConnexionsPage({ user, authReady }) {
                 }}>
                   <div style={{ fontSize: 24, marginBottom: 4 }}>{t.icon}</div>
                   <div style={{ fontSize: 11, color: 'var(--text)', fontWeight: 600 }}>{t.label}</div>
-                  <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'var(--font-arabic)', marginTop: 2 }}>{t.ar}</div>
+                  <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'var(--font-arabic)', marginTop: 2 }} aria-hidden="true">{t.ar}</div>
                 </button>
               ))}
             </div>
@@ -93,7 +93,7 @@ export default function ConnexionsPage({ user, authReady }) {
 
         {loading && (
           <div style={{ textAlign: 'center', padding: 40 }}>
-            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 18, color: 'var(--gold)' }}>جاري البحث...</div>
+            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 18, color: 'var(--gold)' }} lang="ar" dir="rtl">جاري البحث...</div>
             <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 6 }}>Recherche des versets liés...</div>
           </div>
         )}
@@ -124,7 +124,7 @@ export default function ConnexionsPage({ user, authReady }) {
                     <div style={{ fontSize: 10, color: 'var(--text-muted)', letterSpacing: 2, marginBottom: 8 }}>
                       S.{v.sourate_num}:{v.verset_num} · {v.sourate_ar}
                     </div>
-                    <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 20, color: 'var(--gold-light)', direction: 'rtl', textAlign: 'right', lineHeight: 2, marginBottom: 10 }}>
+                    <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 20, color: 'var(--gold-light)', direction: 'rtl', textAlign: 'right', lineHeight: 2, marginBottom: 10 }} lang="ar">
                       {v.arabe}
                     </div>
                     <div style={{ fontSize: 13, color: 'var(--text)', fontStyle: 'italic', lineHeight: 1.7, marginBottom: 8 }}>

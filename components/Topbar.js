@@ -56,7 +56,7 @@ export default function Topbar({ profile, onToggleSidebar, theme, onToggleTheme 
         <div className="flex items-center gap-2 text-xs text-[color:var(--tarjama-color-text-muted)] max-lg:hidden">
           <span className="text-[10px] opacity-40">/</span>
           <span className="text-[color:var(--tarjama-color-text-secondary)] tracking-[1px]">{page.fr}</span>
-          <span className="font-arabic text-[13px] text-[color:var(--tarjama-color-text-muted)]" dir="rtl">{page.ar}</span>
+          <span className="font-arabic text-[13px] text-[color:var(--tarjama-color-text-muted)]" dir="rtl" aria-hidden="true">{page.ar}</span>
         </div>
       )}
 

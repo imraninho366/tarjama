@@ -436,7 +436,7 @@ export default function App({ user, profile, onLogout }){
             {searchResults.map(sr=>(
               <div key={sr.n} className={s.searchResult} onClick={()=>openSourate(sr)}>
                 <span className={s.searchResultNum}>{sr.n}.</span>
-                <span className={s.searchResultAr}>{sr.ar}</span>
+                <span className={s.searchResultAr} lang="ar" dir="rtl">{sr.ar}</span>
                 <div style={{textAlign:'right'}}>
                   <div className={s.searchResultFr}>{sr.fr}</div>
                   <div className={s.searchResultV}>{sr.v} versets</div>
@@ -470,7 +470,7 @@ export default function App({ user, profile, onLogout }){
             <div key={sg.n} className={`${s.sourateItem} ${isA?s.sourateItemActive:''}`} onClick={()=>openSourate(sg)}>
               <span className={s.sourateNum}>{sg.n}.</span>
               <div style={{flex:1,minWidth:0}}>
-                <span className={s.sourateAr}>{sg.ar}</span>
+                <span className={s.sourateAr} lang="ar" dir="rtl">{sg.ar}</span>
                 <span className={s.sourateFr}>{sg.fr} · {sg.v} v.</span>
               </div>
               {done>0&&<span className={s.sourateDone}>{done}</span>}
@@ -502,7 +502,7 @@ export default function App({ user, profile, onLogout }){
 
         return<>
           <div className={s.welcome}>
-            <span className={s.welcomeAr}>أَهْلًا وَسَهْلًا</span>
+            <span className={s.welcomeAr} aria-hidden="true">أَهْلًا وَسَهْلًا</span>
             <div>
               <h1 className={s.welcomeTitle}>Bienvenue, {profile.username} !</h1>
               <div className={s.welcomeSub}>{total===0?'Prêt à apprendre le Coran ? Commence par Al-Fatiha !':'Continue ta progression !'}</div>
@@ -543,7 +543,7 @@ export default function App({ user, profile, onLogout }){
                   <span style={{fontSize:12,color:'var(--text-muted)',width:28,textAlign:'right',fontFamily:'var(--font-display)'}}>{ss.n}</span>
                   <div style={{flex:1,minWidth:0}}>
                     <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:4}}>
-                      <span style={{fontFamily:'var(--font-arabic)',fontSize:16,color:'var(--gold-light)'}}>{ss.ar}</span>
+                      <span style={{fontFamily:'var(--font-arabic)',fontSize:16,color:'var(--gold-light)'}} lang="ar" dir="rtl">{ss.ar}</span>
                       <span style={{fontSize:13,color:'var(--text)'}}>{ss.fr}</span>
                     </div>
                     <div style={{height:4,background:'rgba(var(--tarjama-color-primary-rgb),.08)',borderRadius:2,overflow:'hidden'}}>
@@ -590,7 +590,7 @@ export default function App({ user, profile, onLogout }){
               }}>
                 <div className={s.reviewItemRef}>{item.sNum}:{item.vNum}</div>
                 <div style={{flex:1,minWidth:0}}>
-                  <div className={s.reviewItemAr}>{sInfo.ar}</div>
+                  <div className={s.reviewItemAr} lang="ar" dir="rtl">{sInfo.ar}</div>
                   <div className={s.reviewItemFr}>Verset {item.vNum} · {sInfo.fr}</div>
                 </div>
                 <span className={s.reviewItemBadge} style={{color:badge.clr,background:badge.bg}}>{badge.label}</span>
@@ -605,7 +605,7 @@ export default function App({ user, profile, onLogout }){
       {view==='sourate'&&loadingVerse&&(
         <div className={s.loading}>
           <div className={s.loadingSpinner}/>
-          <div className={s.loadingText}>تحميل السورة...</div>
+          <div className={s.loadingText} aria-hidden="true">تحميل السورة...</div>
         </div>
       )}
 
@@ -812,7 +812,7 @@ export default function App({ user, profile, onLogout }){
                   <div className={s.wordsLabel}>Mots importants</div>
                   <div className={s.wordsGrid}>
                     {r.mots_importants.map((w,i)=><div key={i} className={s.wordBadge}>
-                      <span className={s.wordBadgeAr}>{w.ar}</span>
+                      <span className={s.wordBadgeAr} lang="ar" dir="rtl">{w.ar}</span>
                       <span className={s.wordBadgeFr}>{w.fr}</span>
                     </div>)}
                   </div>

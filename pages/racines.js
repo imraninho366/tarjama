@@ -71,7 +71,7 @@ export default function RacinesPage({ user }) {
             background: 'rgba(var(--tarjama-color-primary-rgb),.06)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.15)'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-              <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 32, color: 'var(--gold)', direction: 'rtl' }}>
+              <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 32, color: 'var(--gold)', direction: 'rtl' }} lang="ar">
                 {selectedRoot.racine}
               </div>
               <button onClick={() => setSelected(null)} style={{ color: 'var(--text-muted)', fontSize: 18, cursor: 'pointer', background: 'none', border: 'none' }}>✕</button>
@@ -85,7 +85,7 @@ export default function RacinesPage({ user }) {
                   display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px',
                   background: 'var(--bg-card)', borderRadius: 6, border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)'
                 }}>
-                  <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 20, color: 'var(--gold-light)', direction: 'rtl', minWidth: 60, textAlign: 'right' }}>
+                  <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 20, color: 'var(--gold-light)', direction: 'rtl', minWidth: 60, textAlign: 'right' }} lang="ar">
                     {m.ar}
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
@@ -116,7 +116,7 @@ export default function RacinesPage({ user }) {
                   color: 'var(--gold-light)', opacity, padding: '6px 10px', borderRadius: 6,
                   background: 'rgba(var(--tarjama-color-primary-rgb),.06)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)',
                   cursor: 'pointer', transition: 'all .15s'
-                }}>
+                }} lang="ar">
                   {r.racine}
                   <span style={{ fontSize: 9, color: 'var(--text-muted)', marginRight: 4 }}>{r.mots.length}</span>
                 </button>

@@ -128,7 +128,7 @@ export default function SavantPage({ user, authReady }) {
         {/* Loading */}
         {loading && (
           <div style={{ textAlign: 'center', padding: 32 }}>
-            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 16, color: 'var(--gold)', marginBottom: 8 }}>
+            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 16, color: 'var(--gold)', marginBottom: 8 }} lang="ar" dir="rtl">
               جاري البحث في المصادر...
             </div>
             <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Recherche dans le Coran et les hadiths...</div>

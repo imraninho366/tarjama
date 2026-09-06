@@ -110,7 +110,7 @@ export default function TajweedPage({ user, authReady }) {
                     background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)',
                     textAlign: 'left', transition: 'all .15s', flex: '1 1 140px'
                   }}>
-                    <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 16, color: 'var(--gold-light)', direction: 'rtl' }}>{info?.ar}</div>
+                    <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 16, color: 'var(--gold-light)', direction: 'rtl' }} lang="ar">{info?.ar}</div>
                     <div style={{ fontSize: 11, color: 'var(--text-dim)' }}>{info?.fr}</div>
                   </button>
                 )
@@ -139,11 +139,11 @@ export default function TajweedPage({ user, authReady }) {
               background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)'
             }}>
               {!result ? (
-                <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 26, color: 'var(--gold-light)', direction: 'rtl', lineHeight: 2.2 }}>
+                <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 26, color: 'var(--gold-light)', direction: 'rtl', lineHeight: 2.2 }} lang="ar">
                   {verse.ar}
                 </div>
               ) : (
-                <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 26, direction: 'rtl', lineHeight: 2.2, textAlign: 'right' }}>
+                <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 26, direction: 'rtl', lineHeight: 2.2, textAlign: 'right' }} lang="ar">
                   {result.details.map((d, i) => (
                     <span key={i} style={{
                       color: d.ok ? 'var(--green)' : 'var(--red)',

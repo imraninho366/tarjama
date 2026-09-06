@@ -217,7 +217,7 @@ export default function PrieresPage() {
             <div style={{ fontFamily: 'var(--font-display)', fontSize: 24, color: 'var(--gold)', letterSpacing: 2 }}>
               {PRAYER_NAMES[nextPrayer].fr}
             </div>
-            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 20, color: 'var(--gold-light)', marginTop: 2 }}>
+            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 20, color: 'var(--gold-light)', marginTop: 2 }} lang="ar" dir="rtl">
               {PRAYER_NAMES[nextPrayer].ar}
             </div>
             <div style={{ fontSize: 14, color: 'var(--text)', marginTop: 8 }}>
@@ -254,7 +254,7 @@ export default function PrieresPage() {
                     <div style={{ fontSize: 14, color: isNext ? 'var(--gold)' : 'var(--text)', fontWeight: isNext ? 700 : 400 }}>
                       {p.fr}
                     </div>
-                    <div style={{ fontSize: 12, fontFamily: 'var(--font-arabic)', color: 'var(--text-muted)' }}>{p.ar}</div>
+                    <div style={{ fontSize: 12, fontFamily: 'var(--font-arabic)', color: 'var(--text-muted)' }} lang="ar" dir="rtl">{p.ar}</div>
                   </div>
                   <div style={{
                     fontFamily: 'var(--font-display)', fontSize: isNext ? 20 : 16,

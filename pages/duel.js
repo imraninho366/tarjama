@@ -232,7 +232,7 @@ export default function DuelPage({ user, profile, authReady }) {
                   display: 'flex', alignItems: 'center', gap: 14, padding: '16px', borderRadius: 12, cursor: 'pointer',
                   background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.12)', textAlign: 'left', transition: 'all .15s'
                 }}>
-                  <div style={{ width: 48, height: 48, borderRadius: 10, background: 'rgba(var(--tarjama-color-primary-rgb),.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-arabic)', fontSize: 22, color: 'var(--gold)', flexShrink: 0 }}>{m.icon}</div>
+                  <div style={{ width: 48, height: 48, borderRadius: 10, background: 'rgba(var(--tarjama-color-primary-rgb),.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-arabic)', fontSize: 22, color: 'var(--gold)', flexShrink: 0 }} aria-hidden="true">{m.icon}</div>
                   <div>
                     <div style={{ fontSize: 15, color: 'var(--text)', fontWeight: 600 }}>{m.title}</div>
                     <div style={{ fontSize: 12, color: 'var(--text-dim)', marginTop: 2 }}>{m.desc}</div>
@@ -279,7 +279,7 @@ export default function DuelPage({ user, profile, authReady }) {
               ))}
             </div>
             <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, textAlign: 'center', marginBottom: 12 }}>Verset {round + 1} / {verses.length} · {verse.sourate_ar}</div>
-            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 24, color: 'var(--gold-light)', direction: 'rtl', textAlign: 'right', lineHeight: 2, padding: '16px', background: 'rgba(var(--tarjama-color-primary-rgb),.04)', borderRadius: 10, marginBottom: 16, border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)' }}>{verse.ar}</div>
+            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 24, color: 'var(--gold-light)', direction: 'rtl', textAlign: 'right', lineHeight: 2, padding: '16px', background: 'rgba(var(--tarjama-color-primary-rgb),.04)', borderRadius: 10, marginBottom: 16, border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)' }} lang="ar">{verse.ar}</div>
             <textarea value={translation} onChange={e => setTranslation(e.target.value)} placeholder="Traduis ce verset..."
               style={{ width: '100%', padding: '12px', borderRadius: 8, fontSize: 14, minHeight: 80, background: 'var(--bg-elevated)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.15)', color: 'var(--text)', resize: 'vertical', lineHeight: 1.7 }}
             />
@@ -312,7 +312,7 @@ export default function DuelPage({ user, profile, authReady }) {
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                   {currentFeedback.mots_importants.map((w, i) => (
                     <span key={i} style={{ padding: '4px 10px', borderRadius: 6, fontSize: 12, background: 'rgba(var(--tarjama-color-primary-rgb),.08)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.12)' }}>
-                      <span style={{ fontFamily: 'var(--font-arabic)', color: 'var(--gold-light)', marginRight: 6 }}>{w.ar}</span>
+                      <span style={{ fontFamily: 'var(--font-arabic)', color: 'var(--gold-light)', marginRight: 6 }} lang="ar" dir="rtl">{w.ar}</span>
                       <span style={{ color: 'var(--text-dim)' }}>{w.fr}</span>
                     </span>
                   ))}
@@ -339,7 +339,7 @@ export default function DuelPage({ user, profile, authReady }) {
             <div style={{ textAlign: 'center', padding: '20px 16px', marginBottom: 16, background: 'rgba(var(--tarjama-color-primary-rgb),.04)', borderRadius: 12, border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)' }}>
               {selectedMode === 'quiz-vocab' ? (
                 <>
-                  <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 32, color: 'var(--gold-light)', direction: 'rtl', marginBottom: 6 }}>{quizQuestion.ar}</div>
+                  <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 32, color: 'var(--gold-light)', direction: 'rtl', marginBottom: 6 }} lang="ar">{quizQuestion.ar}</div>
                   {quizQuestion.translit && <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{quizQuestion.translit}</div>}
                 </>
               ) : (

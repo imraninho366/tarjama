@@ -53,7 +53,7 @@ export default function RevelationPage({ user }) {
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
               <div>
-                <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 24, color: 'var(--gold-light)', direction: 'rtl' }}>{sel.ar}</div>
+                <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 24, color: 'var(--gold-light)', direction: 'rtl' }} lang="ar">{sel.ar}</div>
                 <div style={{ fontSize: 14, color: 'var(--text)', marginTop: 4 }}>{sel.fr}</div>
               </div>
               <button onClick={() => setSelected(null)} style={{ color: 'var(--text-muted)', fontSize: 18, cursor: 'pointer', background: 'none', border: 'none' }}>✕</button>
@@ -96,7 +96,7 @@ export default function RevelationPage({ user }) {
                 border: '2px solid var(--bg-deep)'
               }} />
               <span style={{ fontSize: 10, color: 'var(--text-muted)', minWidth: 20, fontWeight: 700 }}>{s.revelationOrder}</span>
-              <span style={{ fontFamily: 'var(--font-arabic)', fontSize: 16, color: 'var(--gold-light)', direction: 'rtl' }}>{s.ar}</span>
+              <span style={{ fontFamily: 'var(--font-arabic)', fontSize: 16, color: 'var(--gold-light)', direction: 'rtl' }} lang="ar">{s.ar}</span>
               <span style={{ fontSize: 11, color: 'var(--text-dim)', flex: 1 }}>{s.fr}</span>
               <span style={{ fontSize: 9, color: 'var(--text-muted)' }}>#{s.n}</span>
             </div>

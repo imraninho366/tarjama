@@ -93,7 +93,7 @@ export default function DhikrPage() {
                 transition: 'all .15s'
               }}>
                 {d.ar ? (
-                  <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 18, color: 'var(--gold-light)', direction: 'rtl', flex: 1 }}>
+                  <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 18, color: 'var(--gold-light)', direction: 'rtl', flex: 1 }} lang="ar">
                     {d.ar}
                   </div>
                 ) : (
@@ -122,7 +122,7 @@ export default function DhikrPage() {
               <div style={{
                 fontFamily: 'var(--font-arabic)', fontSize: 32, color: 'var(--gold-light)',
                 direction: 'rtl', lineHeight: 1.8, marginBottom: 8
-              }}>
+              }} lang="ar">
                 {dhikr.ar}
               </div>
             )}

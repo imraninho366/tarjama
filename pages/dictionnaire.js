@@ -139,7 +139,7 @@ export default function Dictionnaire({ user, profile, authReady }) {
 
   if (loading) return (
     <div className={s.loading}>
-      <div className={s.loadingText}>تحميل...</div>
+      <div className={s.loadingText} aria-hidden="true">تحميل...</div>
     </div>
   )
 
@@ -217,7 +217,7 @@ export default function Dictionnaire({ user, profile, authReady }) {
         {/* EMPTY STATE */}
         {vocab.length === 0 && (
           <div className={s.emptyState}>
-            <div className={s.emptyArabic}>كَلِمَة</div>
+            <div className={s.emptyArabic} aria-hidden="true">كَلِمَة</div>
             <div className={s.emptyTitle}>Ton dictionnaire est vide pour l'instant</div>
             <div className={s.emptySub}>Traduis des versets pour enrichir ton dictionnaire automatiquement</div>
             <Link href="/">
@@ -240,7 +240,7 @@ export default function Dictionnaire({ user, profile, authReady }) {
                   className={`${s.wordCard} ${selected?.ar === w.ar ? s.wordCardSelected : ''}`}
                   style={{ animationDelay: `${Math.min(i * 20, 400)}ms` }}
                 >
-                  <div className={s.wordArabic}>{w.ar}</div>
+                  <div className={s.wordArabic} lang="ar" dir="rtl">{w.ar}</div>
                   {w.translit && <div className={s.wordTranslit}>{w.translit}</div>}
                   <div className={s.wordSens}>{sens.slice(0, 2).join(' / ')}</div>
                   <div className={s.wordTags}>
@@ -259,7 +259,7 @@ export default function Dictionnaire({ user, profile, authReady }) {
                       <span className={s.freqTag} style={{ color: fc }}>{w.freq}×</span>
                     )}
                     {w.racine && (
-                      <span className={s.rootTag}>{w.racine}</span>
+                      <span className={s.rootTag} lang="ar" dir="rtl">{w.racine}</span>
                     )}
                   </div>
                 </div>
@@ -282,7 +282,7 @@ export default function Dictionnaire({ user, profile, authReady }) {
               <div className={s.detailHandle} />
               <div className={s.detailTop}>
                 <div>
-                  <div className={s.detailArabic}>{selected.ar}</div>
+                  <div className={s.detailArabic} lang="ar" dir="rtl">{selected.ar}</div>
                   {selected.translit && (
                     <div className={s.detailTranslit}>{selected.translit}</div>
                   )}
@@ -306,7 +306,7 @@ export default function Dictionnaire({ user, profile, authReady }) {
               {selected.racine && (
                 <div className={s.detailSection}>
                   <div className={s.detailSectionTitle}>Racine triconsonantique</div>
-                  <div className={s.rootArabic}>{selected.racine}</div>
+                  <div className={s.rootArabic} lang="ar" dir="rtl">{selected.racine}</div>
                 </div>
               )}
 
@@ -357,7 +357,7 @@ export default function Dictionnaire({ user, profile, authReady }) {
                   <div className={s.exampleLabel}>
                     Exemple dans le Coran {selected.exemple_ref ? `(${selected.exemple_ref})` : ''}
                   </div>
-                  <div className={s.exampleArabic}>{selected.exemple_autre}</div>
+                  <div className={s.exampleArabic} lang="ar" dir="rtl">{selected.exemple_autre}</div>
                 </div>
               )}
 

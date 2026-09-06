@@ -129,7 +129,7 @@ export default function CalligraphiePage({ user }) {
           <div style={{ fontSize: 11, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 8 }}>
             Dessine cette lettre
           </div>
-          <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 64, color: 'var(--gold)', lineHeight: 1.2 }}>
+          <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 64, color: 'var(--gold)', lineHeight: 1.2 }} lang="ar" dir="rtl">
             {letter.ar}
           </div>
           <div style={{ fontSize: 14, color: 'var(--text)', fontWeight: 600, marginTop: 4 }}>{letter.name}</div>
@@ -162,7 +162,7 @@ export default function CalligraphiePage({ user }) {
               position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
               fontFamily: 'var(--font-arabic)', fontSize: 180, color: 'rgba(var(--tarjama-color-success-rgb, 45, 122, 79),.15)',
               pointerEvents: 'none', lineHeight: 1
-            }}>
+            }} lang="ar" dir="rtl">
               {letter.ar}
             </div>
           )}
@@ -197,7 +197,7 @@ export default function CalligraphiePage({ user }) {
               background: i === currentIdx ? 'rgba(var(--tarjama-color-primary-rgb),.15)' : 'rgba(var(--tarjama-color-primary-rgb),.04)',
               border: `1px solid ${i === currentIdx ? 'rgba(var(--tarjama-color-primary-rgb),.3)' : 'rgba(var(--tarjama-color-primary-rgb),.06)'}`,
               color: i === currentIdx ? 'var(--gold)' : 'var(--text-muted)'
-            }}>
+            }} lang="ar" dir="rtl">
               {l.ar}
             </button>
           ))}

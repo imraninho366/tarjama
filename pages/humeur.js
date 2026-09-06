@@ -71,7 +71,7 @@ export default function HumeurPage({ user, authReady }) {
                 }}>
                   <div style={{ fontSize: 28, marginBottom: 4 }}>{m.icon}</div>
                   <div style={{ fontSize: 11, color: 'var(--text)', fontWeight: 600 }}>{m.label}</div>
-                  <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'var(--font-arabic)', marginTop: 2 }}>{m.ar}</div>
+                  <div style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'var(--font-arabic)', marginTop: 2 }} aria-hidden="true">{m.ar}</div>
                 </button>
               ))}
             </div>
@@ -94,7 +94,7 @@ export default function HumeurPage({ user, authReady }) {
         {/* Loading */}
         {loading && (
           <div style={{ textAlign: 'center', padding: 40 }}>
-            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 18, color: 'var(--gold)', marginBottom: 8 }}>
+            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 18, color: 'var(--gold)', marginBottom: 8 }} lang="ar" dir="rtl">
               جاري البحث...
             </div>
             <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>L'IA cherche les versets les plus pertinents...</div>
@@ -122,7 +122,7 @@ export default function HumeurPage({ user, authReady }) {
                   fontFamily: 'var(--font-arabic)', fontSize: 22, color: 'var(--gold-light)',
                   direction: 'rtl', textAlign: 'right', lineHeight: 2, marginBottom: 12,
                   padding: '8px 0', borderBottom: '1px solid rgba(var(--tarjama-color-primary-rgb),.06)'
-                }}>
+                }} lang="ar">
                   {v.arabe}
                 </div>
                 <div style={{ fontSize: 14, color: 'var(--text)', fontFamily: 'var(--font-serif)', fontStyle: 'italic', lineHeight: 1.8, marginBottom: 10 }}>

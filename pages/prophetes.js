@@ -31,7 +31,7 @@ export default function ProphetesPage({ user }) {
 
   const prophete = prophetes.find(p => p.id === selected)
 
-  if (!user) return <div className={s.loading}><div className={s.loadingText}>الأنبياء</div></div>
+  if (!user) return <div className={s.loading}><div className={s.loadingText} aria-hidden="true">الأنبياء</div></div>
 
   return (
     <>
@@ -59,7 +59,7 @@ export default function ProphetesPage({ user }) {
 
             {/* Timeline */}
             {loading ? (
-              <div className={s.loading}><div className={s.loadingText}>...</div></div>
+              <div className={s.loading}><div className={s.loadingText} aria-hidden="true">...</div></div>
             ) : (
               <div className={s.timeline}>
                 {filtered.map((p, idx) => (
@@ -71,7 +71,7 @@ export default function ProphetesPage({ user }) {
                     <div className={s.timelineCard}>
                       <div className={s.cardTop}>
                         <div className={s.cardName}>{p.nom}</div>
-                        <div className={s.cardNameAr}>{p.nomAr}</div>
+                        <div className={s.cardNameAr} lang="ar" dir="rtl">{p.nomAr}</div>
                       </div>
                       <div className={s.cardTitre}>{p.titre}</div>
                       <div className={s.cardResume}>{p.resume.length > 120 ? p.resume.slice(0, 120) + '...' : p.resume}</div>
@@ -96,7 +96,7 @@ export default function ProphetesPage({ user }) {
               <div className={s.detailNum}>{prophete.id}</div>
               <div>
                 <div className={s.detailName}>{prophete.nom}</div>
-                <div className={s.detailNameAr}>{prophete.nomAr}</div>
+                <div className={s.detailNameAr} lang="ar" dir="rtl">{prophete.nomAr}</div>
                 <div className={s.detailTitre}>{prophete.titre}</div>
               </div>
             </div>

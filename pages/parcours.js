@@ -115,7 +115,7 @@ export default function ParcoursPage({ user }) {
                 marginBottom: 8, borderRadius: 8,
                 background: 'var(--bg-card)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)'
               }}>
-                <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 24, color: 'var(--gold-light)', direction: 'rtl', minWidth: 70, textAlign: 'right' }}>
+                <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 24, color: 'var(--gold-light)', direction: 'rtl', minWidth: 70, textAlign: 'right' }} lang="ar">
                   {w.ar}
                 </div>
                 <div style={{ flex: 1 }}>
