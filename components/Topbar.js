@@ -35,7 +35,7 @@ export default function Topbar({ profile, onToggleSidebar, theme, onToggleTheme 
 
       {/* Hamburger (tablet/mobile) */}
       <button
-        className="hidden max-lg:flex w-9 h-9 items-center justify-center rounded-sm text-primary text-lg shrink-0 cursor-pointer transition-colors duration-150 hover:bg-[rgba(var(--tarjama-color-primary-rgb),0.08)]"
+        className="hidden max-lg:flex w-11 h-11 items-center justify-center rounded-sm text-primary text-lg shrink-0 cursor-pointer transition-colors duration-150 hover:bg-[rgba(var(--tarjama-color-primary-rgb),0.08)]"
         onClick={onToggleSidebar}
         aria-label="Menu de navigation"
       >
@@ -64,7 +64,7 @@ export default function Topbar({ profile, onToggleSidebar, theme, onToggleTheme 
       {onToggleTheme && (
         <button
           onClick={onToggleTheme}
-          className="w-9 h-9 rounded-full flex items-center justify-center text-base text-primary bg-[rgba(var(--tarjama-color-primary-rgb),0.06)] border border-[rgba(var(--tarjama-color-primary-rgb),0.15)] cursor-pointer transition-all duration-200 shrink-0 ms-auto hover:bg-[rgba(var(--tarjama-color-primary-rgb),0.15)] hover:border-[rgba(var(--tarjama-color-primary-rgb),0.3)]"
+          className="relative w-9 h-9 before:absolute before:content-[''] before:-inset-1 before:rounded-full rounded-full flex items-center justify-center text-base text-primary bg-[rgba(var(--tarjama-color-primary-rgb),0.06)] border border-[rgba(var(--tarjama-color-primary-rgb),0.15)] cursor-pointer transition-all duration-200 shrink-0 ms-auto hover:bg-[rgba(var(--tarjama-color-primary-rgb),0.15)] hover:border-[rgba(var(--tarjama-color-primary-rgb),0.3)]"
           aria-label={theme === 'dark' ? 'Mode clair' : 'Mode sombre'}
         >
           {theme === 'dark' ? '☀' : '☾'}

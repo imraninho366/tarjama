@@ -175,7 +175,34 @@ export default function TarjamaApp({ Component, pageProps, router }) {
   const fontClasses = `${playfair.variable} ${sourceSans.variable} ${amiri.variable} ${reemKufi.variable}`
 
   return (
-    <div className={fontClasses}>
+    /*
+     * Les alias de police sont REDECLARES ici, et c'est indispensable.
+     *
+     * globals.css les declare sur :root sous la forme
+     *   --font-arabic: var(--tarjama-font-arabic)
+     * Or une variable CSS est substituee LA OU ELLE EST DECLAREE. A hauteur de
+     * <html>, --tarjama-font-arabic vaut encore le nom litteral pose par
+     * tokens.css ('Amiri', serif) — next/font, lui, pose sa vraie valeur sur ce
+     * div, bien plus bas dans l'arbre. La valeur calculee 'Amiri', serif
+     * descendait donc par heritage sur toute la page.
+     *
+     * Resultat mesure le 6 septembre 2026 : le texte arabe s'affichait en serif
+     * generique. Les huit .woff2 de next/font etaient bien telecharges, et
+     * jamais utilises. Verification : الرحمن الرحيم en 32px mesurait 155px,
+     * identique a serif pur, contre 138px avec la vraie Amiri.
+     *
+     * En redeclarant les alias ICI, la substitution a lieu sur ce div, ou
+     * --tarjama-font-* porte la valeur de next/font.
+     */
+    <div
+      className={fontClasses}
+      style={{
+        '--font-arabic': 'var(--tarjama-font-arabic)',
+        '--font-serif': 'var(--tarjama-font-display)',
+        '--font-sans': 'var(--tarjama-font-body)',
+        '--font-display': 'var(--tarjama-font-display)',
+      }}
+    >
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="theme-color" content={theme === 'light' ? '#F5F1E8' : '#C9A84C'}/>

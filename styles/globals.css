@@ -12,7 +12,13 @@
 @import './tokens.css';
 
 /* ── Fonts — new Riyad fonts + Amiri ───────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&family=Reem+Kufi:wght@400;500;600;700&display=swap');
+/* L'@import Google Fonts qui se trouvait ici a ete supprime le 6 septembre 2026.
+   Il redemandait les QUATRE MEMES familles que next/font telecharge et
+   auto-heberge deja (pages/_app.js lignes 10-13). Un @import bloque en plus le
+   rendu tant que la feuille distante n'est pas arrivee, et ouvre une connexion
+   vers fonts.googleapis.com puis fonts.gstatic.com — deux tiers a contacter,
+   pour des polices deja presentes localement.
+   Ne pas le remettre : pour ajouter une police, l'ajouter a next/font. */
 
 /* ── Legacy Aliases ────────────────────────────────────────── */
 /* Map old token names → new --tarjama-* tokens for backward compat.

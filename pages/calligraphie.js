@@ -192,7 +192,7 @@ export default function CalligraphiePage({ user }) {
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center', marginBottom: 32 }}>
           {LETTERS.map((l, i) => (
             <button key={i} onClick={() => { setCurrentIdx(i); clearCanvas() }} style={{
-              width: 32, height: 32, borderRadius: 6, cursor: 'pointer',
+              width: 44, height: 44, borderRadius: 6, cursor: 'pointer',
               fontFamily: 'var(--font-arabic)', fontSize: 16,
               background: i === currentIdx ? 'rgba(var(--tarjama-color-primary-rgb),.15)' : 'rgba(var(--tarjama-color-primary-rgb),.04)',
               border: `1px solid ${i === currentIdx ? 'rgba(var(--tarjama-color-primary-rgb),.3)' : 'rgba(var(--tarjama-color-primary-rgb),.06)'}`,
