@@ -7,12 +7,12 @@ import { G, AVATAR_COLORS } from '../lib/theme'
 import { isAdmin } from '../lib/freemium'
 import Link from 'next/link'
 import Button from '../components/common/Button'
+import { activiteParJour, calculerSeries, grilleCalendrier, repartitionQualite } from '../lib/progression'
 
 export default function ProfilPage({ user, profile, onLogout }) {
   const router = useRouter()
   const [progress, setProgress] = useState({})
   const [loading, setLoading] = useState(true)
-  const [tab, setTab] = useState('stats')
 
   useEffect(() => {
     if (!user) { router.push('/'); return }
@@ -34,9 +34,15 @@ export default function ProfilPage({ user, profile, onLogout }) {
 
   const entries = Object.values(progress)
   const total = entries.length
-  const excellent = entries.filter(p => p.niveau === 'excellent' || p.niveau === 'good').length
-  const partial = entries.filter(p => p.niveau === 'partial').length
-  const wrong = entries.filter(p => p.niveau === 'wrong').length
+  const qualite = repartitionQualite(entries)
+  const excellent = qualite.maitrises
+
+  // Activite dans le temps : c'est ce qui manquait. Les totaux ci-dessus
+  // disent ou on en est, pas si on avance.
+  const parJour = activiteParJour(entries)
+  const series = calculerSeries(parJour)
+  const calendrier = grilleCalendrier(parJour, 12)
+  const joursActifs = parJour.size
 
   // Total versets dans le Coran
   const TOTAL_QURAN_VERSES = 6236
@@ -52,11 +58,6 @@ export default function ProfilPage({ user, profile, onLogout }) {
   }).filter(s => s.done > 0).sort((a, b) => b.pct - a.pct)
 
 
-  const days = new Set()
-  entries.forEach(p => {
-    if (p.ts) { const d = new Date(p.ts); days.add(`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`) }
-  })
-
   // Mots connus (quiz)
   const quizHistory = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('tarjama_quiz_history') || '[]') : []
   const knownWords = [...new Set(quizHistory.filter(h => h.ok).map(h => h.ar))]
@@ -65,14 +66,6 @@ export default function ProfilPage({ user, profile, onLogout }) {
 
   // % mémorisation du Coran (versets excellents / total versets)
   const pctMemorisation = TOTAL_QURAN_VERSES > 0 ? Math.round(excellent / TOTAL_QURAN_VERSES * 100) : 0
-
-  const tabStyle = (t) => ({
-    padding: '8px 16px', fontSize: 12, letterSpacing: 1, textTransform: 'uppercase',
-    background: tab === t ? 'rgba(var(--tarjama-color-primary-rgb),.12)' : 'transparent',
-    color: tab === t ? 'var(--gold)' : 'var(--text-muted)',
-    border: 'none', borderBottom: tab === t ? `2px solid ${'var(--gold)'}` : '2px solid transparent',
-    cursor: 'pointer', fontWeight: 600
-  })
 
   return (
     <>
@@ -135,13 +128,101 @@ export default function ProfilPage({ user, profile, onLogout }) {
           </div>
         </div>
 
-        {/* Tabs */}
-        <div style={{ display: 'flex', borderBottom: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)', marginBottom: 16 }}>
-          <button onClick={() => setTab('stats')} style={tabStyle('stats')}>Progression</button>
+        {/* ── Régularité ─────────────────────────────────────────────
+            La question « est-ce que j'avance ? » ne se lit pas dans un
+            total. Elle se lit dans une suite de jours. */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 12 }}>
+          {[
+            [series.actuelle, series.actuelle > 1 ? 'Jours d’affilée' : 'Jour d’affilée', 'var(--orange)'],
+            [series.record, 'Record', 'var(--gold)'],
+            [joursActifs, joursActifs > 1 ? 'Jours actifs' : 'Jour actif', 'var(--text-secondary)'],
+          ].map(([num, lbl, clr]) => (
+            <div key={lbl} style={{
+              textAlign: 'center', padding: '12px 4px',
+              background: 'rgba(var(--tarjama-color-primary-rgb),.04)', borderRadius: 8,
+              border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)'
+            }}>
+              <div style={{ fontSize: 22, fontFamily: 'var(--font-display)', color: clr, fontWeight: 700 }}>{num}</div>
+              <div style={{ fontSize: 9, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 1 }}>{lbl}</div>
+            </div>
+          ))}
         </div>
 
+        {/* ── Calendrier d'activité ──────────────────────────────────
+            Douze semaines, une colonne par semaine. L'intensité suit le
+            nombre de versets du jour. */}
+        <div style={{ marginBottom: 20, padding: '14px 16px', borderRadius: 10, background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)' }}>
+          <div style={{ fontSize: 12, color: 'var(--text)', marginBottom: 10 }}>Ces 12 dernières semaines</div>
+          <div
+            style={{ display: 'flex', gap: 3, overflowX: 'auto', paddingBottom: 4 }}
+            role="img"
+            aria-label={`Calendrier d'activité : ${joursActifs} jour${joursActifs > 1 ? 's' : ''} de traduction sur les 12 dernières semaines.`}
+          >
+            {calendrier.map((semaine, i) => (
+              <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                {semaine.map(jour => (
+                  <div
+                    key={jour.date}
+                    // title : au survol, la date exacte et le nombre de versets.
+                    title={jour.futur ? '' : `${new Date(jour.date + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })} — ${jour.nb} verset${jour.nb > 1 ? 's' : ''}`}
+                    style={{
+                      width: 11, height: 11, borderRadius: 2,
+                      background: jour.futur ? 'transparent'
+                        : jour.nb === 0 ? 'rgba(var(--tarjama-color-primary-rgb),.07)'
+                        : jour.nb < 3 ? 'rgba(var(--tarjama-color-primary-rgb),.35)'
+                        : jour.nb < 6 ? 'rgba(var(--tarjama-color-primary-rgb),.65)'
+                        : 'var(--gold)',
+                    }}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 8, fontSize: 10, color: 'var(--text-muted)' }}>
+            <span>Moins</span>
+            {['.07', '.35', '.65'].map(o => (
+              <span key={o} style={{ width: 9, height: 9, borderRadius: 2, background: `rgba(var(--tarjama-color-primary-rgb),${o})` }} />
+            ))}
+            <span style={{ width: 9, height: 9, borderRadius: 2, background: 'var(--gold)' }} />
+            <span>Plus</span>
+          </div>
+        </div>
+
+        {/* ── Qualité des traductions ────────────────────────────────
+            Ces trois nombres étaient déjà calculés dans le code, sans
+            jamais être affichés. */}
+        {total > 0 && (
+          <div style={{ marginBottom: 20, padding: '14px 16px', borderRadius: 10, background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)' }}>
+            <div style={{ fontSize: 12, color: 'var(--text)', marginBottom: 10 }}>Qualité de tes traductions</div>
+            <div style={{ display: 'flex', height: 8, borderRadius: 4, overflow: 'hidden', marginBottom: 8 }}>
+              {[
+                [qualite.maitrises, 'var(--green)'],
+                [qualite.partiels, 'var(--gold)'],
+                [qualite.aRevoir, 'var(--orange)'],
+              ].filter(([n]) => n > 0).map(([n, c]) => (
+                <div key={c} style={{ width: `${n / total * 100}%`, background: c }} />
+              ))}
+            </div>
+            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', fontSize: 11, color: 'var(--text-secondary)' }}>
+              {[
+                [qualite.maitrises, 'maîtrisés', 'var(--green)'],
+                [qualite.partiels, 'partiels', 'var(--gold)'],
+                [qualite.aRevoir, 'à revoir', 'var(--orange)'],
+              ].map(([n, lbl, c]) => (
+                <span key={lbl} style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                  <span style={{ width: 8, height: 8, borderRadius: 2, background: c }} aria-hidden="true" />
+                  {n} {lbl}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Progression par sourate */}
-        {tab === 'stats' && (
+        <div style={{ fontSize: 12, color: 'var(--text)', marginBottom: 12, paddingBottom: 8, borderBottom: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)' }}>
+          Progression par sourate
+        </div>
+        {(
           <div>
             {sourates.length === 0 && (
               <div style={{ textAlign: 'center', padding: 32, color: 'var(--text-muted)' }}>

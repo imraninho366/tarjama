@@ -14,6 +14,7 @@ import Toast from '../components/common/Toast'
 import s from '../styles/Home.module.css'
 import { apiFetch } from '../lib/apiClient'
 import { clickable } from '../lib/clickable'
+import { activiteParJour, calculerSeries } from '../lib/progression'
 
 const SUGGESTIONS = [
   {n:1,ar:"الفاتحة",fr:"L'Ouverture",v:7},
@@ -317,27 +318,20 @@ export default function App({ user, profile, onLogout }){
     return{total,done,pct:total?Math.round(done/total*100):0}
   }
 
-  const getStreak=()=>{
-    const days=new Set()
-    Object.values(progress).forEach(p=>{
-      if(p.ts){const d=new Date(p.ts);days.add(`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`)}
-    })
-    if(days.size===0) return 0
-    const sorted=[...days].sort().reverse()
-    const today=new Date();today.setHours(0,0,0,0)
-    const toKey=(d)=>`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`
-    const yesterday=new Date(today);yesterday.setDate(yesterday.getDate()-1)
-    if(sorted[0]!==toKey(today)&&sorted[0]!==toKey(yesterday)) return 0
-    let streak=1
-    for(let i=0;i<sorted.length-1;i++){
-      const [y1,m1,d1]=sorted[i].split('-').map(Number)
-      const [y2,m2,d2]=sorted[i+1].split('-').map(Number)
-      const a=new Date(y1,m1,d1),b=new Date(y2,m2,d2)
-      if((a-b)/(1000*60*60*24)===1) streak++
-      else break
-    }
-    return streak
-  }
+  /*
+   * La serie vient desormais de lib/progression.js, partagee avec /profil.
+   *
+   * La version qui se trouvait ici fabriquait des cles de jour sans zero
+   * devant — « 2026-8-9 » — puis les triait comme du TEXTE. Or « 2026-8-9 »
+   * se classe apres « 2026-8-10 » : une serie du 8 au 10 septembre etait
+   * comptee 2 au lieu de 3, et le compte s'arretait au premier passage d'un
+   * jour a un chiffre a un jour a deux chiffres.
+   *
+   * Ce n'etait pas qu'un chiffre faux a l'ecran : cette valeur alimente
+   * computeStats, donc les badges « 3 jours », « 7 jours » et « 30 jours »
+   * devenaient tres difficiles a decrocher, sans que rien ne le signale.
+   */
+  const getStreak=()=>calculerSeries(activiteParJour(Object.values(progress))).actuelle
 
   const verify=async()=>{
     if(verifying||!userTrans.trim()||!sourate)return
