@@ -18,6 +18,12 @@ const NO_NAV_PATHS = ['/gen-dico']
 export default function TarjamaApp({ Component, pageProps, router }) {
   const [user, setUser] = useState(null)
   const [profile, setProfile] = useState(null)
+  // `user` vaut null dans DEUX situations que rien ne distinguait : « pas
+  // connecte » et « on ne sait pas encore ». La session est lue de facon
+  // asynchrone, donc au premier rendu elle est toujours nulle — et les pages
+  // qui redirigent sur !user ejectaient un utilisateur pourtant connecte des
+  // qu'il rafraichissait la page. authReady separe les deux cas.
+  const [authReady, setAuthReady] = useState(false)
   const [transitioning, setTransitioning] = useState(false)
   const [displayedRoute, setDisplayedRoute] = useState(router.pathname)
   const [installPrompt, setInstallPrompt] = useState(null)
@@ -31,6 +37,9 @@ export default function TarjamaApp({ Component, pageProps, router }) {
         setUser(session.user)
         loadProfile(session.user)
       }
+      // Pose dans TOUS les cas, y compris sans session : le point n'est pas
+      // qu'un utilisateur existe, mais que la question soit tranchee.
+      setAuthReady(true)
     })
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
@@ -42,6 +51,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
           setUser(null)
           setProfile(null)
         }
+        setAuthReady(true)
       }
     )
 
@@ -218,6 +228,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
             {...pageProps}
             user={user}
             profile={profile}
+            authReady={authReady}
             onLogout={handleLogout}
           />
         </div>

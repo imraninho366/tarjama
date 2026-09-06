@@ -13,7 +13,7 @@ const SUGGESTIONS = [
   'Qu\'est-ce que la zakat et comment la calculer ?',
 ]
 
-export default function SavantPage({ user }) {
+export default function SavantPage({ user, authReady }) {
   const router = useRouter()
   const [question, setQuestion] = useState('')
   const [askedQuestion, setAskedQuestion] = useState('')
@@ -47,13 +47,18 @@ export default function SavantPage({ user }) {
     setQuestion('')
   }
 
-  // Place APRES les hooks : les regles de React interdisent de sortir d'un
-  // composant avant que tous ses hooks aient ete appeles.
-  //
+  // Les deux sorties ci-dessous sont placees APRES les hooks : React exige que
+  // tous les hooks d'un composant s'executent a chaque rendu, dans le meme
+  // ordre. Un return place plus haut les sauterait.
+
+  // Tant que la session n'est pas tranchee, on n'affiche rien plutot que de
+  // rediriger : `user` est encore null par ignorance, pas par absence.
+  if (!authReady) return null
+
   // Cette page etait la seule, avec /gen-dico, accessible sans compte — alors
   // que /api/savant est la route IA la plus couteuse. Elle s'aligne desormais
-  // sur toutes les autres pages, et surtout sur ce que l'API accepte : sans
-  // ce garde-fou, un visiteur non connecte verrait le formulaire, poserait sa
+  // sur les autres pages, et surtout sur ce que l'API accepte : sans ce
+  // garde-fou, un visiteur non connecte verrait le formulaire, poserait sa
   // question, et recevrait un 401 incomprehensible.
   if (!user) {
     if (typeof window !== 'undefined') router.push('/')

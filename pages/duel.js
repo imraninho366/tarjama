@@ -13,7 +13,7 @@ const MODES = [
 
 function shuffle(arr) { const a = [...arr]; for (let i = a.length-1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]] } return a }
 
-export default function DuelPage({ user, profile }) {
+export default function DuelPage({ user, profile, authReady }) {
   const router = useRouter()
   const { vocab } = useVocab()
   const [view, setView] = useState('menu')
@@ -46,6 +46,10 @@ export default function DuelPage({ user, profile }) {
   const pollRef = useRef(null)
 
   useEffect(() => { return () => { if (pollRef.current) clearInterval(pollRef.current) } }, [])
+
+  // Tant que la session n'est pas tranchee, on n'affiche rien plutot que de
+  // rediriger : `user` est encore null par ignorance, pas par absence.
+  if (!authReady) return null
 
   if (!user || !profile) { if (typeof window !== 'undefined') router.push('/'); return null }
 

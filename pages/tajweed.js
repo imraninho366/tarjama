@@ -7,7 +7,7 @@ import { apiFetch } from '../lib/apiClient'
 
 const SHORT_SOURATES = [1, 112, 113, 114, 103, 108, 110, 111, 97, 99, 100, 101, 102, 104, 105, 106, 107, 109]
 
-export default function TajweedPage({ user }) {
+export default function TajweedPage({ user, authReady }) {
   const router = useRouter()
   const [sourate, setSourate] = useState(null)
   const [verses, setVerses] = useState([])
@@ -17,6 +17,10 @@ export default function TajweedPage({ user }) {
   const [result, setResult] = useState(null)
   const [loading, setLoading] = useState(false)
   const recorderRef = useRef(null)
+
+  // Tant que la session n'est pas tranchee, on n'affiche rien plutot que de
+  // rediriger : `user` est encore null par ignorance, pas par absence.
+  if (!authReady) return null
 
   if (!user) { if (typeof window !== 'undefined') router.push('/'); return null }
 

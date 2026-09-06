@@ -5,7 +5,7 @@ import { G } from '../lib/theme'
 import { apiFetch } from '../lib/apiClient'
 import { isAdmin } from '../lib/freemium'
 
-export default function GenDico({ user }) {
+export default function GenDico({ user, authReady }) {
   const [status, setStatus]   = useState('idle')
   const [progress, setProg]   = useState({ done: 0, total: 0, words: 0 })
   const [log, setLog]         = useState([])
@@ -96,6 +96,10 @@ export default function GenDico({ user }) {
   // /api/gen-vocab, ou l'identite vient d'un jeton Supabase que le navigateur
   // ne peut pas fabriquer. Ce test-ci evite seulement d'afficher un outil qui
   // ne repondrait pas.
+  // Tant que la session n'est pas tranchee, on n'affiche rien plutot que de
+  // rediriger : `user` est encore null par ignorance, pas par absence.
+  if (!authReady) return null
+
   if (!isAdmin(user?.id)) return (
     <div style={{minHeight:'100vh',background:'var(--tarjama-color-background)',display:'flex',alignItems:'center',justifyContent:'center'}}>
       <div style={{background:'var(--tarjama-color-surface)',border:`1px solid rgba(var(--tarjama-color-primary-rgb),.2)`,borderRadius:6,padding:'32px 28px',width:340,textAlign:'center'}}>

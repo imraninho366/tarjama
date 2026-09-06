@@ -20,12 +20,16 @@ const THEMES = [
   { id: 'amour', label: 'Amour divin', ar: 'الحب', icon: '❤' },
 ]
 
-export default function ConnexionsPage({ user }) {
+export default function ConnexionsPage({ user, authReady }) {
   const router = useRouter()
   const [selected, setSelected] = useState(null)
   const [versets, setVersets] = useState(null)
   const [loading, setLoading] = useState(false)
   const [custom, setCustom] = useState('')
+
+  // Tant que la session n'est pas tranchee, on n'affiche rien plutot que de
+  // rediriger : `user` est encore null par ignorance, pas par absence.
+  if (!authReady) return null
 
   if (!user) { if (typeof window !== 'undefined') router.push('/'); return null }
 

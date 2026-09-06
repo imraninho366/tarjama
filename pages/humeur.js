@@ -19,12 +19,16 @@ const MOODS = [
   { id: 'espoir', label: 'Plein d\'espoir', icon: '🌅', ar: 'أمل' },
 ]
 
-export default function HumeurPage({ user }) {
+export default function HumeurPage({ user, authReady }) {
   const router = useRouter()
   const [selected, setSelected] = useState(null)
   const [custom, setCustom] = useState('')
   const [versets, setVersets] = useState(null)
   const [loading, setLoading] = useState(false)
+
+  // Tant que la session n'est pas tranchee, on n'affiche rien plutot que de
+  // rediriger : `user` est encore null par ignorance, pas par absence.
+  if (!authReady) return null
 
   if (!user) { if (typeof window !== 'undefined') router.push('/'); return null }
 
