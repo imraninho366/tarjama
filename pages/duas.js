@@ -18,7 +18,7 @@ const THEMES = [
   { id: 'occasions', label: 'Occasions', icon: '♦', catIds: [93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133] },
 ]
 
-export default function DuasPage({ user }) {
+export default function DuasPage({ user, authReady }) {
   const router = useRouter()
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
@@ -28,12 +28,16 @@ export default function DuasPage({ user }) {
   const [expandedDuas, setExpandedDuas] = useState(new Set())
 
   useEffect(() => {
+    // authReady : la session est lue de facon asynchrone, donc au premier
+    // rendu `user` vaut null par ignorance et non par absence. Sans cette
+    // attente, rafraichir la page en etant connecte renvoyait a l'accueil.
+    if (!authReady) return
     if (!user) { router.push('/'); return }
     fetch('/duas.json')
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false) })
       .catch(() => setLoading(false))
-  }, [user])
+  }, [authReady, user])
 
   const totalDuas = useMemo(() => data.reduce((sum, cat) => sum + (Array.isArray(cat.dua) ? cat.dua.length : 0), 0), [data])
 

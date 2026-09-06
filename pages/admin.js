@@ -5,7 +5,7 @@ import { supabase } from '../lib/supabase'
 import { isAdmin, grantPremium, revokePremium } from '../lib/freemium'
 import Button from '../components/common/Button'
 
-export default function AdminPage({ user }) {
+export default function AdminPage({ user, authReady }) {
   const router = useRouter()
   const [users, setUsers] = useState([])
   const [premiumUsers, setPremiumUsers] = useState([])
@@ -15,9 +15,13 @@ export default function AdminPage({ user }) {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
+    // authReady : la session est lue de facon asynchrone, donc au premier
+    // rendu `user` vaut null par ignorance et non par absence. Sans cette
+    // attente, rafraichir la page en etant connecte renvoyait a l'accueil.
+    if (!authReady) return
     if (!user || !isAdmin(user.id)) { router.push('/'); return }
     loadData()
-  }, [user])
+  }, [authReady, user])
 
   const loadData = async () => {
     const [profilesRes, premiumRes, suggestionsRes] = await Promise.all([

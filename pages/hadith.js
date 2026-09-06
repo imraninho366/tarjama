@@ -26,7 +26,7 @@ const THEMES = [
   { id: 'invocations', label: 'Invocations',  icon: '☼', keywords: ['invocation','doua','dua','rappel','repentir','pardon'] },
 ]
 
-export default function HadithPage({ user }) {
+export default function HadithPage({ user, authReady }) {
   const router = useRouter()
   const [collection, setCollection] = useState('bukhari')
   const [sections, setSections] = useState([])
@@ -45,9 +45,13 @@ export default function HadithPage({ user }) {
   const [randomHadith, setRandomHadith] = useState(null)
 
   useEffect(() => {
+    // authReady : la session est lue de facon asynchrone, donc au premier
+    // rendu `user` vaut null par ignorance et non par absence. Sans cette
+    // attente, rafraichir la page en etant connecte renvoyait a l'accueil.
+    if (!authReady) return
     if (!user) { router.push('/'); return }
     loadSections()
-  }, [user, collection])
+  }, [authReady, user, collection])
 
   const loadSections = async () => {
     setLoading(true)

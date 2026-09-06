@@ -5,7 +5,7 @@ import { G } from '../lib/theme'
 import s from '../styles/Piliers.module.css'
 import { clickable } from '../lib/clickable'
 
-export default function PiliersPage({ user }) {
+export default function PiliersPage({ user, authReady }) {
   const router = useRouter()
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -16,12 +16,16 @@ export default function PiliersPage({ user }) {
   const [showJoumua, setShowJoumua] = useState(false)
 
   useEffect(() => {
+    // authReady : la session est lue de facon asynchrone, donc au premier
+    // rendu `user` vaut null par ignorance et non par absence. Sans cette
+    // attente, rafraichir la page en etant connecte renvoyait a l'accueil.
+    if (!authReady) return
     if (!user) { router.push('/'); return }
     fetch('/piliers.json')
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false) })
       .catch(() => setLoading(false))
-  }, [user])
+  }, [authReady, user])
 
   const goBack = () => { setSelectedPilier(null); setShowGuide(false); setShowAblutions(false); setShowJoumua(false) }
   const section = data?.[activeTab]
