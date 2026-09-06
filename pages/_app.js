@@ -4,7 +4,6 @@ import { supabase } from '../lib/supabase'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import { Analytics } from '@vercel/analytics/react'
-import { loadPremiumStatus } from '../lib/freemium'
 import { AVATAR_COLORS } from '../lib/theme'
 import '../styles/globals.css'
 
@@ -126,8 +125,6 @@ export default function TarjamaApp({ Component, pageProps, router }) {
 
   const loadProfile = async (authUser, retries = 2) => {
     const userId = authUser.id
-    loadPremiumStatus(userId).catch(e => console.error('Premium check failed:', e))
-
     const { data, error } = await supabase
       .from('profiles')
       .select('*')
