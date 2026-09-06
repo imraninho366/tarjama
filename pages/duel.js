@@ -11,7 +11,58 @@ const MODES = [
   { id: 'quiz-vocab', icon: 'ق', title: 'Quiz Vocabulaire', desc: '5 mots arabes à traduire', rounds: 5 },
 ]
 
-function shuffle(arr) { const a = [...arr]; for (let i = a.length-1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]] } return a }
+/**
+ * Tirage aleatoire REPRODUCTIBLE, a partir de la graine du duel.
+ *
+ * Le shuffle ci-dessus s'appuie sur Math.random, donc chaque joueur obtenait
+ * ses propres mauvaises reponses : meme mot arabe, propositions differentes.
+ * L'un pouvait avoir trois distracteurs absurdes et l'autre trois pieges, sur
+ * la meme question. Dans un affrontement en tete-a-tete, c'est exactement ce
+ * qu'il ne faut pas faire.
+ *
+ * Generateur de Lehmer : la graine doit rester dans [1, 2147483646]. A zero il
+ * resterait bloque sur zero et servirait cinq fois le meme mot.
+ */
+function makeRng(seed) {
+  let s = seed % 2147483647
+  if (s <= 0) s += 2147483646
+  return () => (s = (s * 16807) % 2147483647) / 2147483647
+}
+
+function shuffleSeeded(arr, rnd) {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rnd() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
+/**
+ * Reservoir de mots pour le quiz de vocabulaire.
+ *
+ * Le tirage se faisait uniformement sur les 6344 mots du dictionnaire. Or 2976
+ * d'entre eux — 47 % — portent le label « rare » : des mots comme غصة, qui
+ * apparait cinq fois dans tout le Coran. Pres d'une question sur deux tombait
+ * donc sur un mot que personne ne reconnait.
+ *
+ * Les mots rares sont ecartes, et les plus courants comptent plusieurs fois
+ * dans le reservoir : ils sortent donc plus souvent, sans faire disparaitre
+ * ceux qui sont simplement « frequents ». C'est un duel entre amis, pas un
+ * concours d'erudition.
+ */
+const POIDS_FREQUENCE = { 'très fréquent': 4, 'courant': 3, 'fréquent': 1 }
+
+function reservoirVocab(vocab) {
+  const pool = []
+  for (const w of vocab) {
+    const poids = POIDS_FREQUENCE[w.freq_label]
+    // Sans sens defini, la proposition s'afficherait « ? ».
+    if (!poids || !w.sens?.[0]) continue
+    for (let i = 0; i < poids; i++) pool.push(w)
+  }
+  return pool
+}
 
 export default function DuelPage({ user, profile, authReady }) {
   const router = useRouter()
@@ -120,19 +171,51 @@ export default function DuelPage({ user, profile, authReady }) {
       setView('play-quiz')
 
     } else if (mode === 'quiz-vocab') {
-      if (vocab.length < 20) { setError('Vocabulaire en chargement...'); return }
-      const seed = d.sourate_num * 1000 + d.verse_num
-      const rng = (s) => { s = (s * 16807) % 2147483647; return s }
-      let s = seed
+      const pool = reservoirVocab(vocab)
+      if (pool.length < 20) { setError('Vocabulaire en chargement...'); return }
+
+      // Meme graine chez les deux joueurs : ils affrontent les memes questions,
+      // avec les memes propositions, dans le meme ordre.
+      const rnd = makeRng(d.sourate_num * 1000 + d.verse_num)
+      const pick = () => pool[Math.floor(rnd() * pool.length)]
+
       const qs = []
-      for (let i = 0; i < 5; i++) {
-        s = rng(s); const idx = s % vocab.length
-        const target = vocab[idx]
-        const wrongs = shuffle(vocab.filter(w => w.ar !== target.ar)).slice(0, 3)
-        const choices = shuffle([target, ...wrongs])
-        const correctIdx = choices.findIndex(c => c.ar === target.ar)
-        qs.push({ ar: target.ar, translit: target.translit, choices: choices.map(c => c.sens?.[0] || '?'), correct: correctIdx })
+      const motsVus = new Set()
+      // Borne de securite : sans elle, un reservoir trop pauvre en sens
+      // distincts ferait tourner la boucle indefiniment et figerait la page.
+      let tours = 0
+
+      while (qs.length < 5 && tours++ < 500) {
+        const target = pick()
+        if (motsVus.has(target.ar)) continue
+        motsVus.add(target.ar)
+
+        // Les distracteurs doivent avoir un sens DIFFERENT de la bonne
+        // reponse. Tires au hasard dans tout le dictionnaire, deux mots
+        // pouvaient partager la meme traduction — la question avait alors
+        // deux bonnes reponses, et le joueur en perdait une injustement.
+        const sensPris = new Set([target.sens[0].toLowerCase()])
+        const wrongs = []
+        let essais = 0
+        while (wrongs.length < 3 && essais++ < 200) {
+          const c = pick()
+          const sens = c.sens?.[0]?.toLowerCase()
+          if (!sens || sensPris.has(sens)) continue
+          sensPris.add(sens)
+          wrongs.push(c)
+        }
+        if (wrongs.length < 3) continue
+
+        const choices = shuffleSeeded([target, ...wrongs], rnd)
+        qs.push({
+          ar: target.ar,
+          translit: target.translit,
+          choices: choices.map(c => c.sens[0]),
+          correct: choices.findIndex(c => c.ar === target.ar),
+        })
       }
+
+      if (qs.length < 5) { setError('Impossible de préparer le quiz. Réessaie.'); return }
       setVocabQuestions(qs)
       setView('play-quiz')
     }
