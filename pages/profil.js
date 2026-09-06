@@ -48,6 +48,10 @@ export default function ProfilPage({ user, profile, authReady, onLogout }) {
   const series = calculerSeries(parJour)
   const calendrier = grilleCalendrier(parJour, 12)
   const joursActifs = parJour.size
+  // Une grille vide peut vouloir dire « jamais rien fait » ou « rien fait
+  // RECEMMENT ». Ces deux situations ne meritent pas le meme message.
+  const activiteDansLaFenetre = calendrier.flat().reduce((n, j) => n + j.nb, 0)
+  const dernierJour = [...parJour.keys()].sort().pop()
 
   // Total versets dans le Coran
   const TOTAL_QURAN_VERSES = 6236
@@ -158,6 +162,24 @@ export default function ProfilPage({ user, profile, authReady, onLogout }) {
             nombre de versets du jour. */}
         <div style={{ marginBottom: 20, padding: '14px 16px', borderRadius: 10, background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)' }}>
           <div style={{ fontSize: 12, color: 'var(--text)', marginBottom: 10 }}>Ces 12 dernières semaines</div>
+
+          {/* Le cas vide n'est pas le cas rare, c'est le cas majoritaire.
+              Sur les 16 profils du 6 septembre 2026, 12 n'ont aucune
+              progression et 3 des 4 restants ont une activité anterieure a la
+              fenetre : 15 sur 16 voient une grille vide. Sans un mot
+              d'explication, l'ecran semble affirmer qu'ils n'ont rien fait —
+              alors que Yasmine a traduit 51 versets. */}
+          {activiteDansLaFenetre === 0 && (
+            <div style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 10 }}>
+              {total === 0
+                ? 'Traduis ton premier verset : il apparaîtra ici dès aujourd’hui.'
+                : <>Rien sur cette période — ta dernière session remonte au{' '}
+                    <strong style={{ color: 'var(--gold)' }}>
+                      {new Date(dernierJour + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </strong>. Tes {total} versets sont bien enregistrés.</>}
+            </div>
+          )}
+
           <div
             style={{ display: 'flex', gap: 3, overflowX: 'auto', paddingBottom: 4 }}
             role="img"
