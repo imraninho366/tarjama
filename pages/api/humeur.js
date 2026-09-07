@@ -62,17 +62,11 @@ Réponds UNIQUEMENT en JSON valide :
    * qui ne correspondent à rien sont ÉCARTÉES, jamais rattrapées : mieux vaut
    * proposer deux versets que trois dont un inventé.
    */
-  const versets = (await Promise.all(
-    result.versets.slice(0, 5).map(async (v) => {
-      const authentique = await versetAuthentique(v.sourate_num, v.verset_num)
-      if (!authentique) return null
-      return {
-        ...authentique,
-        explication: v.explication || '',
-        conseil: v.conseil || '',
-      }
-    })
-  )).filter(Boolean)
+  const versets = result.versets.slice(0, 5).map((v) => {
+    const authentique = versetAuthentique(v.sourate_num, v.verset_num)
+    if (!authentique) return null
+    return { ...authentique, explication: v.explication || '', conseil: v.conseil || '' }
+  }).filter(Boolean)
 
   if (versets.length === 0) {
     console.error('[humeur] aucune référence valide parmi:', JSON.stringify(result.versets).slice(0, 200))

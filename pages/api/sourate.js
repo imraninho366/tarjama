@@ -26,7 +26,7 @@ export default async function handler(req, res) {
    * juste que parce que le filtre ne filtrait rien.
    */
   try {
-    return res.status(200).json(await versetsDeSourate(num))
+    return res.status(200).json(versetsDeSourate(num))
   } catch (err) {
     console.error('Sourate fetch error:', err.message)
     return res.status(500).json({ error: 'Impossible de charger la sourate' })

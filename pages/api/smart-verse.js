@@ -45,7 +45,7 @@ Réponds UNIQUEMENT en JSON :
 
   // Référence confrontée à la source authentique. Pas de verset vérifiable,
   // pas de verset affiché.
-  const authentique = await versetAuthentique(result?.sourate_num, result?.verset_num)
+  const authentique = versetAuthentique(result?.sourate_num, result?.verset_num)
   if (!authentique) {
     console.error('[smart-verse] référence invalide:', JSON.stringify(result).slice(0, 150))
     return res.status(502).json({ error: 'Aucun verset vérifiable. Réessaie.' })
