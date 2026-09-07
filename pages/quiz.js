@@ -92,7 +92,11 @@ export default function Quiz() {
   const getPool = useCallback((m) => {
     if (!vocab.length) return []
     const utilisable = vocab.filter(w => w.sens?.[0])
-    const courant = utilisable.filter(w => w.freq_label !== 'rare')
+    // « inconnu » exclu au meme titre que « rare » : depuis que les frequences
+    // sont de vrais decomptes, ce label signale un mot que le rapprochement
+    // avec le corpus n'a pas retrouve. Ne pas savoir ou se situe un mot
+    // n'autorise pas a le poser en question de quiz.
+    const courant = utilisable.filter(w => w.freq_label !== 'rare' && w.freq_label !== 'inconnu')
     switch(m) {
       case 'frequent':  return courant.filter(w => w.freq_label === 'fréquent' || w.freq_label === 'très fréquent')
       case 'nom':       return courant.filter(w => w.type === 'nom')
