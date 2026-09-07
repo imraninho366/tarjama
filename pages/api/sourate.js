@@ -1,4 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
+import { versetsDeSourate } from '../../lib/quranSource'
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).end()
@@ -10,26 +11,22 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Numéro de sourate invalide (1-114)' })
   }
 
+  /*
+   * Le retrait de la Basmala et la numerotation vivent desormais dans
+   * lib/quranSource.js, partages avec /api/humeur.
+   *
+   * Ce qui se trouvait ici comparait le texte a la chaine brute « بسم الله »,
+   * alors que l'edition ar.asem ecrit « بِسۡمِ ٱللَّهِ » — avec voyelles, alef
+   * wasla et yeh persan. La comparaison echouait TOUJOURS : la Basmala restait
+   * collee devant le verset 1 de 112 sourates.
+   *
+   * Et le piege : ce code retirait l'AYAH entiere, puis renumerotait avec
+   * { n: i + 1 }. Faire « marcher » sa comparaison aurait supprime le vrai
+   * verset 1 et decale toute la sourate d'un cran. La numerotation n'etait
+   * juste que parce que le filtre ne filtrait rien.
+   */
   try {
-    const response = await fetch(`https://api.alquran.cloud/v1/surah/${num}/ar.asem`)
-    if (!response.ok) throw new Error(`API error: ${response.status}`)
-    const data = await response.json()
-    if (data.code !== 200) throw new Error('Sourate non trouvée')
-    
-    const sourate = data.data
-    // Filtrer la Basmala (verset 1) pour toutes les sourates sauf Al-Fatiha (1)
-    // At-Tawba (9) n'a pas de Basmala donc pas besoin de cas spécial
-    const ayahs = sourate.number === 1
-      ? sourate.ayahs
-      : sourate.ayahs.filter(a => !(a.numberInSurah === 1 && a.text.includes('بسم الله')))
-    // Renuméroter les versets après filtrage
-    const verses = ayahs.map((a, i) => ({ n: i + 1, ar: a.text }))
-    return res.status(200).json({
-      num: sourate.number,
-      name_ar: sourate.name,
-      name_fr: sourate.englishName,
-      verses
-    })
+    return res.status(200).json(await versetsDeSourate(num))
   } catch (err) {
     console.error('Sourate fetch error:', err.message)
     return res.status(500).json({ error: 'Impossible de charger la sourate' })

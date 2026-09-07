@@ -2,6 +2,7 @@ import { rateLimit } from '../../lib/rateLimit'
 import { requireUser } from '../../lib/apiAuth'
 import { callAIJSON } from '../../lib/ai'
 import { cacheGet, cacheSet } from '../../lib/cache'
+import { versetAuthentique } from '../../lib/quranSource'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
@@ -21,12 +22,28 @@ export default async function handler(req, res) {
   const cached = cacheGet(cacheKey)
   if (cached) return res.status(200).json(cached)
 
+  /*
+   * L'IA CHOISIT LA RÉFÉRENCE, ELLE N'ÉCRIT PAS LE VERSET.
+   *
+   * Le prompt demandait auparavant « arabe: texte arabe du verset ». Le modèle
+   * l'écrivait de mémoire, et il a fini par afficher, sous la référence
+   * At-Talaq 65:2, un collage d'Ash-Sharh 94:7 et d'Al-Kawthar 108:2 — un
+   * verset qui n'existe pas.
+   *
+   * Il ne lui reste que ce qu'il sait faire honnêtement : désigner un passage
+   * et expliquer pourquoi il est pertinent. Le texte sacré vient de
+   * lib/quranSource.js, jamais du modèle.
+   */
   const prompt = `Tu es un guide spirituel islamique bienveillant. L'utilisateur ressent : "${mood}".
 
-Suggère 3 versets coraniques pertinents pour cette émotion/situation. Pour chaque verset :
+Suggère 3 versets coraniques pertinents pour cette émotion/situation.
+
+N'ÉCRIS PAS le texte arabe ni la traduction : donne uniquement la RÉFÉRENCE
+(numéro de sourate et numéro de verset). Le texte exact sera récupéré ailleurs.
+Vérifie que le numéro de verset existe bien dans cette sourate.
 
 Réponds UNIQUEMENT en JSON valide :
-{"versets":[{"sourate_num":1,"sourate_fr":"L'Ouverture","sourate_ar":"الفاتحة","verset_num":1,"arabe":"texte arabe du verset","traduction":"traduction française","explication":"pourquoi ce verset est pertinent (2 phrases max)","conseil":"un conseil pratique bienveillant (1 phrase)"}]}`
+{"versets":[{"sourate_num":13,"verset_num":28,"explication":"pourquoi ce verset est pertinent (2 phrases max)","conseil":"un conseil pratique bienveillant (1 phrase)"}]}`
 
   const { ok: aiOk, data: result, error, status } = await callAIJSON({
     prompt, temperature: 0.4, route: 'humeur'
@@ -40,6 +57,29 @@ Réponds UNIQUEMENT en JSON valide :
     return res.status(502).json({ error: 'Réponse IA inattendue' })
   }
 
-  cacheSet(cacheKey, result)
-  return res.status(200).json(result)
+  /*
+   * Chaque référence proposée est confrontée à la source authentique. Celles
+   * qui ne correspondent à rien sont ÉCARTÉES, jamais rattrapées : mieux vaut
+   * proposer deux versets que trois dont un inventé.
+   */
+  const versets = (await Promise.all(
+    result.versets.slice(0, 5).map(async (v) => {
+      const authentique = await versetAuthentique(v.sourate_num, v.verset_num)
+      if (!authentique) return null
+      return {
+        ...authentique,
+        explication: v.explication || '',
+        conseil: v.conseil || '',
+      }
+    })
+  )).filter(Boolean)
+
+  if (versets.length === 0) {
+    console.error('[humeur] aucune référence valide parmi:', JSON.stringify(result.versets).slice(0, 200))
+    return res.status(502).json({ error: 'Aucun verset vérifiable pour cette humeur. Réessaie.' })
+  }
+
+  const verifie = { versets }
+  cacheSet(cacheKey, verifie)
+  return res.status(200).json(verifie)
 }
