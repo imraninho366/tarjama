@@ -90,11 +90,29 @@ Réponds UNIQUEMENT en JSON :
     })
   }
 
+  /*
+   * Comparaison sur le SQUELETTE CONSONANTIQUE, pas sur la graphie exacte.
+   *
+   * L'IA recopie parfois le mot en normalisant une voyelle ou une chadda —
+   * « نَبِىّ » pour « نَّبِىّ ». Ce n'est pas un désalignement, et refuser le lot
+   * pour ça bloquerait la reconstruction sans rien protéger.
+   *
+   * En revanche les consonnes doivent correspondre : c'est ce qui garantit que
+   * la traduction porte bien sur le mot demandé. Et le mot CONSERVÉ reste
+   * toujours celui du corpus, jamais la version renvoyée par le modèle.
+   */
+  const squelette = (s) => (s || '')
+    .normalize('NFC')
+    .replace(/[ً-ْٰـۖ-ۭ]/g, '')
+    .replace(/[آأإٱ]/g, 'ا')
+    .replace(/[ىی]/g, 'ي')
+    .replace(/\s+/g, '')
+
   const mots = []
   for (let i = 0; i < batch.length; i++) {
     const attendu = batch[i].ar
     const recu = result.mots[i]
-    if (!recu?.ar || recu.ar.trim() !== attendu.trim()) {
+    if (!recu?.ar || squelette(recu.ar) !== squelette(attendu)) {
       return res.status(502).json({
         error: `Lot désaligné à la position ${i + 1} : attendu « ${attendu} », reçu « ${recu?.ar || '—'} ».`,
       })
