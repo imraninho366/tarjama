@@ -91,7 +91,10 @@ export default function Quiz() {
    */
   const getPool = useCallback((m) => {
     if (!vocab.length) return []
-    const utilisable = vocab.filter(w => w.sens?.[0])
+    // en_attente : le sens est encore la glose anglaise verifiee, pas du
+    // francais. L'entree reste consultable au dictionnaire, mais poser
+    // « traduis ce mot » avec quatre reponses en anglais n'aurait aucun sens.
+    const utilisable = vocab.filter(w => w.sens?.[0] && !w.en_attente)
     // « inconnu » exclu au meme titre que « rare » : depuis que les frequences
     // sont de vrais decomptes, ce label signale un mot que le rapprochement
     // avec le corpus n'a pas retrouve. Ne pas savoir ou se situe un mot

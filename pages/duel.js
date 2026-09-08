@@ -58,7 +58,7 @@ function reservoirVocab(vocab) {
   for (const w of vocab) {
     const poids = POIDS_FREQUENCE[w.freq_label]
     // Sans sens defini, la proposition s'afficherait « ? ».
-    if (!poids || !w.sens?.[0]) continue
+    if (!poids || !w.sens?.[0] || w.en_attente) continue
     for (let i = 0; i < poids; i++) pool.push(w)
   }
   return pool
