@@ -30,6 +30,10 @@ import { requireAdmin } from '../../lib/apiAuth'
  * Corpus — des données alignées sur le texte par des linguistes. L'IA ne reçoit
  * plus qu'un couple (mot arabe, glose anglaise vérifiée) et le traduit.
  *
+ * La translittération n'est plus demandée non plus : elle se dérive de l'arabe
+ * par des règles (scripts/translitterer.py), ce qui retire un tiers de la
+ * charge de sortie et supprime les « rswl » que le modèle produisait.
+ *
  * Elle ne choisit plus ce qu'un mot veut dire. Elle ne peut donc plus écrire
  * « قلب = naître/enfant » : le sens anglais lui est imposé.
  *
@@ -61,11 +65,10 @@ ${lignes}
 Règles :
 - Français simple et court (1 à 4 mots), comme dans un dictionnaire
 - Recopie le mot arabe EXACTEMENT tel qu'il est écrit ci-dessus
-- Donne aussi la translittération latine avec les voyelles (ex: qalb, raḥmān)
 - Exactement ${batch.length} entrées, dans le même ordre
 
 Réponds UNIQUEMENT en JSON :
-{"mots":[{"ar":"mot arabe recopié","fr":"sens français","translit":"phonétique"}]}`
+{"mots":[{"ar":"mot arabe recopié","fr":"sens français"}]}`
 
   const { ok: aiOk, data: result, error, status } = await callAIJSON({
     prompt, temperature: 0, maxTokens: 3000, route: 'gen-vocab'
@@ -120,7 +123,7 @@ Réponds UNIQUEMENT en JSON :
     if (!recu.fr?.trim()) {
       return res.status(502).json({ error: `Traduction vide pour « ${attendu} ».` })
     }
-    mots.push({ ar: attendu, fr: recu.fr.trim(), translit: (recu.translit || '').trim() })
+    mots.push({ ar: attendu, fr: recu.fr.trim() })
   }
 
   return res.status(200).json({ mots })
