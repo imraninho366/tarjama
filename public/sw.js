@@ -1,5 +1,5 @@
 // Bump à chaque changement de stratégie : l'ancien cache est purgé à l'activation.
-const CACHE_NAME = 'tarjama-v5'
+const CACHE_NAME = 'tarjama-v6'
 
 /**
  * Coquille minimale, préchargée à l'installation.
@@ -85,7 +85,13 @@ function isDataRequest(request) {
   if (url.pathname.startsWith('/api/')) return true             // nos routes
   if (url.pathname.startsWith('/_next/static/')) return false   // fichiers hashés
   // Fichiers du dossier public : reconnus a leur extension.
-  return !/\.(js|css|json|png|jpe?g|svg|webp|ico|woff2?|ttf|mp3|webmanifest)$/i.test(url.pathname)
+  //
+  // Le .json est VOLONTAIREMENT absent de cette liste. quran_vocab.json est du
+  // contenu vivant : il a ete reconstruit le 8 septembre 2026, et le cache
+  // continuait a servir l'ancien — le dictionnaire annoncait encore 6344 mots
+  // et des frequences fabriquees, alors que le fichier deploye disait 4817.
+  // Une extension ne dit rien de la mutabilite d'un fichier.
+  return !/\.(js|css|png|jpe?g|svg|webp|ico|woff2?|ttf|mp3|webmanifest)$/i.test(url.pathname)
 }
 
 self.addEventListener('fetch', (event) => {
