@@ -106,7 +106,7 @@ Réponds UNIQUEMENT en JSON :
    */
   const squelette = (s) => (s || '')
     .normalize('NFC')
-    .replace(/[ً-ْٰـۖ-ۭ]/g, '')
+    .replace(/[ً-ٰٕـۖ-ۭ]/g, '')
     .replace(/[آأإٱ]/g, 'ا')
     .replace(/[ىی]/g, 'ي')
     .replace(/\s+/g, '')

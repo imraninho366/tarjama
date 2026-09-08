@@ -43,11 +43,16 @@ doivent les importer, ce qui les garde dans les fonctions serveur.
 `public/quran_vocab.json`. Le corpus fournit tout sauf le français : sa glose
 est en anglais, et c'est la seule chose que l'IA traduit.
 
-État au 8 septembre 2026 : **4 117 des 4 817 lemmes portent un sens français**,
-ce qui couvre **98 % des mots du Coran**. Les 700 restants gardent leur glose
-anglaise et sont marqués `en_attente` : le dictionnaire les affiche, le quiz
-les écarte pour ne poser que des questions en français. Il suffit de relancer
-`/api/gen-vocab` quand le quota le permet — le mécanisme ne demande rien de plus.
+État au 8 septembre 2026 : **les 4 817 lemmes portent un sens français**, soit
+la totalité des mots du Coran. Plus aucune entrée `en_attente`.
+
+Les sens vivent dans `data/vocab-fr.json`, dans le dépôt : le dictionnaire se
+reconstruit sans rien d'extérieur. C'était la dernière dépendance à un fichier
+temporaire, et la perdre aurait coûté une journée de quota.
+
+`node scripts/traduire_vocab.mjs` complète les sens manquants. Il écrit chaque
+lot sur le disque dès qu'il arrive : l'interrompre ne coûte que le lot en cours.
+La première campagne, elle, vivait dans un onglet — naviguer la détruisait.
 
 ### Ce que la reconstruction a corrigé
 
@@ -78,6 +83,20 @@ parenthèse manquante est restituée, jamais le mot qu'elle encadre.
 combinante sans lettre porteuse, qui s'affichait en cercle pointillé. Le mot
 n'apparaît jamais sans son article dans le Coran : on a repris la graphie
 attestée en 72:9, qui écrit la hamza en lettre pleine.
+
+**Une colonne décalée dans la source.** De 37:131 à la fin de la sourate, le
+flux mot-à-mot d'alquran.cloud attache à chaque mot le lemme du mot *suivant*.
+Le mot et sa glose vont bien ensemble ; c'est l'étiquette qui a glissé. Vingt et
+un lemmes en avaient hérité d'un sens absurde — `نَسَب` (parenté) donnait
+« the jinn », `فُلْك` (navire) donnait « to », `عَجُوز` (vieille femme) donnait
+« Except ». On n'a rien deviné : on a relu la même donnée au bon rang, ce qui
+fait passer la concordance de la sourate de 623 lignes justes à 791.
+
+Le test qui les débusque croise deux signaux, chacun faillible seul : le mot
+contient-il les consonnes de son lemme (la morphologie verbale casse ce test :
+`قَالَ` → `يَقُولُ`), et contient-il celles de sa racine (les racines géminées
+cassent celui-là : `امم` → `أُمَّة`). Une ligne qui échoue aux **deux** n'est
+pas de la flexion.
 
 ### Ce qui reste imparfait
 

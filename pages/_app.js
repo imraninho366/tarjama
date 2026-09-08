@@ -13,7 +13,10 @@ const amiri = Amiri({ subsets: ['arabic', 'latin'], weight: ['400', '700'], disp
 const reemKufi = Reem_Kufi({ subsets: ['arabic', 'latin'], weight: ['400', '500', '600', '700'], display: 'swap', variable: '--tarjama-font-arabic-display' })
 
 // Pages qui ne montrent pas la nav (auth screen)
-const NO_NAV_PATHS = ['/gen-dico']
+/* Pages affichees sans la barre de navigation. Vide depuis le retrait de
+ * /gen-dico : on garde la liste parce que hideNav s'en sert deja et qu'une
+ * prochaine page plein ecran n'aura qu'a s'y ajouter. */
+const NO_NAV_PATHS = []
 
 export default function TarjamaApp({ Component, pageProps, router }) {
   const [user, setUser] = useState(null)

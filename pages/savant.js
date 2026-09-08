@@ -55,7 +55,7 @@ export default function SavantPage({ user, authReady }) {
   // rediriger : `user` est encore null par ignorance, pas par absence.
   if (!authReady) return null
 
-  // Cette page etait la seule, avec /gen-dico, accessible sans compte — alors
+  // Cette page etait accessible sans compte — alors
   // que /api/savant est la route IA la plus couteuse. Elle s'aligne desormais
   // sur les autres pages, et surtout sur ce que l'API accepte : sans ce
   // garde-fou, un visiteur non connecte verrait le formulaire, poserait sa
