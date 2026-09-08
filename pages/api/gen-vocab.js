@@ -55,15 +55,32 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'batch manquant' })
   }
 
-  const lignes = batch.map((w, i) => `${i + 1}. ${w.ar} = ${w.en}`).join('\n')
+  /*
+   * LA NATURE DU MOT EST DONNÉE, et elle vient du corpus — jamais du modèle.
+   *
+   * Sans elle, la traduction suit la glose anglaise sans savoir de quoi elle
+   * parle : « fear » devenait « peur » pour خَافَ, qui est le VERBE craindre ;
+   * « wills » donnait « volontés » pour شَآءَ (vouloir) ; « Help me » donnait
+   * « aide-moi » pour نَصَرَ (secourir). 848 verbes sur 1474 portaient ainsi un
+   * nom, un adjectif ou une forme conjuguée.
+   *
+   * `type` est facultatif : un lot qui ne le fournit pas fonctionne comme avant.
+   */
+  const lignes = batch
+    .map((w, i) => `${i + 1}. ${w.ar}${w.type ? ` [${w.type}]` : ''} = ${w.en}`)
+    .join('\n')
 
   const prompt = `Traduis en français le sens de chaque mot arabe coranique.
 Le sens anglais est donné : il fait foi, ne le contredis pas, traduis-le.
+La nature du mot est donnée entre crochets : la traduction doit être de cette nature.
 
 ${lignes}
 
 Règles :
 - Français simple et court (1 à 4 mots), comme dans un dictionnaire
+- Un [verbe] se traduit À L'INFINITIF : « craindre », jamais « peur » ni « il craint »
+- Un [nom] se traduit par un nom, un [adjectif] par un adjectif
+- Ne mets ni pronom ni article : « secourir », pas « nous le secourons »
 - Recopie le mot arabe EXACTEMENT tel qu'il est écrit ci-dessus
 - Exactement ${batch.length} entrées, dans le même ordre
 
