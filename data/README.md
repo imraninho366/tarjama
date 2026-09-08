@@ -37,29 +37,67 @@ fichiers. Une référence invalide est refusée, jamais rattrapée.
 Next.js les enverrait au navigateur de chaque visiteur. Seules les routes API
 doivent les importer, ce qui les garde dans les fonctions serveur.
 
-## Reconstruction du dictionnaire — travail en cours
+## Reconstruction du dictionnaire
 
-`vocab-base-corpus.json` est la base vérifiée destinée à remplacer
-`public/quran_vocab.json`. Il n'y manque que le français : la glose du corpus
-est en anglais.
+`vocab-base-corpus.json` est la base vérifiée qui alimente
+`public/quran_vocab.json`. Le corpus fournit tout sauf le français : sa glose
+est en anglais, et c'est la seule chose que l'IA traduit.
 
-État au 7 septembre 2026 : les fréquences de `quran_vocab.json` ont été
-remplacées par les décomptes réels, mais **les sens restent ceux, souvent
-faux, produits par l'ancienne génération**.
+État au 8 septembre 2026 : **4 117 des 4 817 lemmes portent un sens français**,
+ce qui couvre **98 % des mots du Coran**. Les 700 restants gardent leur glose
+anglaise et sont marqués `en_attente` : le dictionnaire les affiche, le quiz
+les écarte pour ne poser que des questions en français. Il suffit de relancer
+`/api/gen-vocab` quand le quota le permet — le mécanisme ne demande rien de plus.
 
-La suite consiste à traduire les gloses via `/api/gen-vocab`, qui ne fait plus
-que traduire un couple (mot, glose anglaise) déjà vérifié et refuse tout lot
-dont un mot ne correspond pas. Trois points appris à la première tentative :
+### Ce que la reconstruction a corrigé
+
+**Des lettres latines au milieu de l'arabe.** 247 lemmes portaient encore un
+`^` ou un `#` : deux caractères de la translittération Buckwalter que la table
+de conversion ne couvrait pas. Ce sont des marques combinantes — `^` = U+0653
+(maddah), `#` = U+0654 (hamza suscrite). La correspondance n'a pas été devinée :
+elle a été vérifiée en retrouvant 245 des 247 lemmes corrigés dans leur propre
+verset. Le texte Uthmani n'utilise jamais U+0622 (آ) et écrit systématiquement
+ا+maddah — 2 945 fois — ce qui confirme le choix.
+
+**Le sens d'un verset attribué à un autre.** Le dictionnaire affiche un sens
+*et* une référence, mais rien ne garantissait qu'ils viennent de la même
+occurrence. `أَسْفَار` portait la glose « books » — le sens de 62:5, l'âne
+chargé de livres — avec la référence 34:19, où le mot signifie « nos étapes ».
+Le mot était juste, le verset était juste, le sens ne l'était pas.
+
+903 références ont été réalignées sur un verset qui porte réellement le sens
+stocké. **Aucun sens n'est resté sans appui textuel.** C'est une propriété
+vérifiable, et `scripts/` garde de quoi la revérifier.
+
+**Le balisage du corpus mot-à-mot.** 909 gloses portaient des astérisques, des
+guillemets orphelins ou des parenthèses dépareillées (« of) night »), hérités
+du découpage mot-à-mot. Elles sont nettoyées sans toucher au sens : une
+parenthèse manquante est restituée, jamais le mot qu'elle encadre.
+
+**Un lemme amputé de son article.** « maintenant » était stocké comme une hamza
+combinante sans lettre porteuse, qui s'affichait en cercle pointillé. Le mot
+n'apparaît jamais sans son article dans le Coran : on a repris la graphie
+attestée en 72:9, qui écrit la hamza en lettre pleine.
+
+### Ce qui reste imparfait
+
+Un lemme n'a qu'un sens, alors que 2 277 d'entre eux en ont plusieurs attestés.
+`أَسْفَار` veut dire « livres » en 62:5 et « étapes » en 34:19 ; le dictionnaire
+ne montre que le premier, avec le verset qui lui correspond. C'est honnête mais
+incomplet. Le jour où les sens multiples seront traduits, `sens` est déjà un
+tableau, prêt à en recevoir plusieurs.
+
+### Trois choses apprises
 
 - **Lots de 10.** Au-delà, la réponse dépasse le budget de sortie et le JSON
   revient tronqué.
-- **La translittération n'a pas besoin de l'IA** : elle se dérive de l'arabe
-  par des règles. La retirer de la demande économise environ un tiers des
-  tokens.
+- **La translittération n'a pas besoin de l'IA** : elle se dérive de l'arabe par
+  des règles (`scripts/translitterer.py`). La retirer de la demande économise
+  environ un tiers des tokens et supprime les squelettes sans voyelles.
 - **Choisir la glose la plus courte**, pas la plus fréquente : la forme la plus
-  courante dans le texte porte souvent un possessif, d'où « leur richesse »
-  au lieu de « richesse ».
+  courante dans le texte porte souvent un possessif, d'où « leur richesse » au
+  lieu de « richesse ».
 
-La base est triée par fréquence décroissante, donc traduire dans l'ordre couvre
-le texte très vite : 500 lemmes couvrent 81 % des mots du Coran, 1000 en
-couvrent 89 %, 1500 en couvrent 93 %.
+La base est triée par fréquence décroissante : traduire dans l'ordre couvre le
+texte très vite. 500 lemmes couvrent 81 % des mots du Coran, 1 000 en couvrent
+89 %, 1 500 en couvrent 93 %.
