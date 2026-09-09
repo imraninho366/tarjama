@@ -1,5 +1,5 @@
 import { rateLimit } from '../../lib/rateLimit'
-import { requireUser } from '../../lib/apiAuth'
+import { requireUser, clientDeLAppelant } from '../../lib/apiAuth'
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
@@ -47,6 +47,18 @@ export default async function handler(req, res) {
   const authUser = await requireUser(req, res)
   if (!authUser) return
 
+  /*
+   * Les operations sur `duels` passent par un client qui porte le jeton de
+   * l'appelant, et non par le client anonyme du module.
+   *
+   * Sans cela, PostgreSQL voyait cette route comme un visiteur anonyme :
+   * `auth.uid()` valait null, et la table ne pouvait pas etre protegee sans
+   * casser le duel en meme temps. Mesure faite le 9 septembre 2026 : la table
+   * renvoyait 17 lignes a un appelant sans compte, avec les identifiants, les
+   * pseudos et les codes de partie.
+   */
+  const db = clientDeLAppelant(req)
+
   if (req.method === 'POST') {
     // user_id et username sont volontairement ABSENTS de cette destructuration
     // meme si le client les envoie encore : les lire rouvrirait la faille.
@@ -57,7 +69,7 @@ export default async function handler(req, res) {
       const duelCode = generateCode()
       const verse = getDuelVerse()
       const seed = generateSeed()
-      const { error } = await supabase.from('duels').insert({
+      const { error } = await db.from('duels').insert({
         code: duelCode,
         sourate_num: verse.sourate_num,
         verse_num: verse.verse_num,
@@ -71,11 +83,11 @@ export default async function handler(req, res) {
     }
 
     if (action === 'join') {
-      const { data: duel, error: findErr } = await supabase.from('duels').select('*').eq('code', code).single()
+      const { data: duel, error: findErr } = await db.from('duels').select('*').eq('code', code).single()
       if (findErr || !duel) return res.status(404).json({ error: 'Duel introuvable' })
       if (duel.status !== 'waiting') return res.status(400).json({ error: 'Duel déjà commencé' })
 
-      const { error: joinErr } = await supabase.from('duels').update({
+      const { error: joinErr } = await db.from('duels').update({
         player2_id: user_id,
         player2_name: await usernameOf(user_id),
         status: 'active'
@@ -86,7 +98,7 @@ export default async function handler(req, res) {
     }
 
     if (action === 'submit') {
-      const { data: duel, error: findErr } = await supabase.from('duels').select('*').eq('code', code).single()
+      const { data: duel, error: findErr } = await db.from('duels').select('*').eq('code', code).single()
       if (findErr || !duel) return res.status(404).json({ error: 'Duel introuvable' })
 
       const isP1 = duel.player1_id === user_id
@@ -114,13 +126,13 @@ export default async function handler(req, res) {
         update.status = 'finished'
       }
 
-      const { error: updateErr } = await supabase.from('duels').update(update).eq('code', code)
+      const { error: updateErr } = await db.from('duels').update(update).eq('code', code)
       if (updateErr) return res.status(500).json({ error: updateErr.message })
       return res.json({ ok: true })
     }
 
     if (action === 'status') {
-      const { data: duel, error: statusErr } = await supabase.from('duels').select('*').eq('code', code).single()
+      const { data: duel, error: statusErr } = await db.from('duels').select('*').eq('code', code).single()
       if (statusErr || !duel) return res.status(404).json({ error: 'Duel introuvable' })
       return res.json(duel)
     }
