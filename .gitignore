@@ -11,3 +11,4 @@ firebase-debug.log
 # Cache de compilation Python — regenere a chaque execution
 __pycache__/
 *.pyc
+controle-affichage.html

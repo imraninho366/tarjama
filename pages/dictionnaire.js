@@ -30,6 +30,29 @@ function normalize(str) {
     .trim()
 }
 
+/**
+ * Regroupe les natures fines du corpus en familles filtrables.
+ *
+ * Le corpus distingue 25 natures — « accusatif », « inchoatif », « restriction »,
+ * « surprise »... La barre de filtres, elle, en listait sept, ecrites en dur, et
+ * qui ne correspondaient pas aux donnees : « particule », « expression » et
+ * « 99 noms » ne renvoyaient AUCUN mot, et 221 mots — les 100 noms propres, les
+ * pronoms, les lettres isolees, toutes les particules — n'etaient atteignables
+ * que par « tous ».
+ *
+ * Le badge de chaque carte continue d'afficher la nature exacte : on ne regroupe
+ * que pour naviguer, jamais pour decrire.
+ */
+const FAMILLES = {
+  nom: 'nom', adjectif: 'adjectif', verbe: 'verbe', 'nom propre': 'nom propre',
+  pronom: 'pronom', 'pronom personnel': 'pronom', 'pronom suffixe': 'pronom',
+}
+function famille(type) {
+  // Tout le reste est un mot-outil : preposition, conjonction, negation,
+  // demonstratif, interrogatif, lettres isolees...
+  return FAMILLES[type] || 'particule'
+}
+
 export default function Dictionnaire({ user, profile, authReady }) {
   const router = useRouter()
   const { vocab, loading: vocabLoading } = useVocab()
@@ -85,7 +108,7 @@ export default function Dictionnaire({ user, profile, authReady }) {
     .filter(({ w, sens, translitLower, nTranslit, nAr, nNote }) => {
       if (filter === '99 noms') {
         if (w.categorie !== '99 noms') return false
-      } else if (filter !== 'tous' && w.type !== filter) return false
+      } else if (filter !== 'tous' && famille(w.type) !== filter) return false
       if (!search.trim()) return true
       const q = search.toLowerCase()
       const qn = normalize(search)
@@ -112,7 +135,21 @@ export default function Dictionnaire({ user, profile, authReady }) {
       return (b.freq || 0) - (a.freq || 0)
     }), [indexed, filter, search, sortBy])
 
-  const types = ['tous', '99 noms', 'nom', 'verbe', 'adjectif', 'particule', 'pronom', 'expression']
+  /*
+   * Les filtres viennent des DONNEES, plus d'une liste ecrite en dur : c'est
+   * ce qui rendait possible un bouton qui n'affiche rien. On n'en propose un
+   * que si au moins un mot y repond, et « 99 noms » n'apparait que si des
+   * entrees portent reellement cette categorie.
+   */
+  const types = useMemo(() => {
+    const presentes = new Set(vocab.map(w => famille(w.type)))
+    const ordre = ['nom', 'verbe', 'adjectif', 'nom propre', 'pronom', 'particule']
+    return [
+      'tous',
+      ...(vocab.some(w => w.categorie === '99 noms') ? ['99 noms'] : []),
+      ...ordre.filter(t => presentes.has(t)),
+    ]
+  }, [vocab])
 
   /**
    * Statistiques d'en-tete et maximum de frequence, en une seule passe.

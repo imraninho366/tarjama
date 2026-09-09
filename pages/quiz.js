@@ -223,7 +223,14 @@ export default function Quiz() {
         </div>
 
         <div className={s.modeGrid}>
-          {MODES.map(m => (
+          {/*
+            * Un mode sans mot ne s'affiche pas. « 99 noms d'Allah » portait une
+            * description au lieu d'un compte, si bien que sa carte semblait
+            * normale alors que le reservoir etait vide : le champ `categorie`
+            * a disparu lors de la reconstruction du dictionnaire sur le corpus.
+            * Annoncer un mode qu'on ne peut pas jouer est pire que se taire.
+            */}
+          {MODES.filter(m => modeCounts[m.id] !== 0).map(m => (
             <button key={m.id} onClick={() => startQuiz(m.id)} className={s.modeCard}>
               <div>
                 <div className={s.modeLabel}>{m.label}</div>
