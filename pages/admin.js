@@ -31,15 +31,34 @@ export default function AdminPage({ user, authReady }) {
         .select('id, user_id, message, created_at, handled')
         .order('created_at', { ascending: false })
     ])
-    setUsers(profilesRes.data || [])
-    setPremiumUsers(premiumRes.data || [])
-    // Une erreur ici ne doit pas afficher une liste vide sans explication.
+    // Les trois chargements sont traites pareil. Seules les suggestions
+    // signalaient leur echec ; une erreur sur les profils affichait
+    // « 0 utilisateurs » — indiscernable d'une base reellement vide, et
+    // exactement le genre de page ou cette confusion coute cher.
+    const soucis = []
+
+    if (profilesRes.error) {
+      console.error('[admin] profils:', profilesRes.error.message)
+      soucis.push('les utilisateurs')
+    } else {
+      setUsers(profilesRes.data || [])
+    }
+
+    if (premiumRes.error) {
+      console.error('[admin] premium:', premiumRes.error.message)
+      soucis.push('les comptes premium')
+    } else {
+      setPremiumUsers(premiumRes.data || [])
+    }
+
     if (suggestionsRes.error) {
       console.error('[admin] suggestions:', suggestionsRes.error.message)
-      setMessage("Les suggestions n'ont pas pu être chargées.")
+      soucis.push('les suggestions')
     } else {
       setSuggestions(suggestionsRes.data || [])
     }
+
+    if (soucis.length) setMessage(`Impossible de charger ${soucis.join(', ')}.`)
     setLoading(false)
   }
 
@@ -82,19 +101,41 @@ export default function AdminPage({ user, authReady }) {
   const handleDelete = async (userId, username) => {
     if (userId === user.id) { setMessage('Tu ne peux pas te supprimer toi-même'); return }
     if (!confirm(`Supprimer le compte de ${username} ? Cette action est irréversible.`)) return
-    try {
-      await supabase.from('premium_users').delete().eq('id', userId)
-      await supabase.from('progress').delete().eq('user_id', userId)
-      await supabase.from('duels').delete().eq('player1_id', userId)
-      await supabase.from('duels').delete().eq('player2_id', userId)
-      const { error } = await supabase.from('profiles').delete().eq('id', userId)
-      if (error) throw error
-      setUsers(prev => prev.filter(u => u.id !== userId))
-      setPremiumUsers(prev => prev.filter(p => p.id !== userId))
-      setMessage(`${username} supprimé`)
-    } catch (err) {
-      setMessage(`Erreur suppression : ${err.message || 'Réessaie'}`)
+
+    /*
+     * Les quatre premiers effacements ne regardaient pas leur erreur : seul
+     * celui du profil etait teste. Une politique RLS qui refuse, une panne
+     * reseau au milieu, et l'utilisateur disparaissait de la liste alors que
+     * sa progression et ses duels restaient en base — sans que rien ne le
+     * signale. On s'arrete au premier refus.
+     */
+    const etapes = [
+      ['premium_users', 'id', 'le statut premium'],
+      ['progress', 'user_id', 'la progression'],
+      ['duels', 'player1_id', 'les duels créés'],
+      ['duels', 'player2_id', 'les duels rejoints'],
+      ['profiles', 'id', 'le profil'],
+    ]
+
+    for (const [table, colonne, libelle] of etapes) {
+      const { error } = await supabase.from(table).delete().eq(colonne, userId)
+      if (error) {
+        console.error(`[admin] suppression ${table}:`, error.message)
+        setMessage(`Suppression interrompue : ${libelle} n’a pas pu être effacé. Rien d’autre n’a été touché depuis.`)
+        return
+      }
     }
+
+    setUsers(prev => prev.filter(u => u.id !== userId))
+    setPremiumUsers(prev => prev.filter(p => p.id !== userId))
+    /*
+     * « Supprimé » designe les DONNEES, pas le compte : le compte
+     * d'authentification Supabase survit a cette page. Le supprimer demande la
+     * cle de service, qui ne doit jamais atteindre un navigateur — il faudrait
+     * une route API dediee. Sans elle, la personne peut se reconnecter et
+     * repartir d'un profil vide.
+     */
+    setMessage(`Données de ${username} supprimées (le compte de connexion subsiste)`)
   }
 
   return (

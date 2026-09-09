@@ -85,6 +85,17 @@ json.dump({
     'mots': mots,
 }, open('public/quran_vocab.json', 'w'), ensure_ascii=False)
 
+# Le total sert aussi a l'interface : /profil calcule « x % du vocabulaire du
+# Coran » et divisait par 6344, le compte d'AVANT la reconstruction — le
+# pourcentage affiche etait sous-estime d'un quart. Un nombre recopie a la main
+# se perime au premier changement de dictionnaire ; celui-ci est reecrit par le
+# script qui produit le dictionnaire, donc les deux ne peuvent plus diverger.
+with open('lib/vocabTotal.js', 'w') as f:
+    f.write(
+        "// Genere par scripts/construire_dictionnaire.py — ne pas modifier a la main.\n"
+        f"export const TOTAL_MOTS_DICTIONNAIRE = {len(mots)}\n"
+    )
+
 print(f"dictionnaire : {len(mots)} entrees")
 print(f"  sens en francais : {en_fr}   ({couv_fr * 100 // total} % du texte coranique)")
 print(f"  encore en anglais : {en_attente}")

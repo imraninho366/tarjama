@@ -8,11 +8,16 @@ import { isAdmin } from '../lib/freemium'
 import Link from 'next/link'
 import Button from '../components/common/Button'
 import { activiteParJour, calculerSeries, grilleCalendrier, repartitionQualite } from '../lib/progression'
+import { TOTAL_MOTS_DICTIONNAIRE } from '../lib/vocabTotal'
 
 export default function ProfilPage({ user, profile, authReady, onLogout }) {
   const router = useRouter()
   const [progress, setProgress] = useState({})
   const [loading, setLoading] = useState(true)
+  // Une progression vide et une progression QU'ON N'A PAS PU LIRE s'affichaient
+  // exactement pareil : zero partout. Sur la page qui recapitule des mois de
+  // travail, c'est la pire confusion possible.
+  const [erreurChargement, setErreurChargement] = useState('')
 
   useEffect(() => {
     // authReady : la session Supabase est lue de facon asynchrone, donc au
@@ -25,8 +30,14 @@ export default function ProfilPage({ user, profile, authReady, onLogout }) {
   }, [authReady, user])
 
   const loadData = async () => {
+    setErreurChargement('')
     const { data, error } = await supabase.from('progress').select('*').eq('user_id', user.id)
-    if (error) { console.error('profil loadData:', error.message); setLoading(false); return }
+    if (error) {
+      console.error('[profil] progression:', error.message)
+      setErreurChargement('Ta progression n’a pas pu être chargée. Les compteurs ci-dessous sont donc à zéro : ce n’est pas ta vraie progression.')
+      setLoading(false)
+      return
+    }
     const map = {}
     data?.forEach(r => {
       map[`${r.sourate_num}:${r.verse_num}`] = { niveau: r.niveau, ts: r.updated_at }
@@ -67,11 +78,29 @@ export default function ProfilPage({ user, profile, authReady, onLogout }) {
   }).filter(s => s.done > 0).sort((a, b) => b.pct - a.pct)
 
 
-  // Mots connus (quiz)
-  const quizHistory = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('tarjama_quiz_history') || '[]') : []
-  const knownWords = [...new Set(quizHistory.filter(h => h.ok).map(h => h.ar))]
-  const TOTAL_QURAN_WORDS = 6344
-  const pctMotsConnus = TOTAL_QURAN_WORDS > 0 ? Math.round(knownWords.length / TOTAL_QURAN_WORDS * 100) : 0
+  /*
+   * Mots connus (quiz).
+   *
+   * Le contenu vient de localStorage, que l'utilisateur — ou une extension —
+   * peut avoir laisse dans un etat que JSON.parse refuse. Sans ce filet,
+   * l'exception remontait pendant le rendu et la page entiere restait blanche,
+   * pour une statistique secondaire.
+   */
+  let quizHistory = []
+  if (typeof window !== 'undefined') {
+    try {
+      const brut = JSON.parse(localStorage.getItem('tarjama_quiz_history') || '[]')
+      if (Array.isArray(brut)) quizHistory = brut
+    } catch {
+      console.warn('[profil] historique de quiz illisible, ignore')
+    }
+  }
+  const knownWords = [...new Set(quizHistory.filter(h => h?.ok).map(h => h.ar))]
+  // Le diviseur etait 6344 en dur : le compte du dictionnaire AVANT sa
+  // reconstruction, qui en contient 4941. Le pourcentage affiche etait donc
+  // sous-estime d'un quart. Il vient desormais du script qui produit le
+  // dictionnaire, et ne peut plus diverger de lui.
+  const pctMotsConnus = TOTAL_MOTS_DICTIONNAIRE > 0 ? Math.round(knownWords.length / TOTAL_MOTS_DICTIONNAIRE * 100) : 0
 
   // % mémorisation du Coran (versets excellents / total versets)
   const pctMemorisation = TOTAL_QURAN_VERSES > 0 ? Math.round(excellent / TOTAL_QURAN_VERSES * 100) : 0
@@ -95,6 +124,15 @@ export default function ProfilPage({ user, profile, authReady, onLogout }) {
             {profile.username}
           </h1>
         </div>
+
+        {erreurChargement && (
+          <div role="alert" style={{
+            padding: '12px 14px', borderRadius: 8, marginBottom: 12, fontSize: 13, lineHeight: 1.6,
+            color: 'var(--text)',
+            background: 'rgba(var(--tarjama-color-error-rgb, 184, 74, 74),.08)',
+            border: '1px solid rgba(var(--tarjama-color-error-rgb, 184, 74, 74),.25)',
+          }}>{erreurChargement}</div>
+        )}
 
         {/* Stats principales */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 12 }}>
@@ -123,7 +161,7 @@ export default function ProfilPage({ user, profile, authReady, onLogout }) {
           <div style={{ height: 6, background: 'rgba(var(--tarjama-color-primary-rgb),.08)', borderRadius: 3, overflow: 'hidden', marginBottom: 4 }}>
             <div style={{ height: '100%', borderRadius: 3, width: `${pctMotsConnus}%`, background: 'var(--blue)', transition: 'width .5s ease' }} />
           </div>
-          <div style={{ fontSize: 10, color: 'var(--text-muted)' }}>{knownWords.length} / {TOTAL_QURAN_WORDS} mots uniques</div>
+          <div style={{ fontSize: 10, color: 'var(--text-muted)' }}>{knownWords.length} / {TOTAL_MOTS_DICTIONNAIRE} mots uniques</div>
 
           <div style={{ borderTop: '1px solid rgba(var(--tarjama-color-primary-rgb),.06)', marginTop: 12, paddingTop: 12 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
