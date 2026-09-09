@@ -34,7 +34,7 @@ const LETTERS = [
   { ar: 'ي', name: 'Yā', hint: 'Un crochet avec deux points dessous' },
 ]
 
-export default function CalligraphiePage({ user }) {
+export default function CalligraphiePage({ user, authReady }) {
   const router = useRouter()
   const canvasRef = useRef(null)
   const [currentIdx, setCurrentIdx] = useState(0)
@@ -44,7 +44,16 @@ export default function CalligraphiePage({ user }) {
   const [total, setTotal] = useState(0)
   const lastPos = useRef(null)
 
-  if (!user) { if (typeof window !== 'undefined') router.push('/'); return null }
+  // La redirection attend que la session soit revenue. Sans `authReady`, elle
+  // partait au premier rendu — quand `user` est encore null par ignorance, pas
+  // par absence — et renvoyait a l'accueil un utilisateur connecte. Elle vit
+  // aussi dans un useEffect : rediriger pendant le rendu est un effet de bord
+  // que React n'attend pas la.
+  useEffect(() => {
+    if (authReady && !user) router.push('/')
+  }, [authReady, user, router])
+
+  if (!user) return null
 
   const letter = LETTERS[currentIdx]
 

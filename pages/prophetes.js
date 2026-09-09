@@ -5,7 +5,7 @@ import { G } from '../lib/theme'
 import s from '../styles/Prophetes.module.css'
 import { clickable } from '../lib/clickable'
 
-export default function ProphetesPage({ user }) {
+export default function ProphetesPage({ user, authReady }) {
   const router = useRouter()
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -13,12 +13,17 @@ export default function ProphetesPage({ user }) {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
+    // Sans `authReady`, cet effet partait au premier rendu, quand `user` est
+    // encore null parce que la session Supabase n'est pas revenue : un
+    // utilisateur connecte etait renvoye a l'accueil avant d'avoir vu la page.
+    // Null par ignorance n'est pas null par absence.
+    if (!authReady) return
     if (!user) { router.push('/'); return }
     fetch('/prophetes.json')
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false) })
       .catch(() => setLoading(false))
-  }, [user])
+  }, [authReady, user, router])
 
   const prophetes = data?.prophetes || []
   const filtered = search.trim()

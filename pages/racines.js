@@ -1,15 +1,31 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useVocab } from '../lib/useVocab'
 
-export default function RacinesPage({ user }) {
+export default function RacinesPage({ user, authReady }) {
   const router = useRouter()
   const { vocab, loading } = useVocab()
   const [search, setSearch] = useState('')
   const [selected, setSelected] = useState(null)
 
-  if (!user) { if (typeof window !== 'undefined') router.push('/'); return null }
+  /*
+   * DEUX DEFAUTS CORRIGES ICI, ET LE SECOND FAISAIT PLANTER LA PAGE.
+   *
+   * 1. La redirection partait des le premier rendu, quand `user` est encore
+   *    null parce que la session Supabase n'est pas revenue. Un utilisateur
+   *    connecte etait renvoye a l'accueil : null par ignorance n'est pas null
+   *    par absence. On attend donc `authReady`.
+   *
+   * 2. Le `return null` se trouvait AVANT le useMemo ci-dessous. React compte
+   *    les hooks a chaque rendu et exige le meme nombre : quand la session
+   *    arrivait, le composant passait de zero a un useMemo et React levait
+   *    « Rendered fewer hooks than expected ». La redirection vit maintenant
+   *    dans un useEffect, et le retour anticipe est descendu apres les hooks.
+   */
+  useEffect(() => {
+    if (authReady && !user) router.push('/')
+  }, [authReady, user, router])
 
   const roots = useMemo(() => {
     const map = {}
@@ -35,6 +51,11 @@ export default function RacinesPage({ user }) {
     : roots
 
   const selectedRoot = roots.find(r => r.racine === selected)
+
+  // Retour anticipe APRES tous les hooks : c'est ce qui evite le plantage
+  // decrit plus haut. Tant que la session n'est pas revenue on n'affiche rien,
+  // sans rediriger — le useEffect s'en charge une fois `authReady` vrai.
+  if (!user) return null
 
   if (loading) return <div style={{ textAlign: 'center', padding: 60, color: 'var(--text-muted)' }}>Chargement...</div>
 

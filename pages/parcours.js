@@ -37,13 +37,18 @@ const PARCOURS = [
   }},
 ]
 
-export default function ParcoursPage({ user }) {
+export default function ParcoursPage({ user, authReady }) {
   const router = useRouter()
   const { vocab, loading: vocabLoading } = useVocab()
   const [activeParcours, setActiveParcours] = useState(null)
   const [currentDay, setCurrentDay] = useState(0)
 
   useEffect(() => {
+    // Sans `authReady`, cet effet partait au premier rendu, quand `user` est
+    // encore null parce que la session Supabase n'est pas revenue : un
+    // utilisateur connecte etait renvoye a l'accueil, et son parcours en cours
+    // n'etait jamais relu. Null par ignorance n'est pas null par absence.
+    if (!authReady) return
     if (!user) { router.push('/'); return }
     const saved = localStorage.getItem('tarjama_parcours')
     if (saved) {
@@ -56,7 +61,7 @@ export default function ParcoursPage({ user }) {
         setCurrentDay(Math.min(diff, data.days - 1))
       } catch {}
     }
-  }, [user])
+  }, [authReady, user, router])
 
   if (!user) return null
 

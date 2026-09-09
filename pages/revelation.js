@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { SOURATES_LIST } from '../lib/sourates'
@@ -6,12 +6,21 @@ import { clickable } from '../lib/clickable'
 
 const REVELATION_ORDER = [96,68,73,74,1,111,81,87,92,89,93,94,103,100,108,102,107,109,105,113,114,112,53,80,97,91,85,95,106,101,75,104,77,50,90,86,54,38,7,72,36,25,35,19,20,56,26,27,28,17,10,11,12,15,6,37,31,34,39,40,41,42,43,44,45,46,51,88,18,16,71,14,21,23,32,52,67,69,70,78,79,82,84,30,29,83,2,8,3,33,60,4,99,57,47,13,55,76,65,98,59,24,22,63,58,49,66,64,61,62,48,5,9,110]
 
-export default function RevelationPage({ user }) {
+export default function RevelationPage({ user, authReady }) {
   const router = useRouter()
   const [selected, setSelected] = useState(null)
   const [filter, setFilter] = useState('all')
 
-  if (!user) { if (typeof window !== 'undefined') router.push('/'); return null }
+  // La redirection attend que la session soit revenue. Sans `authReady`, elle
+  // partait au premier rendu — quand `user` est encore null par ignorance, pas
+  // par absence — et renvoyait a l'accueil un utilisateur bel et bien connecte.
+  // Elle vit aussi dans un useEffect : rediriger pendant le rendu est un effet
+  // de bord que React n'attend pas a cet endroit.
+  useEffect(() => {
+    if (authReady && !user) router.push('/')
+  }, [authReady, user, router])
+
+  if (!user) return null
 
   const sourates = REVELATION_ORDER.map((num, idx) => {
     const info = SOURATES_LIST.find(s => s.n === num) || {}
