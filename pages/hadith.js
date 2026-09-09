@@ -43,6 +43,15 @@ export default function HadithPage({ user, authReady }) {
   const [activeTheme, setActiveTheme] = useState('all')
   const [visibleCount, setVisibleCount] = useState(10) // "load more" counter
   const [randomHadith, setRandomHadith] = useState(null)
+  /*
+   * Une requete qui echoue n'est pas un resultat vide.
+   *
+   * Les trois chargements avalaient leur erreur — `catch { setSections([]) }` —
+   * et aucun ne verifiait `r.ok`, si bien qu'une panne reseau ou un 500
+   * affichaient le meme ecran que « rien ne correspond » : « Aucun chapitre
+   * pour ce theme ». Le lecteur en concluait que la collection etait vide.
+   */
+  const [erreurReseau, setErreurReseau] = useState(false)
 
   useEffect(() => {
     // authReady : la session est lue de facon asynchrone, donc au premier
@@ -62,12 +71,16 @@ export default function HadithPage({ user, authReady }) {
     setSearch('')
     setActiveTheme('all')
     setRandomHadith(null)
+    setErreurReseau(false)
     try {
       const r = await fetch(`/api/hadith?collection=${collection}`)
+      // Un 500 renvoie du JSON sans `sections` : sans ce controle, la page
+      // affichait « aucun chapitre » au lieu de dire que la requete a echoue.
+      if (!r.ok) throw new Error(`HTTP ${r.status}`)
       const data = await r.json()
       setSections(data.sections || [])
       setTotalHadiths(data.totalHadiths || 0)
-    } catch { setSections([]) }
+    } catch { setSections([]); setErreurReseau(true) }
     setLoading(false)
   }
 
@@ -76,15 +89,17 @@ export default function HadithPage({ user, authReady }) {
     setSelectedSection(secNum)
     setVisibleCount(10)
     setSearchResults(null)
+    setErreurReseau(false)
     try {
       // Load ALL hadiths of this section (limit=300 to get them all)
       const r = await fetch(`/api/hadith?collection=${collection}&section=${secNum}&page=1&limit=300`)
+      if (!r.ok) throw new Error(`HTTP ${r.status}`)
       const data = await r.json()
       setAllHadiths(data.hadiths || [])
       setHadiths((data.hadiths || []).slice(0, 10))
       setSectionName(data.sectionName || '')
       setSectionTotal(data.total || 0)
-    } catch { setAllHadiths([]); setHadiths([]) }
+    } catch { setAllHadiths([]); setHadiths([]); setErreurReseau(true) }
     setLoading(false)
   }
 
@@ -113,11 +128,13 @@ export default function HadithPage({ user, authReady }) {
   const doSearch = async () => {
     if (!search.trim()) { setSearchResults(null); return }
     setSearchLoading(true)
+    setErreurReseau(false)
     try {
       const r = await fetch(`/api/hadith?collection=${collection}&search=${encodeURIComponent(search)}&limit=30`)
+      if (!r.ok) throw new Error(`HTTP ${r.status}`)
       const data = await r.json()
       setSearchResults(data.hadiths || [])
-    } catch { setSearchResults([]) }
+    } catch { setSearchResults([]); setErreurReseau(true) }
     setSearchLoading(false)
   }
 
@@ -216,7 +233,11 @@ export default function HadithPage({ user, authReady }) {
             {searchResults.length === 0 && !searchLoading && (
               <div className={s.empty}>
                 <div className={s.emptyIcon} aria-hidden="true">&#1581;</div>
-                <div className={s.emptyText}>Aucun hadith trouve pour cette recherche</div>
+                <div className={s.emptyText}>
+                  {erreurReseau
+                    ? 'La recherche n’a pas pu aboutir. Vérifie ta connexion et réessaie.'
+                    : 'Aucun hadith trouvé pour cette recherche'}
+                </div>
               </div>
             )}
 
@@ -268,7 +289,11 @@ export default function HadithPage({ user, authReady }) {
               {filteredSections.length === 0 ? (
                 <div className={s.empty}>
                   <div className={s.emptyIcon} aria-hidden="true">&#1581;</div>
-                  <div className={s.emptyText}>Aucun chapitre pour ce theme</div>
+                  <div className={s.emptyText}>
+                    {erreurReseau
+                      ? 'Les chapitres n’ont pas pu être chargés. Vérifie ta connexion et réessaie.'
+                      : 'Aucun chapitre pour ce thème'}
+                  </div>
                 </div>
               ) : (
                 <div className={s.chapterGrid}>

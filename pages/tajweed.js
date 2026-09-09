@@ -16,6 +16,15 @@ export default function TajweedPage({ user, authReady }) {
   const [recLoading, setRecLoading] = useState(false)
   const [result, setResult] = useState(null)
   const [loading, setLoading] = useState(false)
+  /*
+   * Deux echecs etaient totalement muets — `catch {}`, sans rien d'autre.
+   *
+   * Le pire est celui du micro : autorisation refusee ou peripherique absent,
+   * et appuyer sur « enregistrer » ne produisait RIEN. Pas de message, pas
+   * d'indice ; la fonctionnalite paraissait cassee. Le second est le chargement
+   * de la sourate, qui laissait une page vide sans explication.
+   */
+  const [probleme, setProbleme] = useState('')
   const recorderRef = useRef(null)
 
   // Tant que la session n'est pas tranchee, on n'affiche rien plutot que de
@@ -25,19 +34,24 @@ export default function TajweedPage({ user, authReady }) {
   if (!user) { if (typeof window !== 'undefined') router.push('/'); return null }
 
   const loadSourate = async (num) => {
-    setLoading(true); setResult(null); setVIdx(0)
+    setLoading(true); setResult(null); setVIdx(0); setProbleme('')
     try {
       const r = await fetch(`/api/sourate?num=${num}`)
+      if (!r.ok) throw new Error(`HTTP ${r.status}`)
       const data = await r.json()
       setSourate({ num, ...SOURATES_LIST.find(s => s.n === num) })
       setVerses(data.verses || [])
-    } catch {}
+    } catch {
+      setVerses([])
+      setProbleme('La sourate n’a pas pu être chargée. Vérifie ta connexion et réessaie.')
+    }
     setLoading(false)
   }
 
   const verse = verses[vIdx]
 
   const startRecording = async () => {
+    setProbleme('')
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       const mimeType = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : MediaRecorder.isTypeSupported('audio/mp4') ? 'audio/mp4' : ''
@@ -65,7 +79,15 @@ export default function TajweedPage({ user, authReady }) {
       recorder.start()
       recorderRef.current = recorder
       setRecording(true); setResult(null)
-    } catch {}
+    } catch (err) {
+      // Le cas courant est un refus d'autorisation ; viennent ensuite l'absence
+      // de micro et un navigateur qui n'expose pas MediaRecorder. On distingue
+      // le refus, parce que la marche a suivre n'est pas la meme.
+      setProbleme(err?.name === 'NotAllowedError'
+        ? 'Le micro est bloqué. Autorise-le dans les réglages de ton navigateur, puis réessaie.'
+        : 'Le micro n’est pas accessible sur cet appareil.')
+      setRecording(false)
+    }
   }
 
   const stopRecording = () => {
@@ -120,6 +142,19 @@ export default function TajweedPage({ user, authReady }) {
         )}
 
         {loading && <div style={{ textAlign: 'center', padding: 40, color: 'var(--text-muted)' }}>Chargement...</div>}
+
+        {/* role="alert" : le message doit etre annonce, pas seulement affiche —
+            l'utilisateur qui vient d'appuyer sur « enregistrer » regarde le
+            bouton, pas le haut de la page. */}
+        {probleme && !loading && (
+          <div role="alert" style={{
+            textAlign: 'center', padding: '12px 16px', margin: '12px 0',
+            borderRadius: 8, fontSize: 14,
+            color: 'var(--tarjama-color-text)',
+            background: 'rgba(var(--tarjama-color-primary-rgb), .08)',
+            border: '1px solid rgba(var(--tarjama-color-primary-rgb), .25)',
+          }}>{probleme}</div>
+        )}
 
         {/* Mode récitation */}
         {sourate && verse && !loading && (

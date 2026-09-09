@@ -407,8 +407,12 @@ export default function Dictionnaire({ user, profile, authReady }) {
                   try {
                     const r = await apiFetch('/api/mnemo', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ar: selected.ar, translit: selected.translit, sens: selected.sens }) })
                     const data = await r.json()
-                    setMnemo(data.mnemo || 'Non disponible')
-                  } catch { setMnemo('Erreur') }
+                    // La route dit POURQUOI elle a echoue — quota atteint,
+                    // fournisseurs a sec, session expiree. Se rabattre sur
+                    // « Non disponible » cachait ce message et laissait croire
+                    // que le mot n'avait pas de mnemonique.
+                    setMnemo(data.mnemo || data.error || 'Non disponible')
+                  } catch { setMnemo('Connexion impossible. Réessaie dans un instant.') }
                   setMnemoLoading(false)
                 }} disabled={mnemoLoading}>
                   {mnemoLoading ? '...' : mnemo ? 'Masquer' : 'Mnémonique IA'}
