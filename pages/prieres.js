@@ -42,13 +42,28 @@ export default function PrieresPage() {
   const [times, setTimes] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [geoFailed, setGeoFailed] = useState(false)
+
   const [coords, setCoords] = useState(null)
   const [now, setNow] = useState(new Date())
   const [heading, setHeading] = useState(null)
   const [showQibla, setShowQibla] = useState(false)
   const [cityInput, setCityInput] = useState('')
   const [cityName, setCityName] = useState('')
+
+  /*
+   * L'horloge, dans son propre effet.
+   *
+   * Elle vivait a la fin de l'effet de demarrage, APRES un `return` qui
+   * s'executait des qu'une position etait enregistree. Autrement dit elle ne
+   * demarrait que la toute premiere fois : pour tous ceux qui revenaient — donc
+   * pour tout le monde — le compte a rebours restait fige sur l'heure du
+   * chargement et n'avancait plus. C'est la seule chose que cette page a a
+   * faire, et elle ne la faisait pas.
+   */
+  useEffect(() => {
+    const timer = setInterval(() => setNow(new Date()), 30000)
+    return () => clearInterval(timer)
+  }, [])
 
   useEffect(() => {
     const saved = localStorage.getItem('tarjama_location')
@@ -60,19 +75,35 @@ export default function PrieresPage() {
         setLoading(true)
         loadTimes(lat, lng)
         return
-      } catch {}
+      } catch {
+        // Position enregistree illisible : on repart de la geolocalisation
+        // plutot que de rester bloque sur un ecran vide.
+        console.warn('[prieres] position enregistree illisible, ignoree')
+      }
     }
     getLocation()
-    const timer = setInterval(() => setNow(new Date()), 30000)
-    return () => clearInterval(timer)
   }, [])
 
   const saveLocation = (lat, lng, city) => {
     localStorage.setItem('tarjama_location', JSON.stringify({ lat, lng, city }))
   }
 
+  /*
+   * L'echec de geolocalisation etait range dans un etat `geoFailed` que RIEN
+   * n'affichait : l'utilisateur voyait le formulaire de ville apparaitre sans
+   * savoir pourquoi, et sans savoir si reessayer servirait a quelque chose.
+   * Or les trois causes n'appellent pas la meme reaction — un refus se leve
+   * dans les reglages, une panne de signal se retente, un navigateur sans GPS
+   * ne se repare pas.
+   */
   const getLocation = () => {
-    if (!navigator.geolocation) { setGeoFailed(true); setLoading(false); return }
+    setError('')
+    if (!navigator.geolocation) {
+      setError('Ton navigateur ne sait pas te localiser. Entre ta ville ci-dessous.')
+      setLoading(false)
+      return
+    }
+    setLoading(true)
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords
@@ -80,13 +111,25 @@ export default function PrieresPage() {
         saveLocation(latitude, longitude, '')
         loadTimes(latitude, longitude)
       },
-      () => { setGeoFailed(true); setLoading(false) }
+      (err) => {
+        setError(
+          err.code === err.PERMISSION_DENIED
+            ? 'La localisation est bloquée. Autorise-la dans les réglages de ton navigateur, ou entre ta ville ci-dessous.'
+            : err.code === err.TIMEOUT
+              ? 'La localisation a mis trop de temps. Réessaie, ou entre ta ville ci-dessous.'
+              : 'Ta position n’a pas pu être déterminée. Entre ta ville ci-dessous.'
+        )
+        setLoading(false)
+      },
+      // Sans delai maximum, certains navigateurs ne rappellent jamais : le
+      // « Chargement... » restait alors affiche indefiniment.
+      { timeout: 10000, maximumAge: 300000 }
     )
   }
 
   const searchCity = async () => {
     if (!cityInput.trim()) return
-    setLoading(true); setError(''); setGeoFailed(false)
+    setLoading(true); setError('')
     try {
       const r = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(cityInput.trim())}&format=json&limit=1`)
       const data = await r.json()
@@ -106,7 +149,15 @@ export default function PrieresPage() {
       const data = await r.json()
       if (data.error) throw new Error(data.error)
       setTimes(data)
-    } catch (err) { setError(err.message) }
+    } catch (err) {
+      console.error('[prieres] horaires:', err.message)
+      // Sans cette remise a zero, les horaires du chargement precedent
+      // restaient affiches sous le message d'erreur — donc presentes comme
+      // valables alors qu'ils pouvaient dater d'un autre jour ou d'une autre
+      // ville.
+      setTimes(null)
+      setError('Les horaires n’ont pas pu être récupérés. Vérifie ta connexion et réessaie.')
+    }
     setLoading(false)
   }
 
