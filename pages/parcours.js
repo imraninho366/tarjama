@@ -5,14 +5,35 @@ import { useVocab } from '../lib/useVocab'
 import Button from '../components/common/Button'
 import { clickable } from '../lib/clickable'
 
+/**
+ * Mots eligibles a un parcours, tries par frequence decroissante.
+ *
+ * Les noms divins en sont ecartes : 51 des 91 doublent un mot du corpus
+ * — « ٱلْعَلِيمُ » face a « عَلِيم » — et apprendre deux fois le meme mot sous
+ * deux etiquettes n'apporte rien. Ils gardent leur entree au dictionnaire et
+ * leur mode de quiz.
+ *
+ * Le tri porte toujours sur une COPIE. `v` est le tableau du dictionnaire
+ * partage par toutes les pages : le trier sur place, comme le faisait
+ * « top100 », reordonnait les donnees pour tout le monde.
+ */
+const parFrequence = (v, garde = () => true) =>
+  v.filter(w => w.categorie !== '99 noms' && garde(w))
+   .sort((a, b) => (b.freq || 0) - (a.freq || 0))
+
 const PARCOURS = [
-  { id: 'top100', title: 'Les 100 mots essentiels', desc: 'Les mots les plus fréquents du Coran', days: 30, wordsPerDay: 4, filter: (v) => v.sort((a, b) => (b.freq || 0) - (a.freq || 0)).slice(0, 100) },
-  { id: 'noms50', title: '50 noms à connaître', desc: 'Les noms les plus importants', days: 15, wordsPerDay: 4, filter: (v) => v.filter(w => w.type === 'nom').sort((a, b) => (b.freq || 0) - (a.freq || 0)).slice(0, 50) },
-  { id: 'verbes50', title: '50 verbes à maîtriser', desc: 'Les verbes essentiels du Coran', days: 15, wordsPerDay: 4, filter: (v) => v.filter(w => w.type === 'verbe').sort((a, b) => (b.freq || 0) - (a.freq || 0)).slice(0, 50) },
+  { id: 'top100', title: 'Les 100 mots essentiels', desc: 'Les mots les plus fréquents du Coran', days: 30, wordsPerDay: 4, filter: (v) => parFrequence(v).slice(0, 100) },
+  { id: 'noms50', title: '50 noms à connaître', desc: 'Les noms les plus importants', days: 15, wordsPerDay: 4, filter: (v) => parFrequence(v, w => w.type === 'nom').slice(0, 50) },
+  { id: 'verbes50', title: '50 verbes à maîtriser', desc: 'Les verbes essentiels du Coran', days: 15, wordsPerDay: 4, filter: (v) => parFrequence(v, w => w.type === 'verbe').slice(0, 50) },
   { id: 'racines30', title: '30 racines fondamentales', desc: 'Comprendre les familles de mots', days: 30, wordsPerDay: 1, filter: (v) => {
+    // Un mot par racine, et c'est le PLUS FREQUENT qui la represente. L'ancien
+    // code gardait le premier rencontre, donc un mot tire de l'ordre du
+    // fichier : une racine pouvait s'illustrer par un hapax.
     const roots = {}
-    v.forEach(w => { if (w.racine && !roots[w.racine]) roots[w.racine] = w })
-    return Object.values(roots).sort((a, b) => (b.freq || 0) - (a.freq || 0)).slice(0, 30)
+    for (const w of parFrequence(v, w => w.racine)) {
+      if (!roots[w.racine]) roots[w.racine] = w
+    }
+    return Object.values(roots).slice(0, 30)
   }},
 ]
 

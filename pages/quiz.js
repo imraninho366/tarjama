@@ -99,14 +99,28 @@ export default function Quiz() {
     // sont de vrais decomptes, ce label signale un mot que le rapprochement
     // avec le corpus n'a pas retrouve. Ne pas savoir ou se situe un mot
     // n'autorise pas a le poser en question de quiz.
-    const courant = utilisable.filter(w => w.freq_label !== 'rare' && w.freq_label !== 'inconnu')
+    /*
+     * Les noms divins sont ecartes de TOUS les modes sauf le leur.
+     *
+     * 51 des 91 ont un quasi-jumeau dans le corpus : « ٱلْعَلِيمُ » = « L'Omniscient »
+     * et « عَلِيم » = « Omniscient », « ٱلرَّحِيمُ » et « رَّحِيم ». Melanges au meme
+     * reservoir, ils fournissent des distracteurs indiscernables de la bonne
+     * reponse — l'utilisateur est compte faux sur une question sans reponse.
+     * Au dictionnaire ils enrichissent ; dans un test ils faussent.
+     */
+    const coranique = utilisable.filter(w => w.categorie !== '99 noms')
+    // « inconnu » exclu au meme titre que « rare » : depuis que les frequences
+    // sont de vrais decomptes, ce label signale un mot que le rapprochement
+    // avec le corpus n'a pas retrouve. Ne pas savoir ou se situe un mot
+    // n'autorise pas a le poser en question de quiz.
+    const courant = coranique.filter(w => w.freq_label !== 'rare' && w.freq_label !== 'inconnu')
     switch(m) {
       case 'frequent':  return courant.filter(w => w.freq_label === 'fréquent' || w.freq_label === 'très fréquent')
       case 'nom':       return courant.filter(w => w.type === 'nom')
       case 'verbe':     return courant.filter(w => w.type === 'verbe')
       case 'adjectif':  return courant.filter(w => w.type === 'adjectif')
       case '99noms':    return utilisable.filter(w => w.categorie === '99 noms')
-      case 'rare':      return utilisable.filter(w => w.freq_label === 'rare')
+      case 'rare':      return coranique.filter(w => w.freq_label === 'rare')
       default:          return courant
     }
   }, [vocab])

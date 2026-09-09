@@ -59,6 +59,11 @@ function reservoirVocab(vocab) {
     const poids = POIDS_FREQUENCE[w.freq_label]
     // Sans sens defini, la proposition s'afficherait « ? ».
     if (!poids || !w.sens?.[0] || w.en_attente) continue
+    // Les noms divins sont ecartes : 51 des 91 ont un quasi-jumeau dans le
+    // corpus — « ٱلْعَلِيمُ » = « L'Omniscient » face a « عَلِيم » = « Omniscient ».
+    // Ils fourniraient des distracteurs impossibles a departager, et un duel
+    // se perd sur une question sans reponse.
+    if (w.categorie === '99 noms') continue
     for (let i = 0; i < poids; i++) pool.push(w)
   }
   return pool
