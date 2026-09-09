@@ -1,0 +1,1347 @@
+[
+ {
+  "ar": "الْحَقُّ",
+  "translit": "al-ḥaqq",
+  "racine": "ح-ق-ق",
+  "sens": [
+   "la vérité",
+   "le réel"
+  ],
+  "note": "Réalité absolue et immuable, tout ce qui vient de Lui est vrai.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 109,
+  "ref": "2:26",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْعَزِيزُ",
+  "translit": "al-'Azīz",
+  "racine": "ع-ز-ز",
+  "sens": [
+   "Le Tout-Puissant",
+   "l'Invincible",
+   "le Tout-Puissant"
+  ],
+  "note": "Puissance absolue qui ne peut être vaincue ou défiée.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 64,
+  "ref": "2:129",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الرَّحْمَنُ",
+  "translit": "ar-Raḥmān",
+  "racine": "ر-ح-م",
+  "sens": [
+   "Le Tout Miséricordieux",
+   "le Très Clément"
+  ],
+  "note": "Miséricorde générale englobant toute la création. Exclusif à Allah.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 45,
+  "ref": "1:1",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْحَكِيمُ",
+  "translit": "al-Ḥakīm",
+  "racine": "ح-ك-م",
+  "sens": [
+   "le Très Sage"
+  ],
+  "note": "Sagesse absolue dans chaque décret, commandement et création.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 42,
+  "ref": "2:32",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْعَظِيمُ",
+  "translit": "al-'Aẓīm",
+  "racine": "ع-ظ-م",
+  "sens": [
+   "Le Très Grand",
+   "l'Immense"
+  ],
+  "note": "Grandeur absolue en puissance, savoir, gloire et majesté.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 36,
+  "ref": "2:105",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الرَّحِيمُ",
+  "translit": "ar-Raḥīm",
+  "racine": "ر-ح-م",
+  "sens": [
+   "Le Très Miséricordieux",
+   "le Miséricordieux"
+  ],
+  "note": "Miséricorde particulière réservée aux croyants dans l'au-delà.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 34,
+  "ref": "1:1",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْعَلِيمُ",
+  "translit": "al-'Alīm",
+  "racine": "ع-ل-م",
+  "sens": [
+   "L'Omniscient",
+   "le Tout-Savant"
+  ],
+  "note": "Science absolue et infinie du visible et de l'invisible, du passé et du futur.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 32,
+  "ref": "2:32",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْوَالِي",
+  "translit": "al-Wālī",
+  "racine": "و-ل-و",
+  "sens": [
+   "Le Gouverneur suprême",
+   "Celui qui gère tous les affaires"
+  ],
+  "note": "Administre l'univers entier avec une maîtrise parfaite.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 30,
+  "ref": "2:210",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "السَّمِيعُ",
+  "translit": "as-Samī'",
+  "racine": "س-م-ع",
+  "sens": [
+   "Le Tout-Entendant",
+   "l'Omniscient des paroles"
+  ],
+  "note": "Entend toute parole, prière, secret ou murmure sans exception.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 19,
+  "ref": "2:127",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الشَّهِيدُ",
+  "translit": "ash-shahīd",
+  "racine": "ش-ه-د",
+  "sens": [
+   "le témoin",
+   "Celui qui témoigne"
+  ],
+  "note": "Témoin de tout ce qui se passe, visible ou caché, en tout lieu et temps.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 12,
+  "ref": "2:282",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْحَيُّ",
+  "translit": "al-Ḥayy",
+  "racine": "ح-ي-و",
+  "sens": [
+   "le Perpétuellement Vivant"
+  ],
+  "note": "Vie absolue sans début ni fin, sans dépendance à quoi que ce soit.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 12,
+  "ref": "2:255",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْغَفُورُ",
+  "translit": "al-Ghafūr",
+  "racine": "غ-ف-ر",
+  "sens": [
+   "Le Grand Pardonneur",
+   "le Très Indulgent"
+  ],
+  "note": "Pardonne les péchés quelle que soit leur ampleur pour qui se repent sincèrement.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 11,
+  "ref": "10:107",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "النُّورُ",
+  "translit": "an-nūr",
+  "racine": "ن-و-ر",
+  "sens": [
+   "la lumière",
+   "la clarté",
+   "la guidée"
+  ],
+  "note": "اللَّهُ نُورُ السَّمَاوَاتِ وَالأَرْضِ: Allah est la lumière des cieux et de la terre S.24:35",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 10,
+  "ref": "2:257",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْحَمِيدُ",
+  "translit": "al-Ḥamīd",
+  "racine": "ح-م-د",
+  "sens": [
+   "Le Digne de louange",
+   "le Très Loué"
+  ],
+  "note": "Mérite toute louange en essence, même si personne ne Le louait.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 10,
+  "ref": "14:1",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْغَنِيُّ",
+  "translit": "al-ghaniyy",
+  "racine": "غ-ن-و",
+  "sens": [
+   "l'Autosuffisant",
+   "Celui qui n'a besoin de rien"
+  ],
+  "note": "وَاللَّهُ الْغَنِيُّ وَأَنْتُمُ الْفُقَرَاءُ: Allah est Riche et vous êtes les nécessiteux S.47:38",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 8,
+  "ref": "6:133",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْعَلِيُّ",
+  "translit": "al-'Aliyy",
+  "racine": "ع-ل-و",
+  "sens": [
+   "Le Très-Haut",
+   "Le Suprêmement Élevé"
+  ],
+  "note": "Élevé au-dessus de toute Sa création en essence, attributs et puissance.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 8,
+  "ref": "2:255",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْكَبِيرُ",
+  "translit": "al-Kabīr",
+  "racine": "ك-ب-ر",
+  "sens": [
+   "Le Très Grand",
+   "Le Grand par excellence"
+  ],
+  "note": "Grandeur absolue qui transcende toute description et comparaison.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 8,
+  "ref": "13:9",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْعَدْلُ",
+  "translit": "al-'adl",
+  "racine": "ع-د-ل",
+  "sens": [
+   "l'équité",
+   "l'équilibre"
+  ],
+  "note": "Justice parfaite sans jamais d'injustice, même d'un atome.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 7,
+  "ref": "2:48",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْخَبِيرُ",
+  "translit": "al-Khabīr",
+  "racine": "خ-ب-ر",
+  "sens": [
+   "Le Parfaitement Informé",
+   "Celui qui connaît les détails"
+  ],
+  "note": "Connaît les détails les plus fins de toute chose, intérieur et extérieur.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 6,
+  "ref": "6:18",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "التَّوَّابُ",
+  "translit": "at-Tawwāb",
+  "racine": "ت-و-ب",
+  "sens": [
+   "Le Grand Accepteur de repentir",
+   "Celui qui revient sans cesse vers fils serviteur"
+  ],
+  "note": "Accepte le repentir encore et encore, avec une clémence infinie.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 6,
+  "ref": "2:37",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْحَفِيظُ",
+  "translit": "al-Ḥafīẓ",
+  "racine": "ح-ف-ظ",
+  "sens": [
+   "Celui qui préserve toute chose"
+  ],
+  "note": "Préserve l'univers, les actions humaines et la religion divine.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 6,
+  "ref": "11:57",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْقَهَّارُ",
+  "translit": "al-Qahhār",
+  "racine": "ق-ه-ر",
+  "sens": [
+   "Le Dominateur suprême",
+   "Celui qui soumet tout"
+  ],
+  "note": "Domine et subjugue toute chose, rien ne Lui résiste.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 5,
+  "ref": "12:39",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْبَصِيرُ",
+  "translit": "al-Baṣīr",
+  "racine": "ب-ص-ر",
+  "sens": [
+   "Celui qui voit tout"
+  ],
+  "note": "Voit toute chose visible ou invisible, dans l'obscurité comme dans la lumière.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 4,
+  "ref": "17:1",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْقَوِيُّ",
+  "translit": "al-Qawiyy",
+  "racine": "ق-و-و",
+  "sens": [
+   "Celui dont la force est parfaite"
+  ],
+  "note": "Force absolue qui ne connaît ni fatigue ni affaiblissement.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 4,
+  "ref": "11:66",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْكَرِيمُ",
+  "translit": "al-Karīm",
+  "racine": "ك-ر-م",
+  "sens": [
+   "Le Généreux"
+  ],
+  "note": "Générosité sans limites, ne refuse jamais qui L'invoque sincèrement.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 3,
+  "ref": "23:116",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْقَيُّومُ",
+  "translit": "al-Qayyūm",
+  "racine": "ق-و-م",
+  "sens": [
+   "L'Éternel Subsistant",
+   "Celui qui subsiste par Lui-même"
+  ],
+  "note": "Subsiste par Lui-même et maintient toute la création en existence.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 3,
+  "ref": "2:255",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْوَهَّابُ",
+  "translit": "al-Wahhāb",
+  "racine": "و-ه-ب",
+  "sens": [
+   "Le Grand Donateur",
+   "Celui qui offre sans contrepartie"
+  ],
+  "note": "Donne généreusement et abondamment sans compter ni attendre de retour.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 3,
+  "ref": "3:8",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْجَامِعُ",
+  "translit": "al-Jāmi'",
+  "racine": "ج-م-ع",
+  "sens": [
+   "Celui qui rassemble",
+   "Le Réunisseur de toute chose"
+  ],
+  "note": "Réunit les contraires, rassemble les créatures le Jour du Jugement.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 3,
+  "ref": "3:9",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْوَلِيُّ",
+  "translit": "al-Waliyy",
+  "racine": "و-ل-ي",
+  "sens": [
+   "l'Allié"
+  ],
+  "note": "Protège, guide et soutient ceux qui L'ont pris pour allié.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 2,
+  "ref": "42:9",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "اللَّطِيفُ",
+  "translit": "al-Laṭīf",
+  "racine": "ل-ط-ف",
+  "sens": [
+   "Le Doux envers Ses serviteurs"
+  ],
+  "note": "Agit avec une douceur imperceptible, atteint les âmes par des voies subtiles.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 2,
+  "ref": "6:103",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْعَفُوُّ",
+  "translit": "al-'Afuww",
+  "racine": "ع-ف-و",
+  "sens": [
+   "Le Grand Pardonneur",
+   "Celui qui efface les fautes sans trace"
+  ],
+  "note": "Efface les péchés totalement, sans les rappeler ni les garder en mémoire.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 2,
+  "ref": "2:219",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْمُقْتَدِرُ",
+  "translit": "al-muqtadir",
+  "racine": "ق-د-ر",
+  "sens": [
+   "le Tout-Puissant",
+   "le Tout-Capable"
+  ],
+  "note": "Puissance irrésistible et totale, exerce Son pouvoir comme Il le veut.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 2,
+  "ref": "54:42",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْمَجِيدُ",
+  "translit": "al-Majīd",
+  "racine": "م-ج-د",
+  "sens": [
+   "Le Noble par excellence"
+  ],
+  "note": "Gloire et noblesse absolues, infiniment au-dessus de toute créature.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 2,
+  "ref": "50:1",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْقُدُّوسُ",
+  "translit": "al-Quddūs",
+  "racine": "ق-د-س",
+  "sens": [
+   "Le Très Saint",
+   "Le Pur de toute imperfection"
+  ],
+  "note": "Exempt de tout défaut, imperfection ou ressemblance avec les créatures.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 2,
+  "ref": "59:23",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْبَدِيعُ",
+  "translit": "al-Badī'",
+  "racine": "ب-د-ع",
+  "sens": [
+   "Le Créateur sans modèle",
+   "L'Incomparable Innovateur"
+  ],
+  "note": "بَدِيعُ السَّمَاوَاتِ وَالأَرْضِ: Créateur des cieux et de la terre sans modèle S.2:117",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 2,
+  "ref": "2:117",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْحَلِيمُ",
+  "translit": "al-Ḥalīm",
+  "racine": "ح-ل-م",
+  "sens": [
+   "Le Très Clément",
+   "Celui qui ne se hâte pas de punir"
+  ],
+  "note": "Diffère le châtiment par clémence, accordant toujours une chance au repentir.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "11:87",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْوَكِيلُ",
+  "translit": "al-Wakīl",
+  "racine": "و-ك-ل",
+  "sens": [
+   "Le Défenseur",
+   "Celui en qui sur se confie"
+  ],
+  "note": "Se charge des affaires de ceux qui Lui font confiance et s'en remettent à Lui.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "3:173",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْقَادِرُ",
+  "translit": "al-Qādir",
+  "racine": "ق-د-ر",
+  "sens": [
+   "Le Tout-Puissant",
+   "Celui qui peut tout"
+  ],
+  "note": "Pouvoir absolu sur toute chose, sans limite ni obstacle.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "6:65",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْهَادِي",
+  "translit": "al-Hādī",
+  "racine": "ه-د-و",
+  "sens": [
+   "Celui qui guide vers la vérité"
+  ],
+  "note": "Guide les cœurs vers la foi, la connaissance et le droit chemin.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "7:186",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الشَّكُورُ",
+  "translit": "ash-shakūr",
+  "racine": "ش-ك-ر",
+  "sens": [
+   "le Grand Reconnaissant",
+   "Celui qui reconnaît et récompense"
+  ],
+  "note": "Apprécie le moindre bien et le récompense abondamment.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "34:13",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الرَّقِيبُ",
+  "translit": "ar-raqīb",
+  "racine": "ر-ق-ب",
+  "sens": [
+   "l'Observateur attentif"
+  ],
+  "note": "Observe chaque acte, parole et pensée de Ses serviteurs.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "5:117",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْوَارِثُ",
+  "translit": "al-Wārith",
+  "racine": "و-ر-ث",
+  "sens": [
+   "L'Héritier",
+   "Celui à qui tout revient à la fin"
+  ],
+  "note": "وَإِنَّا لَنَحْنُ نُحْيِي وَنُمِيتُ وَنَحْنُ الْوَارِثُونَ S.15:23",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "2:233",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْبَارِئُ",
+  "translit": "al-Bāri'",
+  "racine": "ب-ر-أ",
+  "sens": [
+   "Le Créateur qui distingue",
+   "Celui qui crée sans défaut"
+  ],
+  "note": "Crée avec distinction et précision, séparant chaque chose de l'autre.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "59:24",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْوَدُودُ",
+  "translit": "al-Wadūd",
+  "racine": "و-د-د",
+  "sens": [
+   "L'Affectueux",
+   "Celui qui aime et est aimé"
+  ],
+  "note": "Amour divin envers Ses serviteurs vertueux, source de tout amour vrai.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "85:14",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْمَتِينُ",
+  "translit": "al-Matīn",
+  "racine": "م-ت-ن",
+  "sens": [
+   "Celui dont la force est inébranlable"
+  ],
+  "note": "Fermeté et solidité absolues, rien ne peut L'ébranler ou L'affaiblir.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "51:58",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الرَّزَّاقُ",
+  "translit": "ar-Razzāq",
+  "racine": "ر-ز-ق",
+  "sens": [
+   "Le Grand Pourvoyeur",
+   "Celui qui accorde la subsistance"
+  ],
+  "note": "Pourvoit à tous les besoins de toute créature à chaque instant.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "51:58",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الصَّمَدُ",
+  "translit": "aṣ-ṣamad",
+  "racine": "ص-م-د",
+  "sens": [
+   "l'Absolu",
+   "l'Immuable",
+   "Celui dont tout dépend"
+  ],
+  "note": "اللَّهُ الصَّمَدُ: vers Lui se tournent tous les besoins, Il ne dépend de rien.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "112:2",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْمُجِيبُ",
+  "translit": "al-mujīb",
+  "racine": "ج-و-ب",
+  "sens": [
+   "Celui qui répond aux prières",
+   "l'Exauceur"
+  ],
+  "note": "Exauce toute supplication sincère à l'heure et de la façon qu'Il choisit.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "11:61",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْمُؤْمِنُ",
+  "translit": "al-Mu'min",
+  "racine": "أ-م-ن",
+  "sens": [
+   "Le Dispensateur de sécurité",
+   "Le Gardien de la foi"
+  ],
+  "note": "Celui qui accorde la sécurité, qui confirme la vérité de Ses prophètes.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "59:23",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْمُهَيْمِنُ",
+  "translit": "al-Muhaymin",
+  "racine": "ه-ي-م",
+  "sens": [
+   "Le Gardien suprême",
+   "Le Préservateur"
+  ],
+  "note": "Celui qui veille sur toute chose, la surveille et la protège.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "59:23",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْجَبَّارُ",
+  "translit": "al-Jabbār",
+  "racine": "ج-ب-ر",
+  "sens": [
+   "Celui qui répare les cœurs brisés",
+   "L'Irrésistible"
+  ],
+  "note": "Répare les brisés, redresse les torts, contraint les récalcitrants.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "59:23",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْمُتَكَبِّرُ",
+  "translit": "al-Mutakabbir",
+  "racine": "ك-ب-ر",
+  "sens": [
+   "Celui qui se manifeste dans Sa grandeur"
+  ],
+  "note": "Seul véritablement grand, toute grandeur créée est dérisoire face à Lui.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "59:23",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْمُصَوِّرُ",
+  "translit": "al-Muṣawwir",
+  "racine": "ص-و-ر",
+  "sens": [
+   "Celui qui donne la forme et l'apparence"
+  ],
+  "note": "Façonne toute créature selon une forme unique et parfaite.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "59:24",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْفَتَّاحُ",
+  "translit": "al-Fattāḥ",
+  "racine": "ف-ت-ح",
+  "sens": [
+   "Le Grand Ouvreur",
+   "Celui qui tranche et ouvre les portes fermées"
+  ],
+  "note": "Ouvre les portes de la miséricorde, de la victoire et de la connaissance.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "34:26",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْمُعِزُّ",
+  "translit": "al-Mu'izz",
+  "racine": "ع-ز-ز",
+  "sens": [
+   "Celui qui honore",
+   "Celui qui confère la gloire"
+  ],
+  "note": "Accorde l'honneur et la gloire à qui Il veut parmi Ses serviteurs.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "6:143",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الرَّشِيدُ",
+  "translit": "ar-Rashīd",
+  "racine": "ر-ش-د",
+  "sens": [
+   "Le Sage Directeur",
+   "Celui qui guide vers ce qui est juste"
+  ],
+  "note": "Guide vers la droiture avec une sagesse et une direction parfaites.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": 1,
+  "ref": "11:87",
+  "dans_le_coran": true
+ },
+ {
+  "ar": "الْوَاحِدُ",
+  "translit": "al-wāḥid",
+  "racine": "و-ح-د",
+  "sens": [
+   "l'Unique"
+  ],
+  "note": "Unicité absolue, sans partenaire, semblable ou rival.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "السَّلَامُ",
+  "translit": "as-salām",
+  "racine": "س-ل-م",
+  "sens": [
+   "la sécurité"
+  ],
+  "note": "Source de toute paix, sécurité et perfection absolue.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الرَّؤُوفُ",
+  "translit": "ar-Ra'ūf",
+  "racine": "ر-أ-ف",
+  "sens": [
+   "Le Très Compatissant",
+   "Plein de tendresse et de clémence"
+  ],
+  "note": "Tendresse et compassion intenses qui dépassent la miséricorde ordinaire.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْوَاسِعُ",
+  "translit": "al-Wāsi'",
+  "racine": "و-س-ع",
+  "sens": [
+   "L'Immense",
+   "Celui dont la grâce et la science sont vastes"
+  ],
+  "note": "Vastitude infinie de Sa science, miséricorde, générosité et puissance.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْخَالِقُ",
+  "translit": "al-Khāliq",
+  "racine": "خ-ل-ق",
+  "sens": [
+   "Le Créateur",
+   "Celui qui crée ex nihilo"
+  ],
+  "note": "Crée toute chose selon un plan parfait, sans modèle préexistant.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْغَفَّارُ",
+  "translit": "al-Ghaffār",
+  "racine": "غ-ف-ر",
+  "sens": [
+   "Le Grand Pardonneur",
+   "Celui qui pardonne encore et encore"
+  ],
+  "note": "Pardon répété et abondant, couvre les péchés sans les exposer.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُحْيِي",
+  "translit": "al-Muḥyī",
+  "racine": "ح-ي-و",
+  "sens": [
+   "Celui qui donne la vie"
+  ],
+  "note": "Donne la vie corporelle, spirituelle et l'éternelle vie du Paradis.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُمِيتُ",
+  "translit": "al-Mumīt",
+  "racine": "م-و-ت",
+  "sens": [
+   "Celui qui donne la mort",
+   "Le Dépositaire de la mort"
+  ],
+  "note": "Donne la mort à l'heure fixée, selon Son décret immuable.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الظَّاهِرُ",
+  "translit": "aẓ-ẓāhir",
+  "racine": "ظ-ه-ر",
+  "sens": [
+   "l'Apparent"
+  ],
+  "note": "Son existence est prouvée par les signes de Sa création dans l'univers.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْبَاطِنُ",
+  "translit": "al-bāṭin",
+  "racine": "ب-ط-ن",
+  "sens": [
+   "le Caché",
+   "l'Intérieur"
+  ],
+  "note": "Son essence est inaccessible aux créatures, nul ne Le perçoit directement.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْحَسِيبُ",
+  "translit": "al-Ḥasīb",
+  "racine": "ح-س-ب",
+  "sens": [
+   "Celui qui tient le compte",
+   "Le Juge des comptes"
+  ],
+  "note": "Tient le compte de tout, juge avec précision, suffit à Son serviteur.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْبَاعِثُ",
+  "translit": "al-Bā'ith",
+  "racine": "ب-ع-ث",
+  "sens": [
+   "Celui qui ressuscite",
+   "Celui qui envoie les prophètes"
+  ],
+  "note": "Ressuscite les morts le Jour du Jugement, suscite les prophètes.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُنْتَقِمُ",
+  "translit": "al-Muntaqim",
+  "racine": "ن-ق-م",
+  "sens": [
+   "Celui qui punit les criminels avec justice"
+  ],
+  "note": "Punit les oppresseurs et les criminels avec une justice parfaite.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْبَاقِي",
+  "translit": "al-Bāqī",
+  "racine": "ب-ق-و",
+  "sens": [
+   "L'Éternel",
+   "Celui qui subsiste pour toujours"
+  ],
+  "note": "كُلُّ مَنْ عَلَيْهَا فَانٍ وَيَبْقَى وَجْهُ رَبِّكَ S.55:26-27",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْجَلِيلُ",
+  "translit": "al-Jalīl",
+  "racine": "ج-ل-ل",
+  "sens": [
+   "Celui qui possède toute majesté"
+  ],
+  "note": "Majesté divine incomparable qui inspire révérence et crainte.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُبْدِئُ",
+  "translit": "al-Mubdi'",
+  "racine": "ب-د-أ",
+  "sens": [
+   "Celui qui commence",
+   "Créateur de la première fois"
+  ],
+  "note": "Initie la création sans précédent ni modèle, à partir du néant absolu.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُعِيدُ",
+  "translit": "al-Mu'īd",
+  "racine": "ع-و-د",
+  "sens": [
+   "Celui qui recommence",
+   "Celui qui ressuscite"
+  ],
+  "note": "Recrée et ressuscite ce qui a été détruit, recommence la création.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "ذُو الْجَلَالِ وَالإِكْرَامِ",
+  "translit": "Dhul-Jalāl wal-Ikrām",
+  "racine": "ج-ل-ل",
+  "sens": [
+   "Maître de la Majesté et de l'Honneur"
+  ],
+  "note": "وَيَبْقَى وَجْهُ رَبِّكَ ذُو الْجَلَالِ وَالإِكْرَامِ S.55:27",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُغْنِي",
+  "translit": "al-Mughnī",
+  "racine": "غ-ن-و",
+  "sens": [
+   "Celui qui enrichit",
+   "Celui qui délivre du besoin"
+  ],
+  "note": "Enrichit qui Il veut, délivre Son serviteur de la pauvreté et du besoin.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "النَّافِعُ",
+  "translit": "an-Nāfi'",
+  "racine": "ن-ف-ع",
+  "sens": [
+   "Celui qui accorde le bénéfice",
+   "Source de tout bien"
+  ],
+  "note": "Accorde le profit et le bénéfice à qui Il veut, source de tout bien.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْوَاجِدُ",
+  "translit": "al-wājid",
+  "racine": "و-ج-د",
+  "sens": [
+   "Celui qui trouve tout"
+  ],
+  "note": "Possède tout ce qu'Il veut, ne manque de rien, ne cherche rien.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْقَابِضُ",
+  "translit": "al-Qābiḍ",
+  "racine": "ق-ب-ض",
+  "sens": [
+   "Celui qui resserre",
+   "Celui qui retient la subsistance"
+  ],
+  "note": "Resserre la subsistance par sagesse, éprouve les âmes par la restriction.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْبَاسِطُ",
+  "translit": "al-Bāsiṭ",
+  "racine": "ب-س-ط",
+  "sens": [
+   "Celui qui étend",
+   "Celui qui accorde l'abondance"
+  ],
+  "note": "Étend la générosité et la grâce, accorde l'abondance à qui Il veut.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْخَافِضُ",
+  "translit": "al-Khāfiḍ",
+  "racine": "خ-ف-ض",
+  "sens": [
+   "Celui qui abaisse",
+   "Le Dégradeur des orgueilleux"
+  ],
+  "note": "Abaisse les arrogants et les tyrans qui s'opposent à Sa vérité.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الرَّافِعُ",
+  "translit": "ar-Rāfi'",
+  "racine": "ر-ف-ع",
+  "sens": [
+   "Celui qui élève",
+   "L'Éleveur des humbles et des croyants"
+  ],
+  "note": "Élève en rang ceux qui Lui sont soumis et ceux qu'Il honore.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُذِلُّ",
+  "translit": "al-Mudhill",
+  "racine": "ذ-ل-ل",
+  "sens": [
+   "Celui qui humilie",
+   "Celui qui abaisse les injustes"
+  ],
+  "note": "Humilie ceux qui résistent à Sa vérité et oppriment Ses serviteurs.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُقِيتُ",
+  "translit": "al-Muqīt",
+  "racine": "ق-و-ت",
+  "sens": [
+   "Celui qui subvient à tous les besoins"
+  ],
+  "note": "Donne à chaque être vivant exactement ce dont il a besoin pour exister.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُحْصِي",
+  "translit": "al-Muḥṣī",
+  "racine": "ح-ص-و",
+  "sens": [
+   "Celui qui dénombre tout",
+   "Le Recenseur parfait"
+  ],
+  "note": "Compte et recense chaque chose, même l'infiniment petit.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُقَدِّمُ",
+  "translit": "al-Muqaddim",
+  "racine": "ق-د-م",
+  "sens": [
+   "Celui qui avance",
+   "Celui qui met en avant ce qu'Il veut"
+  ],
+  "note": "Avance en rang, en grâce ou en création ce qu'Il décide.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُؤَخِّرُ",
+  "translit": "al-Mu'akhkhir",
+  "racine": "أ-خ-ر",
+  "sens": [
+   "Celui qui diffère",
+   "Celui qui remet à plus tard selon Sa sagesse"
+  ],
+  "note": "Reporte ce qu'Il veut selon Sa sagesse parfaite.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُتَعَالِي",
+  "translit": "al-Muta'ālī",
+  "racine": "ع-ل-و",
+  "sens": [
+   "Le Très Élevé",
+   "Celui qui Se lieu/endroit au-dessus de tout"
+  ],
+  "note": "S'élève infiniment au-dessus de toute Sa création et de toute description.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "مَالِكُ الْمُلْكِ",
+  "translit": "Mālik al-Mulk",
+  "racine": "م-ل-ك",
+  "sens": [
+   "Maître de la royauté",
+   "Propriétaire absolu de tout pouvoir"
+  ],
+  "note": "تُؤْتِي الْمُلْكَ مَنْ تَشَاءُ: Tu accordes la royauté à qui Tu veux S.3:26",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمُقْسِطُ",
+  "translit": "al-Muqsiṭ",
+  "racine": "ق-س-ط",
+  "sens": [
+   "L'Équitable",
+   "Celui qui instaure la justice"
+  ],
+  "note": "Instaure la justice parfaite parmi Ses créatures.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الْمَانِعُ",
+  "translit": "al-Māni'",
+  "racine": "م-ن-ع",
+  "sens": [
+   "Celui qui protège",
+   "Celui qui empêche le mal"
+  ],
+  "note": "Protège Ses serviteurs du mal, empêche ce qui leur est nuisible.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ },
+ {
+  "ar": "الضَّارُّ",
+  "translit": "aḍ-Ḍārr",
+  "racine": "ض-ر-ر",
+  "sens": [
+   "Celui qui éprouve par le mal",
+   "Le Maître du préjudice"
+  ],
+  "note": "Envoie les épreuves selon Sa sagesse pour purifier et élever.",
+  "type": "nom",
+  "categorie": "99 noms",
+  "freq": null,
+  "ref": null,
+  "dans_le_coran": false
+ }
+]

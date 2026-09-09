@@ -26,6 +26,11 @@ base = json.load(open('data/vocab-base-corpus.json'))
 trad = json.load(open(sys.argv[1] if len(sys.argv) > 1 else 'data/vocab-fr.json'))
 
 def label(f):
+    # freq None : le mot n'a pas ete compte, ce qui n'est pas la meme chose que
+    # zero. Le cas se presente pour les noms divins absents du texte coranique —
+    # la liste des 99 noms vient des hadiths.
+    if f is None:
+        return 'inconnu'
     return 'très fréquent' if f >= 200 else 'fréquent' if f >= 50 else 'courant' if f >= 10 else 'rare'
 
 mots, en_fr, en_attente = [], 0, 0
@@ -49,6 +54,28 @@ for b in base:
 
 couv_fr = sum(m['freq'] for m in mots if not m.get('en_attente'))
 total = sum(m['freq'] for m in mots)
+
+# ── Les 99 noms d'Allah ───────────────────────────────────────────────────
+# Ajoutes APRES le calcul de couverture, et c'est voulu : la couverture mesure
+# la part du TEXTE coranique expliquee par le dictionnaire, et 35 de ces noms
+# n'y figurent pas. Les compter gonflerait un chiffre qui doit rester honnete.
+#
+# Ils gardent leur provenance dans data/noms-99.json plutot que d'etre verses
+# dans la base du corpus : ce ne sont pas des lemmes du Quranic Arabic Corpus.
+noms99 = json.load(open('data/noms-99.json'))
+for n in noms99:
+    mots.append({
+        'ar': n['ar'],
+        'translit': n['translit'] or translitterer(n['ar']),
+        'racine': n['racine'],
+        'sens': n['sens'],
+        'note': n['note'],
+        'type': n['type'],
+        'categorie': n['categorie'],
+        'freq': n['freq'],
+        'freq_label': label(n['freq']),
+        'ref': n['ref'],
+    })
 
 json.dump({
     'version': '3.0',
