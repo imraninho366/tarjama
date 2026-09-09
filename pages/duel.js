@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { useVocab } from '../lib/useVocab'
 import Button from '../components/common/Button'
 import { apiFetch } from '../lib/apiClient'
 
@@ -11,67 +10,23 @@ const MODES = [
   { id: 'quiz-vocab', icon: 'ق', title: 'Quiz Vocabulaire', desc: '5 mots arabes à traduire', rounds: 5 },
 ]
 
-/**
- * Tirage aleatoire REPRODUCTIBLE, a partir de la graine du duel.
+/*
+ * Le tirage des questions vivait ici : chaque navigateur fabriquait les
+ * siennes a partir d'une graine commune. Il est parti dans lib/duelQuestions.js
+ * et dans /api/duel, pour deux raisons.
  *
- * Le shuffle ci-dessus s'appuie sur Math.random, donc chaque joueur obtenait
- * ses propres mauvaises reponses : meme mot arabe, propositions differentes.
- * L'un pouvait avoir trois distracteurs absurdes et l'autre trois pieges, sur
- * la meme question. Dans un affrontement en tete-a-tete, c'est exactement ce
- * qu'il ne faut pas faire.
+ * D'abord le quiz Islam ne posait PAS les memes questions aux deux joueurs :
+ * ses questions viennent de l'IA, mises en cache dans une Map en memoire,
+ * propre a chaque instance serverless. Ensuite le navigateur connaissait la
+ * bonne reponse avant que le joueur choisisse, et calculait lui-meme le score
+ * final — il suffisait d'envoyer 100.
  *
- * Generateur de Lehmer : la graine doit rester dans [1, 2147483646]. A zero il
- * resterait bloque sur zero et servirait cinq fois le meme mot.
+ * Le serveur fabrique les questions une fois, les garde avec leurs reponses,
+ * et corrige lui-meme.
  */
-function makeRng(seed) {
-  let s = seed % 2147483647
-  if (s <= 0) s += 2147483646
-  return () => (s = (s * 16807) % 2147483647) / 2147483647
-}
-
-function shuffleSeeded(arr, rnd) {
-  const a = [...arr]
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(rnd() * (i + 1))
-    ;[a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
-
-/**
- * Reservoir de mots pour le quiz de vocabulaire.
- *
- * Le tirage se faisait uniformement sur les 6344 mots du dictionnaire. Or 2976
- * d'entre eux — 47 % — portent le label « rare » : des mots comme غصة, qui
- * apparait cinq fois dans tout le Coran. Pres d'une question sur deux tombait
- * donc sur un mot que personne ne reconnait.
- *
- * Les mots rares sont ecartes, et les plus courants comptent plusieurs fois
- * dans le reservoir : ils sortent donc plus souvent, sans faire disparaitre
- * ceux qui sont simplement « frequents ». C'est un duel entre amis, pas un
- * concours d'erudition.
- */
-const POIDS_FREQUENCE = { 'très fréquent': 4, 'courant': 3, 'fréquent': 1 }
-
-function reservoirVocab(vocab) {
-  const pool = []
-  for (const w of vocab) {
-    const poids = POIDS_FREQUENCE[w.freq_label]
-    // Sans sens defini, la proposition s'afficherait « ? ».
-    if (!poids || !w.sens?.[0] || w.en_attente) continue
-    // Les noms divins sont ecartes : 51 des 91 ont un quasi-jumeau dans le
-    // corpus — « ٱلْعَلِيمُ » = « L'Omniscient » face a « عَلِيم » = « Omniscient ».
-    // Ils fourniraient des distracteurs impossibles a departager, et un duel
-    // se perd sur une question sans reponse.
-    if (w.categorie === '99 noms') continue
-    for (let i = 0; i < poids; i++) pool.push(w)
-  }
-  return pool
-}
 
 export default function DuelPage({ user, profile, authReady }) {
   const router = useRouter()
-  const { vocab } = useVocab()
   const [view, setView] = useState('menu')
   const [selectedMode, setSelectedMode] = useState(null)
   const [code, setCode] = useState('')
@@ -86,13 +41,16 @@ export default function DuelPage({ user, profile, authReady }) {
   const [roundScores, setRoundScores] = useState([])
   const [showCorrection, setShowCorrection] = useState(false)
 
-  // Quiz Islam state
+  // Quiz state (Islam + Vocab) — questions servies SANS leur bonne reponse
   const [questions, setQuestions] = useState([])
   const [selected, setSelected] = useState(null)
   const [quizDone, setQuizDone] = useState(false)
-
-  // Quiz Vocab state
-  const [vocabQuestions, setVocabQuestions] = useState([])
+  // Correction renvoyee par le serveur APRES l'envoi de la reponse : c'est la
+  // seule facon dont le navigateur apprend la bonne reponse.
+  const [correction, setCorrection] = useState(null)
+  const [justes, setJustes] = useState([])
+  // Score calcule par le serveur ; le navigateur ne fait que l'afficher.
+  const [scorePerso, setScorePerso] = useState(null)
 
   // Common
   const [submitted, setSubmitted] = useState(false)
@@ -141,10 +99,14 @@ export default function DuelPage({ user, profile, authReady }) {
     const data = await api({ action: 'create', mode })
     if (data.error) { setError(data.error); setLoading(false); return }
     setCode(data.code); setDuel(data); setView('waiting'); setLoading(false)
+    // 2 s faisait 30 appels/minute, au-dessus du plafond de la route : passe
+    // 30 s d'attente le serveur repondait 429, et comme l'erreur n'etait pas
+    // testee, la boucle tournait sans jamais lancer la partie.
     pollRef.current = setInterval(async () => {
       const status = await api({ action: 'status', code: data.code })
+      if (status.error) { clearInterval(pollRef.current); setError(status.error); setView('menu'); return }
       if (status.status === 'active') { clearInterval(pollRef.current); startGame(status.mode || mode, status) }
-    }, 2000)
+    }, 3000)
   }
 
   const joinDuel = async () => {
@@ -173,74 +135,42 @@ export default function DuelPage({ user, profile, authReady }) {
       } catch { setError('Erreur chargement') }
       setView('play-traduction')
 
-    } else if (mode === 'quiz-islam') {
-      try {
-        const r = await apiFetch('/api/quiz-islam', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ count: 5, seed: d.sourate_num * 1000 + d.verse_num }) })
-        const data = await r.json()
-        setQuestions(data.questions || [])
-      } catch { setError('Erreur chargement questions') }
-      setView('play-quiz')
-
-    } else if (mode === 'quiz-vocab') {
-      const pool = reservoirVocab(vocab)
-      if (pool.length < 20) { setError('Vocabulaire en chargement...'); return }
-
-      // Meme graine chez les deux joueurs : ils affrontent les memes questions,
-      // avec les memes propositions, dans le meme ordre.
-      const rnd = makeRng(d.sourate_num * 1000 + d.verse_num)
-      const pick = () => pool[Math.floor(rnd() * pool.length)]
-
-      const qs = []
-      const motsVus = new Set()
-      // Borne de securite : sans elle, un reservoir trop pauvre en sens
-      // distincts ferait tourner la boucle indefiniment et figerait la page.
-      let tours = 0
-
-      while (qs.length < 5 && tours++ < 500) {
-        const target = pick()
-        if (motsVus.has(target.ar)) continue
-        motsVus.add(target.ar)
-
-        // Les distracteurs doivent avoir un sens DIFFERENT de la bonne
-        // reponse. Tires au hasard dans tout le dictionnaire, deux mots
-        // pouvaient partager la meme traduction — la question avait alors
-        // deux bonnes reponses, et le joueur en perdait une injustement.
-        const sensPris = new Set([target.sens[0].toLowerCase()])
-        const wrongs = []
-        let essais = 0
-        while (wrongs.length < 3 && essais++ < 200) {
-          const c = pick()
-          const sens = c.sens?.[0]?.toLowerCase()
-          if (!sens || sensPris.has(sens)) continue
-          sensPris.add(sens)
-          wrongs.push(c)
-        }
-        if (wrongs.length < 3) continue
-
-        const choices = shuffleSeeded([target, ...wrongs], rnd)
-        qs.push({
-          ar: target.ar,
-          translit: target.translit,
-          choices: choices.map(c => c.sens[0]),
-          correct: choices.findIndex(c => c.ar === target.ar),
-        })
-      }
-
-      if (qs.length < 5) { setError('Impossible de préparer le quiz. Réessaie.'); return }
-      setVocabQuestions(qs)
+    } else {
+      // Cet appel remet les questions ET declenche le chronometre du joueur
+      // cote serveur : le temps se compte a partir du moment ou il a
+      // effectivement de quoi jouer.
+      const data = await api({ action: 'questions', code: d.code || code })
+      if (data.error) { setError(data.error); setView('menu'); return }
+      setQuestions(data.questions || [])
+      setJustes([]); setCorrection(null); setScorePerso(null)
       setView('play-quiz')
     }
   }
 
   // ── SUBMIT SCORE ───────────────────────────────
+  // Le mode Traduction reste note par le navigateur : sa correction vient de
+  // l'IA (/api/verify), et la refaire cote serveur doublerait le cout et la
+  // latence de chaque duel. Les deux quiz, eux, sont corriges par le serveur.
   const submitFinalScore = async (scores) => {
     const avg = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
-    await api({ action: 'submit', code, score: avg })
+    const r = await api({ action: 'submit', code, score: avg })
+    if (r.error) { setError(r.error); return }
+    setScorePerso(avg)
+    attendreAdversaire()
+  }
+
+  /** Scrute la fin du duel, sans boucler en silence si le serveur refuse. */
+  const attendreAdversaire = () => {
     setSubmitted(true)
     pollRef.current = setInterval(async () => {
       const status = await api({ action: 'status', code })
+      if (status.error) { clearInterval(pollRef.current); setError(status.error); return }
+      // Mon propre score m'est visible des que je l'ai fini ; celui de
+      // l'adversaire n'arrive qu'a la fin du duel.
+      const mien = status.player1_id === user.id ? status.player1_score : status.player2_score
+      if (mien !== null && mien !== undefined) setScorePerso(mien)
       if (status.status === 'finished') { clearInterval(pollRef.current); setResult(status) }
-    }, 2000)
+    }, 3000)
   }
 
   // ── TRADUCTION HANDLERS ────────────────────────
@@ -272,22 +202,40 @@ export default function DuelPage({ user, profile, authReady }) {
   }
 
   // ── QUIZ HANDLERS ──────────────────────────────
-  const quizQuestions = selectedMode === 'quiz-islam' ? questions : vocabQuestions
+  const quizQuestions = questions
   const quizQuestion = quizQuestions[round]
 
-  const handleQuizAnswer = (idx) => {
-    if (selected !== null) return
-    setSelected(idx)
-    const isCorrect = idx === quizQuestion.correct
-    const score = isCorrect ? 100 : 0
-    setRoundScores(prev => [...prev, score])
-    if (navigator.vibrate) navigator.vibrate(isCorrect ? 50 : [50, 30, 50])
+  /*
+   * La reponse part au serveur, qui la range, l'horodate et renvoie SEULEMENT
+   * ENSUITE la bonne reponse. Le navigateur ne l'a jamais avant le choix du
+   * joueur : c'est ce qui rend le score inattaquable, et c'est aussi pourquoi
+   * ce gestionnaire est asynchrone alors qu'il ne l'etait pas.
+   */
+  const handleQuizAnswer = async (idx) => {
+    if (selected !== null || loading) return
+    setSelected(idx); setLoading(true)
+
+    const r = await api({ action: 'answer', code, round, choice: idx })
+    setLoading(false)
+
+    if (r.error) {
+      // Sans ce retour en arriere, la question resterait verrouillee sur un
+      // choix que le serveur n'a pas enregistre.
+      setSelected(null); setError(r.error)
+      return
+    }
+
+    setCorrection(r)
+    setJustes(prev => [...prev, r.juste])
+    if (navigator.vibrate) navigator.vibrate(r.juste ? 50 : [50, 30, 50])
     setQuizDone(true)
   }
 
   const nextQuizRound = () => {
-    setSelected(null); setQuizDone(false)
-    if (round + 1 >= quizQuestions.length) { submitFinalScore(roundScores) }
+    setSelected(null); setQuizDone(false); setCorrection(null)
+    // Le score est calcule par le serveur a la derniere reponse : il n'y a
+    // rien a lui envoyer, seulement a attendre l'adversaire.
+    if (round + 1 >= quizQuestions.length) { attendreAdversaire() }
     else { setRound(r => r + 1) }
   }
 
@@ -296,13 +244,32 @@ export default function DuelPage({ user, profile, authReady }) {
     setView('menu'); setResult(null); setSubmitted(false); setTranslation('')
     setCode(''); setDuel(null); setVerses([]); setFeedbacks([]); setRoundScores([])
     setRound(0); setShowCorrection(false); setSelectedMode(null)
-    setQuestions([]); setVocabQuestions([]); setSelected(null); setQuizDone(false)
+    setQuestions([]); setSelected(null); setQuizDone(false)
+    setCorrection(null); setJustes([]); setScorePerso(null); setError('')
   }
 
   const myScore = result ? (result.player1_id === user.id ? result.player1_score : result.player2_score) : null
   const oppScore = result ? (result.player1_id === user.id ? result.player2_score : result.player1_score) : null
   const oppName = result ? (result.player1_id === user.id ? result.player2_name : result.player1_name) : null
   const won = myScore !== null && oppScore !== null ? myScore > oppScore : null
+
+  /*
+   * Les erreurs du joueur, reconstituees a la fin du duel.
+   *
+   * L'ecran de resultat n'affichait que deux nombres. Or c'est ici que le duel
+   * peut servir a apprendre : savoir qu'on a fait 60 n'apprend rien, revoir le
+   * mot qu'on a rate, si.
+   *
+   * Les bonnes reponses ne sortent du serveur qu'une fois la partie finie,
+   * donc cette liste est vide tant que le duel est en cours — et n'existe pas
+   * en mode Traduction, qui n'a pas de questions a choix.
+   */
+  const mesReponses = result ? (result.player1_id === user.id ? result.player1_answers : result.player2_answers) : null
+  const erreurs = (result?.questions || []).map((q, i) => {
+    const choix = Array.isArray(mesReponses) ? mesReponses[i]?.choice : undefined
+    if (choix === undefined || choix === q.correct) return null
+    return { ...q, i, choix }
+  }).filter(Boolean)
 
   return (
     <>
@@ -422,7 +389,7 @@ export default function DuelPage({ user, profile, authReady }) {
           <div>
             <div style={{ display: 'flex', gap: 4, marginBottom: 16 }}>
               {quizQuestions.map((_, i) => (
-                <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i < round ? (roundScores[i] >= 100 ? 'var(--green)' : 'var(--red)') : i === round ? 'var(--gold)' : 'rgba(var(--tarjama-color-primary-rgb),.1)' }} />
+                <div key={i} style={{ flex: 1, height: 4, borderRadius: 2, background: i < round ? (justes[i] ? 'var(--green)' : 'var(--red)') : i === round ? 'var(--gold)' : 'rgba(var(--tarjama-color-primary-rgb),.1)' }} />
               ))}
             </div>
             <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, textAlign: 'center', marginBottom: 16 }}>
@@ -445,7 +412,7 @@ export default function DuelPage({ user, profile, authReady }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
               {quizQuestion.choices.map((choice, i) => {
                 const isSelected = selected === i
-                const isCorrect = i === quizQuestion.correct
+                const isCorrect = i === correction?.correct
                 let bg = 'rgba(var(--tarjama-color-primary-rgb),.04)'
                 let border = 'rgba(var(--tarjama-color-primary-rgb),.1)'
                 let color = 'var(--text)'
@@ -475,9 +442,9 @@ export default function DuelPage({ user, profile, authReady }) {
             </div>
 
             {/* Explication après réponse */}
-            {quizDone && quizQuestion.explanation && (
+            {quizDone && correction?.explication && (
               <div style={{ padding: '12px', borderRadius: 8, background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)', marginBottom: 16, animation: 'fadeInUp .3s ease' }}>
-                <div style={{ fontSize: 12, color: 'var(--text-dim)', lineHeight: 1.7 }}>{quizQuestion.explanation}</div>
+                <div style={{ fontSize: 12, color: 'var(--text-dim)', lineHeight: 1.7 }}>{correction.explication}</div>
               </div>
             )}
 
@@ -493,9 +460,11 @@ export default function DuelPage({ user, profile, authReady }) {
         {submitted && !result && (
           <div style={{ textAlign: 'center', padding: '40px 0' }}>
             <div style={{ fontSize: 14, color: 'var(--text-dim)', marginBottom: 8 }}>Résultats envoyés !</div>
-            <div style={{ fontSize: 13, color: 'var(--text)', marginBottom: 4 }}>
-              Score : <strong style={{ color: 'var(--gold)' }}>{Math.round(roundScores.reduce((a, b) => a + b, 0) / roundScores.length)}/100</strong>
-            </div>
+            {scorePerso !== null && (
+              <div style={{ fontSize: 13, color: 'var(--text)', marginBottom: 4 }}>
+                Score : <strong style={{ color: 'var(--gold)' }}>{scorePerso}/100</strong>
+              </div>
+            )}
             <div style={{ fontSize: 12, color: 'var(--text-muted)', animation: 'pulse 1.5s infinite', marginTop: 16 }}>En attente de ton adversaire...</div>
           </div>
         )}
@@ -519,8 +488,36 @@ export default function DuelPage({ user, profile, authReady }) {
                 <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>{oppName}</div>
               </div>
             </div>
-            <div style={{ display: 'flex', gap: 8, justifyContent: 'center' }}>
-              <Button onClick={resetDuel}>Nouveau duel</Button>
+            {result.questions?.length > 0 && (
+              <div style={{ textAlign: 'left', marginBottom: 24 }}>
+                <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 10, textAlign: 'center' }}>
+                  {erreurs.length === 0 ? 'Sans faute' : erreurs.length === 1 ? 'Ton erreur' : `Tes ${erreurs.length} erreurs`}
+                </div>
+                {erreurs.map(e => (
+                  <div key={e.i} style={{ padding: '12px 14px', marginBottom: 8, borderRadius: 10, background: 'rgba(var(--tarjama-color-primary-rgb),.04)', border: '1px solid rgba(var(--tarjama-color-primary-rgb),.1)' }}>
+                    {e.ar
+                      ? <div style={{ fontFamily: 'var(--font-arabic)', fontSize: 24, color: 'var(--gold-light)', direction: 'rtl', marginBottom: 4 }} lang="ar" dir="rtl">{e.ar}</div>
+                      : <div style={{ fontSize: 13, color: 'var(--text)', lineHeight: 1.6, marginBottom: 6 }}>{e.question}</div>}
+                    {e.translit && <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 6 }}>{e.translit}</div>}
+                    <div style={{ fontSize: 13, color: 'var(--red)' }}>
+                      <span style={{ opacity: .7 }}>Ta réponse : </span>{e.choices[e.choix]}
+                    </div>
+                    <div style={{ fontSize: 13, color: 'var(--green)' }}>
+                      <span style={{ opacity: .7 }}>La bonne : </span>{e.choices[e.correct]}
+                    </div>
+                    {e.explication && <div style={{ fontSize: 12, color: 'var(--text-dim)', lineHeight: 1.6, marginTop: 6 }}>{e.explication}</div>}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
+              {/* La revanche cree un duel du meme mode et affiche son code :
+                  elle evite de repasser par le menu, mais l'adversaire doit
+                  toujours saisir le nouveau code — rien ne permet de le
+                  reinscrire d'office dans une partie qu'il n'a pas acceptee. */}
+              <Button onClick={() => { const m = selectedMode; resetDuel(); createDuel(m) }}>Revanche</Button>
+              <Button variant="secondary" onClick={resetDuel}>Nouveau duel</Button>
               <Button variant="secondary" onClick={() => {
                 const text = `Duel Tarjama (${modeConfig?.title}) ! ${myScore} vs ${oppName} ${oppScore}. tarjama.app`
                 if (navigator.share) navigator.share({ title: 'Résultat Duel', text }).catch(() => {})
