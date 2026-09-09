@@ -30,7 +30,15 @@ function loadDayStats() {
 }
 
 function saveDayStats(counts) {
-  localStorage.setItem('tarjama_dhikr', JSON.stringify({ day: getTodayKey(), counts }))
+  // En navigation privee sur Safari, et quand le stockage est plein, setItem
+  // leve — l'exception remontait alors depuis un simple appui sur le compteur
+  // et cassait la page. Perdre le compte du jour est genant ; perdre la page
+  // l'est davantage.
+  try {
+    localStorage.setItem('tarjama_dhikr', JSON.stringify({ day: getTodayKey(), counts }))
+  } catch {
+    console.warn('[dhikr] compteur non enregistre : stockage indisponible')
+  }
 }
 
 export default function DhikrPage() {

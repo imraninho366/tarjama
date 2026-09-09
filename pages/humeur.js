@@ -25,6 +25,10 @@ export default function HumeurPage({ user, authReady }) {
   const [custom, setCustom] = useState('')
   const [versets, setVersets] = useState(null)
   const [loading, setLoading] = useState(false)
+  // La page annoncait « Erreur de connexion » a TOUS les echecs. Une session
+  // expiree et un quota atteint se soignent autrement qu'en verifiant son
+  // internet : l'utilisateur etait envoye dans la mauvaise direction.
+  const [messageErreur, setMessageErreur] = useState('')
 
   // Tant que la session n'est pas tranchee, on n'affiche rien plutot que de
   // rediriger : `user` est encore null par ignorance, pas par absence.
@@ -35,12 +39,17 @@ export default function HumeurPage({ user, authReady }) {
   const search = async (mood) => {
     setLoading(true)
     setVersets(null)
+    setMessageErreur('')
     try {
       const r = await apiFetch('/api/humeur', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mood }) })
       const data = await r.json()
-      if (data.error) throw new Error(data.error)
+      if (!r.ok || data.error) throw new Error(data?.error || `Erreur serveur (${r.status})`)
       setVersets(data.versets || [])
     } catch (err) {
+      console.error('[humeur] recherche:', err.message)
+      setMessageErreur(err.message === 'Failed to fetch'
+        ? 'Connexion perdue. Vérifie ton internet et réessaie.'
+        : err.message)
       setVersets('error')
     }
     setLoading(false)
@@ -144,7 +153,7 @@ export default function HumeurPage({ user, authReady }) {
 
         {versets === 'error' && (
           <div style={{ textAlign: 'center', padding: 32, color: 'var(--red)' }}>
-            Erreur de connexion. Vérifie ton internet et réessaie.
+            {messageErreur || 'Les versets n’ont pas pu être chargés.'}
             <br/><button onClick={() => { setVersets(null); setSelected(null) }} style={{ marginTop: 12, color: 'var(--gold)', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>Réessayer</button>
           </div>
         )}

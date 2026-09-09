@@ -9,6 +9,7 @@ export default function PiliersPage({ user, authReady }) {
   const router = useRouter()
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [erreur, setErreur] = useState('')
   const [activeTab, setActiveTab] = useState('islam') // islam | iman
   const [selectedPilier, setSelectedPilier] = useState(null)
   const [showGuide, setShowGuide] = useState(false) // guide de prière
@@ -21,10 +22,17 @@ export default function PiliersPage({ user, authReady }) {
     // attente, rafraichir la page en etant connecte renvoyait a l'accueil.
     if (!authReady) return
     if (!user) { router.push('/'); return }
+    // Sans test de `r.ok` ni message, un fichier absent ou une coupure
+    // reseau laissait la page sur son seul en-tete, indefiniment et sans
+    // explication : indiscernable d'un contenu qui n'existe pas.
     fetch('/piliers.json')
-      .then(r => r.json())
+      .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json() })
       .then(d => { setData(d); setLoading(false) })
-      .catch(() => setLoading(false))
+      .catch(err => {
+        console.error('[piliers] chargement:', err.message)
+        setErreur('Le contenu n’a pas pu être chargé. Vérifie ta connexion et rafraîchis la page.')
+        setLoading(false)
+      })
   }, [authReady, user])
 
   const goBack = () => { setSelectedPilier(null); setShowGuide(false); setShowAblutions(false); setShowJoumua(false) }
@@ -37,6 +45,16 @@ export default function PiliersPage({ user, authReady }) {
     <>
       <Head><title>Piliers — Tarjama</title></Head>
       <div className={s.container}>
+        {erreur && (
+          <div role="alert" style={{
+            textAlign: 'center', padding: '12px 16px', margin: '16px 0',
+            borderRadius: 8, fontSize: 14, lineHeight: 1.6,
+            color: 'var(--tarjama-color-text)',
+            background: 'rgba(var(--tarjama-color-error-rgb, 184, 74, 74), .08)',
+            border: '1px solid rgba(var(--tarjama-color-error-rgb, 184, 74, 74), .25)',
+          }}>{erreur}</div>
+        )}
+
         {/* Header */}
         <div className={s.header}>
           <h1 className={s.headerArabic} lang="ar" dir="rtl">{activeTab === 'islam' ? 'أركان الإسلام' : 'أركان الإيمان'}</h1>

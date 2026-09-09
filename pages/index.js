@@ -252,7 +252,10 @@ export default function App({ user, profile, onLogout }){
               }
               setProgress(prev=>({...prev,[`${sourate.num}:${verse.n}`]:{userTrans:`[Récitation] ${transcript}`,niveau,feedback:{niveau},ts:new Date().toISOString()}}))
             }
-          }catch(err){showToast('Erreur transcription: '+err.message,'error')}
+          }catch(err){
+            console.error('[index] transcription:',err.message)
+            showToast(err.message==='Failed to fetch'?'Connexion perdue. Vérifie ton internet.':'La récitation n\'a pas pu être analysée. Réessaie.','error')
+          }
           setRecLoading(false)
         }
         reader.readAsDataURL(blob)
@@ -262,7 +265,18 @@ export default function App({ user, profile, onLogout }){
       setRecording(true)
       setRecTranscript('')
       setRecScore(null)
-    }catch(err){showToast('Micro non disponible: '+err.message,'error')}
+    }catch(err){
+      /*
+       * Le message brut d'une exception ne dit pas quoi faire. Le cas courant
+       * est un refus d'autorisation, qui se leve dans les reglages du
+       * navigateur — /tajweed distingue deja les deux, cette page ne le
+       * faisait pas, pour le meme geste.
+       */
+      console.error('[index] micro:',err?.name,err?.message)
+      showToast(err?.name==='NotAllowedError'
+        ?'Le micro est bloqué. Autorise-le dans les réglages de ton navigateur.'
+        :'Le micro n\'est pas accessible sur cet appareil.','error')
+    }
   }
 
   const stopRecording=()=>{if(recorderObj&&recording){recorderObj.stop();setRecording(false);setRecorderObj(null)}}
@@ -272,11 +286,22 @@ export default function App({ user, profile, onLogout }){
     setShowTranslit(true)
     if(translit)return
     setTranslitLoading(true)
+    /*
+     * `r.ok` n'etait pas teste : une session expiree (401) ou un quota atteint
+     * (429) renvoie un corps sans `translit`, et l'ecran affichait alors
+     * « Non disponible. » — c'est-a-dire une PROPRIETE DU VERSET, alors que
+     * c'est un etat de la requete. L'utilisateur croyait le verset depourvu de
+     * translitteration au lieu de savoir qu'il doit se reconnecter.
+     */
     try{
       const r=await apiFetch('/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:verse.ar,sourate_num:sourate.num,verse_num:verse.n,mode:'translit'})})
       const data=await r.json()
-      setTranslit(data.translit||'Non disponible.')
-    }catch{setTranslit('Erreur.')}
+      if(!r.ok)throw new Error(data?.error||`Erreur serveur (${r.status})`)
+      setTranslit(data.translit||'Translittération non disponible pour ce verset.')
+    }catch(err){
+      console.error('[index] translitteration:',err.message)
+      setTranslit(err.message==='Failed to fetch'?'Connexion perdue. Vérifie ton internet et réessaie.':err.message)
+    }
     setTranslitLoading(false)
   }
 
@@ -285,11 +310,17 @@ export default function App({ user, profile, onLogout }){
     setShowTafsir(true)
     if(tafsir)return
     setTafsirLoading(true)
+    // Meme correction que la translitteration : un echec de requete
+    // s'affichait comme une absence de tafsir pour ce verset.
     try{
       const r=await apiFetch('/api/tafsir',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:verse.ar,sourate_num:sourate.num,verse_num:verse.n,sourate_ar:sourate.name_ar,sourate_fr:sourate.name_fr})})
       const data=await r.json()
-      setTafsir(data.tafsir||'Non disponible.')
-    }catch{setTafsir('Erreur.')}
+      if(!r.ok)throw new Error(data?.error||`Erreur serveur (${r.status})`)
+      setTafsir(data.tafsir||'Tafsir non disponible pour ce verset.')
+    }catch(err){
+      console.error('[index] tafsir:',err.message)
+      setTafsir(err.message==='Failed to fetch'?'Connexion perdue. Vérifie ton internet et réessaie.':err.message)
+    }
     setTafsirLoading(false)
   }
 
@@ -358,7 +389,10 @@ export default function App({ user, profile, onLogout }){
         const vdata=await vr.json()
         if(vdata.mots?.length>0){
           const rows=vdata.mots.map(m=>({user_id:user.id,ar:m.ar,translit:m.translit,racine:m.racine,sens:m.sens,freq:m.freq||0,freq_label:m.freq_label,type:m.type,exemple_autre:m.exemple_autre,exemple_ref:m.exemple_ref,sourate_num:sourate.num,verse_num:v.n}))
-          await supabase.from('vocab').upsert(rows,{onConflict:'user_id,ar',ignoreDuplicates:true})
+          // L'erreur n'etait pas recuperee : seule une exception reseau
+          // remontait, un refus de la base passait totalement inapercu.
+          const{error:vocabErr}=await supabase.from('vocab').upsert(rows,{onConflict:'user_id,ar',ignoreDuplicates:true})
+          if(vocabErr)console.error('[index] sauvegarde vocabulaire:',vocabErr.message)
         }
       }catch(e){console.error('[index] sauvegarde vocabulaire:',e.message)}
       const msgs={excellent:'مَاشَاءَ اللَّه — Excellent !',good:'جَيِّد — Bien !',partial:'تَقْرِيبًا — Presque !',wrong:'حَاوِلْ مَرَّةً — Réessaie !'}
@@ -375,8 +409,13 @@ export default function App({ user, profile, onLogout }){
     try{
       const r=await apiFetch('/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({arabic:v.ar,sourate_num:sourate.num,verse_num:v.n})})
       const data=await r.json()
-      setHint(data.hint||'Indice non disponible.');setShowHint(true)
-    }catch{setHint('Erreur.');setShowHint(true)}
+      if(!r.ok)throw new Error(data?.error||`Erreur serveur (${r.status})`)
+      setHint(data.hint||'Indice non disponible pour ce verset.');setShowHint(true)
+    }catch(err){
+      console.error('[index] indice:',err.message)
+      setHint(err.message==='Failed to fetch'?'Connexion perdue. Vérifie ton internet et réessaie.':err.message)
+      setShowHint(true)
+    }
     setHinting(false)
   }
 

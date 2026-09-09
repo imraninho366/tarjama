@@ -7,18 +7,36 @@ import Button from '../components/common/Button'
 // ══════════════════════════════════════════════════════════════════
 // AUDIO — Web Speech API en arabe
 // ══════════════════════════════════════════════════════════════════
+/**
+ * Prononce un texte arabe, ou dit pourquoi il ne peut pas.
+ *
+ * POURQUOI CE N'EST PAS UN DETAIL
+ * La version precedente retombait sur `voices[0]` quand aucune voix arabe
+ * n'etait installee. Sur une page qui ENSEIGNE la prononciation, faire lire
+ * « أَلِفْ » par une voix francaise ne rate pas discretement : ca apprend faux,
+ * avec l'autorite d'un bouton « ecouter ». Le silence honnete vaut mieux.
+ *
+ * Elle ne verifiait pas non plus que les voix etaient chargees : les premieres
+ * secondes apres l'ouverture, `getVoices()` renvoie une liste vide et le
+ * navigateur lisait avec sa voix par defaut.
+ *
+ * @returns {'ok'|'nosupport'|'novoice'} ce qui s'est reellement passe
+ */
 function speakArabic(text) {
-  if (typeof window === 'undefined' || !window.speechSynthesis) return
+  if (typeof window === 'undefined' || !window.speechSynthesis) return 'nosupport'
+
+  const voices = window.speechSynthesis.getVoices()
+  const arVoice = voices.find(v => v.lang.startsWith('ar'))
+  if (!arVoice) return 'novoice'
+
   window.speechSynthesis.cancel()
   const u = new SpeechSynthesisUtterance(text)
   u.lang = 'ar-SA'
   u.rate = 0.7
   u.pitch = 1.0
-  // Chercher une voix arabe
-  const voices = window.speechSynthesis.getVoices()
-  const arVoice = voices.find(v => v.lang.startsWith('ar')) || voices[0]
-  if (arVoice) u.voice = arVoice
+  u.voice = arVoice
   window.speechSynthesis.speak(u)
+  return 'ok'
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -428,18 +446,35 @@ export default function Alphabet() {
   const [streak, setStreak]           = useState(0)
   const [gridSel, setGridSel]         = useState(null)
   const [voicesReady, setVoicesReady] = useState(false)
+  // `voicesReady` etait ecrit et lu NULLE PART : la page enregistrait un
+  // gestionnaire global, posait un etat que rien n'affichait, et ne le
+  // retirait jamais. Il sert desormais a ce pour quoi il existait.
+  const [problemeAudio, setProblemeAudio] = useState('')
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      const load = () => setVoicesReady(true)
-      window.speechSynthesis.onvoiceschanged = load
-      if (window.speechSynthesis.getVoices().length > 0) setVoicesReady(true)
-    }
+    if (typeof window === 'undefined' || !window.speechSynthesis) return
+    const load = () => setVoicesReady(true)
+    // addEventListener plutot que `onvoiceschanged =` : l'affectation directe
+    // ecrase le gestionnaire de qui que ce soit d'autre, et surtout elle ne se
+    // retire pas — le gestionnaire survivait a la page et gardait en vie un
+    // composant demonte.
+    window.speechSynthesis.addEventListener('voiceschanged', load)
+    if (window.speechSynthesis.getVoices().length > 0) setVoicesReady(true)
+    return () => window.speechSynthesis.removeEventListener('voiceschanged', load)
   }, [])
 
   const speak = useCallback((text) => {
-    speakArabic(text)
-  }, [])
+    const etat = speakArabic(text)
+    setProblemeAudio(
+      etat === 'nosupport' ? 'Ton navigateur ne sait pas lire à voix haute.'
+      // Les voix arrivent de facon asynchrone : les toutes premieres secondes,
+      // « pas encore chargees » et « aucune voix arabe » se ressemblent, mais
+      // la premiere se resout toute seule.
+      : etat === 'novoice' && !voicesReady ? 'Les voix sont encore en cours de chargement. Réessaie dans un instant.'
+      : etat === 'novoice' ? 'Aucune voix arabe n’est installée sur cet appareil. Le son reste coupé plutôt que de te faire entendre une prononciation fausse.'
+      : ''
+    )
+  }, [voicesReady])
 
   const letter = LETTERS[cur]
   const pct = score.total > 0 ? Math.round(score.ok/score.total*100) : 0
@@ -497,6 +532,18 @@ export default function Alphabet() {
             </div>
           )}
         </div>
+
+        {/* Le message doit etre ANNONCE et pas seulement affiche : celui qui
+            vient d'appuyer sur « ecouter » regarde le bouton, pas l'en-tete. */}
+        {problemeAudio && (
+          <div role="alert" style={{
+            margin: '0 16px 12px', padding: '10px 14px', borderRadius: 8,
+            fontSize: 13, lineHeight: 1.6, textAlign: 'center',
+            color: 'var(--tarjama-color-text)',
+            background: 'rgba(var(--tarjama-color-primary-rgb), .08)',
+            border: '1px solid rgba(var(--tarjama-color-primary-rgb), .25)',
+          }}>{problemeAudio}</div>
+        )}
 
         {/* ── Tabs ─────────────────────────────────────────────── */}
         <div className={s.tabs}>

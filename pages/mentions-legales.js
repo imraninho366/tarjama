@@ -23,20 +23,20 @@ export default function MentionsLegales() {
 
         {section('Hébergement', 'L\'application est hébergée par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. La base de données est hébergée par Supabase Inc., région Europe de l\'Ouest (Paris).')}
 
-        {section('Données collectées', 'Tarjama collecte les données suivantes lors de l\'inscription : nom d\'utilisateur (pseudonyme libre), mot de passe (chiffré par Supabase Auth). Aucune adresse email réelle n\'est collectée — l\'application utilise des identifiants internes (@tarjama.app). Les données de progression (versets traduits, scores, quiz) sont stockées pour permettre le suivi de l\'apprentissage.')}
+        {section('Données collectées', 'Inscription par mot de passe : nom d\'utilisateur (pseudonyme libre) et mot de passe chiffré par Supabase Auth, sans adresse email réelle — l\'application utilise des identifiants internes (@tarjama.app). Inscription par Google : Google transmet à Supabase l\'adresse email réelle du compte, qui est alors conservée. Dans les deux cas, les données de progression (versets traduits, scores, quiz) sont stockées pour permettre le suivi de l\'apprentissage.')}
 
-        {section('Utilisation des données', 'Les données sont utilisées exclusivement pour le fonctionnement de l\'application : authentification, sauvegarde de progression, classement entre utilisateurs. Aucune donnée n\'est vendue, partagée avec des tiers, ni utilisée à des fins publicitaires.')}
+        {section('Utilisation des données', 'Les données sont utilisées exclusivement pour le fonctionnement de l\'application : authentification, sauvegarde de progression, et duels entre utilisateurs. Aucune donnée n\'est vendue, partagée avec des tiers, ni utilisée à des fins publicitaires.')}
 
         {section('Cookies', 'Tarjama utilise uniquement des cookies techniques nécessaires au fonctionnement (session d\'authentification Supabase). Vercel Analytics collecte des données anonymisées de fréquentation (pages vues, pays) sans cookies tiers.')}
 
-        {section('Intelligence artificielle', 'L\'application utilise l\'API Groq (modèle Llama 3.3) pour la vérification des traductions, les indices, le tafsir et l\'analyse du vocabulaire. Les textes envoyés à l\'API sont les versets coraniques (texte public) et les traductions utilisateur. Aucune donnée personnelle n\'est transmise à Groq.')}
+        {section('Intelligence artificielle', 'L\'application fait appel à des services d\'intelligence artificielle pour la vérification des traductions, les indices, le tafsir et l\'analyse du vocabulaire. Plusieurs fournisseurs sont sollicités tour à tour selon leur disponibilité : Groq, Google (Gemini), Cohere, Cerebras et OpenRouter. Les textes transmis sont les versets coraniques (texte public) et la traduction que vous avez saisie. Ni votre nom d\'utilisateur, ni votre adresse email, ni votre identifiant de compte ne leur sont transmis.')}
 
-        {section('Droits', 'Conformément au RGPD, vous disposez d\'un droit d\'accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez-nous via l\'application. La suppression du compte entraîne la suppression de toutes les données associées.')}
+        {section('Droits', 'Conformément au RGPD, vous disposez d\'un droit d\'accès, de rectification et de suppression de vos données. Votre nom d\'utilisateur et votre couleur se modifient depuis votre profil. Pour demander la suppression de vos données, écrivez-nous depuis la page Suggestions de l\'application : la demande est traitée manuellement et efface la progression, le vocabulaire, les duels et le profil associés au compte.')}
 
         {section('Propriété intellectuelle', 'Le texte coranique est dans le domaine public. Les traductions de référence sont générées par intelligence artificielle. Le code source de l\'application est la propriété de l\'éditeur.')}
 
         <div style={{ fontSize: 11, color: 'var(--tarjama-color-text-muted)', marginTop: 32, borderTop: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)', paddingTop: 16 }}>
-          Dernière mise à jour : mai 2026
+          Dernière mise à jour : septembre 2026
         </div>
       </div>
     </>

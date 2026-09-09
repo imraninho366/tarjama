@@ -26,6 +26,10 @@ export default function ConnexionsPage({ user, authReady }) {
   const [versets, setVersets] = useState(null)
   const [loading, setLoading] = useState(false)
   const [custom, setCustom] = useState('')
+  // Meme correction que /humeur : « verifie ton internet » etait servi a tous
+  // les echecs, y compris a une session expiree ou a un quota atteint, ou ce
+  // conseil envoie chercher au mauvais endroit.
+  const [messageErreur, setMessageErreur] = useState('')
 
   // Tant que la session n'est pas tranchee, on n'affiche rien plutot que de
   // rediriger : `user` est encore null par ignorance, pas par absence.
@@ -34,18 +38,21 @@ export default function ConnexionsPage({ user, authReady }) {
   if (!user) { if (typeof window !== 'undefined') router.push('/'); return null }
 
   const search = async (theme) => {
-    setLoading(true); setVersets(null)
+    setLoading(true); setVersets(null); setMessageErreur('')
     try {
       const r = await apiFetch('/api/humeur', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mood: `versets sur le thème : ${theme}` }) })
       const data = await r.json()
       // Sans ce controle, un 429 ou un 502 renvoyait { error } : data.versets
       // valait undefined, l'etat devenait [] et la page ne rendait plus RIEN —
       // ni message, ni bouton, juste un ecran vide.
-      if (data.error) throw new Error(data.error)
-      if (!Array.isArray(data.versets) || data.versets.length === 0) throw new Error('Aucun verset trouve')
+      if (!r.ok || data.error) throw new Error(data?.error || `Erreur serveur (${r.status})`)
+      if (!Array.isArray(data.versets) || data.versets.length === 0) throw new Error('Aucun verset trouvé pour ce thème. Essaie de le formuler autrement.')
       setVersets(data.versets)
     } catch (err) {
       console.error('[connexions] recherche:', err.message)
+      setMessageErreur(err.message === 'Failed to fetch'
+        ? 'Connexion perdue. Vérifie ton internet et réessaie.'
+        : err.message)
       setVersets('error')
     }
     setLoading(false)
@@ -100,7 +107,7 @@ export default function ConnexionsPage({ user, authReady }) {
 
         {versets === 'error' && (
           <div style={{ textAlign: 'center', padding: 32, color: 'var(--red)' }}>
-            Erreur de connexion. Vérifie ton internet.
+            {messageErreur || 'Les versets n’ont pas pu être chargés.'}
             <br/><button onClick={() => { setVersets(null); setSelected(null) }} style={{ marginTop: 12, color: 'var(--gold)', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>Réessayer</button>
           </div>
         )}
