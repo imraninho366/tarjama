@@ -7,3 +7,7 @@ out/
 .vercel
 firebase-debug.log
 .env*
+
+# Cache de compilation Python — regenere a chaque execution
+__pycache__/
+*.pyc

@@ -23,6 +23,26 @@ texte = json.load(open('data/quran-ar.json'))
 ARABE = re.compile(r'^[؀-ۿݐ-ݿ ]+$')
 DIACS = re.compile('[ً-ٰؕۖ-ۭـ]')
 
+INFINITIF = re.compile(r'(er|ir|re|oir)$')
+REFLECHI = ('se', 'te', 'me', 'nous', 'vous')
+
+def est_infinitif(sens):
+    """Le sens est-il une locution verbale a l'infinitif ?
+
+    Accepte « chercher », « se repentir », « ne pas opprimer », « demander
+    pardon » : dans une locution francaise c'est le PREMIER mot qui porte le
+    verbe, et le pronom reflechi fait partie du verbe. Un test sur le dernier
+    mot signalait a tort 68 entrees correctes.
+    """
+    mots = sens.split(',')[0].split()
+    if not mots:
+        return False
+    # Le verbe peut etre precede d'un adverbe (« bien faire »), d'un pronom
+    # reflechi (« se repentir ») ou d'une negation en deux mots
+    # (« ne pas opprimer »). Il suffit donc qu'un des trois premiers mots soit
+    # un infinitif — au-dela, ce n'est plus une locution verbale.
+    return any(INFINITIF.search(m) for m in mots[:3])
+
 def squelette(s):
     s = DIACS.sub('', s)
     s = re.sub('[آأإٱاءؤئ]', 'ا', s)
@@ -41,6 +61,14 @@ for m in dico['mots']:
         pb.append(('translitteration vide', a))
     if not m.get('sens') or not m['sens'][0].strip():
         pb.append(('sens vide', a))
+
+    # Un verbe doit se traduire par un verbe, a l'infinitif. La glose anglaise
+    # ne dit pas de quoi il s'agit : « fear » a donne « peur » pour خَافَ
+    # (craindre), « wills » a donne « volontés » pour شَآءَ (vouloir). 848
+    # verbes sur 1474 portaient ainsi un nom, un adjectif ou une conjugaison.
+    if m.get('type') == 'verbe' and not est_infinitif(m['sens'][0]):
+        pb.append(('verbe traduit par autre chose qu un infinitif',
+                   f"{a} -> {m['sens'][0]}"))
 
     ref = m.get('ref')
     if not ref:
