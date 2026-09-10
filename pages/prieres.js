@@ -45,8 +45,18 @@ export default function PrieresPage() {
 
   const [coords, setCoords] = useState(null)
   const [now, setNow] = useState(new Date())
+  // Cap du telephone en degres, dans le sens des aiguilles d'une montre depuis
+  // le nord, deja corrige de l'orientation de l'ecran. null = inconnu.
   const [heading, setHeading] = useState(null)
   const [showQibla, setShowQibla] = useState(false)
+  // 'attente' | 'ok' | 'refusee' | 'indisponible'
+  const [capteur, setCapteur] = useState('attente')
+  // Precision annoncee par iOS (webkitCompassAccuracy), en degres.
+  const [precision, setPrecision] = useState(null)
+  const dernierCapRef = useRef(null)
+  const rotationAiguilleRef = useRef(null)
+  const rotationCadranRef = useRef(null)
+  const alignementSignaleRef = useRef(false)
   const [cityInput, setCityInput] = useState('')
   const [cityName, setCityName] = useState('')
 
@@ -161,20 +171,83 @@ export default function PrieresPage() {
     setLoading(false)
   }
 
-  useEffect(() => {
-    if (!showQibla) return
-    const handler = (e) => setHeading(e.alpha)
-    if (window.DeviceOrientationEvent) {
-      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        DeviceOrientationEvent.requestPermission().then(r => {
-          if (r === 'granted') window.addEventListener('deviceorientation', handler)
-        }).catch(() => {})
-      } else {
-        window.addEventListener('deviceorientation', handler)
+  /*
+   * Ouverture de la boussole — la demande d'autorisation se fait ICI, dans le
+   * clic, et nulle part ailleurs.
+   *
+   * iOS n'accorde l'acces a l'orientation que si requestPermission() est
+   * appele DIRECTEMENT par un geste de l'utilisateur. L'ancienne version
+   * l'appelait depuis un useEffect, apres le clic : iOS refusait, le refus
+   * etait avale par un `.catch(() => {})`, et sur iPhone la boussole n'a donc
+   * jamais fonctionne — tout en affichant « ouvre sur mobile »… sur un mobile.
+   */
+  const basculerQibla = async () => {
+    if (showQibla) { setShowQibla(false); return }
+    setHeading(null); setPrecision(null)
+    dernierCapRef.current = null
+    alignementSignaleRef.current = false
+
+    const DOE = typeof window !== 'undefined' ? window.DeviceOrientationEvent : undefined
+    if (!DOE) { setCapteur('indisponible'); setShowQibla(true); return }
+
+    if (typeof DOE.requestPermission === 'function') {
+      try {
+        const reponse = await DOE.requestPermission()
+        if (reponse !== 'granted') { setCapteur('refusee'); setShowQibla(true); return }
+      } catch (err) {
+        console.warn('[qibla] autorisation refusee:', err?.message)
+        setCapteur('refusee'); setShowQibla(true); return
       }
     }
-    return () => window.removeEventListener('deviceorientation', handler)
-  }, [showQibla])
+    setCapteur('attente')
+    setShowQibla(true)
+  }
+
+  /*
+   * Lecture du cap.
+   *
+   * `e.alpha`, utilise jusqu'ici, n'est PAS un cap boussole :
+   *   - sur iPhone, c'est un angle relatif a la position du telephone au
+   *     moment ou la page a commence a ecouter — le vrai cap est dans
+   *     `webkitCompassHeading` ;
+   *   - sur Android, l'evenement `deviceorientation` n'est pas rapporte au
+   *     nord ; seul `deviceorientationabsolute` l'est, et son alpha tourne
+   *     dans le sens INVERSE des aiguilles d'une montre.
+   * L'aiguille tournait donc a l'envers, par rapport a un nord arbitraire.
+   *
+   * Un angle seulement relatif est ignore plutot qu'affiche : sur une
+   * direction de priere, une aiguille fausse est pire qu'une aiguille absente.
+   */
+  useEffect(() => {
+    if (!showQibla || capteur === 'refusee' || capteur === 'indisponible') return
+
+    const evenement = 'ondeviceorientationabsolute' in window ? 'deviceorientationabsolute' : 'deviceorientation'
+    const angleEcran = () => (window.screen?.orientation?.angle ?? window.orientation ?? 0)
+
+    const handler = (e) => {
+      let cap = null
+      if (typeof e.webkitCompassHeading === 'number' && e.webkitCompassHeading >= 0) {
+        cap = e.webkitCompassHeading                        // iOS : deja horaire, depuis le nord
+      } else if ((e.absolute || e.type === 'deviceorientationabsolute') && typeof e.alpha === 'number') {
+        cap = 360 - e.alpha                                 // Android : alpha est anti-horaire
+      }
+      if (cap === null) return
+
+      cap = (((cap + angleEcran()) % 360) + 360) % 360       // telephone tenu en paysage
+      // Le capteur emet des dizaines de fois par seconde : on ne redessine
+      // qu'au-dela d'un degre, sinon la page se re-rend en continu.
+      const ecart = dernierCapRef.current === null ? 360 : Math.abs(((cap - dernierCapRef.current + 540) % 360) - 180)
+      if (ecart >= 1) { dernierCapRef.current = cap; setHeading(cap) }
+      if (typeof e.webkitCompassAccuracy === 'number') setPrecision(e.webkitCompassAccuracy)
+      setCapteur('ok')
+    }
+
+    window.addEventListener(evenement, handler)
+    // Un ordinateur ou un telephone sans magnetometre n'emet jamais de cap
+    // absolu. Sans ce delai, l'ecran attendait indefiniment sans le dire.
+    const delai = setTimeout(() => setCapteur(c => (c === 'attente' ? 'indisponible' : c)), 3000)
+    return () => { window.removeEventListener(evenement, handler); clearTimeout(delai) }
+  }, [showQibla, capteur === 'refusee' || capteur === 'indisponible'])
 
   const nowMinutes = now.getHours() * 60 + now.getMinutes()
 
@@ -197,7 +270,37 @@ export default function PrieresPage() {
   }
 
   const qiblaAngle = coords ? calculateQibla(coords.lat, coords.lng) : 0
-  const compassRotation = heading !== null ? qiblaAngle - heading : qiblaAngle
+
+  /*
+   * Rotation « deroulee » : on ajoute toujours le plus petit ecart a l'angle
+   * precedent au lieu de sauter a la nouvelle valeur. Sans cela, passer de 359°
+   * a 1° faisait tourner l'animation CSS de 358° dans le mauvais sens.
+   */
+  const derouler = (ref, cible) => {
+    if (ref.current === null) { ref.current = cible; return cible }
+    const ecart = ((cible - ref.current) % 360 + 540) % 360 - 180
+    ref.current += ecart
+    return ref.current
+  }
+  const compassRotation = derouler(rotationAiguilleRef, heading !== null ? qiblaAngle - heading : qiblaAngle)
+  // Le cadran (N, E, S, O) tourne avec le monde, pas avec l'ecran.
+  const rotationCadran = derouler(rotationCadranRef, heading !== null ? -heading : 0)
+  // Ecart entre le haut du telephone et la Qibla, dans [-180, 180].
+  const ecartQibla = heading !== null ? ((qiblaAngle - heading) % 360 + 540) % 360 - 180 : null
+  const aligne = ecartQibla !== null && Math.abs(ecartQibla) <= 5
+  const precisionDouteuse = precision !== null && (precision < 0 || precision > 20)
+
+  // Une vibration quand on arrive face a la Qibla, une seule fois : elle se
+  // rearme quand on s'en eloigne nettement, pas a chaque degre de tremblement.
+  useEffect(() => {
+    if (ecartQibla === null) return
+    if (aligne && !alignementSignaleRef.current) {
+      alignementSignaleRef.current = true
+      if (navigator.vibrate) navigator.vibrate(60)
+    } else if (Math.abs(ecartQibla) > 15) {
+      alignementSignaleRef.current = false
+    }
+  }, [aligne, ecartQibla])
 
   return (
     <>
@@ -323,7 +426,7 @@ export default function PrieresPage() {
         {/* Qibla */}
         {coords && (
           <div style={{ marginBottom: 24 }}>
-            <button onClick={() => setShowQibla(!showQibla)} style={{
+            <button onClick={basculerQibla} style={{
               width: '100%', padding: '14px', borderRadius: 10, cursor: 'pointer',
               background: showQibla ? 'rgba(var(--tarjama-color-primary-rgb),.1)' : 'rgba(var(--tarjama-color-primary-rgb),.04)',
               border: `1px solid ${showQibla ? 'rgba(var(--tarjama-color-primary-rgb),.25)' : 'rgba(var(--tarjama-color-primary-rgb),.1)'}`,
@@ -343,16 +446,34 @@ export default function PrieresPage() {
                   borderRadius: '50%', border: '2px solid rgba(var(--tarjama-color-primary-rgb),.2)',
                   background: 'rgba(var(--tarjama-color-primary-rgb),.03)'
                 }}>
-                  {/* Directions */}
-                  {['N', 'E', 'S', 'O'].map((d, i) => (
-                    <div key={d} style={{
-                      position: 'absolute', fontSize: 11, color: 'var(--text-muted)', fontWeight: 700,
-                      ...(i === 0 ? { top: 8, left: '50%', transform: 'translateX(-50%)' } :
-                        i === 1 ? { right: 8, top: '50%', transform: 'translateY(-50%)' } :
-                        i === 2 ? { bottom: 8, left: '50%', transform: 'translateX(-50%)' } :
-                        { left: 8, top: '50%', transform: 'translateY(-50%)' })
-                    }}>{d}</div>
-                  ))}
+                  {/* Directions : elles restaient fixes a l'ecran, si bien que le
+                      « N » designait le haut du telephone et non le nord. Le
+                      cadran tourne desormais a l'oppose du cap. */}
+                  <div style={{
+                    position: 'absolute', inset: 0,
+                    transform: `rotate(${rotationCadran}deg)`, transition: 'transform 0.3s ease-out'
+                  }}>
+                    {['N', 'E', 'S', 'O'].map((d, i) => (
+                      <div key={d} style={{
+                        position: 'absolute', fontSize: 11, fontWeight: 700,
+                        color: d === 'N' ? 'var(--red)' : 'var(--text-muted)',
+                        ...(i === 0 ? { top: 8, left: '50%', transform: 'translateX(-50%)' } :
+                          i === 1 ? { right: 8, top: '50%', transform: 'translateY(-50%)' } :
+                          i === 2 ? { bottom: 8, left: '50%', transform: 'translateX(-50%)' } :
+                          { left: 8, top: '50%', transform: 'translateY(-50%)' })
+                      }}>{d}</div>
+                    ))}
+                  </div>
+
+                  {/* Repere fixe : le haut du telephone. Aligner l'aiguille
+                      dessus, c'est etre face a la Qibla. */}
+                  {heading !== null && (
+                    <div style={{
+                      position: 'absolute', top: -2, left: '50%', transform: 'translateX(-50%)',
+                      width: 0, height: 0, borderLeft: '6px solid transparent', borderRight: '6px solid transparent',
+                      borderTop: `10px solid ${aligne ? 'var(--green)' : 'var(--text-muted)'}`
+                    }} />
+                  )}
 
                   {/* Aiguille Qibla */}
                   <div style={{
@@ -360,7 +481,7 @@ export default function PrieresPage() {
                     background: 'linear-gradient(to top, transparent, var(--gold))',
                     borderRadius: 2, transformOrigin: 'bottom center',
                     transform: `translate(-50%, -100%) rotate(${compassRotation}deg)`,
-                    transition: 'transform 0.5s ease'
+                    transition: 'transform 0.3s ease-out'
                   }} />
 
                   {/* Centre */}
@@ -373,16 +494,35 @@ export default function PrieresPage() {
                   <div style={{
                     position: 'absolute', top: '50%', left: '50%',
                     transform: `translate(-50%, -50%) rotate(${compassRotation}deg) translateY(-70px)`,
-                    fontSize: 20, transition: 'transform 0.5s ease'
+                    fontSize: 20, transition: 'transform 0.3s ease-out'
                   }}>🕋</div>
                 </div>
 
                 <div style={{ fontSize: 14, color: 'var(--text)', fontWeight: 600, marginBottom: 4 }}>
                   Direction de la Qibla : {Math.round(qiblaAngle)}°
                 </div>
-                <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>
-                  {heading !== null ? 'Tourne ton téléphone vers la Kaaba 🕋' : 'Ouvre sur mobile pour la boussole en temps réel'}
+                <div role="status" aria-live="polite" style={{ fontSize: 12, lineHeight: 1.6, color: aligne ? 'var(--green)' : 'var(--text-muted)', fontWeight: aligne ? 700 : 400 }}>
+                  {capteur === 'ok' && heading !== null && (aligne
+                    ? 'Tu es face à la Qibla ✓'
+                    : `Tourne-toi vers la ${ecartQibla > 0 ? 'droite' : 'gauche'} de ${Math.round(Math.abs(ecartQibla))}°, jusqu’à aligner la Kaaba avec le repère en haut.`)}
+                  {capteur === 'attente' && 'Recherche de la boussole…'}
+                  {/* « Refuse » ne veut pas forcement dire que l'utilisateur a
+                      refuse : Chrome repond aussi `denied` sur un ordinateur
+                      sans boussole, sans rien demander. Les deux cas sont
+                      indiscernables, le message couvre donc les deux. */}
+                  {capteur === 'refusee' && 'Ton navigateur ne donne pas accès à l’orientation. Si une demande s’est affichée et que tu l’as refusée, recharge la page et accepte-la. Sur un ordinateur, il n’y a pas de boussole : le cadran est orienté nord en haut, tourne-le face au nord pour lire la direction.'}
+                  {capteur === 'indisponible' && 'Cet appareil ne fournit pas de boussole (ordinateur, ou téléphone sans magnétomètre). Le cadran est orienté nord en haut : tourne-le face au nord pour lire la direction.'}
                 </div>
+                {precisionDouteuse && (
+                  <div style={{ fontSize: 11, color: 'var(--orange)', marginTop: 6, lineHeight: 1.5 }}>
+                    Boussole imprécise : décris un 8 dans l’air avec ton téléphone pour la calibrer.
+                  </div>
+                )}
+                {capteur === 'ok' && (
+                  <div style={{ fontSize: 10, color: 'var(--text-muted)', marginTop: 6, lineHeight: 1.5 }}>
+                    Écart possible de quelques degrés : la boussole du téléphone suit le nord magnétique et réagit au métal proche.
+                  </div>
+                )}
               </div>
             )}
           </div>
