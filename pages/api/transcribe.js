@@ -15,14 +15,23 @@ export default async function handler(req, res) {
   if (!apiKey) return res.status(500).json({ error: 'Clé Groq non configurée' })
 
   try {
-    const { audio, mimeType } = req.body
-    if (!audio) return res.status(400).json({ error: 'Audio manquant' })
+    const { audio } = req.body
+    if (typeof audio !== 'string' || !audio) return res.status(400).json({ error: 'Audio manquant' })
 
-    // Determine file extension from mimeType
-    const ext = (mimeType || 'audio/webm').includes('mp4') ? 'mp4'
-      : (mimeType || '').includes('ogg') ? 'ogg'
-      : (mimeType || '').includes('wav') ? 'wav'
-      : 'webm'
+    /*
+     * Le type MIME envoye par le navigateur etait recopie TEL QUEL dans
+     * l'en-tete de la partie « file » du corps multipart construit a la main
+     * ci-dessous. Une valeur contenant « \r\n » y fermait l'en-tete et ouvrait
+     * de nouvelles parties : l'appelant pouvait ajouter ou remplacer des champs
+     * de la requete envoyee a Groq avec la cle du projet.
+     *
+     * On ne retient desormais que le type de base, confronte a une liste
+     * fermee ; tout le reste retombe sur webm.
+     */
+    const TYPES = { 'audio/webm': 'webm', 'audio/mp4': 'mp4', 'audio/ogg': 'ogg', 'audio/wav': 'wav' }
+    const base = String(req.body.mimeType || '').split(';')[0].trim().toLowerCase()
+    const mimeType = TYPES[base] ? base : 'audio/webm'
+    const ext = TYPES[mimeType]
 
     // Convert base64 to buffer
     const buffer = Buffer.from(audio, 'base64')
@@ -83,13 +92,15 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       console.error('Groq transcribe error:', JSON.stringify(data))
-      return res.status(500).json({ error: data?.error?.message || 'Erreur transcription' })
+      // Le message de Groq decrit son infrastructure et parfois la cle
+      // utilisee ; il reste dans les journaux, pas dans la reponse.
+      return res.status(502).json({ error: 'La transcription a échoué. Réessaie.' })
     }
 
     return res.status(200).json({ text: data.text || '' })
   } catch (err) {
     console.error('Transcribe error:', err.message)
-    return res.status(500).json({ error: err.message })
+    return res.status(500).json({ error: 'La transcription a échoué. Réessaie.' })
   }
 }
 
