@@ -27,6 +27,10 @@ export default function TarjamaApp({ Component, pageProps, router }) {
   // qui redirigent sur !user ejectaient un utilisateur pourtant connecte des
   // qu'il rafraichissait la page. authReady separe les deux cas.
   const [authReady, setAuthReady] = useState(false)
+  // Toute l'application depend du profil : sans lui, l'accueil montre la page
+  // marketing a un utilisateur connecte et /duel reste blanc. Un echec de
+  // chargement doit donc se VOIR, et pouvoir se relancer.
+  const [erreurProfil, setErreurProfil] = useState(false)
   const [transitioning, setTransitioning] = useState(false)
   const [displayedRoute, setDisplayedRoute] = useState(router.pathname)
   const [installPrompt, setInstallPrompt] = useState(null)
@@ -146,6 +150,7 @@ export default function TarjamaApp({ Component, pageProps, router }) {
 
     if (data) {
       setProfile(data)
+      setErreurProfil(false)
       return
     }
 
@@ -159,11 +164,31 @@ export default function TarjamaApp({ Component, pageProps, router }) {
       }
       // Toujours rien : le profil n'existe vraiment pas (cas Google).
       const created = await createMissingProfile(authUser)
-      if (created) setProfile(created)
+        if (created) setProfile(created)
+      else setErreurProfil(true)
       return
     }
 
-    if (error) console.error('loadProfile error:', error.message)
+    /*
+     * Toute autre erreur — coupure reseau, Supabase lent, jeton en cours de
+     * rafraichissement — etait seulement journalisee. `profile` restait vide
+     * et l'application paraissait cassee, sans explication, jusqu'au prochain
+     * rechargement manuel. On retente, puis on le dit.
+     */
+    if (error) {
+      console.error('loadProfile error:', error.message)
+      if (retries > 0) {
+        setTimeout(() => loadProfile(authUser, retries - 1), 1500)
+        return
+      }
+      setErreurProfil(true)
+    }
+  }
+
+  const relancerProfil = () => {
+    if (!user) return
+    setErreurProfil(false)
+    loadProfile(user)
   }
 
   const handleLogout = async () => {
@@ -250,6 +275,21 @@ export default function TarjamaApp({ Component, pageProps, router }) {
         theme={theme}
         onToggleTheme={toggleTheme}
       >
+        {user && !profile && erreurProfil && (
+          <div role="alert" style={{
+            maxWidth: 520, margin: '16px auto', padding: '12px 16px', borderRadius: 8,
+            fontSize: 14, lineHeight: 1.6, textAlign: 'center',
+            color: 'var(--tarjama-color-text)',
+            background: 'rgba(var(--tarjama-color-error-rgb, 184, 74, 74), .08)',
+            border: '1px solid rgba(var(--tarjama-color-error-rgb, 184, 74, 74), .25)',
+          }}>
+            Ton profil n’a pas pu être chargé, l’application ne peut pas s’afficher sans lui.{' '}
+            <button onClick={relancerProfil} style={{
+              background: 'none', border: 'none', padding: 0, cursor: 'pointer',
+              color: 'var(--gold)', textDecoration: 'underline', fontSize: 14,
+            }}>Réessayer</button>
+          </div>
+        )}
         <div
           key={displayedRoute}
           className={transitioning ? 'page-transition-exit' : 'page-transition-enter'}

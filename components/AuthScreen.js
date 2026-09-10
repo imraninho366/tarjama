@@ -2,6 +2,30 @@ import { useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { AVATAR_COLORS } from '../lib/theme'
 
+/**
+ * Traduit les erreurs de Supabase Auth.
+ *
+ * Elles s'affichaient telles quelles — en anglais, dans une application
+ * entierement en francais : « Email rate limit exceeded », « Password should be
+ * at least 6 characters ». Et la connexion repondait « Identifiants incorrects »
+ * a TOUT, y compris a un email jamais confirme ou a une coupure reseau : un
+ * utilisateur au bon mot de passe le retapait en boucle sans jamais comprendre.
+ */
+function messageAuth(error, parDefaut) {
+  const m = (error?.message || '').toLowerCase()
+  if (m.includes('failed to fetch') || m.includes('network')) return 'Connexion impossible. Vérifie ton internet.'
+  if (m.includes('email not confirmed')) return 'Ton adresse email n’est pas encore confirmée. Ouvre le lien reçu par email, puis reconnecte-toi.'
+  if (m.includes('invalid login credentials')) return 'Identifiants incorrects.'
+  if (m.includes('already registered') || m.includes('already been registered')) return 'Cet email est déjà utilisé. Connecte-toi.'
+  if (m.includes('rate limit') || m.includes('too many')) return 'Trop de tentatives. Patiente quelques minutes avant de réessayer.'
+  if (m.includes('password') && (m.includes('at least') || m.includes('weak'))) return 'Mot de passe trop faible : 6 caractères minimum.'
+  if (m.includes('invalid') && m.includes('email')) return 'Adresse email invalide.'
+  return parDefaut
+}
+
+/** Au-dela, le pseudo casse l'affichage des duels et de la page d'admin. */
+const PSEUDO_MAX = 30
+
 export default function AuthScreen() {
   const [authMode, setAuthMode] = useState('login')
   const [authError, setAuthError] = useState('')
@@ -42,7 +66,10 @@ export default function AuthScreen() {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: window.location.origin
     })
-    if (error) setAuthError(error.message)
+    if (error) {
+      console.error('[auth] reinitialisation:', error.message)
+      setAuthError(messageAuth(error, 'L’email de réinitialisation n’a pas pu être envoyé. Réessaie.'))
+    }
     else setResetSent(true)
     setAuthLoading(false)
   }
@@ -56,7 +83,10 @@ export default function AuthScreen() {
     const email = input.includes('@') ? input : `${input.toLowerCase().replace(/\s+/g, '_')}@tarjama.app`
     setAuthLoading(true)
     const { error } = await supabase.auth.signInWithPassword({ email, password })
-    if (error) setAuthError('Identifiants incorrects.')
+    if (error) {
+      console.error('[auth] connexion:', error.message)
+      setAuthError(messageAuth(error, 'Identifiants incorrects.'))
+    }
     setAuthLoading(false)
   }
 
@@ -67,6 +97,7 @@ export default function AuthScreen() {
     const email = e.target.email.value.trim()
     const password = e.target.password.value
     if (username.length < 2) return setAuthError('Prénom trop court (min 2)')
+    if (username.length > PSEUDO_MAX) return setAuthError(`Prénom trop long (${PSEUDO_MAX} caractères maximum)`)
     if (!email.includes('@')) return setAuthError('Email invalide')
     if (password.length < 6) return setAuthError('Mot de passe trop court (min 6)')
     setAuthLoading(true)
@@ -77,8 +108,8 @@ export default function AuthScreen() {
         options: { data: { username, color: regColor } }
       })
       if (error) {
-        if (error.message.includes('already registered')) setAuthError('Cet email est déjà utilisé. Connecte-toi.')
-        else setAuthError(error.message)
+        console.error('[auth] inscription:', error.message)
+        setAuthError(messageAuth(error, 'L’inscription a échoué. Réessaie.'))
         setAuthLoading(false)
         return
       }
@@ -87,7 +118,19 @@ export default function AuthScreen() {
 
       if (!data.session) {
         const { data: signInData, error: loginErr } = await supabase.auth.signInWithPassword({ email, password })
-        if (loginErr) { setAuthError('Compte créé mais connexion échouée. Essaie de te connecter.'); setAuthLoading(false); return }
+        /*
+         * Supabase ne renvoie AUCUNE session a l'inscription exactement quand
+         * la confirmation par email est exigee. La connexion tentee juste apres
+         * echoue donc presque toujours pour cette raison — et le message disait
+         * « connexion echouee », sans parler de l'email qui attendait dans la
+         * boite de reception.
+         */
+        if (loginErr) {
+          console.error('[auth] connexion apres inscription:', loginErr.message)
+          setAuthError(messageAuth(loginErr, 'Compte créé. Vérifie ta boîte mail pour le confirmer, puis connecte-toi.'))
+          setAuthLoading(false)
+          return
+        }
         if (signInData?.user?.id) userId = signInData.user.id
       }
 
@@ -96,10 +139,16 @@ export default function AuthScreen() {
           { id: userId, username, color: regColor },
           { onConflict: 'id' }
         )
-        if (profileErr) { setAuthError(profileErr.message || 'Erreur création profil'); setAuthLoading(false); return }
+        if (profileErr) {
+          console.error('[auth] creation du profil:', profileErr.message)
+          setAuthError('Ton compte est créé, mais ton profil n’a pas pu être enregistré. Reconnecte-toi pour réessayer.')
+          setAuthLoading(false)
+          return
+        }
       }
     } catch (err) {
-      setAuthError(err.message === 'Failed to fetch' ? 'Connexion impossible. Vérifie ton internet.' : (err.message || 'Erreur'))
+      console.error('[auth] inscription (exception):', err?.message)
+      setAuthError(messageAuth(err, 'L’inscription a échoué. Réessaie.'))
     }
     setAuthLoading(false)
   }
@@ -166,7 +215,7 @@ export default function AuthScreen() {
           {authMode === 'register' && (
             <div className="mb-4">
               <label className={labelCls} htmlFor="auth-username">Prénom</label>
-              <input id="auth-username" name="username" type="text" placeholder="Ex: Ahmed, Fatima..." required autoComplete="given-name" className={inputCls} />
+              <input id="auth-username" name="username" type="text" placeholder="Ex: Ahmed, Fatima..." required maxLength={30} autoComplete="given-name" className={inputCls} />
             </div>
           )}
 

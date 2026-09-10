@@ -23,7 +23,7 @@ export default function MentionsLegales() {
 
         {section('Hébergement', 'L\'application est hébergée par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. La base de données est hébergée par Supabase Inc., région Europe de l\'Ouest (Paris).')}
 
-        {section('Données collectées', 'Inscription par mot de passe : nom d\'utilisateur (pseudonyme libre) et mot de passe chiffré par Supabase Auth, sans adresse email réelle — l\'application utilise des identifiants internes (@tarjama.app). Inscription par Google : Google transmet à Supabase l\'adresse email réelle du compte, qui est alors conservée. Dans les deux cas, les données de progression (versets traduits, scores, quiz) sont stockées pour permettre le suivi de l\'apprentissage.')}
+        {section('Données collectées', 'Inscription par email : nom d\'utilisateur (pseudonyme libre), adresse email — utilisée pour la connexion et la réinitialisation du mot de passe — et mot de passe chiffré par Supabase Auth. Les comptes les plus anciens utilisent un identifiant interne (@tarjama.app) à la place d\'une adresse réelle. Inscription par Google : Google transmet à Supabase l\'adresse email du compte, qui est conservée. Dans les deux cas, les données de progression (versets traduits, scores, quiz) sont stockées pour permettre le suivi de l\'apprentissage.')}
 
         {section('Utilisation des données', 'Les données sont utilisées exclusivement pour le fonctionnement de l\'application : authentification, sauvegarde de progression, et duels entre utilisateurs. Aucune donnée n\'est vendue, partagée avec des tiers, ni utilisée à des fins publicitaires.')}
 

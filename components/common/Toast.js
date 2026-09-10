@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import styles from './Toast.module.css'
 
 const ICONS = {
@@ -16,14 +16,27 @@ export default function Toast({ message, type = 'info', duration = 3000, onClose
     if (message) setExiting(false)
   }, [message])
 
+  /*
+   * `onClose` ne fait plus partie des dependances du minuteur.
+   *
+   * La page d'accueil le passe sous forme de fonction flechee, donc une
+   * NOUVELLE fonction a chaque rendu — et elle se re-rend a chaque frappe dans
+   * le champ de traduction. Chaque frappe relancait le minuteur de zero : tant
+   * que l'utilisateur tapait, le message ne disparaissait jamais. On lit
+   * desormais la derniere version de onClose au moment de fermer.
+   */
+  const onCloseRef = useRef(onClose)
+  useEffect(() => { onCloseRef.current = onClose }, [onClose])
+
   useEffect(() => {
     if (!message) return
+    let fermeture
     const timer = setTimeout(() => {
       setExiting(true)
-      setTimeout(() => onClose?.(), 250)
+      fermeture = setTimeout(() => onCloseRef.current?.(), 250)
     }, duration)
-    return () => clearTimeout(timer)
-  }, [message, duration, onClose])
+    return () => { clearTimeout(timer); clearTimeout(fermeture) }
+  }, [message, duration])
 
   /*
    * Le conteneur reste monte meme sans message, et c'est deliberé.
