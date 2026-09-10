@@ -2,6 +2,7 @@ import { rateLimit } from '../../lib/rateLimit'
 import { requireUser } from '../../lib/apiAuth'
 import { callAI } from '../../lib/ai'
 import { cacheGet, cacheSet } from '../../lib/cache'
+import { motDuDictionnaire } from '../../lib/dictionnaireServeur'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
@@ -13,8 +14,11 @@ export default async function handler(req, res) {
   const user = await requireUser(req, res)
   if (!user) return
 
-  const { ar, translit, sens } = req.body
-  if (!ar) return res.status(400).json({ error: 'Mot manquant' })
+  // Le sens et la translitteration viennent du dictionnaire verifie, pas de la
+  // requete : la reponse est mise en cache sous le mot et servie a tous.
+  const mot = motDuDictionnaire(req.body?.ar)
+  if (!mot) return res.status(400).json({ error: 'Mot introuvable dans le dictionnaire' })
+  const { ar, translit, sens } = mot
 
 
   const cacheKey = `mnemo:${ar}`

@@ -1,6 +1,7 @@
 import { rateLimit } from '../../lib/rateLimit'
 import { requireUser } from '../../lib/apiAuth'
 import { callAIJSON } from '../../lib/ai'
+import { versetDeLaRequete } from '../../lib/quranSource'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
@@ -12,8 +13,10 @@ export default async function handler(req, res) {
   const user = await requireUser(req, res)
   if (!user) return
 
-  const { arabic, sourate_num, verse_num, sourate_ar, sourate_fr } = req.body
-  if (!arabic) return res.status(400).json({ error: 'Verset manquant' })
+  // Le texte vient de la source verifiee, pas de la requete.
+  const verset = versetDeLaRequete(req.body)
+  if (!verset) return res.status(400).json({ error: 'Verset introuvable' })
+  const { sourate_num, verset_num: verse_num, sourate_ar, sourate_fr, arabe: arabic } = verset
 
 
   const prompt = `Tu es un expert en langue arabe coranique. Analyse tous les mots importants de ce verset.

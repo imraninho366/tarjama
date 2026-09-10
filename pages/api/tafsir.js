@@ -2,6 +2,7 @@ import { rateLimit } from '../../lib/rateLimit'
 import { requireUser } from '../../lib/apiAuth'
 import { callAI } from '../../lib/ai'
 import { cacheGet, cacheSet } from '../../lib/cache'
+import { versetDeLaRequete } from '../../lib/quranSource'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
@@ -13,8 +14,12 @@ export default async function handler(req, res) {
   const user = await requireUser(req, res)
   if (!user) return
 
-  const { arabic, sourate_num, verse_num, sourate_ar, sourate_fr } = req.body
-  if (!arabic) return res.status(400).json({ error: 'Verset manquant' })
+  // Le texte vient de la source verifiee, jamais de la requete : la reponse
+  // est mise en cache sous la reference et servie a tous — elle doit donc
+  // porter sur le VRAI verset. Voir versetDeLaRequete.
+  const verset = versetDeLaRequete(req.body)
+  if (!verset) return res.status(400).json({ error: 'Verset introuvable' })
+  const { sourate_num, verset_num: verse_num, sourate_ar, sourate_fr, arabe: arabic } = verset
 
   const cacheKey = `tafsir:${sourate_num}:${verse_num}`
   const cached = cacheGet(cacheKey)

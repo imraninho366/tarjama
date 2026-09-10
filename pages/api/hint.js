@@ -2,6 +2,7 @@ import { rateLimit } from '../../lib/rateLimit'
 import { requireUser } from '../../lib/apiAuth'
 import { callAI } from '../../lib/ai'
 import { cacheGet, cacheSet } from '../../lib/cache'
+import { versetDeLaRequete } from '../../lib/quranSource'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
@@ -13,8 +14,14 @@ export default async function handler(req, res) {
   const user = await requireUser(req, res)
   if (!user) return
 
-  const { arabic, sourate_num, verse_num, mode } = req.body
-  if (!arabic) return res.status(400).json({ error: 'Verset manquant' })
+  // Meme faille que /api/tafsir : cache par reference, prompt construit sur le
+  // texte du client. Le texte vient desormais de la source verifiee.
+  const verset = versetDeLaRequete(req.body)
+  if (!verset) return res.status(400).json({ error: 'Verset introuvable' })
+  const { sourate_num, verset_num: verse_num, arabe: arabic } = verset
+  // `mode` entre dans la cle de cache : on n'accepte que les deux valeurs
+  // connues, sinon chaque valeur inventee creerait sa propre entree.
+  const mode = req.body.mode === 'translit' ? 'translit' : undefined
 
 
   const cacheKey = `hint:${mode||'default'}:${sourate_num}:${verse_num}`

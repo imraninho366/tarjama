@@ -33,7 +33,7 @@ export default function MentionsLegales() {
 
         {section('Droits', 'Conformément au RGPD, vous disposez d\'un droit d\'accès, de rectification et de suppression de vos données. Votre nom d\'utilisateur et votre couleur se modifient depuis votre profil. Pour demander la suppression de vos données, écrivez-nous depuis la page Suggestions de l\'application : la demande est traitée manuellement et efface la progression, le vocabulaire, les duels et le profil associés au compte.')}
 
-        {section('Propriété intellectuelle', 'Le texte coranique est dans le domaine public. Les traductions de référence sont générées par intelligence artificielle. Le code source de l\'application est la propriété de l\'éditeur.')}
+        {section('Propriété intellectuelle', 'Le texte coranique arabe est dans le domaine public. Les traductions de référence affichées sont celles de Muhammad Hamidullah ; les explications, indices et corrections sont générés par intelligence artificielle. Le code source de l\'application est la propriété de l\'éditeur.')}
 
         <div style={{ fontSize: 11, color: 'var(--tarjama-color-text-muted)', marginTop: 32, borderTop: '1px solid rgba(var(--tarjama-color-primary-rgb),.08)', paddingTop: 16 }}>
           Dernière mise à jour : septembre 2026

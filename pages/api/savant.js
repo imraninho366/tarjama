@@ -14,6 +14,12 @@ export default async function handler(req, res) {
 
   const { question } = req.body
   if (!question?.trim()) return res.status(400).json({ error: 'Question manquante' })
+  // Sans borne, une seule question de plusieurs dizaines de milliers de
+  // caracteres epuisait le quota de tokens PAR MINUTE que partagent tous les
+  // utilisateurs — un compte suffisait a rendre l'IA muette pour tout le monde.
+  if (question.length > 600) {
+    return res.status(400).json({ error: 'Ta question est trop longue (600 caractères maximum).' })
+  }
 
 
   const systemPrompt = `Tu es un assistant islamique rigoureux et bienveillant. Tu réponds UNIQUEMENT en te basant sur :
